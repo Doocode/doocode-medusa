@@ -5,6 +5,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import AppNavigation from '$lib/navig/AppNavigation.svelte';
 	import { ModeWatcher } from 'mode-watcher';
+	import Footer from '$lib/footer/Footer.svelte';
 
 	let { children } = $props();
 </script>
@@ -23,3 +24,5 @@
 		</a>
 	{/each}
 </div>
+
+<Footer />
