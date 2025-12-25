@@ -3,6 +3,7 @@
     import MenuIcon from "@lucide/svelte/icons/menu";
     import * as Popover from "$lib/components/ui/popover/index.js";
     import PackageIcon from "@lucide/svelte/icons/package";
+    import HouseIcon from "@lucide/svelte/icons/house";
     import BugIcon from "@lucide/svelte/icons/bug";
     import { m } from "$lib/paraglide/messages";
     import type { Component } from "svelte";
@@ -37,6 +38,11 @@
                     <span>{label}</span>
                 </a>
             {/snippet}
+
+            {@render item({
+                href: '/', icon: HouseIcon,
+                label: m['home.title']()
+            })}
 
             {@render item({
                 href: '/projects', icon: PackageIcon,

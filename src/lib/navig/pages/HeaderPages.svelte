@@ -1,5 +1,6 @@
 <script lang="ts">
     import PackageIcon from "@lucide/svelte/icons/package";
+    import HomeIcon from "@lucide/svelte/icons/house";
     import BugIcon from "@lucide/svelte/icons/bug";
     import { m } from "$lib/paraglide/messages";
     import type { Component } from "svelte";
@@ -26,6 +27,11 @@
             <span>{label}</span>
         </a>
     {/snippet}
+
+    {@render item({
+        href: '/', icon: HomeIcon,
+        label: m['home.title']()
+    })}
 
     {@render item({
         href: '/projects', icon: PackageIcon,
