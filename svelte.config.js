@@ -8,7 +8,13 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [vitePreprocess(), mdsvex()],
 
-	kit: { adapter: adapter() },
+	kit: {
+		adapter: adapter(),
+		alias: {
+			//$components: 'src/components',
+			$lib: 'src/lib',
+		}
+	},
 	extensions: ['.svelte', '.svx']
 };
 
