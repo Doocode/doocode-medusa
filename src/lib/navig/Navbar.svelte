@@ -1,7 +1,10 @@
 <script>
     import Button from "$lib/components/ui/button/button.svelte";
     import MenuIcon from "@lucide/svelte/icons/menu";
-    import DarkModeSwitcher from "./tools/DarkModeSwitcher.svelte";
+    import { fade } from "svelte/transition";
+    import NavTools from "./tools/NavTools.svelte";
+
+    let displayTools = $state(false);
 </script>
 
 <header class="bg-primary text-primary-foreground text-center flex items-center justify-between px-1.5">
@@ -9,7 +12,11 @@
         <MenuIcon class="h-6! w-6!" />
     </Button>
 
-    <h1 class="font-black text-2xl px-4 py-3 hover:underline">Doocode</h1>
+    {#if !displayTools}
+        <h1 transition:fade={{ duration: 100 }}>
+            <a href="/" class="font-black text-2xl px-4 py-3 hover:underline">Doocode</a>
+        </h1>
+    {/if}
 
-    <DarkModeSwitcher />
+    <NavTools bind:visible={displayTools} />
 </header>
