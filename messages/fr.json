@@ -1,4 +1,1 @@
-{
-	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from fr!"
-}
+{"$schema":"https://inlang.com/schema/inlang-message-format","hello_world":"Bonjour, {name} en français !","dark_mode":{"title":"Changer de thème"}}

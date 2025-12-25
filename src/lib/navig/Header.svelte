@@ -1,8 +1,15 @@
+<script>
+	import DarkModeSwitcher from "./tools/DarkModeSwitcher.svelte";
+</script>
+
 <header class="bg-primary text-primary-foreground">
-    <div class="max-w-7xl m-auto flex items-center">
+    <div class="max-w-7xl m-auto flex items-center justify-between">
         <h1 class="font-black text-3xl">
             <a href="/" class="px-4 py-3 grid hover:underline">Doocode</a>
         </h1>
 
+        <div class="tools">
+            <DarkModeSwitcher />
+        </div>
     </div>
 </header>
