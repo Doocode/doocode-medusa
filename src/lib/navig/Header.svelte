@@ -10,8 +10,8 @@
         </h1>
 
         <div class="flex items-center gap-2 px-2">
-            <DarkModeSwitcher />
             <LanguageSwitcher />
+            <DarkModeSwitcher />
         </div>
     </div>
 </header>

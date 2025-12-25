@@ -1,20 +1,7 @@
-<script lang="ts">
-    import Button from '$lib/components/ui/button/button.svelte';
-
-    function toggleDarkMode() {
-        document.documentElement.classList.toggle('dark');
-    }
-</script>
-
 <svelte:head>
     <title>Doocode</title>
 </svelte:head>
 
-<h1>Welcome to Doocode</h1>
-
-<Button variant="default" onclick={toggleDarkMode}>
-    Toggle dark mode
-</Button>
-<Button variant="secondary" href="/demo/paraglide">
-    Change language
-</Button>
+<div class="m-auto max-w-7xl p-4">
+    <h1 class="font-black text-3xl">Welcome to Doocode</h1>
+</div>
