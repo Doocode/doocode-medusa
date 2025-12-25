@@ -7,5 +7,5 @@
 </svelte:head>
 
 <div class="m-auto max-w-7xl p-4">
-    <h1 class="text-3xl md:text-6xl font-bold">{m['projects.title']()}</h1>
+    <h1 class="text-3xl md:text-6xl font-bold">{m['projects.heading']()}</h1>
 </div>

@@ -1,1 +1,1 @@
-{"$schema":"https://inlang.com/schema/inlang-message-format","hello_world":"Hello, {name} in english!","dark_mode":{"title":"Toggle theme"},"language":{"title":"Language"},"projects":{"title":"My projects"}}
+{"$schema":"https://inlang.com/schema/inlang-message-format","hello_world":"Hello, {name} in english!","dark_mode":{"title":"Toggle theme"},"language":{"title":"Language"},"projects":{"title":"Projects","heading":"My projects"}}
