@@ -1,22 +1,16 @@
-# sv
+# Doocode Medusa
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Next version of the main website of Doocode.
 
-## Creating a project
+## Why Medusa ?
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
+This website will live without a database.
+It will be a static website.
+That's why it was named "Medusa".
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+You can start a development server:
 
 ```sh
 npm run dev
@@ -27,7 +21,7 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To create a production version:
 
 ```sh
 npm run build
@@ -35,4 +29,4 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+> To deploy this app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
