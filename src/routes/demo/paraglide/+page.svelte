@@ -1,12 +1,18 @@
 <script lang="ts">
 	import { setLocale } from '$lib/paraglide/runtime';
 	import { m } from '$lib/paraglide/messages.js';
+	import Button from '$lib/components/ui/button/button.svelte';
 </script>
 
-<h1>{m.hello_world({ name: 'Doocode User' })}</h1>
+<svelte:head>
+	<title>Paraglide Demo</title>
+</svelte:head>
+
+<h1 class="text-3xl font-bold">Paraglide i18n Demo</h1>
+<p>{m.hello_world({ name: 'Doocode User' })}</p>
 <div>
-	<button onclick={() => setLocale('en')}>en</button>
-	<button onclick={() => setLocale('fr')}>fr</button>
+	<Button onclick={() => setLocale('en')}>en</Button>
+	<Button onclick={() => setLocale('fr')}>fr</Button>
 </div>
 <p>
 	If you use VSCode, install the

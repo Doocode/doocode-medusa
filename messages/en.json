@@ -3,5 +3,8 @@
 	"hello_world": "Hello, {name} in english!",
 	"dark_mode": {
 		"title": "Toggle theme"
+	},
+	"language": {
+		"title": "Language"
 	}
 }

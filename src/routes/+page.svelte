@@ -15,6 +15,6 @@
 <Button variant="default" onclick={toggleDarkMode}>
     Toggle dark mode
 </Button>
-<Button variant="secondary" onclick={toggleDarkMode}>
-    Toggle dark mode
+<Button variant="secondary" href="/demo/paraglide">
+    Change language
 </Button>

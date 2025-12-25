@@ -11,8 +11,22 @@ export default defineConfig({
 		paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide' })
 	],
 
+	// Ensure dependencies that ship Svelte files are processed by Vite/Svelte plugin
+	optimizeDeps: {
+		include: ['bits-ui']
+	},
+
+	ssr: {
+		noExternal: ['bits-ui']
+	},
+
 	test: {
 		expect: { requireAssertions: true },
+
+		// Inline certain deps during Vitest transforms so `.svelte` files are compiled
+		deps: {
+			inline: ['bits-ui']
+		},
 
 		projects: [
 			{
