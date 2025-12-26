@@ -9,13 +9,13 @@
         codename: string;
         name: string;
         logo: string;
-        description: string;
+        catchyPhrase: string;
         createdAt: Date;
         updatedAt?: Date;
         bgAccent?: TwColor | undefined;
     }
 
-    let { codename, name, logo, description, createdAt, updatedAt, bgAccent }: Props = $props();
+    let { codename, name, logo, catchyPhrase, createdAt, updatedAt, bgAccent }: Props = $props();
 
     const dateFormat: Intl.DateTimeFormatOptions = {
         year: 'numeric',
@@ -29,8 +29,8 @@
     class={{
         "flex flex-col items-center justify-center p-4 border rounded-2xl \
         border-gray-200 dark:border-gray-600 \
-        hover:shadow-lg shadow-gray-300 dark:shadow-gray-600 \
-        transition-shadow duration-200 [&_p]:text-sm \
+        hover:shadow-lg hover:scale-[102%] shadow-gray-300 dark:shadow-gray-600 \
+        transition-transform duration-200 [&_p]:text-sm \
         bg-(--bg-accent) dark:bg-(--bg-accent-dark) ": true,
     }}
     style="--bg-accent: {bgAccent ? bgAccent.light : 'transparent'}; --bg-accent-dark: {bgAccent ? bgAccent.dark : 'transparent'};"
@@ -38,9 +38,9 @@
     <img src={logo} alt={name} class="max-w-25" />
     <h2 class="text-2xl font-black my-2">{name}</h2>
 
-    <p class="font-bold">{description}</p>
+    <p class="text-center text-balance font-medium">{catchyPhrase}</p>
     
-    <div class="flex items-center gap-1">
+    <div class="flex items-center justify-center gap-1 mt-4 border-t border-black/50 dark:border-white/70 pt-3.5 w-full">
         {#if updatedAt}
             {@const date = updatedAt.toLocaleDateString(getLocale(), dateFormat)}
             <p>{m["status.updated_on"]({ date })}</p>

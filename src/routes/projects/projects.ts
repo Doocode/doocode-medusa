@@ -1,3 +1,4 @@
+import { m } from "$lib/paraglide/messages";
 import DoosearchLogo from './doosearch/logo.webp';
 import DoochronosLogo from './doochronos/logo.webp';
 
@@ -11,6 +12,7 @@ export interface Project {
     codename: string;
     name: string;
     logo: string;
+    catchyPhrase: string;
     description: string;
     createdAt: Date;
     updatedAt?: Date;
@@ -22,6 +24,7 @@ const doosearch: Project = {
     codename: 'doosearch',
     name: 'Doosearch',
     logo: DoosearchLogo,
+    catchyPhrase: m['projects.doosearch.catchy_phrase'](),
     description: 'Your personal homepage',
     createdAt: new Date('2014-03-19'),
     updatedAt: new Date('2018-09-20'),
@@ -33,6 +36,7 @@ const doochronos: Project = {
     codename: 'doochronos',
     name: 'Doochronos',
     logo: DoochronosLogo,
+    catchyPhrase: m['projects.doochronos.catchy_phrase'](),
     description: 'A time tracking application',
     createdAt: new Date('2016-03-15'),
     updatedAt: new Date('2018-06-15'),
