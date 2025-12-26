@@ -1,5 +1,7 @@
 <script>
-	import { m } from "$lib/paraglide/messages";
+    import { m } from "$lib/paraglide/messages";
+    import { projects } from "./projects";
+    import ProjectCard from "./ProjectCard.svelte";
 </script>
 
 <svelte:head>
@@ -8,4 +10,14 @@
 
 <div class="m-auto max-w-7xl p-4">
     <h1 class="text-3xl md:text-6xl font-bold">{m['projects.heading']()}</h1>
+
+    <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))] mt-8">
+        {#each projects as { codename, name, logo, description, createdAt, updatedAt, bgAccent } }
+            <ProjectCard 
+                {name} {logo} {codename}
+                {description} {bgAccent}
+                {createdAt} {updatedAt}
+            />
+        {/each}
+    </div>
 </div>
