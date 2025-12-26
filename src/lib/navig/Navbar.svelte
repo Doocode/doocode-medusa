@@ -1,9 +1,19 @@
-<script>
+<script lang="ts">
     import NavTools from "./tools/NavTools.svelte";
     import NavbarPages from "./pages/NavbarPages.svelte";
+    import { isProjectDetailPath } from "./navig.helpers";
+    import { page } from '$app/state';
+
+    let isProjectDetail: boolean = $derived(isProjectDetailPath(page.url.pathname));
 </script>
 
-<header class="bg-primary text-primary-foreground text-center flex items-center justify-between px-1.5">
+<header
+    class={{
+        'px-1.5 text-center flex items-center justify-between': true,
+        'bg-primary text-primary-foreground': !isProjectDetail,
+        'bg-black text-white dark:bg-white dark:text-black': isProjectDetail
+    }}
+>
     <NavbarPages />
 
     <h1>
