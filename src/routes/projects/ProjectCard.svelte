@@ -1,6 +1,9 @@
 <script lang="ts">
-    import { getLocale } from "$lib/paraglide/runtime";
     import type { TwColor } from "./projects";
+    import { m } from "$lib/paraglide/messages";
+    import { getLocale } from "$lib/paraglide/runtime";
+    import BallonIcon from "@lucide/svelte/icons/balloon";
+    import ClockFadingIcon from "@lucide/svelte/icons/clock-fading";
 
     interface Props {
         codename: string;
@@ -36,9 +39,16 @@
     <h2 class="text-2xl font-black my-2">{name}</h2>
 
     <p class="font-bold">{description}</p>
-    {#if updatedAt}
-        <p>Updated on: {updatedAt.toLocaleDateString(getLocale(), dateFormat)}</p>
-    {:else}
-        <p>Created on: {createdAt.toLocaleDateString(getLocale(), dateFormat)}</p>
-    {/if}
+    
+    <div class="flex items-center gap-1">
+        {#if updatedAt}
+            {@const date = updatedAt.toLocaleDateString(getLocale(), dateFormat)}
+            <p>{m["status.updated_on"]({ date })}</p>
+            <ClockFadingIcon class="h-4! w-4!"/>
+        {:else}
+            {@const date = createdAt.toLocaleDateString(getLocale(), dateFormat)}
+            <p>{m["status.created_on"]({ date })}</p>
+            <BallonIcon class="h-4! w-4!"/>
+        {/if}
+    </div>
 </a>
