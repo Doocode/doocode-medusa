@@ -1,5 +1,6 @@
 <script lang="ts">
     import Button from "$lib/components/ui/button/button.svelte";
+    import PinIcon from "@lucide/svelte/icons/pin";
 </script>
 
 <main class="max-w-7xl mx-auto p-4 flex flex-col gap-6 [&_td]:py-0.5">
@@ -39,16 +40,20 @@
     <table>
         <tbody>
             <tr>
+                <th>Icon</th>
+                <td>
+                    <Button size="icon">
+                        <PinIcon />
+                    </Button>
+                </td>
+            </tr>
+            <tr>
                 <th class="w-37.5">Small</th>
                 <td><Button size="sm">Button</Button></td>
             </tr>
             <tr>
                 <th>Large</th>
                 <td><Button size="lg">Button</Button></td>
-            </tr>
-            <tr>
-                <th>Icon</th>
-                <td><Button size="icon">🔍</Button></td>
             </tr>
         </tbody>
     </table>
