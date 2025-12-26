@@ -13,10 +13,6 @@
                 <td><Button>Button</Button></td>
             </tr>
             <tr>
-                <th>Primary</th>
-                <td><Button variant="primary">Button</Button></td>
-            </tr>
-            <tr>
                 <th>Secondary</th>
                 <td><Button variant="secondary">Button</Button></td>
             </tr>

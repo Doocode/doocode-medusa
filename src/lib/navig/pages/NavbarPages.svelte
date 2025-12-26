@@ -50,7 +50,7 @@
             })}
 
             {@render item({
-                href: '/demo/paraglide', icon: BugIcon,
+                href: '/demo', icon: BugIcon,
                 label: 'Demo'
             })}
         </nav>
