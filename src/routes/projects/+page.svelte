@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-    <title>{m['projects.title']()} - Doocode</title>
+    <title>{m['projects.title']()} • Doocode</title>
 </svelte:head>
 
 <div class="m-auto max-w-7xl p-4">

@@ -18,7 +18,7 @@ export interface Project {
     bgAccent?: TwColor;
 }
 
-const doosearch: Project = {
+export const doosearch: Project = {
     id: crypto.randomUUID(),
     codename: 'doosearch',
     name: 'Doosearch',
@@ -29,7 +29,7 @@ const doosearch: Project = {
     bgAccent: { light: '#ffc14e', dark: '#d86703' },
 }
 
-const doochronos: Project = {
+export const doochronos: Project = {
     id: crypto.randomUUID(),
     codename: 'doochronos',
     name: 'Doochronos',
