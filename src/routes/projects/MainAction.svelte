@@ -31,10 +31,12 @@
 <Button
     class={{
         "flex flex-col items-end text-end h-auto gap-2 mx-2 rounded-2xl active:scale-95 min-w-28": true,
-        "hover:bg-foreground/30 dark:hover:bg-foreground/30": !withAccent
+        "hover:bg-foreground/30 dark:hover:bg-foreground/30": !withAccent,
+        "cursor-pointer": !!href
     }}
     target={href ? "_blank" : undefined}
     variant="ghost"
+    onclick={onClick}
     {href}
 >
     <span class="text-xs -mx-1">{@html text.replace(/\\n/g, '<br>')}</span>
