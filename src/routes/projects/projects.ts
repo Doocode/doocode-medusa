@@ -1,8 +1,8 @@
 import { m } from "$lib/paraglide/messages";
-import CaptureLogo from './capture/logo.png';
-import DooscapeLogo from './dooscape/logo.png';
-import DoosearchLogo from './doosearch/logo.webp';
-import DoochronosLogo from './doochronos/logo.webp';
+import CaptureLogo from './(old_project)/capture/logo.png';
+import DooscapeLogo from './(old_project)/dooscape/logo.png';
+import DoosearchLogo from './(old_project)/doosearch/logo.webp';
+import DoochronosLogo from './(old_project)/doochronos/logo.webp';
 
 export interface TwColor {
     light: string;

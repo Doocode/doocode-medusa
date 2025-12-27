@@ -1,10 +1,9 @@
 <script lang="ts">
     import Header from "../Header.svelte";
-    import type { PageProps } from "./$types";
     import { m } from "$lib/paraglide/messages";
     import MainAction from "../MainAction.svelte";
 
-    let { data }: PageProps = $props();
+    let { data, children } = $props();
 </script>
 
 <svelte:head>
@@ -21,3 +20,5 @@
         />
     {/snippet}
 </Header>
+
+{@render children()}
