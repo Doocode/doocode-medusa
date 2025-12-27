@@ -17,7 +17,10 @@
     <NavbarPages />
 
     <h1>
-        <a href="/" class="font-black text-2xl px-4 py-3 hover:underline">Doocode</a>
+        <a href="/" class="text-2xl px-4 py-3 hover:underline flex items-baseline">
+            <strong class="font-black">Doocode</strong>
+            <span class="text-lg -mt-1">.xyz</span>
+        </a>
     </h1>
 
     <NavTools />

@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-    <title>Projects demo • Doocode</title>
+    <title>Projects demo • Doocode.xyz</title>
 </svelte:head>
 
 <main class="max-w-7xl mx-auto p-4 py-8 flex flex-col gap-6 [&_td]:py-0.5 [&_th]:text-start">

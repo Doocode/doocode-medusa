@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-    <title>{m['projects.title']()} • Doocode</title>
+    <title>{m['projects.title']()} • Doocode.xyz</title>
 </svelte:head>
 
 <main class="max-w-7xl mx-auto px-4 py-8">
