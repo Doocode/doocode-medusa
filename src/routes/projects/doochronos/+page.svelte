@@ -15,9 +15,9 @@
 <Header project={data.project}>
     {#snippet mainAction()}
         <MainAction
-            variant="visit"
-            href="https://chronos.doocode.xyz"
+            variant="visit" href="https://chronos.doocode.xyz"
             text={m['actions.visit']({ name: data.project.name })}
+            withAccent={data.project.bgAccent != null}
         />
     {/snippet}
 </Header>

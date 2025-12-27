@@ -23,24 +23,29 @@
         onClick?: () => void;
         href?: string;
         text: string;
+        withAccent?: boolean;
     }
 
     let {
         variant = "download",
         onClick = undefined,
         href = undefined,
-        text
+        text,
+        withAccent = false
     }: Props = $props();
 </script>
 
 <Button
-    class="flex flex-col items-end text-end h-auto gap-2 mx-2 rounded-2xl active:scale-95"
+    class={{
+        "flex flex-col items-end text-end h-auto gap-2 mx-2 rounded-2xl active:scale-95 min-w-28": true,
+        "hover:bg-foreground/30 dark:hover:bg-foreground/30": !withAccent
+    }}
     target={href ? "_blank" : undefined}
     variant="ghost"
     {href}
 >
-    <span class="text-xs">{@html text.replace(/\\n/g, '<br>')}</span>
-    <div class="flex justify-center items-center rounded-xl bg-card aspect-square w-14 -mx-2">
+    <span class="text-xs -mx-1">{@html text.replace(/\\n/g, '<br>')}</span>
+    <div class="flex justify-center items-center rounded-xl bg-foreground text-background aspect-square w-14 -mx-2">
         {#if variant === 'download'}
             <Download class="h-9! w-9!" />
         {:else if variant === 'visit'}
