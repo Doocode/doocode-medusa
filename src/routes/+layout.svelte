@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import './layout.css';
+	import './fonts.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import AppNavigation from '$lib/navig/AppNavigation.svelte';
 	import { ModeWatcher } from 'mode-watcher';
