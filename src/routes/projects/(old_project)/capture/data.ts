@@ -17,5 +17,5 @@ export const capture: Project = {
     name, logo, mainAction,
     catchyPhrase: m['projects.capture.catchy_phrase'](),
     createdAt: new Date('2015-03-31'),
-    bgAccent: { light: '#85ceff', dark: '#0078c8' },
+    bgAccent: { light: '#85ceff', dark: '#0057c8' },
 };

@@ -6,7 +6,7 @@ const name = "Doochronos";
 
 const mainAction: MainActionProps = {
     variant: 'try',
-    href: 'https://doochronos.doocode.xyz',
+    href: 'https://chronos.doocode.xyz',
     text: m['actions.test']({ name }),
     withAccent: true,
 };
@@ -18,5 +18,5 @@ export const doochronos: Project = {
     catchyPhrase: m['projects.doochronos.catchy_phrase'](),
     createdAt: new Date('2016-03-15'),
     updatedAt: new Date('2018-06-15'),
-    bgAccent: { light: '#ffaed7', dark: '#db0386' },
+    bgAccent: { light: '#ffaed7', dark: '#c00476' },
 }
