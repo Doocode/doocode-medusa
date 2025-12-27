@@ -29,7 +29,7 @@
             size="icon"
             class={{
                 "h-11.25 w-11.25": !compact,
-                "h-10 w-10": compact,
+                "h-10! w-10!": compact,
             }}
             title={m['language.title']()}
         >
