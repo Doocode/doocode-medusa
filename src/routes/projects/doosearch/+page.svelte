@@ -1,8 +1,23 @@
 <script lang="ts">
-    import Header from "../Header.svelte";
-    import type { PageProps } from "./$types";
+import Header from "../Header.svelte";
+import type { PageProps } from "./$types";
+import { m } from "$lib/paraglide/messages";
+import MainAction from "../MainAction.svelte";
 
-    let { data }: PageProps = $props();
+let { data }: PageProps = $props();
 </script>
 
-<Header project={data.project} />
+<svelte:head>
+    <title>{data.project.name} • Doocode</title>
+    <link rel="icon" href={data.project.logo} />
+</svelte:head>
+
+<Header project={data.project}>
+    {#snippet mainAction()}
+        <MainAction
+            variant="visit"
+            href="https://search.doocode.xyz"
+            text={m['actions.visit']({ name: data.project.name })}
+        />
+    {/snippet}
+</Header>
