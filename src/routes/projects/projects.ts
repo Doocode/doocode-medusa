@@ -17,6 +17,15 @@ export interface Project {
     createdAt: Date;
     updatedAt?: Date;
     bgAccent?: TwColor;
+    mainAction: MainActionProps;
 }
 
 export const projects: Project[] = [doosearch, doochronos, dooscape, capture];
+
+export interface MainActionProps {
+    variant: "download" | "try" | "demo" | "repository" | "visit" | "help" | "contact";
+    onClick?: () => void;
+    href?: string;
+    text: string;
+    withAccent?: boolean;
+}

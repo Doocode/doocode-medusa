@@ -7,6 +7,7 @@
     import FolderGit2 from "@lucide/svelte/icons/folder-git-2";
     import Download from "@lucide/svelte/icons/download";
     import Earth from "@lucide/svelte/icons/earth";
+    import type { MainActionProps } from "./projects";
 
     /*
         - Download : Download items
@@ -18,21 +19,13 @@
         - Contact : Contact us
     */
 
-    interface Props {
-        variant: "download" | "try" | "demo" | "repository" | "visit" | "help" | "contact";
-        onClick?: () => void;
-        href?: string;
-        text: string;
-        withAccent?: boolean;
-    }
-
     let {
         variant = "download",
         onClick = undefined,
         href = undefined,
         text,
         withAccent = false
-    }: Props = $props();
+    }: MainActionProps = $props();
 </script>
 
 <Button
