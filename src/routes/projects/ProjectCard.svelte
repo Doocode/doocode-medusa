@@ -26,14 +26,19 @@
 
 <a
     href="/projects/{codename}"
+
     class={{
         "flex flex-col items-center justify-center p-4 border rounded-2xl \
-        border-gray-200 dark:border-gray-600 \
-        hover:shadow-lg hover:scale-[102%] shadow-gray-300 dark:shadow-gray-600 \
-        transition-transform duration-200 [&_p]:text-sm \
+        border-gray-400/70 dark:border-gray-500 \
+        hover:scale-[102%] \
+        transition-all duration-200 [&_p]:text-sm \
         bg-(--bg-accent) dark:bg-(--bg-accent-dark) ": true,
     }}
-    style="--bg-accent: {bgAccent ? bgAccent.light : 'transparent'}; --bg-accent-dark: {bgAccent ? bgAccent.dark : 'transparent'};"
+    class:accent={!!bgAccent}
+    
+    style:--bg-accent={bgAccent ? bgAccent.light : "transparent"}
+    style:--bg-accent-dark={bgAccent ? bgAccent.dark : "transparent"}
+    style:--card-shadow={bgAccent ? bgAccent.dark : "transparent"}
 >
     <img src={logo} alt={name} class="max-w-25" />
     <h2 class="text-2xl font-black my-2">{name}</h2>
@@ -52,3 +57,34 @@
         {/if}
     </div>
 </a>
+
+<style>
+    a.accent {
+        border-color: rgb(0 0 0 / 30%) !important;
+        box-shadow: 0 0 0 var(--card-shadow);
+
+        &:hover {
+            box-shadow: 0 0 0 .5rem var(--card-shadow);
+        }
+    }
+
+    :root.dark a.accent {
+        border-color: rgb(255 255 255 / 70%) !important;
+        box-shadow: 0 0 0 var(--bg-accent);
+
+        &:hover {
+            box-shadow: 0 0 0 .5rem var(--bg-accent);
+        }
+    }
+
+    a:not(.accent) {
+        &:hover {
+            box-shadow: 0 0 0 .5rem rgba(0, 0, 0, 0.1);
+        }
+    }
+    :root.dark a:not(.accent) {
+        &:hover {
+            box-shadow: 0 0 0 .5rem rgba(255, 255, 255, 0.3);
+        }
+    }
+</style>
