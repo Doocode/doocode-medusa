@@ -5,6 +5,12 @@
     import { setLocale, getLocale } from "$lib/paraglide/runtime";
     import LanguagesIcon from "@lucide/svelte/icons/languages";
 
+    interface Props {
+        compact?: boolean;
+    }
+
+    let { compact = $bindable(false) }: Props = $props();
+
     interface Language {
         code: string;
         name: string;
@@ -19,12 +25,18 @@
 <DropdownMenu.Root>
     <DropdownMenu.Trigger>
         <Button
-            variant="secondary"
+            variant={ compact ? "ghost" : "secondary" }
             size="icon"
-            class="h-11.25 w-11.25"
+            class={{
+                "h-11.25 w-11.25": !compact,
+                "h-10 w-10": compact,
+            }}
             title={m['language.title']()}
         >
-            <LanguagesIcon class="h-6! w-6!" />
+            <LanguagesIcon class={{
+                "h-6! w-6!": !compact,
+                "h-5! w-5!": compact,
+            }} />
             <span class="sr-only">{m['language.title']()}</span>
         </Button>
     </DropdownMenu.Trigger>

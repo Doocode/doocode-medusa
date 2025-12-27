@@ -15,15 +15,23 @@
     }}
 >
     <div class="max-w-7xl m-auto flex items-center justify-between">
-        <h1 class="font-black text-3xl flex-1">
-            <a href="/" class="px-4 py-3 grid hover:underline">Doocode</a>
+        <h1 class="font-black flex-1 flex justify-start">
+            <a href="/" class={{
+                "px-4 grid hover:underline active:scale-90 active:-rotate-3 duration-100": true,
+                "py-3 text-3xl": !isProjectDetail,
+                "py-1.5 text-2xl": isProjectDetail
+            }}>Doocode</a>
         </h1>
 
         <HeaderPages />
 
-        <div class="flex items-center justify-end gap-2 px-2 flex-1">
-            <LanguageSwitcher />
-            <DarkModeSwitcher />
+        <div class={{
+            "flex items-center justify-end px-2 flex-1": true,
+            "gap-1": !isProjectDetail,
+            "gap-0.75": isProjectDetail
+        }}>
+            <LanguageSwitcher compact={isProjectDetail} />
+            <DarkModeSwitcher compact={isProjectDetail} />
         </div>
     </div>
 </header>
