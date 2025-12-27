@@ -1,4 +1,4 @@
-import { doosearch as project } from '../../projects/projects';
+import { doosearch as project } from '../../projects/(old_project)/doosearch/data';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = () => {
