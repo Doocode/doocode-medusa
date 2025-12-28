@@ -30,9 +30,9 @@
 <h2 class="max-w-7xl mx-auto px-4 pb-4 text-3xl font-black">Header</h2>
 {#snippet navBar()}
     <NavContener>
-        <NavItem icon={ImagePlay} text="Hello" />
-        <NavItem icon={Pointer} text="Hello" selected />
-        <NavItem icon={QrCode} text="Hello" />
+        <NavItem icon={ImagePlay} text="Click" onclick={() => alert('click')} />
+        <NavItem icon={Pointer} text="Link" href="#" />
+        <NavItem icon={QrCode} text="Hello" selected />
         <NavItem icon={History} text="Hello" />
         <NavItem icon={BadgeQuestionMark} text="Hello" />
     </NavContener>
