@@ -45,6 +45,10 @@
             {@render mainAction?.()}
         </div>
     </div>
+
+    <div class="flex md:hidden p-4">
+        {@render children?.()}
+    </div>
 </header>
 
 <style>
