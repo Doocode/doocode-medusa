@@ -19,7 +19,7 @@
 
 <Button
     class={{
-        "h-auto flex flex-col items-center justify-center text-center gap-0.75 rounded-2xl duration-150 \
+        "h-auto flex flex-col items-center justify-center text-center gap-0.75 min-w-25 rounded-2xl duration-150 \
         hover:bg-foreground/60! hover:text-background hover:scale-105 active:scale-90": true,
         "text-background bg-foreground": selected,
         "cursor-pointer": href !== undefined,

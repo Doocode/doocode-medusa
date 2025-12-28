@@ -32,8 +32,8 @@
     <NavContener>
         <NavItem icon={ImagePlay} text="Click" onclick={() => alert('click')} />
         <NavItem icon={Pointer} text="Link" href="#" />
-        <NavItem icon={QrCode} text="Hello" selected />
-        <NavItem icon={History} text="Hello" />
+        <NavItem icon={QrCode} text="Hello" />
+        <NavItem icon={History} text="Hello" selected />
         <NavItem icon={BadgeQuestionMark} text="Hello" />
     </NavContener>
 {/snippet}
