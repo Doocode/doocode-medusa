@@ -1,0 +1,37 @@
+<script lang="ts">
+    import type { LayoutProps } from './$types';
+
+    let { data, children }: LayoutProps = $props();
+
+    import MainAction from "../../MainAction.svelte";
+    import Header from '../../Header.svelte';
+    import { NavItem, NavContener } from '../../header/index';
+
+    import ImagePlay from '@lucide/svelte/icons/image-play';
+    import { page } from '$app/state';
+
+    let dialogLinks = $state(false)
+    let projectRootUrl = $derived(`/projects/${data.project.codename}`);
+</script>
+
+<Header project={data.project}>
+    {#snippet mainAction()}
+        {@const { href, ...action } = data.project.mainAction}
+
+        <MainAction {...action}
+            onClick={() => dialogLinks = !dialogLinks} />
+    {/snippet}
+
+    <NavContener>
+        <NavItem icon={ImagePlay}
+            text="Gallery" href={`${projectRootUrl}/gallery`}
+            selected={page.url.pathname === `${projectRootUrl}/gallery`} />
+    </NavContener>
+</Header>
+
+<main class="project_theme"
+    style:--accent-light={data.project.bgAccent?.light}
+    style:--accent-dark={data.project.bgAccent?.dark}
+>
+    {@render children()}
+</main>
