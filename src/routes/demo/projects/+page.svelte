@@ -4,6 +4,12 @@
     import { m } from "$lib/paraglide/messages";
     import type { PageProps } from "./$types";
     import ProjectCard from "../../projects/ProjectCard.svelte";
+    import BadgeQuestionMark from "@lucide/svelte/icons/badge-question-mark";
+    import ImagePlay from "@lucide/svelte/icons/image-play";
+    import Pointer from "@lucide/svelte/icons/pointer";
+    import QrCode from "@lucide/svelte/icons/qr-code";
+    import History from "@lucide/svelte/icons/history";
+    import { NavContener, NavItem } from "../../projects/header";
 
     let { data }: PageProps = $props();
 </script>
@@ -22,6 +28,15 @@
 </main>
 
 <h2 class="max-w-7xl mx-auto px-4 pb-4 text-3xl font-black">Header</h2>
+{#snippet navBar()}
+    <NavContener>
+        <NavItem icon={ImagePlay} text="Hello" />
+        <NavItem icon={Pointer} text="Hello" selected />
+        <NavItem icon={QrCode} text="Hello" />
+        <NavItem icon={History} text="Hello" />
+        <NavItem icon={BadgeQuestionMark} text="Hello" />
+    </NavContener>
+{/snippet}
 <h3 class="max-w-7xl mx-auto px-4 py-2 text-xl font-bold">With accent color</h3>
 <Header project={data.project_withAccent}>
     {#snippet mainAction()}
@@ -29,6 +44,7 @@
             text={m['actions.visit']({ name: data.project_withAccent.name })}
         />
     {/snippet}
+    {@render navBar()}
 </Header>
 
 <h3 class="max-w-7xl mx-auto px-4 py-2 mt-4 text-xl font-bold">Without accent color</h3>
@@ -38,6 +54,7 @@
             text={m['actions.visit']({ name: data.project_withoutAccent.name })}
         />
     {/snippet}
+    {@render navBar()}
 </Header>
 
 <div class="max-w-7xl mx-auto px-4 mt-12 mb-4">
