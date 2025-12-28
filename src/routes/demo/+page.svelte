@@ -4,6 +4,7 @@
 
 	import GamepadDirectional from '@lucide/svelte/icons/gamepad-directional';
 	import FlaskConical from '@lucide/svelte/icons/flask-conical';
+	import Heading6 from '@lucide/svelte/icons/heading-6';
 	import Package from '@lucide/svelte/icons/package';
 </script>
 
@@ -17,6 +18,12 @@
 	<p class="mb-8">This section contains various demo pages showcasing different UI components and features.</p>
 
 	<nav class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2">
+		<Button href={resolve('/demo/heading')}
+			class="h-auto flex flex-col items-center gap-2 rounded-3xl active:scale-95 aspect-square">
+			<Heading6 class="w-16! h-16!" />
+			<span>Heading</span>
+		</Button>
+
 		<Button href={resolve('/demo/buttons')}
 			class="h-auto flex flex-col items-center gap-2 rounded-3xl active:scale-95 aspect-square">
 			<GamepadDirectional class="w-16! h-16!" />
