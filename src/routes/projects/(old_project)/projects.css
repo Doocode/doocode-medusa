@@ -1,8 +1,10 @@
 /* Apply project accent color */
 :root .project_theme {
     --primary: var(--accent-dark);
+    --primary-reverse: var(--accent-light);
 }
 
 :root.dark .project_theme {
     --primary: var(--accent-light);
+    --primary-reverse: var(--accent-dark);
 }
