@@ -1,4 +1,4 @@
-import logo from './logo.png';
+import logo from './logo.webp';
 import { m } from "$lib/paraglide/messages";
 import type { MainActionProps, Project } from "../../projects";
 
