@@ -4,8 +4,8 @@
     let { data, children }: LayoutProps = $props();
 
     import { Header, MainAction, NavItem, NavContener } from '../../header/index';
-
     import ImagePlay from '@lucide/svelte/icons/image-play';
+    import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
 
     let dialogLinks = $state(false)
@@ -22,7 +22,8 @@
 
     <NavContener>
         <NavItem icon={ImagePlay}
-            text="Gallery" href={`${projectRootUrl}/gallery`}
+            text={ m['projects.gallery']() }
+            href={`${projectRootUrl}/gallery`}
             selected={page.url.pathname === `${projectRootUrl}/gallery`} />
     </NavContener>
 </Header>

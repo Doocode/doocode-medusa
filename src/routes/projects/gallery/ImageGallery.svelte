@@ -3,7 +3,6 @@
 
     interface Props {
         images: GalleryImage[];
-        version: string;
     }
 
     let { images }: Props = $props();
