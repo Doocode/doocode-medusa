@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
-    import type { Project } from "./projects";
+    import type { Project } from "../projects";
 
     interface Props {
         project: Project,

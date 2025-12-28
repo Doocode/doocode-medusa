@@ -7,7 +7,7 @@
     import FolderGit2 from "@lucide/svelte/icons/folder-git-2";
     import Download from "@lucide/svelte/icons/download";
     import Earth from "@lucide/svelte/icons/earth";
-    import type { MainActionProps } from "./projects";
+    import type { MainActionProps } from "../projects";
 
     /*
         - Download : Download items

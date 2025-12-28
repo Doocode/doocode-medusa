@@ -3,9 +3,7 @@
 
     let { data, children }: LayoutProps = $props();
 
-    import MainAction from "../../MainAction.svelte";
-    import Header from '../../Header.svelte';
-    import { NavItem, NavContener } from '../../header/index';
+    import { Header, MainAction, NavItem, NavContener } from '../../header/index';
 
     import ImagePlay from '@lucide/svelte/icons/image-play';
     import { page } from '$app/state';

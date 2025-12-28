@@ -1,6 +1,6 @@
 <script lang="ts">
-    import MainAction from "../../projects/MainAction.svelte";
-    import Header from "../../projects/Header.svelte";
+    import { MainAction } from "../../projects/header";
+    import { Header } from "../../projects/header";
     import { m } from "$lib/paraglide/messages";
     import type { PageProps } from "./$types";
     import ProjectCard from "../../projects/ProjectCard.svelte";
