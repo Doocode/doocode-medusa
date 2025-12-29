@@ -18,7 +18,7 @@
     <div class="max-w-7xl m-auto flex items-center justify-between">
         <h1 class="flex-1 flex justify-start" style:--logo-color="var(--background)">
             <a href="/" class={{
-                "px-4 hover:underline active:scale-90 active:-rotate-3 duration-100 flex items-baseline": true,
+                "px-4 hover:scale-110 active:scale-90 active:-rotate-3 duration-100 flex items-baseline": true,
                 "py-3 text-3xl": !isProjectDetail,
                 "py-1.5 text-2xl": isProjectDetail
             }}>

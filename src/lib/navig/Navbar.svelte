@@ -18,7 +18,7 @@
     <MenuPages />
 
     <h1>
-        <a href="/" class="text-2xl px-4 py-3 hover:underline flex items-baseline">
+        <a href="/" class="text-2xl px-4 py-3 hover:scale-110 flex items-baseline duration-100">
             <span class="sr-only">Doocode.xyz</span>
             <AstroInline />
         </a>
