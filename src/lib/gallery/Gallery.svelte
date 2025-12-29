@@ -1,14 +1,23 @@
 <script lang="ts">
+    import { cn } from "$lib/utils.js";
     import type { GalleryImageItem } from ".";
 
     interface Props {
         images?: GalleryImageItem[];
+        class?: string;
     }
 
-    let { images = [] }: Props = $props();
+    let {
+        images = [],
+        class: className,
+        ...restProps
+    }: Props = $props();
 </script>
 
-<main class="flex gap-4 overflow-x-auto overflow-y-hidden pb-6">
+<main
+    class={cn("flex gap-4 overflow-x-auto overflow-y-hidden pb-6", className)}
+    {...restProps}
+>
     {#each images as {src, alt, withTransparencyBg} }
         <a class={{
             "p-2 rounded-2xl shrink-0 active:scale-90": true,
