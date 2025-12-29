@@ -8,13 +8,16 @@ export const logos: GalleryImageItem[] = [
     {
         src: currentLogo,
         alt: "Current logo",
+        withTransparencyBg: true,
     },
     {
         src: oldLogoRound,
         alt: "Old logo (round)",
+        withTransparencyBg: true,
     },
     {
         src: oldLogoFlat,
         alt: "Old logo (flat)",
+        withTransparencyBg: false,
     },
 ];

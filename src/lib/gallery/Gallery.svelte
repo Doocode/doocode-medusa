@@ -9,9 +9,41 @@
 </script>
 
 <main class="flex gap-4 overflow-x-auto overflow-y-hidden pb-6">
-    {#each images as {src, alt} }
-        <img {src} {alt} title={alt}
-            class="h-64 object-cover rounded-lg"
-        />
+    {#each images as {src, alt, withTransparencyBg} }
+        <a class={{
+            "p-2 rounded-2xl shrink-0 active:scale-90": true,
+            "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !withTransparencyBg,
+            "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": withTransparencyBg,
+        }}
+            href={src}
+            role="button"
+            tabindex="0"
+            target="_blank"
+        >
+            <img {src} {alt} title={alt}
+                class="h-40 object-cover duration-200"
+                class:rounded-lg={!withTransparencyBg}
+            />
+        </a>
     {/each}
 </main>
+
+<style>
+    .bg-checkerboard {
+        --color-1: #dce2e9;
+        --color-2: #b0bbc9;
+
+        background: repeating-conic-gradient(
+            var(--color-1) 0 25%, var(--color-2) 0 50%
+        ) 50% / 2rem 2rem;
+        background-position: center;
+
+        &:hover img {
+            transform: scale(.9);
+        }
+    }
+    :root.dark .bg-checkerboard {
+        --color-1: #5e6876;
+        --color-2: #314158;
+    }
+</style>
