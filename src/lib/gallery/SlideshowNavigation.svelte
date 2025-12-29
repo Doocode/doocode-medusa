@@ -23,7 +23,7 @@
     $inspect(hasPrevious);
 </script>
 
-<main class="fixed flex justify-between items-center inset-0 pointer-events-none z-50 md:px-8">
+<main class="fixed flex justify-between items-center inset-0 pointer-events-none z-60 md:px-8">
     <div>
         {#if hasPrevious}
             <Button

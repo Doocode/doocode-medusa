@@ -2,6 +2,7 @@ interface GalleryImageItem {
     src: string;
     alt: string;
     legend?: string;
+    description?: string;
     withTransparencyBg?: boolean;
 }
 
@@ -10,6 +11,7 @@ import Slideshow from "./Slideshow.svelte";
 import SlideItem from "./SlideItem.svelte";
 import SlideshowBindings from "./SlideshowBindings.svelte";
 import SlideshowNavigation from "./SlideshowNavigation.svelte";
+import SlideshowFooter from "./SlideshowFooter.svelte";
 
 export {
     // Types
@@ -20,5 +22,6 @@ export {
     Slideshow,
     SlideItem,
     SlideshowBindings,
-    SlideshowNavigation
+    SlideshowNavigation,
+    SlideshowFooter
 }

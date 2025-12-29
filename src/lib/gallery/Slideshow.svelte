@@ -5,6 +5,7 @@
         SlideItem as Item,
         SlideshowBindings as Bindings,
         SlideshowNavigation as Navigation,
+        SlideshowFooter as Footer,
         type GalleryImageItem
     } from ".";
 
@@ -81,5 +82,10 @@
         count={images.length}
         {handlePrevious} {handleNext} />
 
-    <!-- TODO: Footer (Legend -    Pagination, Download, Zoom)-->
+    <Footer {index}
+        total={images.length}
+        url={currentImage.src}
+        caption={currentImage.alt}
+        description={currentImage.description}
+    />
 {/if}
