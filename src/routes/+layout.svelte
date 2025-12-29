@@ -7,11 +7,17 @@
 	import AppNavigation from '$lib/navig/AppNavigation.svelte';
 	import { ModeWatcher } from 'mode-watcher';
 	import Footer from '$lib/footer/Footer.svelte';
+	import { isProjectDetailPath } from '$lib/navig/navig.helpers';
 
 	let { children } = $props();
+	let isProjectPage = $derived.by(() => isProjectDetailPath(page.url.pathname));
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+	{#if !isProjectPage}
+		<link rel="icon" href={favicon} />
+	{/if}
+</svelte:head>
 
 <ModeWatcher />
 <AppNavigation />
