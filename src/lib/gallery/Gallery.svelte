@@ -46,7 +46,7 @@
                 class={{
                     "duration-200 object-contain": true,
                     "h-32": size === 'small',
-                    "h-40": size === 'medium',
+                    "h-39.75": size === 'medium',
                     "h-64": size === 'large',
                 }}
                 class:rounded-lg={!withTransparencyBg}

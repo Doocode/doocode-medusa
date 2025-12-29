@@ -8,6 +8,7 @@ interface GalleryImageItem {
 import Gallery from "./Gallery.svelte";
 import Slideshow from "./Slideshow.svelte";
 import SlideItem from "./SlideItem.svelte";
+import SlideshowBindings from "./SlideshowBindings.svelte";
 import SlideshowNavigation from "./SlideshowNavigation.svelte";
 
 export {
@@ -18,5 +19,6 @@ export {
     Gallery,
     Slideshow,
     SlideItem,
-    SlideshowNavigation,
+    SlideshowBindings,
+    SlideshowNavigation
 }

@@ -1,7 +1,12 @@
 <script lang="ts">
     import { fade, fly } from "svelte/transition";
-    import { SlideItem, SlideshowNavigation, type GalleryImageItem } from ".";
     import { quintOut } from "svelte/easing";
+    import {
+        SlideItem as Item,
+        SlideshowBindings as Bindings,
+        SlideshowNavigation as Navigation,
+        type GalleryImageItem
+    } from ".";
 
     interface Props {
         images?: GalleryImageItem[];
@@ -42,19 +47,21 @@
         transition:fade
         onclick={onClose}
         class="fixed inset-0 bg-black/70 backdrop-blur-xl">
-        <span class="sr-only">Close</span>
+        <span class="sr-only">Close slideshow</span>
     </button>
 
-    <SlideshowNavigation
+    <Bindings
         isOpen={open}
         {onClose}
         {handlePrevious}
         {handleNext}
     />
 
+    <!-- TODO: Header (ToogleButton:[Presentation|Grid] -  ...   - Close) -->
+
     {#key index}
         <div
-            class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center bg-red-500 pointer-events-none overflow-hidden"
+            class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
             in:fly={{ 
                 x: slideDirection === 'left' ? 100 : -100, 
                 duration: 400, 
@@ -66,7 +73,13 @@
                 easing: quintOut 
             }}
         >
-            <SlideItem image={currentImage} />
+            <Item image={currentImage} />
         </div>
     {/key}
+
+    <Navigation bind:index
+        count={images.length}
+        {handlePrevious} {handleNext} />
+
+    <!-- TODO: Footer (Legend -    Pagination, Download, Zoom)-->
 {/if}
