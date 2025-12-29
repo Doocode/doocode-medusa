@@ -6,11 +6,17 @@ interface GalleryImageItem {
 }
 
 import Gallery from "./Gallery.svelte";
+import Slideshow from "./Slideshow.svelte";
+import SlideItem from "./SlideItem.svelte";
+import SlideshowNavigation from "./SlideshowNavigation.svelte";
 
 export {
     // Types
     type GalleryImageItem,
 
     // Components
-    Gallery
+    Gallery,
+    Slideshow,
+    SlideItem,
+    SlideshowNavigation,
 }

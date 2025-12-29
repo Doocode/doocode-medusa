@@ -1,6 +1,7 @@
 <script lang="ts">
     import { cn } from "$lib/utils.js";
     import type { GalleryImageItem } from ".";
+    import Slideshow from "./Slideshow.svelte";
 
     interface Props {
         images?: GalleryImageItem[];
@@ -14,13 +15,22 @@
         class: className,
         ...restProps
     }: Props = $props();
+
+    let openSlideshow = $state(false);
+    let slideIndex = $state(0);
+
+    function onItemClick(event: Event, index: number) {
+        event.preventDefault();
+        openSlideshow = true;
+        slideIndex = index;
+    }
 </script>
 
 <main
-    class={cn("flex gap-4 overflow-x-auto overflow-y-hidden pb-6", className)}
+    class={cn("flex gap-4 overflow-x-auto overflow-y-hidden pb-6 scroll-smooth", className)}
     {...restProps}
 >
-    {#each images as {src, alt, withTransparencyBg} }
+    {#each images as {src, alt, withTransparencyBg}, index}
         <a class={{
             "p-2 rounded-2xl shrink-0 active:scale-90": true,
             "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !withTransparencyBg,
@@ -30,6 +40,7 @@
             role="button"
             tabindex="0"
             target="_blank"
+            onclick={(e) => onItemClick(e, index)}
         >
             <img {src} {alt} title={alt}
                 class={{
@@ -39,10 +50,15 @@
                     "h-64": size === 'large',
                 }}
                 class:rounded-lg={!withTransparencyBg}
+                loading="lazy"
             />
         </a>
     {/each}
 </main>
+
+<Slideshow {images}
+    bind:open={openSlideshow}
+    bind:index={slideIndex} />
 
 <style>
     .bg-checkerboard {
