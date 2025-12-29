@@ -1,20 +1,27 @@
 <script lang="ts">
+    import { cn } from "$lib/utils.js";
     import type { Component } from "svelte";
 
     interface Props {
         icon?: Component;
         title?: string;
         level?: 'h1' | 'h2' | 'h3' |'h4' | 'h5' | 'h6';
+        class?: string;
     }
 
     let {
         icon,
         title = "Lorem ipsum",
-        level = 'h1'
+        level = 'h1',
+        class: className,
+        ...restProps
     }: Props = $props();
 </script>
 
-<svelte:element this={level} class="flex flex-col justify-start items-start font-black">
+<svelte:element this={level}
+    class={cn("flex flex-col justify-start items-start font-black", className)}
+    {...restProps}
+>
     {#if icon}
         {@const Icon = icon }
         <Icon class={{
