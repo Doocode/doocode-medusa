@@ -3,6 +3,7 @@
     import NavbarPages from "./pages/NavbarPages.svelte";
     import { isProjectDetailPath } from "./navig.helpers";
     import { page } from '$app/state';
+    import AstroInline from "./AstroInline.svelte";
 
     let isProjectDetail: boolean = $derived(isProjectDetailPath(page.url.pathname));
 </script>
@@ -18,8 +19,8 @@
 
     <h1>
         <a href="/" class="text-2xl px-4 py-3 hover:underline flex items-baseline">
-            <strong class="font-black">Doocode</strong>
-            <span class="text-lg -mt-1">.xyz</span>
+            <span class="sr-only">Doocode.xyz</span>
+            <AstroInline />
         </a>
     </h1>
 

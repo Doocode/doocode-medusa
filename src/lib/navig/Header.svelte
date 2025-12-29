@@ -2,6 +2,7 @@
     import HeaderPages from "./pages/HeaderPages.svelte";
     import DarkModeSwitcher from "./tools/DarkModeSwitcher.svelte";
     import LanguageSwitcher from "./tools/LanguageSwitcher.svelte";
+    import AstroLogo from './AstroInline.svelte';
     import { isProjectDetailPath } from "./navig.helpers";
     import { page } from '$app/state';
 
@@ -15,14 +16,14 @@
     }}
 >
     <div class="max-w-7xl m-auto flex items-center justify-between">
-        <h1 class="flex-1 flex justify-start">
+        <h1 class="flex-1 flex justify-start" style:--logo-color="var(--background)">
             <a href="/" class={{
                 "px-4 hover:underline active:scale-90 active:-rotate-3 duration-100 flex items-baseline": true,
                 "py-3 text-3xl": !isProjectDetail,
                 "py-1.5 text-2xl": isProjectDetail
             }}>
-                <strong class="font-black">Doocode</strong>
-                <span class="text-lg -mt-1">.xyz</span>
+                <span class="sr-only">Doocode.xyz</span>
+                <AstroLogo />
             </a>
         </h1>
 
