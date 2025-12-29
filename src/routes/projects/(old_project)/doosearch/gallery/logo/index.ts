@@ -1,8 +1,8 @@
 import type { GalleryImageItem } from '$lib/gallery';
 
-import currentLogo from '$routes/projects/(old_project)/doosearch/logo.webp';
-import oldLogoRound from './old_logo_round.png'
-import oldLogoFlat from './old_logo_flat.png'
+import currentLogo from './doosearch_logo_2026.webp';
+import oldLogoRound from './doosearch_logo_2016_round.png'
+import oldLogoFlat from './doosearch_logo_2016_flat.png'
 
 export const logos: GalleryImageItem[] = [
     {

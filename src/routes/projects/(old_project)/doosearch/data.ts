@@ -1,4 +1,4 @@
-import logo from './logo.webp';
+import logo from './gallery/logo/doosearch_logo_2026.webp';
 import { m } from "$lib/paraglide/messages";
 import type { MainActionProps, Project } from "../../projects";
 

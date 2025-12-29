@@ -65,12 +65,12 @@
             <div
                 class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
                 in:fly={{ 
-                    x: slideDirection === 'left' ? 100 : -100, 
+                    x: slideDirection === 'left' ? 200 : -200, 
                     duration: 400, 
                     easing: quintOut 
                 }}
                 out:fly={{ 
-                    x: slideDirection === 'left' ? -100 : 100, 
+                    x: slideDirection === 'left' ? -200 : 200, 
                     duration: 400, 
                     easing: quintOut 
                 }}

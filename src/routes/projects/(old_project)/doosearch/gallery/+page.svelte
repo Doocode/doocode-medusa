@@ -12,7 +12,7 @@
 	import { Gallery } from "$lib/gallery";
 </script>
 
-<main class="max-w-7xl mx-auto py-8 grid gap-14">
+<main class="max-w-7xl mx-auto pt-8 grid gap-14">
     <div class="grid gap-2">
         <Heading level="h2" icon={Fullscreen} class="px-4"
             title={ m['projects.screenshots']() }

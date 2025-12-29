@@ -1,14 +1,14 @@
 import type { GalleryImageItem } from '$lib/gallery';
 
-import Img1 from './1.png';
-import Img1m from './1m.png';
-import Img2 from './2.png';
-import Img2m from './2m.png';
-import Img4 from './4.png';
-import Img4m from './4m.png';
-import Img5m from './5m.png';
-import Img6m from './6m.png';
-import Img7m from './7m.png';
+import Img1 from './doosearch_1_2_screenshot_search_computer.png';
+import Img1m from './doosearch_1_2_screenshot_search_mobile.png';
+import Img2 from './doosearch_1_2_screenshot_searchEnginesList_computer.png';
+import Img2m from './doosearch_1_2_screenshot_searchEnginesList_mobile.png';
+import Img4 from './doosearch_1_2_screenshot_settings_computer.png';
+import Img4m from './doosearch_1_2_screenshot_settings_mobile.png';
+import Img5m from './doosearch_1_2_screenshot_firstRunSetup_mobile.png';
+import Img6m from './doosearch_1_2_screenshot_colorSelector_mobile.png';
+import Img7m from './doosearch_1_2_screenshot_contactForm_mobile.png';
 
 export const images: GalleryImageItem[] = [
     {
