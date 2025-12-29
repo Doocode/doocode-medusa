@@ -5,10 +5,12 @@
     interface Props {
         images?: GalleryImageItem[];
         class?: string;
+        size?: 'small' | 'medium' | 'large';
     }
 
     let {
         images = [],
+        size = 'medium',
         class: className,
         ...restProps
     }: Props = $props();
@@ -30,7 +32,12 @@
             target="_blank"
         >
             <img {src} {alt} title={alt}
-                class="h-40 object-cover duration-200"
+                class={{
+                    "duration-200 object-contain": true,
+                    "h-32": size === 'small',
+                    "h-40": size === 'medium',
+                    "h-64": size === 'large',
+                }}
                 class:rounded-lg={!withTransparencyBg}
             />
         </a>
