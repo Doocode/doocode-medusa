@@ -1,6 +1,6 @@
 <script lang="ts">
     import NavTools from "./tools/NavTools.svelte";
-    import NavbarPages from "./pages/NavbarPages.svelte";
+    import MenuPages from "./pages/MenuPages.svelte";
     import { isProjectDetailPath } from "./navig.helpers";
     import { page } from '$app/state';
     import AstroInline from "./AstroInline.svelte";
@@ -15,7 +15,7 @@
         'bg-black text-white dark:bg-white dark:text-black': isProjectDetail
     }}
 >
-    <NavbarPages />
+    <MenuPages />
 
     <h1>
         <a href="/" class="text-2xl px-4 py-3 hover:underline flex items-baseline">

@@ -9,14 +9,20 @@
     import type { Component } from "svelte";
     import { page } from '$app/state';
 
+    let isOpen = $state(false);
+
     interface Item {
         href: string;
         icon: Component;
         label: string;
     }
+
+    function onItemClick() {
+        isOpen = false;
+    }
 </script>
 
-<Popover.Root>
+<Popover.Root bind:open={isOpen}>
     <Popover.Trigger>
         <Button variant="secondary" size="icon" class="h-11.25 w-11.25">
             <MenuIcon class="h-6! w-6!" />
@@ -24,17 +30,18 @@
     </Popover.Trigger>
 
     <Popover.Content class="rounded-3xl">
-        <nav class="flex flex-col gap-1">
+        <nav class="flex flex-col">
             {#snippet item({
                 href, icon, label
             }: Item) }
-                <a {href} class={{
-                    'flex items-center gap-2 px-3 py-2 rounded-lg duration-100 \
+                {@const Icon = icon }
+                <a {href} onclick={onItemClick} class={{
+                    'flex items-center gap-2 px-4 py-3 rounded-lg duration-100 \
                     hover:bg-secondary/50 hover:text-secondary-foreground \
                     active:bg-secondary active:text-secondary-foreground': true,
                     'bg-primary text-primary-foreground': page.url.pathname === href
                 }}>
-                    <svelte:component this={icon} class="h-5! w-5!"/>
+                    <Icon class="h-5! w-5!"/>
                     <span>{label}</span>
                 </a>
             {/snippet}
