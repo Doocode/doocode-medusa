@@ -1,17 +1,21 @@
 <script lang="ts">
-    interface Props {
-        height?: number;
+    import { cn } from "$lib/utils.js";
+    import type { SVGAttributes } from "svelte/elements";
+
+    interface Props extends SVGAttributes<SVGSVGElement> {
+        class?: string;
     }
 
-    let { height = 30 }: Props = $props();
+    let { class: className, ...restProps }: Props = $props();
 </script>
 
 <svg
-    {height}
+    class={cn("h-8", className)}
     viewBox="0 0 933.0293 173.63086"
     version="1.1"
     id="svg1"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+    {...restProps}>
     <defs
         id="defs1" />
     <g
