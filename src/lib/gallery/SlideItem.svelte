@@ -20,6 +20,7 @@
         }}
         src={image.src}
         alt={image.alt}
+        title={image.alt}
         loading="lazy"
     />
 </main>

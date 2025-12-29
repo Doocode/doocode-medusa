@@ -60,23 +60,25 @@
 
     <!-- TODO: Header (ToogleButton:[Presentation|Grid] -  ...   - Close) -->
 
-    {#key index}
-        <div
-            class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
-            in:fly={{ 
-                x: slideDirection === 'left' ? 100 : -100, 
-                duration: 400, 
-                easing: quintOut 
-            }}
-            out:fly={{ 
-                x: slideDirection === 'left' ? -100 : 100, 
-                duration: 400, 
-                easing: quintOut 
-            }}
-        >
-            <Item image={currentImage} />
-        </div>
-    {/key}
+    <div transition:fade={{ duration: 150 }}>
+        {#key index}
+            <div
+                class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
+                in:fly={{ 
+                    x: slideDirection === 'left' ? 100 : -100, 
+                    duration: 400, 
+                    easing: quintOut 
+                }}
+                out:fly={{ 
+                    x: slideDirection === 'left' ? -100 : 100, 
+                    duration: 400, 
+                    easing: quintOut 
+                }}
+            >
+                <Item image={currentImage} />
+            </div>
+        {/key}
+    </div>
 
     <Navigation bind:index
         count={images.length}

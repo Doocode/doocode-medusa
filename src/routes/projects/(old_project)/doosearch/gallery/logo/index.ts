@@ -7,17 +7,18 @@ import oldLogoFlat from './old_logo_flat.png'
 export const logos: GalleryImageItem[] = [
     {
         src: currentLogo,
-        alt: "Current logo",
+        alt: "Current logo - 2026",
         withTransparencyBg: true,
+        description: "The current logo of Doosearch, introduced in 2026."
     },
     {
         src: oldLogoRound,
-        alt: "Old logo (round)",
+        alt: "Old logo (round) - 2016",
         withTransparencyBg: true,
     },
     {
         src: oldLogoFlat,
-        alt: "Old logo (flat)",
+        alt: "Old logo (flat) - 2016",
         withTransparencyBg: false,
     },
 ];
