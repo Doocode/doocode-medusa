@@ -4,7 +4,12 @@ interface GalleryImageItem {
     legend?: string;
 }
 
+import Gallery from "./Gallery.svelte";
+
 export {
     // Types
     type GalleryImageItem,
+
+    // Components
+    Gallery
 }
