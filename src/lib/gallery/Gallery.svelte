@@ -26,39 +26,41 @@
     }
 </script>
 
-<main
-    class={cn("flex gap-4 overflow-x-auto overflow-y-hidden pb-6 scroll-smooth", className)}
-    {...restProps}
->
-    {#each images as {src, alt, withTransparencyBg}, index}
-        <a class={{
-            "p-2 rounded-2xl shrink-0 active:scale-90": true,
-            "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !withTransparencyBg,
-            "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": withTransparencyBg,
-        }}
-            href={src}
-            role="button"
-            tabindex="0"
-            target="_blank"
-            onclick={(e) => onItemClick(e, index)}
-        >
-            <img {src} {alt} title={alt}
-                class={{
-                    "duration-200 object-contain": true,
-                    "h-32": size === 'small',
-                    "h-39.75": size === 'medium',
-                    "h-64": size === 'large',
-                }}
-                class:rounded-lg={!withTransparencyBg}
-                loading="lazy"
-            />
-        </a>
-    {/each}
-</main>
+<main class="grid">
+    <div
+        class={cn("flex gap-4 overflow-x-auto overflow-y-hidden pb-6 scroll-smooth", className)}
+        {...restProps}
+    >
+        {#each images as {src, alt, withTransparencyBg}, index}
+            <a class={{
+                "p-2 rounded-2xl shrink-0 active:scale-90": true,
+                "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !withTransparencyBg,
+                "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": withTransparencyBg,
+            }}
+                href={src}
+                role="button"
+                tabindex="0"
+                target="_blank"
+                onclick={(e) => onItemClick(e, index)}
+            >
+                <img {src} {alt} title={alt}
+                    class={{
+                        "duration-200 object-contain": true,
+                        "h-32": size === 'small',
+                        "h-39.75": size === 'medium',
+                        "h-64": size === 'large',
+                    }}
+                    class:rounded-lg={!withTransparencyBg}
+                    loading="lazy"
+                />
+            </a>
+        {/each}
+    </div>
 
-<Slideshow {images}
-    bind:open={openSlideshow}
-    bind:index={slideIndex} />
+    <Slideshow {images}
+        bind:open={openSlideshow}
+        bind:index={slideIndex} />
+</main>
 
 <style>
     .bg-checkerboard {
