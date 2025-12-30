@@ -20,7 +20,7 @@ export const doosearch: Project = {
     createdAt: new Date('2014-03-19'),
     updatedAt: new Date('2018-09-20'),
 
-    versionName: '1.3',
+    versionName: '1.3.2',
     versionCode: 23,
     status:  ProjectStatus.Archived,
 
