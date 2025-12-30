@@ -1,16 +1,18 @@
 <script lang="ts">
-	import { type Project } from "$routes/projects/projects.types";
+    import { cn } from "$lib/utils.js";
+	import { ProjectStatus, type Project } from "$routes/projects/projects.types";
 	import { SpecContainer, SpecBlock, BlockDate, BlockVersion, BlockStatus } from '$routes/projects/specs';
     import { SquareActivity, Flag, History, Calendar1, Scale, SquareArrowOutUpRightIcon } from '@lucide/svelte/icons';
 
     interface Props {
+        class?: string;
         project: Project
     }
 
-    let { project }: Props = $props();
+    let { class: className, project }: Props = $props();
 </script>
 
-<SpecContainer>
+<SpecContainer class={className}>
     {#if project.versionName}
         <BlockVersion icon={Flag} title="Version"
             versionName={project.versionName} />

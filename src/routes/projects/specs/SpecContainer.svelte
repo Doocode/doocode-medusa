@@ -10,6 +10,6 @@
     let { class: className, children }: Props = $props();
 </script>
 
-<main class={cn("flex overflow-x-auto overflow-y-hidden scroll-smooth gap-2", className)}>
+<main class={cn("flex overflow-x-auto overflow-y-hidden scroll-smooth gap-4 md:gap-8 divide-x divide-border", className)}>
     {@render children?.()}
 </main>
