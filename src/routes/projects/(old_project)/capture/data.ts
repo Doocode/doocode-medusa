@@ -1,6 +1,6 @@
 import logo from './logo.webp';
 import { m } from "$lib/paraglide/messages";
-import type { MainActionProps, Project } from "../../projects";
+import type { MainActionProps, Project } from "$routes/projects/projects.types";
 
 const name = "Capture";
 
