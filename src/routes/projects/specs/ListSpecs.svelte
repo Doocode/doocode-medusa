@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { cn } from "$lib/utils.js";
-	import { ProjectStatus, type Project } from "$routes/projects/projects.types";
-	import { SpecContainer, SpecBlock, BlockDate, BlockVersion, BlockStatus } from '$routes/projects/specs';
+    import { m } from "$lib/paraglide/messages";
+    import { type Project } from "$routes/projects/projects.types";
+    import { SpecContainer, SpecBlock, BlockDate, BlockVersion, BlockStatus } from '$routes/projects/specs';
     import { SquareActivity, Flag, History, Calendar1, Scale, SquareArrowOutUpRightIcon } from '@lucide/svelte/icons';
 
     interface Props {
@@ -14,19 +14,19 @@
 
 <SpecContainer class={className}>
     {#if project.versionName}
-        <BlockVersion icon={Flag} title="Version"
+        <BlockVersion icon={Flag} title={m['projects.version']()}
             versionName={project.versionName} />
     {/if}
     {#if project.updatedAt}
-        <BlockDate icon={History} title="Mise à jour le"
+        <BlockDate icon={History} title={m['projects.updatedAt']()}
             date={project.updatedAt} />
     {/if}
     {#if project.createdAt}
-        <BlockDate icon={Calendar1} title="Créé le"
+        <BlockDate icon={Calendar1} title={m['projects.createdAt']()}
             date={project.createdAt} />
     {/if}
     {#if project.licenseName}
-        <SpecBlock icon={Scale} title="Licence">
+        <SpecBlock icon={Scale} title={m['projects.license']()}>
             {#if project.licenseUrl}
                 <a
                     href={project.licenseUrl}
@@ -43,7 +43,7 @@
         </SpecBlock>
     {/if}
     {#if project.status}
-        <BlockStatus icon={SquareActivity} title="Statut"
+        <BlockStatus icon={SquareActivity} title={m['projects.status']()}
             status={project.status} />
     {/if}
 </SpecContainer>
