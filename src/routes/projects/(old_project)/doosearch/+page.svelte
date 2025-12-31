@@ -13,5 +13,5 @@
         title="Details"
     />
 
-    <Specs project={data.project} class="mt-4" />
+    <Specs project={data.project} class="mt-8" />
 </main>

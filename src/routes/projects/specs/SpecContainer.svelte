@@ -10,6 +10,9 @@
     let { class: className, children }: Props = $props();
 </script>
 
-<main class={cn("flex overflow-x-auto overflow-y-hidden scroll-smooth gap-4 md:gap-8 divide-x divide-border", className)}>
+<main class={cn("\
+    grid grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 \
+    md:flex md:overflow-x-auto md:overflow-y-hidden scroll-smooth md:gap-8 md:divide-x divide-border \
+", className)}>
     {@render children?.()}
 </main>

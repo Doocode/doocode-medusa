@@ -10,7 +10,7 @@
     let { icon, title, children }: Props = $props();
 </script>
 
-<main class="flex flex-col justify-between items-start aspect-square flex-none w-40 md:w-44">
+<main class="flex flex-col justify-between items-start md:aspect-square flex-none bg-secondary md:bg-transparent rounded-2xl md:rounded-none p-4 gap-6 md:p-0 md:w-44">
     <header class="flex flex-col justify-start items-start gap-1">
         {#key icon}
             {@const Icon = icon }
@@ -19,7 +19,7 @@
         <strong class="font-bold text-sm">{title}</strong>
     </header>
 
-    <footer class="text-primary">
+    <footer class="text-primary text-sm -mb-1.5 md:mb-0">
         {@render children?.()}
     </footer>
 </main>

@@ -25,5 +25,5 @@
 </script>
 
 <SpecBlock {icon} {title}>
-    <p class="text-sm">{formattedDate}</p>
+    <p>{formattedDate}</p>
 </SpecBlock>
