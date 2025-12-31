@@ -6,6 +6,7 @@
         SlideshowBindings as Bindings,
         SlideshowNavigation as Navigation,
         SlideshowFooter as Footer,
+        SlideshowHeader as Header,
         type GalleryImageItem
     } from ".";
 
@@ -70,7 +71,7 @@
         {handleNext}
     />
 
-    <!-- TODO: Header (ToogleButton:[Presentation|Grid] -  ...   - Close) -->
+    <Header caption={currentImage.alt} {onClose} />
 
     <div transition:fade={{ duration: 150 }}>
         {#key index}

@@ -11,6 +11,7 @@ import Slideshow from "./Slideshow.svelte";
 import SlideItem from "./SlideItem.svelte";
 import SlideshowBindings from "./SlideshowBindings.svelte";
 import SlideshowNavigation from "./SlideshowNavigation.svelte";
+import SlideshowHeader from "./SlideshowHeader.svelte";
 import SlideshowFooter from "./SlideshowFooter.svelte";
 
 export {
@@ -23,5 +24,6 @@ export {
     SlideItem,
     SlideshowBindings,
     SlideshowNavigation,
+    SlideshowHeader,
     SlideshowFooter
 }
