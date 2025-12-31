@@ -25,19 +25,19 @@
     }}>
         {#if status === ProjectStatus.InDevelopment}
             <Construction class="w-6! h-6!" />
-            <span>{m['projects.status.in_development']()}En chantier</span>
+            <span>{m['projects.status.in_development']()}</span>
         {:else if status === ProjectStatus.Completed}
             <CircleCheck class="w-6! h-6!" />
-            <span>{m['projects.status.completed']()}Terminé</span>
+            <span>{m['projects.status.completed']()}</span>
         {:else if status === ProjectStatus.OnHold}
             <CirclePause class="w-6! h-6!" />
-            <span>{m['projects.status.on_hold']()}En pause</span>
+            <span>{m['projects.status.on_hold']()}</span>
         {:else if status === ProjectStatus.Abandoned}
             <CircleX class="w-6! h-6!" />
-            <span>{m['projects.status.abandoned']()}Abandonné</span>
+            <span>{m['projects.status.abandoned']()}</span>
         {:else if status === ProjectStatus.Archived}
             <FolderArchive class="w-6! h-6!" />
-            <span>{m['projects.status.archived']()}Archivé</span>
+            <span>{m['projects.status.archived']()}</span>
         {/if}
     </div>
 </SpecBlock>
