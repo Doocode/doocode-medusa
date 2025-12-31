@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { SpecBlock } from ".";
-	import type { Component } from "svelte";
-	import { ProjectStatus } from "../projects.types";
+    import { SpecBlock } from ".";
+    import type { Component } from "svelte";
+    import { m } from "$lib/paraglide/messages";
+    import { ProjectStatus } from "../projects.types";
     import { Construction, CircleCheck, CirclePause, CircleX, FolderArchive } from '@lucide/svelte/icons';
 
     interface Props {
@@ -24,19 +25,19 @@
     }}>
         {#if status === ProjectStatus.InDevelopment}
             <Construction class="w-6! h-6!" />
-            <span>En chantier</span>
+            <span>{m['projects.status.in_development']()}En chantier</span>
         {:else if status === ProjectStatus.Completed}
             <CircleCheck class="w-6! h-6!" />
-            <span>Terminé</span>
+            <span>{m['projects.status.completed']()}Terminé</span>
         {:else if status === ProjectStatus.OnHold}
             <CirclePause class="w-6! h-6!" />
-            <span>En pause</span>
+            <span>{m['projects.status.on_hold']()}En pause</span>
         {:else if status === ProjectStatus.Abandoned}
             <CircleX class="w-6! h-6!" />
-            <span>Abandonné</span>
+            <span>{m['projects.status.abandoned']()}Abandonné</span>
         {:else if status === ProjectStatus.Archived}
             <FolderArchive class="w-6! h-6!" />
-            <span>Archivé</span>
+            <span>{m['projects.status.archived']()}Archivé</span>
         {/if}
     </div>
 </SpecBlock>

@@ -43,7 +43,7 @@
         </SpecBlock>
     {/if}
     {#if project.status}
-        <BlockStatus icon={SquareActivity} title={m['projects.status']()}
+        <BlockStatus icon={SquareActivity} title={m['projects.status.title']()}
             status={project.status} />
     {/if}
 </SpecContainer>
