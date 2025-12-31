@@ -3,16 +3,12 @@
     import { Download } from "@lucide/svelte";
 
     interface Props {
-        caption?: string;
-        description?: string;
         index: number;
         total: number;
         url: string;
     }
 
     let {
-        caption = '',
-        description = '',
         index,
         total,
         url
@@ -48,17 +44,6 @@
             <span class="font-black">{index + 1}</span> / {total}
         </div>
     </div>
-
-    {#if caption}
-        <div class="grid fixed md:static bottom-20 left-4 right-4 bg-slate-900/50 dark:bg-slate-700/50 backdrop-blur-2xl px-5 py-3 md:px-7 md:py-5 rounded-xl text-white text-center hover:opacity-30 duration-150 pointer-events-auto">
-            <strong class="font-black text-sm md:text-base lg:text-lg">{caption}</strong>
-            {#if description}
-                <p class="md:max-w-[60vw] text-sm md:text-base md:pb-1 md:px-2 mt-1">
-                    {description}
-                </p>
-            {/if}
-        </div>
-    {/if}
 
     <nav class="flex-1 flex justify-end">
         <Button

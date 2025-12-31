@@ -18,8 +18,6 @@
 
     let hasPrevious = $derived(index > 0);
     let hasNext = $derived(index < count - 1);
-
-    $inspect(hasPrevious);
 </script>
 
 <main class="fixed flex justify-between items-center inset-0 pointer-events-none z-60 md:px-8">

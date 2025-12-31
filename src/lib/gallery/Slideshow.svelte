@@ -7,6 +7,7 @@
         SlideshowNavigation as Navigation,
         SlideshowFooter as Footer,
         SlideshowHeader as Header,
+        SlideshowCaption as Caption,
         type GalleryImageItem
     } from ".";
 
@@ -71,9 +72,14 @@
         {handleNext}
     />
 
-    <Header caption={currentImage.alt} {onClose} />
+    <Header {onClose} />
 
-    <div transition:fade={{ duration: 150 }}>
+    <Caption open
+        caption={currentImage.alt}
+        description={currentImage.description}
+    />
+
+    <div transition:fade|global={{ duration: 150 }}>
         {#key index}
             <div
                 class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
@@ -93,14 +99,11 @@
         {/key}
     </div>
 
-    <Navigation bind:index
+    <Navigation {index}
         count={images.length}
         {handlePrevious} {handleNext} />
 
     <Footer {index}
         total={images.length}
-        url={currentImage.src}
-        caption={currentImage.alt}
-        description={currentImage.description}
-    />
+        url={currentImage.src} />
 {/if}
