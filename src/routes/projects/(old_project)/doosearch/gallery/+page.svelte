@@ -17,9 +17,11 @@
         />
 
         <h3 class="text-primary font-bold px-4 mt-6">Version actuelle</h3>
+        <p class="px-4 -mt-1.5 mb-2">Captures d'écran de la <strong class="text-primary">version 1.3</strong></p>
         <Gallery images={ v1_3 } size="large" />
 
         <h3 class="text-primary font-bold px-4">Ancienne version</h3>
+        <p class="px-4 -mt-1.5 mb-2">Captures d'écran de la <strong class="text-primary">version 1.2</strong></p>
         <Gallery images={ v1_2 } />
     </div>
 
