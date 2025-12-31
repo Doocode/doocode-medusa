@@ -2,10 +2,12 @@
     import { cn } from "$lib/utils.js";
     import type { GalleryImageItem } from ".";
     import Slideshow from "./Slideshow.svelte";
+    import GalleryNavigation from "./GalleryNavigation.svelte";
 
     interface Props {
         images?: GalleryImageItem[];
         class?: string;
+        classNavigation?: string;
         size?: 'small' | 'medium' | 'large';
     }
 
@@ -13,22 +15,53 @@
         images = [],
         size = 'medium',
         class: className,
+        classNavigation = "",
         ...restProps
     }: Props = $props();
 
     let openSlideshow = $state(false);
     let slideIndex = $state(0);
+    let scrollContainer: HTMLDivElement;
+    let canScrollLeft = $state(false);
+    let canScrollRight = $state(true);
 
     function onItemClick(event: Event, index: number) {
         event.preventDefault();
         openSlideshow = true;
         slideIndex = index;
     }
+
+    function updateScrollButtons() {
+        if (!scrollContainer) return;
+        
+        canScrollLeft = scrollContainer.scrollLeft > 0;
+        canScrollRight = scrollContainer.scrollLeft + scrollContainer.clientWidth < scrollContainer.scrollWidth - 1;
+    }
+
+    function scrollBackward() {
+        if (scrollContainer) {
+            scrollContainer.scrollBy({
+                left: -scrollContainer.clientWidth * 0.8,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function scrollForward() {
+        if (scrollContainer) {
+            scrollContainer.scrollBy({
+                left: scrollContainer.clientWidth * 0.8,
+                behavior: 'smooth'
+            });
+        }
+    }
 </script>
 
 <main class="grid">
     <div
-        class={cn("flex gap-4 overflow-x-auto overflow-y-hidden pb-6 scroll-smooth", className)}
+        bind:this={scrollContainer}
+        class={cn("flex gap-4 overflow-x-hidden overflow-y-hidden scroll-smooth pb-4 px-4 pt-1", className)}
+        onscroll={updateScrollButtons}
         {...restProps}
     >
         {#each images as {src, alt, withTransparencyBg}, index}
@@ -56,6 +89,14 @@
             </a>
         {/each}
     </div>
+
+    <GalleryNavigation
+        class={classNavigation}
+        {canScrollLeft}
+        {canScrollRight}
+        onScrollBackward={scrollBackward}
+        onScrollForward={scrollForward}
+    />
 
     <Slideshow {images}
         bind:open={openSlideshow}

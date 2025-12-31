@@ -10,30 +10,30 @@
     import { bts } from "./bts";
 </script>
 
-<main class="max-w-7xl mx-auto pt-8 grid gap-14">
+<main class="max-w-7xl mx-auto pt-8 grid gap-8">
     <div class="grid gap-2">
         <Heading level="h2" icon={Fullscreen} class="px-4"
             title={ m['projects.screenshots']() }
         />
 
         <h3 class="text-primary font-bold px-4 mt-6">Version actuelle</h3>
-        <Gallery images={ v1_3 } class="px-4 pt-1" size="large" />
+        <Gallery images={ v1_3 } size="large" />
 
-        <h3 class="text-primary font-bold px-4 mt-8">Ancienne version</h3>
-        <Gallery images={ v1_2 } class="px-4 pt-1" />
+        <h3 class="text-primary font-bold px-4">Ancienne version</h3>
+        <Gallery images={ v1_2 } />
     </div>
 
     <div class="grid gap-4">
         <Heading level="h2" icon={PencilRuler} class="px-4"
             title={ m['projects.logos']() }
         />
-        <Gallery images={ logos } class="px-4 pt-1" />
+        <Gallery images={ logos } />
     </div>
 
     <div class="grid gap-4">
         <Heading level="h2" icon={DraftingCompass} class="px-4"
             title={ m['projects.bts']() }
         />
-        <Gallery images={ bts } class="px-4 pt-1" size="large" />
+        <Gallery images={ bts } size="large" />
     </div>
 </main>
