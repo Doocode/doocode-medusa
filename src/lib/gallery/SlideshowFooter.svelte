@@ -17,6 +17,25 @@
         total,
         url
     }: Props = $props();
+
+    async function downloadImage() {
+        try {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            const blobUrl = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.download = url.split('/').pop() || 'image';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            URL.revokeObjectURL(blobUrl);
+        } catch (error) {
+            window.open(url, '_blank');
+        }
+    }
 </script>
 
 <!-- TODO: Auto fade out after 5s -->
@@ -44,12 +63,10 @@
     <nav class="flex-1 flex justify-end">
         <Button
             size="icon"
-            href={url}
-            target="_blank"
             variant="secondary"
-            rel="noopener noreferrer"
+            onclick={downloadImage}
             class="w-12 h-12 hover:scale-120 active:scale-90 pointer-events-auto"
-            title="Open image in new tab"
+            title="Download image"
         >
             <Download class="w-6! h-6!" strokeWidth={2} />
         </Button>
