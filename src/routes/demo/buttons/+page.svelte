@@ -17,7 +17,7 @@
 
     <div class="grid gap-8 md:grid-cols-2">
         <div>
-            <h2 class="text-2xl font-bold">Variants</h2>
+            <h2 class="text-2xl font-bold text-chart-1 mb-4">Variants</h2>
             <table>
                 <tbody>
                     <tr>
@@ -49,7 +49,7 @@
         </div>
 
         <div>
-            <h2 class="text-2xl font-bold">Sizes</h2>
+            <h2 class="text-2xl font-bold text-chart-2 mb-4">Sizes</h2>
             <table>
                 <tbody>
                     <tr>

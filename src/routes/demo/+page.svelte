@@ -2,10 +2,7 @@
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/ui/button/button.svelte';
 
-	import GamepadDirectional from '@lucide/svelte/icons/gamepad-directional';
-	import FlaskConical from '@lucide/svelte/icons/flask-conical';
-	import Heading6 from '@lucide/svelte/icons/heading-6';
-	import Package from '@lucide/svelte/icons/package';
+	import { GamepadDirectional, FlaskConical, Heading6, Package, List } from '@lucide/svelte/icons';
 </script>
 
 <svelte:head>
@@ -24,6 +21,12 @@
 			<span>Heading</span>
 		</Button>
 
+		<Button href={resolve('/demo/lists')}
+			class="h-auto flex flex-col items-center gap-2 rounded-3xl active:scale-95 aspect-square">
+			<List class="w-16! h-16!" />
+			<span>Lists</span>
+		</Button>
+
 		<Button href={resolve('/demo/buttons')}
 			class="h-auto flex flex-col items-center gap-2 rounded-3xl active:scale-95 aspect-square">
 			<GamepadDirectional class="w-16! h-16!" />
@@ -35,5 +38,7 @@
 			<Package class="w-16! h-16!" />
 			<span>Projects</span>
 		</Button>
+
+		<!-- TODO: Gallery, Input -->
 	</nav>
 </main>
