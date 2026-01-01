@@ -61,7 +61,7 @@
     <button
         transition:fade
         onclick={onClose}
-        class="fixed inset-0 bg-black/70 backdrop-blur-xl">
+        class="fixed inset-0 bg-black/70 backdrop-blur-xl z-40">
         <span class="sr-only">Close slideshow</span>
     </button>
 
