@@ -10,7 +10,7 @@
     import { bts } from "./bts";
 </script>
 
-<main class="max-w-7xl mx-auto pt-8 grid gap-8">
+<main class="max-w-7xl mx-auto pt-8 grid gap-8 [&_p]:text-balance">
     <div class="grid gap-2">
         <Heading level="h2" icon={Fullscreen} class="px-4"
             title={ m['projects.screenshots']() }

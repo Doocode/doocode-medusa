@@ -16,7 +16,7 @@
 </script>
 
 {#key type}
-    <svelte:element this={type} class={cn("pl-8 grid gap-2.5", className)}>
+    <svelte:element this={type} class={cn("pl-8 grid gap-2.5 text-balance", className)}>
         {@render children?.()}
     </svelte:element>
 {/key}

@@ -22,3 +22,9 @@ export const logos: GalleryImageItem[] = [
         withTransparencyBg: false,
     },
 ];
+
+export {
+    currentLogo,
+    oldLogoRound,
+    oldLogoFlat
+}
