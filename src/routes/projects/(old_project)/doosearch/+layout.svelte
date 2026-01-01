@@ -3,8 +3,8 @@
 
     let { data, children }: LayoutProps = $props();
 
-    import { Header, MainAction, NavItem, NavContener } from '../../header/index';
-    import { House, ImagePlay } from '@lucide/svelte';
+    import { Header, MainAction, NavItem as Page, NavContener as Nav } from '$routes/projects/header/index';
+    import { Blocks, BugPlay, History, House, ImagePlay, MessageCircleQuestionMark, Newspaper, Terminal } from '@lucide/svelte';
     import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
 
@@ -20,16 +20,36 @@
             onClick={() => dialogLinks = !dialogLinks} />
     {/snippet}
 
-    <NavContener>
-        <NavItem icon={House}
+    <Nav>
+        <Page icon={House}
             text={ m['home.title']() }
             href={`${projectRootUrl}`}
             selected={page.url.pathname === `${projectRootUrl}`} />
-        <NavItem icon={ImagePlay}
+        <Page icon={ImagePlay}
             text={ m['projects.gallery']() }
             href={`${projectRootUrl}/gallery`}
             selected={page.url.pathname === `${projectRootUrl}/gallery`} />
-    </NavContener>
+        <Page icon={Newspaper}
+            text={ "Actus" }
+            href={`${projectRootUrl}/blog`}
+            selected={page.url.pathname === `${projectRootUrl}/blog`} />
+        <Page icon={History}
+            text={ "Historique" }
+            href={`${projectRootUrl}/history`}
+            selected={page.url.pathname === `${projectRootUrl}/history`} />
+        <Page icon={Blocks}
+            text={ "Plugins" }
+            href={`${projectRootUrl}/plugins`}
+            selected={page.url.pathname === `${projectRootUrl}/plugins`} />
+        <Page icon={BugPlay}
+            text={ "Code" }
+            href={`${projectRootUrl}/development`}
+            selected={page.url.pathname === `${projectRootUrl}/development`} />
+        <Page icon={MessageCircleQuestionMark}
+            text={ "Aide" }
+            href={`${projectRootUrl}/help`}
+            selected={page.url.pathname === `${projectRootUrl}/help`} />
+    </Nav>
 </Header>
 
 <main class="project_theme"
