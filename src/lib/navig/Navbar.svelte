@@ -9,6 +9,7 @@
 </script>
 
 <header
+    style:--logo-color="var(--background)"
     class={{
         'px-1.5 text-center flex items-center justify-between': true,
         'bg-primary text-primary-foreground': !isProjectDetail,
