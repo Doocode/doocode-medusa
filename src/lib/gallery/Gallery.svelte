@@ -60,7 +60,7 @@
 <main class="grid">
     <div
         bind:this={scrollContainer}
-        class={cn("flex gap-4 overflow-x-hidden overflow-y-hidden scroll-smooth pb-4 px-4 pt-1", className)}
+        class={cn("flex gap-4 overflow-x-hidden overflow-y-hidden pb-4 px-4 pt-1", className)}
         onscroll={updateScrollButtons}
         {...restProps}
     >

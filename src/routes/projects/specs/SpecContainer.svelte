@@ -12,7 +12,7 @@
 
 <main class={cn("\
     grid grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-2 \
-    md:flex md:overflow-x-auto md:overflow-y-hidden scroll-smooth md:gap-8 md:divide-x divide-border \
+    md:flex md:overflow-x-auto md:overflow-y-hidden md:gap-8 md:divide-x divide-border \
 ", className)}>
     {@render children?.()}
 </main>

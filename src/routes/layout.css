@@ -5,6 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  scroll-behavior: smooth;
   scrollbar-gutter: stable;
   color-scheme: light;
   --radius: 0.625rem;
