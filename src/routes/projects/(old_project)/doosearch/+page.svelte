@@ -12,14 +12,16 @@
         ListItem as Li
     } from "$lib/page";
     import { currentLogo } from './gallery/logo';
-	import CrossPlaform from './gallery/svg/CrossPlaform.svelte';
-	import { customize } from './gallery/homepage';
-	import { Button } from '$lib/components/ui/button';
-	import MultiSearch from './gallery/svg/MultiSearch.svelte';
-	import { Gallery } from '$lib/gallery';
-	import { mobile_images, pc_images } from './gallery/screen/v1.3';
+    import { Button } from '$lib/components/ui/button';
+    import { CrossPlatform, MultiSearch , UIPlaceholder} from './gallery/svg';
+    import { Gallery } from '$lib/gallery';
+    import { mobile_images, pc_images } from './gallery/screen/v1.3';
+    import ColorSwitcher from './ColorSwitcher.svelte';
+    import { scale } from 'svelte/transition';
 
     let { data }: PageProps = $props();
+
+    let color = $state("#3b82f6")
 </script>
 
 <div class="max-w-7xl mx-auto px-4 py-8 grid gap-18">
@@ -154,17 +156,26 @@
 
 
 
-    <div class="grid gap-8 md:gap-12 md:grid-cols-2 items-center">
+    <div class="grid gap-8 md:gap-12 md:grid-cols-2 items-center" style:--bg={color}>
         <div class="grid gap-4">
             <Heading level="h2"
                 icon={BrushCleaning}
                 title="Une page à votre image"
             />
             <p>Laissez votre personnalité s’exprimer. Adieu le fond monotone et austère de votre navigateur. Place à de la couleur vivantes, pétillantes voir même pastel. Et pourquoi ne pas mettre une image en fond d'écran ? Je parie que vous allez opter pour un fond d’écran original et unique.</p>
+
+            <div class="flex justify-center items-center -mb-4 md:m-0 xl:-mx-8">
+                <ColorSwitcher bind:color />
+            </div>
         </div>
 
-        <img src={customize} alt="Gif de personnalisation du fond d'écran et du thème de Doosearch"
-            class="w-full rounded-xl shadow-lg border border-foreground/20 md:rotate-6" />
+        <div>
+            {#key color}
+                <div in:scale>
+                    <UIPlaceholder class="w-full aspect-video -mb-8 md:m-0 md:-rotate-3 rounded-md md:rounded-xl" />
+                </div>
+            {/key}
+        </div>
     </div>
 
 
@@ -174,7 +185,7 @@
             - svg animation morphose : PC, tablette et smartphone
             - css animation : rotation 3d prisme (3 faces : PC, tablette, smartphone)
         -->
-        <CrossPlaform class="w-full lg:h-120 -mb-8" />
+        <CrossPlatform class="w-full lg:h-120 -mb-8" />
 
         <div class="grid gap-4">
             <Heading level="h2"
