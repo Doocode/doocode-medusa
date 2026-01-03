@@ -4,13 +4,17 @@
         onClose: () => void;
         handlePrevious: () => void;
         handleNext: () => void;
+        handleFirst: () => void;
+        handleLast: () => void;
     }
 
     let {
         isOpen = $bindable(false),
         onClose,
         handlePrevious,
-        handleNext
+        handleNext,
+        handleFirst,
+        handleLast
     }: Props = $props();
 
     function handleKeydown(e: KeyboardEvent) {
@@ -27,8 +31,18 @@
                 break;
             case 'ArrowRight':
             case 'ArrowDown':
+            case ' ':
+            case 'Enter':
                 e.preventDefault();
                 handleNext();
+                break;
+            case 'Home':
+                e.preventDefault();
+                handleFirst();
+                break;
+            case 'End':
+                e.preventDefault();
+                handleLast();
                 break;
         }
     }

@@ -55,6 +55,20 @@
             index++;
         }
     }
+
+    function handleFirst() {
+        if (index > 0) {
+            slideDirection = 'right';
+            index = 0;
+        }
+    }
+
+    function handleLast() {
+        if (index < images.length - 1) {
+            slideDirection = 'left';
+            index = images.length - 1;
+        }
+    }
 </script>
 
 {#if open}
@@ -70,6 +84,8 @@
         {onClose}
         {handlePrevious}
         {handleNext}
+        {handleFirst}
+        {handleLast}
     />
 
     <Header {onClose} />
