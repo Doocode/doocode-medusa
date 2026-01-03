@@ -19,7 +19,7 @@
 
 {#if open}
     <div class="fixed -top-px left-0 right-0 md:left-4 md:right-auto z-60
-        flex flex-col px-5 pb-3 pt-20 md:px-4 md:pt-24 md:min-w-60
+        flex flex-col px-5 pb-3 pt-20 md:px-4 md:pt-24 md:min-w-60 max-w-125
         backdrop-blur-2xl rounded-b-xl md:rounded-b-2xl border border-border/50
         bg-background/70 dark:bg-primary/20
     " transition:slide|global>

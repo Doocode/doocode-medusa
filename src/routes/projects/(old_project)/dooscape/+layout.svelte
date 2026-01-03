@@ -3,8 +3,12 @@
 
     let { data, children }: LayoutProps = $props();
 
-    import { Header, MainAction, NavItem, NavContener } from '../../header/index';
-    import ImagePlay from '@lucide/svelte/icons/image-play';
+    import {
+        Header, MainAction,
+        NavItem as Page,
+        NavContener as Nav
+    } from '$routes/projects/header/index';
+    import { History, House, ImagePlay, Newspaper } from '@lucide/svelte';
     import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
 
@@ -14,18 +18,30 @@
 
 <Header project={data.project}>
     {#snippet mainAction()}
-        {@const { href, ...action } = data.project.mainAction}
+        {@const { ...action } = data.project.mainAction}
 
         <MainAction {...action}
             onClick={() => dialogLinks = !dialogLinks} />
     {/snippet}
 
-    <NavContener>
-        <NavItem icon={ImagePlay}
+    <Nav>
+        <Page icon={House}
+            text={ m['home.title']() }
+            href={`${projectRootUrl}`}
+            selected={page.url.pathname === `${projectRootUrl}`} />
+        <Page icon={ImagePlay}
             text={ m['projects.gallery']() }
             href={`${projectRootUrl}/gallery`}
             selected={page.url.pathname === `${projectRootUrl}/gallery`} />
-    </NavContener>
+        <Page icon={Newspaper}
+            text={ "Actus" }
+            href={`${projectRootUrl}/blog`}
+            selected={page.url.pathname === `${projectRootUrl}/blog`} />
+        <Page icon={History}
+            text={ "Historique" }
+            href={`${projectRootUrl}/history`}
+            selected={page.url.pathname === `${projectRootUrl}/history`} />
+    </Nav>
 </Header>
 
 <main class="project_theme"

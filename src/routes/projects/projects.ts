@@ -6,4 +6,4 @@ import type { Project } from "./projects.types";
 
 export * from "./projects.types";
 
-export const projects: Project[] = [doosearch, doochronos, dooscape, capture];
+export const projects: Project[] = [doochronos, doosearch, dooscape, capture];

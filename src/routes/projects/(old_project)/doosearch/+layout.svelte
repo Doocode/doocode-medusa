@@ -3,8 +3,12 @@
 
     let { data, children }: LayoutProps = $props();
 
-    import { Header, MainAction, NavItem as Page, NavContener as Nav } from '$routes/projects/header/index';
-    import { Blocks, BugPlay, History, House, ImagePlay, MessageCircleQuestionMark, Newspaper, Terminal } from '@lucide/svelte';
+    import {
+        Header, MainAction,
+        NavItem as Page,
+        NavContener as Nav
+    } from '$routes/projects/header/index';
+    import { Blocks, BugPlay, History, House, ImagePlay, MessageCircleQuestionMark, Newspaper } from '@lucide/svelte';
     import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
 
@@ -14,7 +18,7 @@
 
 <Header project={data.project}>
     {#snippet mainAction()}
-        {@const { href, ...action } = data.project.mainAction}
+        {@const { ...action } = data.project.mainAction}
 
         <MainAction {...action}
             onClick={() => dialogLinks = !dialogLinks} />
