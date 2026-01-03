@@ -36,6 +36,6 @@
         <Heading level="h2" icon={DraftingCompass} class="px-4"
             title={ m['projects.bts']() }
         />
-        <Gallery images={ bts } size="large" />
+        <Gallery images={ bts } size="small" />
     </div>
 </main>
