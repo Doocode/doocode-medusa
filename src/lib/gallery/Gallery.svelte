@@ -38,29 +38,40 @@
         canScrollRight = scrollContainer.scrollLeft + scrollContainer.clientWidth < scrollContainer.scrollWidth - 1;
     }
 
-    function scrollBackward() {
-        if (scrollContainer) {
-            scrollContainer.scrollBy({
-                left: -scrollContainer.clientWidth * 0.8,
-                behavior: 'smooth'
-            });
-        }
+    function scrollBackward(event: MouseEvent) {
+        if (!scrollContainer) return;
+        
+        const scrollAmount = event.shiftKey 
+            ? -scrollContainer.scrollWidth 
+            : -scrollContainer.clientWidth * 0.8;
+        
+        scrollContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
     }
 
-    function scrollForward() {
-        if (scrollContainer) {
-            scrollContainer.scrollBy({
-                left: scrollContainer.clientWidth * 0.8,
-                behavior: 'smooth'
-            });
-        }
+    function scrollForward(event: MouseEvent) {
+        if (!scrollContainer) return;
+        
+        const scrollAmount = event.shiftKey 
+            ? scrollContainer.scrollWidth 
+            : scrollContainer.clientWidth * 0.8;
+        
+        scrollContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
     }
 </script>
 
 <main class="grid">
     <div
         bind:this={scrollContainer}
-        class={cn("flex gap-4 md:overflow-x-hidden overflow-y-hidden pb-4 px-4 pt-1", className)}
+        class={cn(
+            "flex gap-4 md:overflow-x-hidden overflow-y-hidden pb-4 px-4 pt-1",
+            className
+        )}
         onscroll={updateScrollButtons}
         {...restProps}
     >
@@ -81,7 +92,7 @@
                         "duration-200 object-contain": true,
                         "h-32": size === 'small',
                         "h-39.75": size === 'medium',
-                        "h-64": size === 'large',
+                        "h-39.75 md:h-64": size === 'large',
                     }}
                     class:rounded-lg={!withTransparencyBg}
                     loading="lazy"
