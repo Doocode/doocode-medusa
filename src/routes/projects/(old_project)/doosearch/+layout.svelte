@@ -38,7 +38,7 @@
             href={`${projectRootUrl}/blog`}
             selected={page.url.pathname === `${projectRootUrl}/blog`} />
         <Page icon={History}
-            text={ "Historique" }
+            text={ m['projects.history.short_title']() }
             href={`${projectRootUrl}/history`}
             selected={page.url.pathname === `${projectRootUrl}/history`} />
         <Page icon={Blocks}
