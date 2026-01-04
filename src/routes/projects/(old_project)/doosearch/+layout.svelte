@@ -32,27 +32,27 @@
         <Page icon={ImagePlay}
             text={ m['projects.gallery']() }
             href={`${projectRootUrl}/gallery`}
-            selected={page.url.pathname === `${projectRootUrl}/gallery`} />
+            selected={page.url.pathname.startsWith(`${projectRootUrl}/gallery`)} />
         <Page icon={Newspaper}
             text={ "Actus" }
             href={`${projectRootUrl}/blog`}
-            selected={page.url.pathname === `${projectRootUrl}/blog`} />
+            selected={page.url.pathname.startsWith(`${projectRootUrl}/blog`)} />
         <Page icon={History}
             text={ m['projects.history.short_title']() }
             href={`${projectRootUrl}/history`}
-            selected={page.url.pathname === `${projectRootUrl}/history`} />
+            selected={page.url.pathname.startsWith(`${projectRootUrl}/history`)} />
         <Page icon={Blocks}
             text={ "Plugins" }
             href={`${projectRootUrl}/plugins`}
-            selected={page.url.pathname === `${projectRootUrl}/plugins`} />
+            selected={page.url.pathname.startsWith(`${projectRootUrl}/plugins`)} />
         <Page icon={BugPlay}
             text={ "Code" }
             href={`${projectRootUrl}/development`}
-            selected={page.url.pathname === `${projectRootUrl}/development`} />
+            selected={page.url.pathname.startsWith(`${projectRootUrl}/development`)} />
         <Page icon={MessageCircleQuestionMark}
             text={ "Aide" }
             href={`${projectRootUrl}/help`}
-            selected={page.url.pathname === `${projectRootUrl}/help`} />
+            selected={page.url.pathname.startsWith(`${projectRootUrl}/help`)} />
     </Nav>
 </Header>
 
