@@ -10,6 +10,8 @@
     import QrCode from "@lucide/svelte/icons/qr-code";
     import History from "@lucide/svelte/icons/history";
     import { NavContener, NavItem } from "../../projects/header";
+    import ReleaseTypeBadge from "$routes/projects/(old_project)/doosearch/history/ReleaseTypeBadge.svelte";
+    import { ReleaseType } from "$routes/projects/projects.types";
 
     let { data }: PageProps = $props();
 </script>
@@ -68,6 +70,24 @@
         <div class="grid gap-4">
             <h3 class="text-xl font-bold">Without accent color</h3>
             <ProjectCard {...data.project_withoutAccent} />
+        </div>
+    </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 mt-12 mb-4">
+    <h2 class="text-3xl font-black pb-4">Changelog</h2>
+
+    <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+        <div class="grid gap-4">
+            <h3 class="text-xl font-bold">Release type</h3>
+
+            <div class="flex flex-wrap gap-2">
+                <ReleaseTypeBadge type={ReleaseType.Alpha} />
+                <ReleaseTypeBadge type={ReleaseType.Beta} />
+                <ReleaseTypeBadge type={ReleaseType.Stable} />
+            </div>
+        </div>
+        <div class="grid gap-4">
         </div>
     </div>
 </div>
