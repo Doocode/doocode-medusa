@@ -24,20 +24,20 @@
 
 <Popover.Root bind:open={isOpen}>
     <Popover.Trigger>
-        <Button variant="secondary" size="icon" class="h-11.25 w-11.25">
-            <MenuIcon class="h-6! w-6!" />
+        <Button variant="ghost" size="icon" class="h-11.25 w-11.25">
+            <MenuIcon class="h-6! w-6!" strokeWidth={2.5} />
         </Button>
     </Popover.Trigger>
 
     <Popover.Content class="rounded-3xl">
-        <nav class="flex flex-col">
+        <nav class="flex flex-col gap-1">
             {#snippet item({
                 href, icon, label
             }: Item) }
                 {@const Icon = icon }
                 <a {href} onclick={onItemClick} class={{
                     'flex items-center gap-2 px-4 py-3 rounded-lg duration-100 \
-                    hover:bg-secondary/50 hover:text-secondary-foreground \
+                    hover:bg-secondary/75 hover:text-secondary-foreground \
                     active:bg-secondary active:text-secondary-foreground': true,
                     'bg-primary text-primary-foreground': page.url.pathname === href
                 }}>

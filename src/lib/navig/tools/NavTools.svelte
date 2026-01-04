@@ -10,11 +10,11 @@
     <Popover.Root>
         <Popover.Trigger>
             <Button
-                variant="secondary"
+                variant="ghost"
                 size="icon"
                 class="h-11.25 w-11.25"
             >
-                <CogIcon class="h-6! w-6!" />
+                <CogIcon class="h-6! w-6!" strokeWidth={2.2} />
                 <span class="sr-only">Settings</span>
             </Button>
         </Popover.Trigger>
