@@ -2,7 +2,7 @@
     import { m } from "$lib/paraglide/messages";
     import Heading from '$lib/page/Heading.svelte';
 
-    import { DraftingCompass, PencilRuler, Fullscreen, Eye, EyeOff } from '@lucide/svelte/icons';
+    import { DraftingCompass, PencilRuler, Fullscreen, Eye, EyeOff, History } from '@lucide/svelte/icons';
 
     import { logos } from './logo';
     import { v1_2, v1_3 } from "./screen";
@@ -10,6 +10,7 @@
     import { bts } from "./bts";
     import { slide } from "svelte/transition";
     import Button from "$lib/components/ui/button/button.svelte";
+    import { resolve } from "$app/paths";
 
     let displayOldVersion = $state(false);
 </script>
@@ -28,8 +29,8 @@
             <h3 class="text-primary font-bold">Ancienne version</h3>
             <p class="-mt-1.5 mb-2">Captures d'écran de la <strong class="text-primary">version 1.2</strong></p>
 
-            <nav>
-                <Button onclick={() => displayOldVersion = !displayOldVersion} class="mb-2">
+            <nav class="mb-2 flex flex-wrap items-center gap-2">
+                <Button onclick={() => displayOldVersion = !displayOldVersion}>
                     {#if displayOldVersion}
                         <EyeOff class="w-5! h-5!" />
                         Masquer les images
@@ -37,6 +38,11 @@
                         <Eye class="w-5! h-5!" />
                         Afficher les images
                     {/if}
+                </Button>
+
+                <Button variant="secondary" href={resolve('/projects/doosearch/history')}>
+                    <History class="w-5! h-5!" />
+                    Voir l'historique des versions
                 </Button>
             </nav>
         </div>

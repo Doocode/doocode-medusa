@@ -29,6 +29,21 @@
     <p class="mb-8">Preview of the projects components.</p>
 </main>
 
+<div class="max-w-7xl mx-auto px-4 mt-0 mb-12">
+    <h2 class="text-3xl font-black pb-4">Project card</h2>
+
+    <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+        <div class="grid gap-4">
+            <h3 class="text-xl font-bold">With accent color</h3>
+            <ProjectCard {...data.project_withAccent} />
+        </div>
+        <div class="grid gap-4">
+            <h3 class="text-xl font-bold">Without accent color</h3>
+            <ProjectCard {...data.project_withoutAccent} />
+        </div>
+    </div>
+</div>
+
 <h2 class="max-w-7xl mx-auto px-4 pb-4 text-3xl font-black">Header</h2>
 {#snippet navBar()}
     <NavContener>
@@ -58,21 +73,6 @@
     {/snippet}
     {@render navBar()}
 </Header>
-
-<div class="max-w-7xl mx-auto px-4 mt-12 mb-4">
-    <h2 class="text-3xl font-black pb-4">Project card</h2>
-
-    <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
-        <div class="grid gap-4">
-            <h3 class="text-xl font-bold">With accent color</h3>
-            <ProjectCard {...data.project_withAccent} />
-        </div>
-        <div class="grid gap-4">
-            <h3 class="text-xl font-bold">Without accent color</h3>
-            <ProjectCard {...data.project_withoutAccent} />
-        </div>
-    </div>
-</div>
 
 <div class="max-w-7xl mx-auto px-4 mt-12 mb-4">
     <h2 class="text-3xl font-black pb-4">Changelog</h2>
