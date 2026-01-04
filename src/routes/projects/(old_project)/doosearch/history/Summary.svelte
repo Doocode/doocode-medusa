@@ -31,6 +31,13 @@
             label={release.bugfixes.length === 1 ? 'bugfix' : 'bugfixes'} 
         />
     {/if}
+    {#if release.removedFeatures?.length}
+        <SummaryCount 
+            type="removed" 
+            count={release.removedFeatures.length} 
+            label={release.removedFeatures.length === 1 ? 'removed feature' : 'removed features'} 
+        />
+    {/if}
     {#if release.images?.length}
         <SummaryCount 
             type="screenshots" 
