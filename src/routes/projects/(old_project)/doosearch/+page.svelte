@@ -103,7 +103,7 @@
         <p class="mb-6">Parce que une image vaut mille mots, voici quelques captures d’écran de Doosearch en action.</p>
 
         <div class="-mx-4">
-            <Gallery size="large" images={ [...pc_images, ...mobile_images] } />
+            <Gallery images={ [...pc_images, ...mobile_images] } />
         </div>
     </div>
 

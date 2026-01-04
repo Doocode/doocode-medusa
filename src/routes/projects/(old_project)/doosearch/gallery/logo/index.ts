@@ -18,11 +18,11 @@ export const logos: GalleryImageItem[] = [
         alt: "Old logo (round) - 2016",
         withTransparencyBg: true,
     },
-    {
+    /*{
         src: logo_2016Flat,
         alt: "Old logo (flat) - 2016",
         withTransparencyBg: false,
-    },
+    },*/
     {
         src: logo_2014_04,
         alt: "Old logo - April 2014",

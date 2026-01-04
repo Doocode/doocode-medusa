@@ -24,18 +24,19 @@ export const logos: GalleryImageItem[] = [
         src: logo_2015Round,
         alt: "Old logo (round) - 2015",
         withTransparencyBg: true,
+        description: "The new color scheme introduced in 2015 is a part of refreshing the brand identity to make it more unique regarding Dooscape and Doosearch identity."
     },
-    {
+    /*{
         src: logo_2015Flat,
         alt: "Old logo (flat) - 2015",
-        description: "The new color scheme introduced in 2015 is a part of refreshing the brand identity to make it more unique regarding Doosearch identity."
+        description: "The new color scheme introduced in 2015 is a part of refreshing the brand identity to make it more unique regarding Dooscape and Doosearch identity."
     },
     {
         src: logo_2015Neo,
         alt: "Old logo (Neo development) - 2015",
         withTransparencyBg: true,
         description: "The new color scheme introduced in 2015 is a part of refreshing the brand identity to make it more unique regarding Dooscape and Doosearch identity."
-    },
+    },*/
     {
         src: logo_201410,
         alt: "Old logo - October 2014",
