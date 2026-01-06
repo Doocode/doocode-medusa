@@ -24,6 +24,7 @@ export const v1_3_2: Release = {
         "Améliorations de la stabilité et corrections de bugs."
     ],
     removedFeatures: [],
+    images: [...screens_v1_3],
 };
 
 export const v1_3: Release = {
