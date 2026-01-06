@@ -1,7 +1,6 @@
 <script lang="ts">
+    import { ReleaseTypeBadge, Summary } from ".";
     import { Package, ChevronRight } from '@lucide/svelte/icons';
-    import ReleaseTypeBadge from "./ReleaseTypeBadge.svelte";
-    import Summary from "./Summary.svelte";
     import type { Release } from '$routes/projects/projects.types';
 
     interface Props {

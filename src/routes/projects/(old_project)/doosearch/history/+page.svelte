@@ -3,7 +3,7 @@
     import Heading from '$lib/page/Heading.svelte';
     import { History } from '@lucide/svelte/icons';
     import type { PageData } from './$types';
-    import ReleaseCard from "./ReleaseCard.svelte";
+    import { ReleaseCard } from "$routes/projects/changelog";
 
     let { data }: { data: PageData } = $props();
 </script>

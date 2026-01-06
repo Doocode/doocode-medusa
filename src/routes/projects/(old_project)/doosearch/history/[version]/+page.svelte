@@ -1,12 +1,11 @@
 <script lang="ts">
     import { m } from "$lib/paraglide/messages";
     import Heading from '$lib/page/Heading.svelte';
-    import { Package, Bug, Sparkles, TrendingUp, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
+    import { Package, Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
     import type { PageData } from './$types';
-    import ReleaseTypeBadge from "../ReleaseTypeBadge.svelte";
-    import Lister from './Lister.svelte';
+    import { Lister, ReleaseTypeBadge } from "$routes/projects/changelog";
 
     let { data }: { data: PageData } = $props();
 
