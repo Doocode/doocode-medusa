@@ -3,7 +3,6 @@
     import { ReleaseTypeBadge, Summary } from ".";
     import { Package, ChevronRight } from '@lucide/svelte/icons';
     import type { Release } from '$routes/projects/projects.types';
-    import type { Snippet } from 'svelte';
 
     interface Props {
         release: Release;
@@ -76,6 +75,7 @@
     class="group block p-6 rounded-xl border-3 border-secondary
            hover:border-primary dark:hover:border-primary
            hover:shadow-lg transition-all duration-200
+           md:hover:shadow-none
            bg-background
            md:p-0 md:border-0 md:rounded-none md:shadow-none md:bg-transparent"
 >
@@ -100,8 +100,8 @@
     <!-- Desktop timeline layout -->
     <div class="hidden md:flex md:gap-6">
         <!-- Left: Date section (150px fixed) -->
-        <div class="w-40 shrink-0 text-right pt-1 text-balance">
-            <div class="text-xs text-accent-foreground mb-1">
+        <div class="w-30 shrink-0 text-right pt-1 text-balance">
+            <div class="text-xs text-accent-foreground mb-2">
                 {getRelativeTime(release.releaseDate)}
             </div>
             <time class="text-sm font-medium text-foreground block leading-tight">
@@ -118,7 +118,7 @@
         </div>
 
         <!-- Right: Content -->
-        <div class="flex-1 min-w-0 pb-12 group/content">
+        <div class="flex-1 min-w-0 pb-8 group/content">
             <div class="p-6 rounded-xl border-3 border-secondary
                        group-hover:border-primary dark:group-hover:border-primary
                        group-hover:shadow-lg transition-all duration-200

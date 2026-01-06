@@ -4,8 +4,39 @@
     import { History } from '@lucide/svelte/icons';
     import type { PageData } from './$types';
     import { ReleaseCard } from "$routes/projects/changelog";
+    import { Input } from "$lib/components/ui/input";
+    import type { Release } from '$routes/projects/projects.types';
 
     let { data }: { data: PageData } = $props();
+    let search_value: string = $state("");
+
+    const filtered_releases = $derived.by(() => {
+        if (!search_value.trim()) return data.releases;
+
+        const query = search_value.toLowerCase();
+        
+        return data.releases.filter((release: Release) => {
+            // Search in version string
+            if (release.versionString.toLowerCase().includes(query)) return true;
+            
+            // Search in description
+            if (release.description?.toLowerCase().includes(query)) return true;
+            
+            // Search in features
+            if (release.features?.some(f => f.toLowerCase().includes(query))) return true;
+            
+            // Search in improvements
+            if (release.improvements?.some(i => i.toLowerCase().includes(query))) return true;
+            
+            // Search in bugfixes
+            if (release.bugfixes?.some(b => b.toLowerCase().includes(query))) return true;
+            
+            // Search in removed features
+            if (release.removedFeatures?.some(r => r.toLowerCase().includes(query))) return true;
+            
+            return false;
+        });
+    });
 </script>
 
 <main class="max-w-7xl mx-auto pt-8 px-4 pb-16 grid gap-8">
@@ -13,9 +44,22 @@
         title={ m['projects.history.long_title']() }
     />
 
+    <nav>
+        <Input
+            type="search"
+            bind:value={search_value}
+            placeholder={ "Search" }
+            class="w-full md:w-80"
+        />
+    </nav>
+
     <div class="grid gap-4 md:gap-1">
-        {#each data.releases as release}
+        {#each filtered_releases as release}
             <ReleaseCard {release} />
+        {:else}
+            <p class="text-center text-muted-foreground py-12">
+                No releases found matching "{search_value}"
+            </p>
         {/each}
     </div>
 </main>
