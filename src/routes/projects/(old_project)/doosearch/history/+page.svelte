@@ -13,7 +13,7 @@
         title={ m['projects.history.long_title']() }
     />
 
-    <div class="grid gap-4">
+    <div class="grid gap-4 md:gap-1">
         {#each data.releases as release}
             <ReleaseCard {release} />
         {/each}

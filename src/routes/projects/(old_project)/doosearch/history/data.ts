@@ -54,7 +54,7 @@ export const v1_3: Release = {
 };
 
 export const v1_2: Release = {
-    releaseDate: new Date('2024-05-15'),
+    releaseDate: new Date('2015-12-25'),
     versionNumber: 23,
     versionString: 'v1.2.0',
     type: ReleaseType.Stable,

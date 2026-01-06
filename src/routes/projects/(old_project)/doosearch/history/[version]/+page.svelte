@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { getLocale } from "$lib/paraglide/runtime";
     import { m } from "$lib/paraglide/messages";
     import Heading from '$lib/page/Heading.svelte';
     import { Package, Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
@@ -12,7 +13,7 @@
     const release = $derived(data.release);
 
     function formatDate(date: Date): string {
-        return new Intl.DateTimeFormat('fr-FR', {
+        return new Intl.DateTimeFormat(getLocale(), {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
