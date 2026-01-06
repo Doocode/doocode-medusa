@@ -1,12 +1,12 @@
 <script lang="ts">
     import { m } from "$lib/paraglide/messages";
     import Heading from '$lib/page/Heading.svelte';
-    import { Package, Bug, Sparkles, TrendingUp, Trash2, ArrowLeft, Fullscreen } from '@lucide/svelte/icons';
+    import { Package, Bug, Sparkles, TrendingUp, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
     import type { PageData } from './$types';
     import ReleaseTypeBadge from "../ReleaseTypeBadge.svelte";
-    import { ListContainer as Ul, ListItem as Li } from "$lib/page";
+    import Lister from './Lister.svelte';
 
     let { data }: { data: PageData } = $props();
 
@@ -59,11 +59,11 @@
     {/if}
 
     <!-- Changes sections -->
-    <div class="space-y-8">
+    <div class="grid gap-16">
         <!-- Gallery -->
         {#if release.images && release.images.length > 0}
             <section class="mt-8 grid gap-4">
-                <Heading level="h2" icon={Fullscreen}
+                <Heading level="h3" icon={Fullscreen}
                     title={ m['projects.screenshots']() }
                 />
                 <div class="-mx-4">
@@ -74,71 +74,46 @@
 
         <!-- Features -->
         {#if release.features && release.features.length > 0}
-            <section class="rounded-xl border-2 grid gap-6 border-green-200 dark:border-green-600/50 p-6 bg-green-50/50 dark:bg-green-950/20">
-                <Heading level="h3" icon={Sparkles} title="New Features" />
-                <Ul>
-                    {#each release.features as feature}
-                        <Li>
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-600 dark:bg-green-400 mt-2 flex-shrink-0"></span>
-                            <span>{feature}</span>
-                        </Li>
-                    {/each}
-                </Ul>
-            </section>
+            <Lister
+                icon={SquarePlus}
+                heading="New Features"
+                items={release.features}
+                tintLight="oklch(62.7% 0.194 149.214)"
+                tintDark="oklch(79.2% 0.209 151.711)"
+            />
         {/if}
 
         <!-- Improvements -->
         {#if release.improvements && release.improvements.length > 0}
-            <section class="rounded-xl border-2 border-blue-200 dark:border-blue-900/30 p-6 bg-blue-50/50 dark:bg-blue-950/20">
-                <h3 class="flex items-center gap-2 text-xl md:text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-400">
-                    <TrendingUp class="w-6 h-6" />
-                    Improvements
-                </h3>
-                <ul class="space-y-3">
-                    {#each release.improvements as improvement}
-                        <li class="flex items-start gap-3 text-sm md:text-base text-foreground/90">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 flex-shrink-0"></span>
-                            <span>{improvement}</span>
-                        </li>
-                    {/each}
-                </ul>
-            </section>
+            <Lister
+                icon={Sparkles}
+                heading="Improvements"
+                items={release.improvements}
+                tintLight="oklch(54.6% 0.245 262.881)"
+                tintDark="oklch(70.7% 0.165 254.624)"
+            />
         {/if}
 
         <!-- Bug Fixes -->
         {#if release.bugfixes && release.bugfixes.length > 0}
-            <section class="rounded-xl border-2 border-orange-200 dark:border-orange-900/30 p-6 bg-orange-50/50 dark:bg-orange-950/20">
-                <h3 class="flex items-center gap-2 text-xl md:text-2xl font-semibold mb-4 text-orange-700 dark:text-orange-400">
-                    <Bug class="w-6 h-6" />
-                    Bug Fixes
-                </h3>
-                <ul class="space-y-3">
-                    {#each release.bugfixes as bugfix}
-                        <li class="flex items-start gap-3 text-sm md:text-base text-foreground/90">
-                            <span class="w-1.5 h-1.5 rounded-full bg-orange-600 dark:bg-orange-400 mt-2 flex-shrink-0"></span>
-                            <span>{bugfix}</span>
-                        </li>
-                    {/each}
-                </ul>
-            </section>
+            <Lister
+                icon={Bug}
+                heading="Bug Fixes"
+                items={release.bugfixes}
+                tintLight="oklch(55.8% 0.288 302.321)"
+                tintDark="oklch(71.4% 0.203 305.504)"
+            />
         {/if}
 
         <!-- Removed Features -->
         {#if release.removedFeatures && release.removedFeatures.length > 0}
-            <section class="rounded-xl border-2 border-red-200 dark:border-red-900/30 p-6 bg-red-50/50 dark:bg-red-950/20">
-                <h3 class="flex items-center gap-2 text-xl md:text-2xl font-semibold mb-4 text-red-700 dark:text-red-400">
-                    <Trash2 class="w-6 h-6" />
-                    Removed Features
-                </h3>
-                <ul class="space-y-3">
-                    {#each release.removedFeatures as removed}
-                        <li class="flex items-start gap-3 text-sm md:text-base text-foreground/90">
-                            <span class="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-400 mt-2 flex-shrink-0"></span>
-                            <span>{removed}</span>
-                        </li>
-                    {/each}
-                </ul>
-            </section>
+            <Lister
+                icon={Trash2}
+                heading="Removed Features"
+                items={release.removedFeatures}
+                tintLight="oklch(62.3% 0.234 25.406)"
+                tintDark="oklch(78.1% 0.174 25.406)"
+            />
         {/if}
     </div>
 </main>

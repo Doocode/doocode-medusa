@@ -9,7 +9,7 @@
 
     let { type, count, label }: Props = $props();
 
-    import { BugOff, CircleDashed, ImagePlay, Sparkles, SquarePlus, Trash2 } from "@lucide/svelte/icons";
+    import { Bug, CircleDashed, ImagePlay, Sparkles, SquarePlus, Trash2 } from "@lucide/svelte/icons";
 </script>
 
 <div class={{
@@ -35,7 +35,7 @@
         {:else if type === "improvements"}
             <Sparkles class="w-4.5 h-4.5" />
         {:else if type === "bugfixes"}
-            <BugOff class="w-4.5 h-4.5" />
+            <Bug class="w-4.5 h-4.5" />
         {:else if type === "screenshots"}
             <ImagePlay class="w-4.5 h-4.5" />
         {:else if type === "removed"}
