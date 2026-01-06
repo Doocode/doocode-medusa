@@ -10,7 +10,7 @@
     import QrCode from "@lucide/svelte/icons/qr-code";
     import History from "@lucide/svelte/icons/history";
     import { NavContener, NavItem } from "../../projects/header";
-    import ReleaseTypeBadge from "$routes/projects/(old_project)/doosearch/history/ReleaseTypeBadge.svelte";
+    import { ReleaseTypeBadge } from "$routes/projects/changelog";
     import { ReleaseType } from "$routes/projects/projects.types";
 
     let { data }: PageProps = $props();
