@@ -1,6 +1,8 @@
 import logo from './gallery/logo/doosearch_logo_2026.webp';
 import { m } from "$lib/paraglide/messages";
 import { ProjectStatus, type MainActionProps, type Project } from "$routes/projects/projects.types";
+import { getLatestRelease } from "$routes/projects/projects.helpers";
+import { releases } from "./history/data";
 
 const name = "Doosearch";
 
@@ -11,6 +13,8 @@ const mainAction: MainActionProps = {
     withAccent: true,
 };
 
+const updatedAt = releases.length > 1 ? getLatestRelease(releases)?.releaseDate : undefined;
+
 export const doosearch: Project = {
     id: crypto.randomUUID(),
     codename: 'doosearch',
@@ -18,7 +22,7 @@ export const doosearch: Project = {
     catchyPhrase: m['projects.doosearch.catchy_phrase'](),
 
     createdAt: new Date('2014-03-19'),
-    updatedAt: new Date('2018-09-20'),
+    updatedAt,
 
     versionName: '1.3.2',
     versionCode: 23,
