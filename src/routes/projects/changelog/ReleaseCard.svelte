@@ -3,6 +3,7 @@
     import { ReleaseTypeBadge, Summary } from ".";
     import { Package, ChevronRight } from '@lucide/svelte/icons';
     import type { Release } from '$routes/projects/projects.types';
+    import type { Snippet } from 'svelte';
 
     interface Props {
         release: Release;
@@ -46,6 +47,30 @@
     }
 </script>
 
+{#snippet header(size: 'small' | 'large')}
+    <header class="flex flex-wrap items-center gap-3 mb-2">
+        <h3 class="{size === 'small' ? 'text-xl' : 'text-2xl'} font-bold flex items-center gap-2">
+            <Package class="{size === 'small' ? 'w-5 h-5' : 'w-6 h-6'} text-primary" />
+            {release.versionString}
+        </h3>
+        {#if release.type}
+            <ReleaseTypeBadge type={release.type} />
+        {/if}
+    </header>
+{/snippet}
+
+{#snippet description(size: 'small' | 'large')}
+    {#if release.description}
+        <p class="{size === 'small' ? 'text-sm' : 'text-base'} text-foreground/70 line-clamp-2 mb-3">
+            {release.description}
+        </p>
+    {/if}
+{/snippet}
+
+{#snippet arrow()}
+    <ChevronRight class="w-9 h-9 text-muted-foreground group-hover:text-primary group-hover/content:text-primary group-hover:translate-x-1 group-hover/content:translate-x-1 transition-all shrink-0 -mr-1" />
+{/snippet}
+
 <a 
     href="/projects/doosearch/history/{release.versionString}"
     class="group block p-6 rounded-xl border-3 border-secondary
@@ -57,35 +82,19 @@
     <!-- Mobile layout -->
     <div class="flex items-start justify-between gap-4 md:hidden">
         <div class="flex-1 min-w-0">
-            <!-- Header -->
-            <header class="flex flex-wrap items-center gap-3 mb-2">
-                <h3 class="text-xl font-bold flex items-center gap-2">
-                    <Package class="w-5 h-5 text-primary" />
-                    {release.versionString}
-                </h3>
-                {#if release.type}
-                    <ReleaseTypeBadge type={release.type} />
-                {/if}
-            </header>
+            {@render header('small')}
 
             <!-- Date -->
             <time class="text-sm text-muted-foreground block mb-3">
                 {formatDate(release.releaseDate)}
             </time>
 
-            <!-- Description -->
-            {#if release.description}
-                <p class="text-sm text-foreground/70 line-clamp-2 mb-3">
-                    {release.description}
-                </p>
-            {/if}
+            {@render description('small')}
 
-            <!-- Summary -->
             <Summary {release} />
         </div>
 
-        <!-- Arrow indicator -->
-        <ChevronRight class="w-9 h-9 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0 -mr-1" />
+        {@render arrow()}
     </div>
 
     <!-- Desktop timeline layout -->
@@ -115,30 +124,14 @@
                        group-hover:shadow-lg transition-all duration-200
                        bg-background flex gap-4">
                 <div class="flex-1 min-w-0">
-                    <!-- Header -->
-                    <header class="flex flex-wrap items-center gap-3 mb-2">
-                        <h3 class="text-2xl font-bold flex items-center gap-2">
-                            <Package class="w-6 h-6 text-primary" />
-                            {release.versionString}
-                        </h3>
-                        {#if release.type}
-                            <ReleaseTypeBadge type={release.type} />
-                        {/if}
-                    </header>
+                    {@render header('large')}
 
-                    <!-- Description -->
-                    {#if release.description}
-                        <p class="text-base text-foreground/70 line-clamp-2 mb-3">
-                            {release.description}
-                        </p>
-                    {/if}
+                    {@render description('large')}
 
-                    <!-- Summary -->
                     <Summary {release} />
                 </div>
 
-                <!-- Arrow indicator -->
-                <ChevronRight class="w-9 h-9 text-muted-foreground group-hover/content:text-primary group-hover/content:translate-x-1 transition-all shrink-0 -mr-1" />
+                {@render arrow()}
             </div>
         </div>
     </div>
