@@ -34,6 +34,13 @@
             // Search in removed features
             if (release.removedFeatures?.some(r => r.toLowerCase().includes(query))) return true;
             
+            // Search in images (alt, legend, description)
+            if (release.images?.some(img => 
+                img.alt.toLowerCase().includes(query) ||
+                img.legend?.toLowerCase().includes(query) ||
+                img.description?.toLowerCase().includes(query)
+            )) return true;
+            
             return false;
         });
     });
