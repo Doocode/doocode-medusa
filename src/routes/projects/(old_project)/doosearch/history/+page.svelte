@@ -1,10 +1,10 @@
 <script lang="ts">
+    import { SearchBar } from "$lib/page";
+    import type { PageData } from './$types';
     import { m } from "$lib/paraglide/messages";
     import Heading from '$lib/page/Heading.svelte';
     import { History } from '@lucide/svelte/icons';
-    import type { PageData } from './$types';
     import { ReleaseCard } from "$routes/projects/changelog";
-    import { Input } from "$lib/components/ui/input";
     import type { Release } from '$routes/projects/projects.types';
 
     let { data }: { data: PageData } = $props();
@@ -52,11 +52,10 @@
     />
 
     <nav>
-        <Input
-            type="search"
+        <SearchBar
             bind:value={search_value}
-            placeholder={ "Search" }
-            class="w-full md:w-80"
+            placeholder={ "Find a release" }
+            class="w-full md:w-80 py-5.5 rounded-lg"
         />
     </nav>
 
