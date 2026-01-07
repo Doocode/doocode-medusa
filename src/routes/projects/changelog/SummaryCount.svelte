@@ -5,9 +5,10 @@
         type: SummaryType;
         count: number;
         label: string;
+        hideLabel?: boolean;
     }
 
-    let { type, count, label }: Props = $props();
+    let { type, count, label, hideLabel = false }: Props = $props();
 
     import { Bug, CircleDashed, ImagePlay, Sparkles, SquarePlus, Trash2 } from "@lucide/svelte/icons";
 </script>
@@ -20,7 +21,9 @@
     "text-purple-600 dark:text-purple-400": type === 'screenshots',
     "text-red-600 dark:text-red-400": type === 'removed',
     "text-gray-600 dark:text-gray-400": !type
-}}>
+}}
+    title={count + " " + label}
+>
     <span class={{
         "flex items-center gap-1 px-2.5 py-1 rounded-md": true,
         "bg-green-300 text-green-800 dark:bg-green-800/70 dark:text-green-300": type === 'features',
@@ -45,5 +48,5 @@
         {/if}
         <span class="text-lg">{count}</span>
     </span>
-    <span>{label}</span>
+    <span class:sr-only={hideLabel}>{label}</span>
 </div>

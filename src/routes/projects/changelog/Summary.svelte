@@ -4,45 +4,50 @@
 
     interface Props {
         release: Release;
+        hideLabel?: boolean;
     }
 
-    let { release }: Props = $props();
+    let { release, hideLabel = false }: Props = $props();
 </script>
 
-<div class="flex flex-wrap gap-x-6 gap-y-2">
+<div class={{
+    "flex flex-wrap": true,
+    "gap-3": hideLabel,
+    "gap-x-6 gap-y-2": !hideLabel
+}}>
     {#if release.features?.length}
-        <SummaryCount 
-            type="features" 
-            count={release.features.length} 
-            label={release.features.length === 1 ? 'feature' : 'features'} 
+        <SummaryCount {hideLabel}
+            type="features"
+            count={release.features.length}
+            label={release.features.length === 1 ? 'feature' : 'features'}
         />
     {/if}
     {#if release.improvements?.length}
-        <SummaryCount 
-            type="improvements" 
-            count={release.improvements.length} 
-            label={release.improvements.length === 1 ? 'improvement' : 'improvements'} 
+        <SummaryCount {hideLabel}
+            type="improvements"
+            count={release.improvements.length}
+            label={release.improvements.length === 1 ? 'improvement' : 'improvements'}
         />
     {/if}
     {#if release.bugfixes?.length}
-        <SummaryCount 
+        <SummaryCount {hideLabel}
             type="bugfixes" 
             count={release.bugfixes.length} 
             label={release.bugfixes.length === 1 ? 'bugfix' : 'bugfixes'} 
         />
     {/if}
     {#if release.removedFeatures?.length}
-        <SummaryCount 
-            type="removed" 
-            count={release.removedFeatures.length} 
-            label={release.removedFeatures.length === 1 ? 'removed feature' : 'removed features'} 
+        <SummaryCount {hideLabel}
+            type="removed"
+            count={release.removedFeatures.length}
+            label={release.removedFeatures.length === 1 ? 'removed feature' : 'removed features'}
         />
     {/if}
     {#if release.images?.length}
-        <SummaryCount 
-            type="screenshots" 
-            count={release.images.length} 
-            label={release.images.length === 1 ? 'screenshot' : 'screenshots'} 
+        <SummaryCount {hideLabel}
+            type="screenshots"
+            count={release.images.length}
+            label={release.images.length === 1 ? 'screenshot' : 'screenshots'}
         />
     {/if}
 </div>
