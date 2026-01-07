@@ -56,7 +56,8 @@
             <SearchBar
                 bind:value={search_value}
                 placeholder={ "Find a release" }
-                class="w-full md:w-80 py-5.5 rounded-lg"
+                class="w-full md:w-96 py-5.5 rounded-lg"
+                statusText={ search_value && filtered_releases.length + " " + "releases found" }
             />
         </nav>
     </header>
