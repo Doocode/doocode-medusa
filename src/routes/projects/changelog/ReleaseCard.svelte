@@ -100,7 +100,7 @@
     <!-- Desktop timeline layout -->
     <div class="hidden md:flex md:gap-6">
         <!-- Left: Date section (150px fixed) -->
-        <div class="w-30 shrink-0 text-right pt-1 text-balance">
+        <div class="w-25 shrink-0 text-right pt-1 text-balance">
             <div class="text-xs text-accent-foreground mb-2">
                 {getRelativeTime(release.releaseDate)}
             </div>

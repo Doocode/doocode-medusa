@@ -1,12 +1,12 @@
 <script lang="ts">
     import { getLocale } from "$lib/paraglide/runtime";
     import { m } from "$lib/paraglide/messages";
-    import Heading from '$lib/page/Heading.svelte';
     import { Package, Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
     import type { PageData } from './$types';
-    import { Lister, ReleaseTypeBadge } from "$routes/projects/changelog";
+    import { Lister, ReleaseTypeBadge, Summary } from "$routes/projects/changelog";
+    import { Heading, Restyle } from "$lib/page";
 
     let { data }: { data: PageData } = $props();
 
@@ -47,6 +47,8 @@
         <time class="text-sm md:text-base text-muted-foreground block">
             Released on {formatDate(release.releaseDate)}
         </time>
+
+        <Summary {release} hideLabel />
     </header>
 
     <!-- Description -->
@@ -62,14 +64,17 @@
     <div class="grid gap-16">
         <!-- Gallery -->
         {#if release.images && release.images.length > 0}
-            <section class="mt-8 grid gap-4">
+            <Restyle tag="section" class="mt-8 grid gap-4"
+                tintLight="oklch(54.1% 0.281 293.009)"
+                tintDark="oklch(70.2% 0.183 293.541)"
+            >
                 <Heading level="h3" icon={Fullscreen}
                     title={ m['projects.screenshots']() }
                 />
                 <div class="-mx-4">
                     <Gallery images={release.images} size="large" />
                 </div>
-            </section>
+            </Restyle>
         {/if}
 
         <!-- Features -->
@@ -100,8 +105,8 @@
                 icon={Bug}
                 heading="Bug Fixes"
                 items={release.bugfixes}
-                tintLight="oklch(55.8% 0.288 302.321)"
-                tintDark="oklch(71.4% 0.203 305.504)"
+                tintLight="oklch(64.6% 0.222 41.116)"
+                tintDark="oklch(75% 0.183 55.934)"
             />
         {/if}
 
