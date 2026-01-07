@@ -47,17 +47,19 @@
 </script>
 
 <main class="max-w-7xl mx-auto pt-8 px-4 pb-16 grid gap-8">
-    <Heading level="h2" icon={History}
-        title={ m['projects.history.long_title']() }
-    />
-
-    <nav>
-        <SearchBar
-            bind:value={search_value}
-            placeholder={ "Find a release" }
-            class="w-full md:w-80 py-5.5 rounded-lg"
+    <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:mb-8">
+        <Heading level="h2" icon={History}
+            title={ m['projects.history.long_title']() }
         />
-    </nav>
+
+        <nav>
+            <SearchBar
+                bind:value={search_value}
+                placeholder={ "Find a release" }
+                class="w-full md:w-80 py-5.5 rounded-lg"
+            />
+        </nav>
+    </header>
 
     <div class="grid gap-4 md:gap-1">
         {#each filtered_releases as release}
