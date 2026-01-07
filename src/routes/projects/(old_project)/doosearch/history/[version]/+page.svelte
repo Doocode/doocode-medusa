@@ -19,38 +19,58 @@
             day: 'numeric'
         }).format(date);
     }
+
+    function getRelativeTime(date: Date): string {
+        const now = new Date();
+        const diffInMs = date.getTime() - now.getTime();
+        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+        const diffInMonths = Math.floor(diffInDays / 30);
+        const diffInYears = Math.floor(diffInDays / 365);
+
+        const rtf = new Intl.RelativeTimeFormat(getLocale(), { numeric: 'auto' });
+
+        if (Math.abs(diffInYears) >= 1) {
+            return rtf.format(diffInYears, 'year');
+        } else if (Math.abs(diffInMonths) >= 1) {
+            return rtf.format(diffInMonths, 'month');
+        } else {
+            return rtf.format(diffInDays, 'day');
+        }
+    }
 </script>
 
-<main class="max-w-7xl mx-auto pt-8 px-4 pb-16 grid gap-8">
-    <!-- Back button -->
-    <div>
-        <Button 
-            variant="secondary" 
-            href="/projects/doosearch/history"
-            class="gap-2"
-        >
-            <ArrowLeft class="w-4 h-4" />
-            Back to releases
-        </Button>
-    </div>
+<header class="bg-[#fff1b8] dark:bg-[#362b16] ">
+    <div class="max-w-7xl m-auto p-8 md:p-12 xl:px-4 w-full grid gap-y-4">
+        <div class="flex mb-4">
+            <Button 
+                variant="outline" 
+                href="/projects/doosearch/history"
+                class="gap-2"
+            >
+                <ArrowLeft class="w-5! h-5!" />
+                Back to releases
+            </Button>
+        </div>
 
-    <!-- Header -->
-    <header class="space-y-4">
         <div class="flex flex-wrap items-end gap-3">
             <Heading level="h2" icon={Package}
                 title={release.versionString}
             />
             {#if release.type}
-                <ReleaseTypeBadge type={release.type} />
+                <div class="pb-2">
+                    <ReleaseTypeBadge type={release.type} />
+                </div>
             {/if}
         </div>
         <time class="text-sm md:text-base text-muted-foreground block">
-            Released on {formatDate(release.releaseDate)}
+            Released on {formatDate(release.releaseDate)} - {getRelativeTime(release.releaseDate)}
         </time>
 
         <Summary {release} hideLabel />
-    </header>
+    </div>
+</header>
 
+<main class="max-w-7xl mx-auto pt-8 px-4 pb-16 grid gap-8">
     <!-- Description -->
     {#if release.description}
         <div class="prose dark:prose-invert max-w-none">

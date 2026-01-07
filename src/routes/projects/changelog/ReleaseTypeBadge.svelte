@@ -1,10 +1,10 @@
 <script lang="ts">
     import { ReleaseType } from "$routes/projects/projects.types";
-    
+
     interface Props {
         type: ReleaseType;
     }
-    
+
     let {
         type
     }: Props = $props();
