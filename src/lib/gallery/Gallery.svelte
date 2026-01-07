@@ -69,7 +69,7 @@
     <div
         bind:this={scrollContainer}
         class={cn(
-            "flex gap-4 md:overflow-x-hidden overflow-y-hidden pb-4 px-4 pt-1",
+            "flex gap-4 overflow-x-auto overflow-y-hidden pb-4 px-4 pt-1 hide-scrollbar",
             className
         )}
         onscroll={updateScrollButtons}
@@ -115,6 +115,15 @@
 </main>
 
 <style>
+    .hide-scrollbar {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
     .bg-checkerboard {
         --color-1: #dce2e9;
         --color-2: #b0bbc9;
