@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Button } from "$lib/components/ui/button";
     import { ArrowLeft, ArrowRight } from '@lucide/svelte/icons';
+    import { scale } from "svelte/transition";
 
     interface Props {
         count: number;
@@ -23,25 +24,29 @@
 <main class="fixed flex justify-between items-center inset-0 pointer-events-none z-60 md:px-8">
     <div>
         {#if hasPrevious}
-            <Button
-                size="icon"
-                onclick={handlePrevious}
-                class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
-            >
-                <ArrowLeft class="w-8! h-8!" strokeWidth={3} />
-            </Button>
+            <div transition:scale|global={{ duration: 300 }}>
+                <Button
+                    size="icon"
+                    onclick={handlePrevious}
+                    class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
+                >
+                    <ArrowLeft class="w-8! h-8!" strokeWidth={3} />
+                </Button>
+            </div>
         {/if}
     </div>
 
     <div>
         {#if hasNext}
-            <Button
-                size="icon"
-                onclick={handleNext}
-                class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
-            >
-                <ArrowRight class="w-8! h-8!" strokeWidth={3} />
-            </Button>
+            <div transition:scale|global={{ duration: 300 }}>
+                <Button
+                    size="icon"
+                    onclick={handleNext}
+                    class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
+                >
+                    <ArrowRight class="w-8! h-8!" strokeWidth={3} />
+                </Button>
+            </div>
         {/if}
     </div>
 </main>

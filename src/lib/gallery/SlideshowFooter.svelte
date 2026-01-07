@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Button } from "$lib/components/ui/button";
     import { Download } from "@lucide/svelte";
+    import { slide } from "svelte/transition";
 
     interface Props {
         index: number;
@@ -35,7 +36,7 @@
 </script>
 
 <!-- TODO: Auto fade out after 5s -->
-<footer class="fixed bottom-0 left-0 right-0 flex justify-between items-end pointer-events-none z-50 p-4 md:p-8">
+<footer class="fixed bottom-0 left-0 right-0 flex justify-between items-end pointer-events-none z-50 p-4 md:p-8" transition:slide|global>
     <div class="flex-1 flex justify-start">
         <!-- TODO: Replace with bullets or progress bar -->
         <div

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Button } from "$lib/components/ui/button";
     import { X } from "@lucide/svelte";
+    import { scale } from "svelte/transition";
 
     interface Props {
         onClose: () => void;
@@ -14,7 +15,7 @@
 <header class="fixed top-0 left-0 right-0 flex justify-between items-start pointer-events-none z-70 p-4 md:p-6">
     <div class="flex-1 flex justify-start"></div>
 
-    <nav class="flex-1 flex justify-end">
+    <nav class="flex justify-end" transition:scale|global={{ duration: 350 }}>
         <Button
             size="icon"
             variant="destructive"
