@@ -1,46 +1,56 @@
 import type { GalleryImageItem } from '$lib/gallery';
 
-import logo_2026 from './doosearch_logo_2026.webp';
-import logo_2016Round from './doosearch_logo_2016_round.png'
-import logo_2016Flat from './doosearch_logo_2016_flat.png'
-import logo_2014_04 from './doosearch_logo_2014_04.png'
-import logo_2014_03 from './doosearch_logo_2014_03.png'
+import Logo_2026 from './doosearch_logo_2026.webp';
+import Logo_2016_round from './doosearch_logo_2016_round.png'
+import Logo_2016_flat from './doosearch_logo_2016_flat.png'
+import Logo_2014_04 from './doosearch_logo_2014_04.png'
+import Logo_2014_03 from './doosearch_logo_2014_03.png'
+
+const logo_2026 = {
+    src: Logo_2026,
+    alt: "Current logo - 2026",
+    withTransparencyBg: true,
+    description: "The current logo of Doosearch, introduced in 2026."
+};
+
+const logo_2016_round = {
+    src: Logo_2016_round,
+    alt: "Old logo (round) - 2016",
+    withTransparencyBg: true,
+};
+
+const logo_2016_flat = {
+    src: Logo_2016_flat,
+    alt: "Old logo (flat) - 2016",
+    withTransparencyBg: false,
+};
+
+const logo_2014_04 = {
+    src: Logo_2014_04,
+    alt: "Old logo - April 2014",
+    withTransparencyBg: true,
+};
+
+const logo_2014_03 = {
+    src: Logo_2014_03,
+    alt: "Old logo - March 2014",
+    withTransparencyBg: true,
+};
 
 export const logos: GalleryImageItem[] = [
-    {
-        src: logo_2026,
-        alt: "Current logo - 2026",
-        withTransparencyBg: true,
-        description: "The current logo of Doosearch, introduced in 2026."
-    },
-    {
-        src: logo_2016Round,
-        alt: "Old logo (round) - 2016",
-        withTransparencyBg: true,
-    },
-    /*{
-        src: logo_2016Flat,
-        alt: "Old logo (flat) - 2016",
-        withTransparencyBg: false,
-    },*/
-    {
-        src: logo_2014_04,
-        alt: "Old logo - April 2014",
-        withTransparencyBg: true,
-    },
-    {
-        src: logo_2014_03,
-        alt: "Old logo - March 2014",
-        withTransparencyBg: true,
-    },
+    logo_2026,
+    logo_2016_round,
+    //logo_2016_flat,
+    logo_2014_04,
+    logo_2014_03,
 ];
 
 export {
     // Current logo
-    logo_2026,
-    logo_2026 as currentLogo,
+    Logo_2026,
+    Logo_2026 as currentLogo,
 
     // Old versions
-    logo_2016Round,
-    logo_2016Flat
+    logo_2016_round,
+    logo_2016_flat
 }

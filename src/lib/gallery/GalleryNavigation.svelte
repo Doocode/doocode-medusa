@@ -47,10 +47,10 @@
     >
         {#if shiftPressed}
             <SkipBack class="w-5! h-5!" strokeWidth={2.5} />
-            <span>{ m['actions.scroll.start']() }</span>
+            <span class="sr-only">{ m['actions.scroll.start']() }</span>
         {:else}
             <ArrowLeft class="w-6! h-6!" />
-            <span>{ m['actions.scroll.backward']() }</span>
+            <span class="sr-only">{ m['actions.scroll.backward']() }</span>
         {/if}
     </Button>
     <Button
@@ -62,10 +62,10 @@
     >
         {#if shiftPressed}
             <SkipForward class="w-5! h-5!" strokeWidth={2.5} />
-            <span>{ m['actions.scroll.end']() }</span>
+            <span class="sr-only">{ m['actions.scroll.end']() }</span>
         {:else}
             <ArrowRight class="w-6! h-6!" />
-            <span>{ m['actions.scroll.forward']() }</span>
+            <span class="sr-only">{ m['actions.scroll.forward']() }</span>
         {/if}
     </Button>
 </nav>

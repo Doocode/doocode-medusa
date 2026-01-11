@@ -1,8 +1,8 @@
-import logo from './gallery/logo/doosearch_logo_2026.webp';
 import { m } from "$lib/paraglide/messages";
 import { ProjectStatus, type MainActionProps, type Project } from "$routes/projects/projects.types";
 import { getLatestRelease } from "$routes/projects/projects.helpers";
 import { releases } from "./history/data";
+import { currentLogo } from "./gallery/logo";
 
 const name = "Doosearch";
 
@@ -18,7 +18,7 @@ const updatedAt = releases.length > 1 ? getLatestRelease(releases)?.releaseDate 
 export const doosearch: Project = {
     id: crypto.randomUUID(),
     codename: 'doosearch',
-    name, logo, mainAction,
+    name, logo: currentLogo, mainAction,
     catchyPhrase: m['projects.doosearch.catchy_phrase'](),
 
     createdAt: new Date('2014-03-19'),

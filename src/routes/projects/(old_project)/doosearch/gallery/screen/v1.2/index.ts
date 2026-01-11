@@ -1,50 +1,65 @@
 import type { GalleryImageItem } from '$lib/gallery';
 
-import Img1 from './doosearch_1_2_screenshot_search_computer.png';
-import Img1m from './doosearch_1_2_screenshot_search_mobile.png';
-import Img2 from './doosearch_1_2_screenshot_searchEnginesList_computer.png';
-import Img2m from './doosearch_1_2_screenshot_searchEnginesList_mobile.png';
-import Img4 from './doosearch_1_2_screenshot_settings_computer.png';
-import Img4m from './doosearch_1_2_screenshot_settings_mobile.png';
-import Img5m from './doosearch_1_2_screenshot_firstRunSetup_mobile.png';
-import Img6m from './doosearch_1_2_screenshot_colorSelector_mobile.png';
-import Img7m from './doosearch_1_2_screenshot_contactForm_mobile.png';
+import Img_PC_01 from './doosearch_1_2_screenshot_search_computer.png';
+import Img_PC_02 from './doosearch_1_2_screenshot_searchEnginesList_computer.png';
+import Img_PC_04 from './doosearch_1_2_screenshot_settings_computer.png';
+
+import Img_M_01 from './doosearch_1_2_screenshot_search_mobile.png';
+import Img_M_02 from './doosearch_1_2_screenshot_searchEnginesList_mobile.png';
+import Img_M_04 from './doosearch_1_2_screenshot_settings_mobile.png';
+import Img_M_05 from './doosearch_1_2_screenshot_firstRunSetup_mobile.png';
+import Img_M_06 from './doosearch_1_2_screenshot_colorSelector_mobile.png';
+import Img_M_07 from './doosearch_1_2_screenshot_contactForm_mobile.png';
+
+// PC
+const img_pc_01 = {
+    src: Img_PC_01,
+    alt: "Search page screenshot",
+};
+const img_pc_02 = {
+    src: Img_PC_02,
+    alt: "List of search engines",
+};
+const img_pc_03 = {
+    src: Img_PC_04,
+    alt: "Settings page",
+};
+
+// Mobile
+const img_m_01 = {
+    src: Img_M_01,
+    alt: "Search page on mobile",
+};
+const img_m_02 = {
+    src: Img_M_02,
+    alt: "List of search engines on mobile",
+};
+const img_m_03 = {
+    src: Img_M_04,
+    alt: "Settings page on mobile",
+};
+const img_m_04 = {
+    src: Img_M_05,
+    alt: "First run setup with a view at the menu",
+};
+const img_m_05 = {
+    src: Img_M_06,
+    alt: "Color selector in the settings on mobile",
+};
+const img_m_06 = {
+    src: Img_M_07,
+    alt: "Contact form",
+};
 
 export const images: GalleryImageItem[] = [
-    {
-        src: Img1,
-        alt: "Search page screenshot",
-    },
-    {
-        src: Img1m,
-        alt: "Search page on mobile",
-    },
-    {
-        src: Img2,
-        alt: "List of search engines",
-    },
-    {
-        src: Img2m,
-        alt: "List of search engines on mobile",
-    },
-    {
-        src: Img4,
-        alt: "Settings page",
-    },
-    {
-        src: Img4m,
-        alt: "Settings page on mobile",
-    },
-    {
-        src: Img5m,
-        alt: "First run setup with a view at the menu",
-    },
-    {
-        src: Img6m,
-        alt: "Color selector in the settings on mobile",
-    },
-    {
-        src: Img7m,
-        alt: "Contact form",
-    },
+    img_pc_01, img_m_01, img_pc_02, img_m_02,
+    img_pc_03, img_m_03, img_m_04, img_m_05, img_m_06
+];
+
+export const mobile_images: GalleryImageItem[] = [
+    img_m_01, img_m_02, img_m_03, img_m_04, img_m_05, img_m_06
+];
+
+export const pc_images: GalleryImageItem[] = [
+    img_pc_01, img_pc_02, img_pc_03
 ];
