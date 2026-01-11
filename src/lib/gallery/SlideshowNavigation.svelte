@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ArrowLeft, ArrowRight } from '@lucide/svelte/icons';
+    import { ArrowLeft, ArrowRight, SkipBack, SkipForward } from '@lucide/svelte/icons';
     import { Button } from "$lib/components/ui/button";
     import { m } from "$lib/paraglide/messages";
     import { scale } from "svelte/transition";
@@ -9,18 +9,53 @@
         index: number;
         handlePrevious: () => void;
         handleNext: () => void;
+        handleFirst: () => void;
+        handleLast: () => void;
     }
 
     let {
         count,
         index,
         handlePrevious,
-        handleNext
+        handleNext,
+        handleFirst,
+        handleLast
     }: Props = $props();
 
     let hasPrevious = $derived(index > 0);
     let hasNext = $derived(index < count - 1);
+    let shiftPressed = $state(false);
+
+    function handleKeyDown(e: KeyboardEvent) {
+        if (e.key === 'Shift') {
+            shiftPressed = true;
+        }
+    }
+
+    function handleKeyUp(e: KeyboardEvent) {
+        if (e.key === 'Shift') {
+            shiftPressed = false;
+        }
+    }
+
+    function onPreviousClick() {
+        if (shiftPressed) {
+            handleFirst();
+        } else {
+            handlePrevious();
+        }
+    }
+
+    function onNextClick() {
+        if (shiftPressed) {
+            handleLast();
+        } else {
+            handleNext();
+        }
+    }
 </script>
+
+<svelte:window onkeydown={handleKeyDown} onkeyup={handleKeyUp} />
 
 <main class="fixed flex justify-between items-center inset-0 pointer-events-none z-60 md:px-8">
     <div>
@@ -28,10 +63,14 @@
             <div transition:scale|global={{ duration: 300 }}>
                 <Button
                     size="icon"
-                    onclick={handlePrevious}
+                    onclick={onPreviousClick}
                     class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
                 >
-                    <ArrowLeft class="w-8! h-8!" strokeWidth={3} />
+                    {#if shiftPressed}
+                        <SkipBack class="w-8! h-8!" strokeWidth={3} />
+                    {:else}
+                        <ArrowLeft class="w-8! h-8!" strokeWidth={3} />
+                    {/if}
                     <span class="sr-only">{ m['slideshow.previous']() }</span>
                 </Button>
             </div>
@@ -43,10 +82,14 @@
             <div transition:scale|global={{ duration: 300 }}>
                 <Button
                     size="icon"
-                    onclick={handleNext}
+                    onclick={onNextClick}
                     class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
                 >
-                    <ArrowRight class="w-8! h-8!" strokeWidth={3} />
+                    {#if shiftPressed}
+                        <SkipForward class="w-8! h-8!" strokeWidth={3} />
+                    {:else}
+                        <ArrowRight class="w-8! h-8!" strokeWidth={3} />
+                    {/if}
                     <span class="sr-only">{ m['slideshow.next']() }</span>
                 </Button>
             </div>

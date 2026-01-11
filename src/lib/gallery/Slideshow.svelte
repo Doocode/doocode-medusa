@@ -118,7 +118,8 @@
 
     <Navigation {index}
         count={images.length}
-        {handlePrevious} {handleNext} />
+        {handlePrevious} {handleNext}
+        {handleFirst} {handleLast} />
 
     <Footer {index}
         total={images.length}
