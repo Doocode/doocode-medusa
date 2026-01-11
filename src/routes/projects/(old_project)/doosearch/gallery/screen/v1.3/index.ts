@@ -59,3 +59,7 @@ export const mobile_images: GalleryItemContent[] = [
 export const pc_images: GalleryItemContent[] = [
     img_pc_01, img_pc_02, img_pc_04, img_pc_03, vid_pc_05,
 ];
+
+export const videos = {
+    Vid_PC_05,
+}

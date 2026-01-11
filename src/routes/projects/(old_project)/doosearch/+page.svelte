@@ -13,9 +13,9 @@
     } from "$lib/page";
     import { currentLogo } from './gallery/logo';
     import { Button } from '$lib/components/ui/button';
-    import { CrossPlatform, MultiSearch , UIPlaceholder} from './gallery/svg';
+    import { CrossPlatform, UIPlaceholder} from './gallery/svg';
     import { Gallery } from '$lib/gallery';
-    import { mobile_images, pc_images } from './gallery/screen/v1.3';
+    import { mobile_images, pc_images, videos } from './gallery/screen/v1.3';
     import ColorSwitcher from './ColorSwitcher.svelte';
     import { scale } from 'svelte/transition';
 
@@ -128,7 +128,15 @@
 
 
     <div class="grid gap-8 md:grid-cols-2 items-center md:pb-12">
-        <MultiSearch class="h-50 w-50 md:h-auto md:w-full aspect-square max-w-70 max-h-70 m-auto -rotate-6" />
+        <video
+            class="pointer-events-auto max-w-full max-h-full object-contain rounded-lg md:rounded-xl"
+            src={videos.Vid_PC_05}
+            title={"Selecting several search engines"}
+            controls autoplay loop muted
+            preload="metadata"
+        >
+            <track kind="captions" />
+        </video>
 
         <div class="grid gap-4">
             <Heading level="h2"
