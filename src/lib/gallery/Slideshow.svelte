@@ -1,5 +1,6 @@
 <script lang="ts">
     import { fade, fly } from "svelte/transition";
+    import { m } from "$lib/paraglide/messages";
     import { quintOut } from "svelte/easing";
     import {
         SlideItem as Item,
@@ -76,7 +77,7 @@
         transition:fade
         onclick={onClose}
         class="fixed inset-0 bg-black/70 backdrop-blur-xl z-40">
-        <span class="sr-only">Close slideshow</span>
+        <span class="sr-only">{ m['slideshow.close']() }</span>
     </button>
 
     <Bindings

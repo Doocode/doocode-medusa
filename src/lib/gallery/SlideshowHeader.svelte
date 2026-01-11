@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Button } from "$lib/components/ui/button";
+    import { m } from "$lib/paraglide/messages";
     import { X } from "@lucide/svelte";
     import { scale } from "svelte/transition";
 
@@ -21,7 +22,7 @@
             variant="destructive"
             onclick={onClose}
             class="w-12 h-12 hover:scale-120 active:scale-90 rounded-full pointer-events-auto"
-            title="Close slideshow"
+            title={ m['slideshow.close']() }
         >
             <X class="w-8! h-8!" strokeWidth={2} />
         </Button>

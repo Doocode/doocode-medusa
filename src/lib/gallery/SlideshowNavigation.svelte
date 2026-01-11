@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { Button } from "$lib/components/ui/button";
     import { ArrowLeft, ArrowRight } from '@lucide/svelte/icons';
+    import { Button } from "$lib/components/ui/button";
+    import { m } from "$lib/paraglide/messages";
     import { scale } from "svelte/transition";
 
     interface Props {
@@ -31,6 +32,7 @@
                     class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
                 >
                     <ArrowLeft class="w-8! h-8!" strokeWidth={3} />
+                    <span class="sr-only">{ m['slideshow.previous']() }</span>
                 </Button>
             </div>
         {/if}
@@ -45,6 +47,7 @@
                     class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
                 >
                     <ArrowRight class="w-8! h-8!" strokeWidth={3} />
+                    <span class="sr-only">{ m['slideshow.next']() }</span>
                 </Button>
             </div>
         {/if}

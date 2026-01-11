@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Button } from "$lib/components/ui/button";
+    import { m } from "$lib/paraglide/messages";
     import { Download } from "@lucide/svelte";
     import { slide } from "svelte/transition";
 
@@ -52,7 +53,7 @@
             variant="secondary"
             onclick={downloadImage}
             class="w-12 h-12 hover:scale-120 active:scale-90 pointer-events-auto"
-            title="Download image"
+            title={ m['slideshow.download_image']() }
         >
             <Download class="w-6! h-6!" strokeWidth={2} />
         </Button>
