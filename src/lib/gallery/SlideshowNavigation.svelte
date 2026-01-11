@@ -68,10 +68,11 @@
                 >
                     {#if shiftPressed}
                         <SkipBack class="w-8! h-8!" strokeWidth={3} />
+                        <span class="sr-only">{ m['slideshow.first']() }</span>
                     {:else}
                         <ArrowLeft class="w-8! h-8!" strokeWidth={3} />
+                        <span class="sr-only">{ m['slideshow.previous']() }</span>
                     {/if}
-                    <span class="sr-only">{ m['slideshow.previous']() }</span>
                 </Button>
             </div>
         {/if}
@@ -87,10 +88,11 @@
                 >
                     {#if shiftPressed}
                         <SkipForward class="w-8! h-8!" strokeWidth={3} />
+                        <span class="sr-only">{ m['slideshow.last']() }</span>
                     {:else}
                         <ArrowRight class="w-8! h-8!" strokeWidth={3} />
+                        <span class="sr-only">{ m['slideshow.next']() }</span>
                     {/if}
-                    <span class="sr-only">{ m['slideshow.next']() }</span>
                 </Button>
             </div>
         {/if}

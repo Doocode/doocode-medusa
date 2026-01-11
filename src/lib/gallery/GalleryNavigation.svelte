@@ -44,12 +44,13 @@
         size="icon"
         onclick={onScrollBackward}
         disabled={!canScrollLeft}
-        title={ m['actions.scroll.backward']() }
     >
         {#if shiftPressed}
             <SkipBack class="w-5! h-5!" strokeWidth={2.5} />
+            <span>{ m['actions.scroll.start']() }</span>
         {:else}
             <ArrowLeft class="w-6! h-6!" />
+            <span>{ m['actions.scroll.backward']() }</span>
         {/if}
     </Button>
     <Button
@@ -58,12 +59,13 @@
         size="icon"
         onclick={onScrollForward}
         disabled={!canScrollRight}
-        title={ m['actions.scroll.forward']() }
     >
         {#if shiftPressed}
             <SkipForward class="w-5! h-5!" strokeWidth={2.5} />
+            <span>{ m['actions.scroll.end']() }</span>
         {:else}
             <ArrowRight class="w-6! h-6!" />
+            <span>{ m['actions.scroll.forward']() }</span>
         {/if}
     </Button>
 </nav>
