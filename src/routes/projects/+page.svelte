@@ -9,7 +9,7 @@
     <title>{m['projects.title']()} • Doocode.xyz</title>
 </svelte:head>
 
-<main class="max-w-7xl mx-auto px-4 py-8">
+<main class="container mx-auto px-4 py-8">
     <Package class="w-20 h-20 mb-4 -mx-2 text-primary" />
     <h1 class="text-4xl font-black mb-4">{m['projects.heading']()}</h1>
     <p class="mb-8">{m['projects.description']()}</p>

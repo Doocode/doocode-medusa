@@ -40,7 +40,7 @@
 </script>
 
 <header class="bg-[#fff1b8] dark:bg-[#362b16] ">
-    <div class="max-w-7xl m-auto p-8 md:p-12 xl:px-4 w-full grid gap-y-4">
+    <div class="container m-auto p-8 md:p-12 xl:px-4 w-full grid gap-y-4">
         <div class="flex mb-4">
             <Button 
                 variant="outline" 
@@ -70,7 +70,7 @@
     </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-4 pt-8 pb-16 grid gap-16">
+<main class="container mx-auto px-4 pt-8 pb-16 grid gap-16">
     <!-- Gallery -->
     {#if release.images && release.images.length > 0}
         <Restyle tag="section" class="grid gap-4 -mb-4"

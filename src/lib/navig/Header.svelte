@@ -15,7 +15,7 @@
         'bg-black text-white dark:bg-white dark:text-black': isProjectDetail
     }}
 >
-    <div class="max-w-7xl m-auto flex items-center justify-between">
+    <div class="container m-auto flex items-center justify-between">
         <h1 class="flex-1 flex justify-start" style:--logo-color="var(--background)">
             <a href="/" class={{
                 "px-4 hover:scale-110 active:scale-90 active:-rotate-3 duration-100 flex items-baseline": true,

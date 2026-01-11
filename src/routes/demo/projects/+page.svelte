@@ -20,7 +20,7 @@
     <title>Projects demo • Doocode.xyz</title>
 </svelte:head>
 
-<main class="max-w-7xl mx-auto p-4 py-8 flex flex-col gap-6">
+<main class="container mx-auto p-4 py-8 flex flex-col gap-6">
     <strong class="-mb-6 text-primary hover:underline underline-offset-2 flex justify-start">
         <a href="/demo">Demo</a>
     </strong>
@@ -29,7 +29,7 @@
     <p class="mb-8">Preview of the projects components.</p>
 </main>
 
-<div class="max-w-7xl mx-auto px-4 mt-0 mb-12">
+<div class="container mx-auto px-4 mt-0 mb-12">
     <h2 class="text-3xl font-black pb-4">Project card</h2>
 
     <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<h2 class="max-w-7xl mx-auto px-4 pb-4 text-3xl font-black">Header</h2>
+<h2 class="container mx-auto px-4 pb-4 text-3xl font-black">Header</h2>
 {#snippet navBar()}
     <NavContener>
         <NavItem icon={ImagePlay} text="Click" onclick={() => alert('click')} />
@@ -54,7 +54,7 @@
         <NavItem icon={BadgeQuestionMark} text="Hello" />
     </NavContener>
 {/snippet}
-<h3 class="max-w-7xl mx-auto px-4 py-2 text-xl font-bold">With accent color</h3>
+<h3 class="container mx-auto px-4 py-2 text-xl font-bold">With accent color</h3>
 <Header project={data.project_withAccent}>
     {#snippet mainAction()}
         <MainAction variant="visit" href="#" withAccent
@@ -64,7 +64,7 @@
     {@render navBar()}
 </Header>
 
-<h3 class="max-w-7xl mx-auto px-4 py-2 mt-4 text-xl font-bold">Without accent color</h3>
+<h3 class="container mx-auto px-4 py-2 mt-4 text-xl font-bold">Without accent color</h3>
 <Header project={data.project_withoutAccent}>
     {#snippet mainAction()}
         <MainAction variant="visit" href="#" withAccent={false}
@@ -74,7 +74,7 @@
     {@render navBar()}
 </Header>
 
-<div class="max-w-7xl mx-auto px-4 mt-12 mb-4">
+<div class="container mx-auto px-4 mt-12 mb-4">
     <h2 class="text-3xl font-black pb-4">Changelog</h2>
 
     <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">

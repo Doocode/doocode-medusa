@@ -24,7 +24,7 @@
     let color = $state("#3b82f6")
 </script>
 
-<div class="max-w-7xl mx-auto px-4 py-8 grid gap-18">
+<div class="container mx-auto px-4 py-8 grid gap-18">
     <div class="grid gap-4">
         <div class="grid gap-8 md:grid-cols-2 items-center">
             <div class="grid gap-4">

@@ -42,8 +42,8 @@ const img_pc_04 = {
 };
 
 export const images: GalleryImageItem[] = [
-    img_m_01, img_pc_01, img_pc_02, img_pc_03,
-    img_m_02, img_m_03, img_pc_04
+    img_m_01, img_pc_01, img_pc_02, img_pc_04,
+    img_m_02, img_m_03, img_pc_03
 ];
 
 export const mobile_images: GalleryImageItem[] = [
@@ -51,5 +51,5 @@ export const mobile_images: GalleryImageItem[] = [
 ];
 
 export const pc_images: GalleryImageItem[] = [
-    img_pc_01, img_pc_02, img_pc_03, img_pc_04
+    img_pc_01, img_pc_02, img_pc_04, img_pc_03
 ];

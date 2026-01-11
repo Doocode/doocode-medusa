@@ -22,7 +22,7 @@
 >
     <div
         class={{
-            "max-w-7xl m-auto flex justify-between items-center": true,
+            "container m-auto flex justify-between items-center": true,
         }}
     >
         <div class="flex flex-1">
