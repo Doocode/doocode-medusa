@@ -1,4 +1,4 @@
-import type { GalleryImageItem } from '$lib/gallery';
+import type { GalleryItemContent } from '$lib/gallery';
 
 import about_pane from './dooscape_about_pane.png';
 import address_pane from './dooscape_address_pane.png';
@@ -12,7 +12,7 @@ import settings_customize from './dooscape_settings_customize.png';
 import settings_ui from './dooscape_settings_ui.png';
 import tabs from './dooscape_tabs.png';
 
-export const screens: GalleryImageItem[] = [
+export const screens: GalleryItemContent[] = [
     {
         src: browsing,
         alt: "Browsing",

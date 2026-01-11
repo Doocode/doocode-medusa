@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { GalleryImageItem } from ".";
+    import { GalleryItemType, type GalleryItemContent } from ".";
     
     interface Props {
-        image: GalleryImageItem
+        image: GalleryItemContent
     }
 
     let {
@@ -11,16 +11,31 @@
 </script>
 
 <main
-    class="w-full h-full flex items-center justify-center"
+    class="w-full h-full flex items-center justify-center relative"
 >
-    <img
-        class={{
-            "pointer-events-auto max-w-full max-h-full object-contain": true,
-            "rounded-lg md:rounded-xl": !image.withTransparencyBg,
-        }}
-        src={image.src}
-        alt={image.alt}
-        title={image.alt}
-        loading="lazy"
-    />
+    {#if image.type === GalleryItemType.Video}
+        <video
+            class={{
+                "pointer-events-auto max-w-full max-h-full object-contain": true,
+                "rounded-lg md:rounded-xl": !image.withTransparencyBg,
+            }}
+            src={image.src}
+            title={image.alt}
+            controls
+            preload="metadata"
+        >
+            <track kind="captions" />
+        </video>
+    {:else}
+        <img
+            class={{
+                "pointer-events-auto max-w-full max-h-full object-contain": true,
+                "rounded-lg md:rounded-xl": !image.withTransparencyBg,
+            }}
+            src={image.src}
+            alt={image.alt}
+            title={image.alt}
+            loading="lazy"
+        />
+    {/if}
 </main>

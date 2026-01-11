@@ -1,4 +1,4 @@
-import type { GalleryImageItem } from '$lib/gallery';
+import type { GalleryItemContent } from '$lib/gallery';
 
 import logo from './doosearch_makingOf_logo2026.png';
 import promo from './doosearch_makingOf_promo2021.png';
@@ -85,7 +85,7 @@ const bts_12 = {
     description: "Maquette pour une hypothetique application mobile native estampillée Doosearch.",
 };
 
-export const bts: GalleryImageItem[] = [
+export const bts: GalleryItemContent[] = [
     bts_01,
     bts_02,
     bts_03,

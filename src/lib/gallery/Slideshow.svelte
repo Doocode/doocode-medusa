@@ -9,11 +9,11 @@
         SlideshowFooter as Footer,
         SlideshowHeader as Header,
         SlideshowCaption as Caption,
-        type GalleryImageItem
+        type GalleryItemContent
     } from ".";
 
     interface Props {
-        images?: GalleryImageItem[];
+        images?: GalleryItemContent[];
         index?: number;
         open?: boolean;
     }
@@ -24,7 +24,7 @@
         open = $bindable(false)
     }: Props = $props();
 
-    let currentImage: GalleryImageItem = $derived(images[index]);
+    let currentImage: GalleryItemContent = $derived(images[index]);
     let slideDirection = $state<'left' | 'right'>('right');
 
     $effect(() => {

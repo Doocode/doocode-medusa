@@ -1,4 +1,4 @@
-import type { GalleryImageItem } from '$lib/gallery';
+import type { GalleryItemContent } from '$lib/gallery';
 
 import Img_PC_01 from './doosearch_1_2_screenshot_search_computer.png';
 import Img_PC_02 from './doosearch_1_2_screenshot_searchEnginesList_computer.png';
@@ -51,15 +51,15 @@ const img_m_06 = {
     alt: "Contact form",
 };
 
-export const images: GalleryImageItem[] = [
+export const images: GalleryItemContent[] = [
     img_pc_01, img_m_01, img_pc_02, img_m_02,
     img_pc_03, img_m_03, img_m_04, img_m_05, img_m_06
 ];
 
-export const mobile_images: GalleryImageItem[] = [
+export const mobile_images: GalleryItemContent[] = [
     img_m_01, img_m_02, img_m_03, img_m_04, img_m_05, img_m_06
 ];
 
-export const pc_images: GalleryImageItem[] = [
+export const pc_images: GalleryItemContent[] = [
     img_pc_01, img_pc_02, img_pc_03
 ];

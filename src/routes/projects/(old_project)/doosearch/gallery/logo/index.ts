@@ -1,4 +1,4 @@
-import type { GalleryImageItem } from '$lib/gallery';
+import type { GalleryItemContent } from '$lib/gallery';
 
 import Logo_2026 from './doosearch_logo_2026.webp';
 import Logo_2016_round from './doosearch_logo_2016_round.png'
@@ -37,7 +37,7 @@ const logo_2014_03 = {
     withTransparencyBg: true,
 };
 
-export const logos: GalleryImageItem[] = [
+export const logos: GalleryItemContent[] = [
     logo_2026,
     logo_2016_round,
     //logo_2016_flat,

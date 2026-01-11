@@ -1,4 +1,11 @@
-interface GalleryImageItem {
+enum GalleryItemType {
+    StaticImage,
+    AnimatedImage,
+    Video
+}
+
+interface GalleryItemContent {
+    type?: GalleryItemType;
     src: string;
     alt: string;
     legend?: string;
@@ -17,7 +24,8 @@ import SlideshowCaption from "./SlideshowCaption.svelte";
 
 export {
     // Types
-    type GalleryImageItem,
+    GalleryItemType,
+    type GalleryItemContent,
 
     // Components
     Gallery,

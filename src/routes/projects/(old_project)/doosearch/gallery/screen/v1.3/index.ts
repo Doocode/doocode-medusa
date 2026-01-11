@@ -1,4 +1,4 @@
-import type { GalleryImageItem } from '$lib/gallery';
+import { GalleryItemType, type GalleryItemContent } from '$lib/gallery';
 
 import Img_PC_01 from './doosearch_1_3_screenshot_search.png';
 import Img_PC_02 from './doosearch_1_3_screenshot_speeddial.png';
@@ -41,15 +41,15 @@ const img_pc_04 = {
     alt: "First run setup",
 };
 
-export const images: GalleryImageItem[] = [
     img_m_01, img_pc_01, img_pc_02, img_pc_04,
+export const images: GalleryItemContent[] = [
     img_m_02, img_m_03, img_pc_03
 ];
 
-export const mobile_images: GalleryImageItem[] = [
+export const mobile_images: GalleryItemContent[] = [
     img_m_01, img_m_02, img_m_03
 ];
 
-export const pc_images: GalleryImageItem[] = [
     img_pc_01, img_pc_02, img_pc_04, img_pc_03
+export const pc_images: GalleryItemContent[] = [
 ];

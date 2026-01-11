@@ -1,11 +1,12 @@
 <script lang="ts">
     import { cn } from "$lib/utils.js";
-    import type { GalleryImageItem } from ".";
+    import { GalleryItemType, type GalleryItemContent } from ".";
     import Slideshow from "./Slideshow.svelte";
     import GalleryNavigation from "./GalleryNavigation.svelte";
+    import { Play } from '@lucide/svelte/icons';
 
     interface Props {
-        images?: GalleryImageItem[];
+        images?: GalleryItemContent[];
         class?: string;
         classNavigation?: string;
         size?: 'small' | 'medium' | 'large';
@@ -75,9 +76,9 @@
         onscroll={updateScrollButtons}
         {...restProps}
     >
-        {#each images as {src, alt, withTransparencyBg}, index}
+        {#each images as {type, src, alt, withTransparencyBg}, index}
             <a class={{
-                "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-90": true,
+                "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-90 relative": true,
                 "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !withTransparencyBg,
                 "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": withTransparencyBg,
             }}
@@ -87,16 +88,41 @@
                 target="_blank"
                 onclick={(e) => onItemClick(e, index)}
             >
-                <img {src} {alt} title={alt}
-                    class={{
-                        "duration-200 object-contain": true,
-                        "h-32": size === 'small',
-                        "h-39.75": size === 'medium',
-                        "h-39.75 md:h-64": size === 'large',
-                    }}
-                    class:rounded-lg={!withTransparencyBg}
-                    loading="lazy"
-                />
+                {#if type === GalleryItemType.Video}
+                    <video
+                        {src}
+                        title={alt}
+                        class={{
+                            "duration-200 object-contain": true,
+                            "h-32": size === 'small',
+                            "h-39.75": size === 'medium',
+                            "h-39.75 md:h-64": size === 'large',
+                        }}
+                        class:rounded-lg={!withTransparencyBg}
+                        muted
+                        preload="metadata"
+                    >
+                    </video>
+                {:else}
+                    <img {src} {alt} title={alt}
+                        class={{
+                            "duration-200 object-contain": true,
+                            "h-32": size === 'small',
+                            "h-39.75": size === 'medium',
+                            "h-39.75 md:h-64": size === 'large',
+                        }}
+                        class:rounded-lg={!withTransparencyBg}
+                        loading="lazy"
+                    />
+                {/if}
+                
+                {#if type === GalleryItemType.Video || type === GalleryItemType.AnimatedImage}
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="bg-black/50 backdrop-blur-sm rounded-full p-3 md:p-4">
+                            <Play class="w-6 h-6 md:w-8 md:h-8 text-white fill-white" />
+                        </div>
+                    </div>
+                {/if}
             </a>
         {/each}
     </div>

@@ -1,4 +1,4 @@
-import type { GalleryImageItem } from "$lib/gallery";
+import type { GalleryItemContent } from "$lib/gallery";
 
 export interface TwColor {
     light: string;
@@ -97,5 +97,5 @@ export interface Release {
     /**
      * List of images
      */
-    images?: GalleryImageItem[];
+    images?: GalleryItemContent[];
 }

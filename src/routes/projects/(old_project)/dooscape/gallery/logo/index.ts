@@ -1,4 +1,4 @@
-import type { GalleryImageItem } from '$lib/gallery';
+import type { GalleryItemContent } from '$lib/gallery';
 
 import logo_2026 from './dooscape_logo_2026_round.webp';
 import logo_2017Round from './dooscape_logo_2017_round.png'
@@ -8,7 +8,7 @@ import logo_2015Neo from './dooscape_logo_2015_neo.png'
 import logo_201410 from './dooscape_logo_2014_10.png'
 import logo_201403 from './dooscape_logo_2014_03.png'
 
-export const logos: GalleryImageItem[] = [
+export const logos: GalleryItemContent[] = [
     {
         src: logo_2026,
         alt: "Current logo - 2026",
