@@ -11,19 +11,21 @@
 <header
     style:--logo-color="var(--background)"
     class={{
-        'px-1.5 text-center flex items-center justify-between': true,
+        'px-1.5': true,
         'bg-primary text-primary-foreground': !isProjectDetail,
         'bg-black text-white dark:bg-white dark:text-black': isProjectDetail
     }}
 >
-    <MenuPages />
+    <div class="container mx-auto flex items-center justify-between">
+        <MenuPages />
 
-    <h1>
-        <a href="/" class="text-2xl px-4 py-3 hover:scale-110 flex items-baseline duration-100">
-            <span class="sr-only">Doocode.xyz</span>
-            <AstroInline />
-        </a>
-    </h1>
+        <h1>
+            <a href="/" class="text-2xl px-4 py-3 hover:scale-110 flex items-baseline duration-100">
+                <span class="sr-only">Doocode.xyz</span>
+                <AstroInline />
+            </a>
+        </h1>
 
-    <NavTools />
+        <NavTools />
+    </div>
 </header>
