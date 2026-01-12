@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit'
 	import { page } from '$app/state';
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import './layout.css';
@@ -11,6 +13,9 @@
 
 	let { children } = $props();
 	let isProjectPage = $derived.by(() => isProjectDetailPath(page.url.pathname));
+	
+	injectSpeedInsights();
+	injectAnalytics();
 </script>
 
 <svelte:head>
