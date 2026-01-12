@@ -43,6 +43,7 @@
             [&_img]:rotate-x-15 [&_img]:-rotate-y-15
             [&_img]:ring-4 md:[&_img]:ring-6 xl:[&_img]:ring-8
             [&_img]:ring-background [&_img]:hover:ring-primary
+            md:-ml-12 md:mr-12 lg:ml-0
         ">
             <a href={imgs.Img_Search_PC}
                 target="_blank"

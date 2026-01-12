@@ -1,5 +1,6 @@
 <script lang="ts">
     import { cn } from "$lib/utils.js";
+    import { setContext } from "svelte";
     import type { Snippet } from "svelte";
 
     interface Props {
@@ -13,6 +14,8 @@
         type = 'ul',
         children
     }: Props = $props();
+
+    setContext('listType', type);
 </script>
 
 {#key type}
