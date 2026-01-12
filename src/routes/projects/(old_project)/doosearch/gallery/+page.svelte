@@ -2,12 +2,12 @@
     import { m } from "$lib/paraglide/messages";
     import Heading from '$lib/page/Heading.svelte';
 
-    import { DraftingCompass, PencilRuler, Fullscreen, Eye, EyeOff, History } from '@lucide/svelte/icons';
+    import { DraftingCompass, PencilRuler, Fullscreen, Eye, EyeOff, History, Construction } from '@lucide/svelte/icons';
 
     import { logos } from './logo';
     import { v1_2, v1_3 } from "./screen";
     import { Gallery } from "$lib/gallery";
-    import { bts } from "./bts";
+    import { bts, mockups } from "./bts";
     import { slide } from "svelte/transition";
     import Button from "$lib/components/ui/button/button.svelte";
     import { resolve } from "$app/paths";
@@ -62,9 +62,17 @@
     </div>
 
     <div class="grid gap-4">
-        <Heading level="h2" icon={DraftingCompass} class="px-4"
+        <Heading level="h2" icon={Construction} class="px-4"
             title={ m['projects.bts']() }
         />
         <Gallery images={ bts } />
+    </div>
+
+    <div class="grid gap-4">
+        <Heading level="h2" icon={DraftingCompass} class="px-4"
+            title={ m['projects.bts']() }
+        />
+        <p class="px-4 -mt-2">Quelques explorations au sujet de l'interface prévue pour la version 1.4 ou une éventuelle application mobile.</p>
+        <Gallery images={ mockups } size="small" />
     </div>
 </main>

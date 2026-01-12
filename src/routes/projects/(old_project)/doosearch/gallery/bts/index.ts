@@ -9,6 +9,7 @@ import mockup_v1_4_variant_02 from './mockup_v1_4_variant_02.png';
 import mockup_v1_4_variant_03 from './mockup_v1_4_variant_03.png';
 import mockup_v1_4_variant_04 from './mockup_v1_4_variant_04.png';
 import mockup_v1_4_variant_05 from './mockup_v1_4_variant_05.png';
+import mockup_v1_4_search_completion from './mockup_v1_4_search_completion.png';
 import mockup_v1_4_drawer_transition from './mockup_v1_4_drawer_transition.png';
 import mockup_v1_4_settings_01 from './mockup_v1_4_settings_01.png';
 import mockup_v1_4_settings_02 from './mockup_v1_4_settings_02.png';
@@ -67,6 +68,12 @@ const bts_09 = {
     description: "Une autre variante avec une image en fond d'écran",
 };
 
+const bts_13 = {
+    src: mockup_v1_4_search_completion,
+    alt: "Exemple de la complétion de recherche v1.4",
+    description: "Dans la liste des suggestions de recherche, 2 icônes devaient accompagner chaque items (conceptualisés par 2 cercles pour modéliser leur emplacement). L'une pour indiquer le type de suggestion (historique de saisie, favoris, site web, recherche populaire suggérée par les moteurs de recherche, etc.), et l'autre dédiée à une action spécifique (compléter la recherche sans le déclencher).",
+};
+
 const bts_10 = {
     src: mockup_v1_4_settings_01,
     alt: "Maquette des paramètres v1.4 - Partie 1",
@@ -89,6 +96,22 @@ export const bts: GalleryItemContent[] = [
     bts_01,
     bts_02,
     bts_03,
+    /*bts_04,
+    bts_05,
+    bts_06,
+    bts_07,
+    bts_08,
+    bts_09,*/
+    bts_10,
+    /*bts_11,
+    bts_12,*/
+    bts_13,
+];
+
+export const mockups: GalleryItemContent[] = [
+    /*bts_01,
+    bts_02,
+    bts_03,*/
     bts_04,
     bts_05,
     bts_06,
