@@ -5,10 +5,23 @@
         ListContainer as Ul,
         ListItem as Li
     } from "$lib/page";
-	import { staticImages } from '../gallery/landing';
+	import {
+        staticImages as imgs,
+        searchImages as images
+    } from '../gallery/landing';
+    import { Slideshow } from '$lib/gallery';
+
+    let slideIndex = $state(0);
+    let openSlideshow = $state(false);
+
+    function onItemClick(event: Event, index: number) {
+        event.preventDefault();
+        openSlideshow = true;
+        slideIndex = index;
+    }
 </script>
 
-<div class="grid gap-4">
+<div class="grid">
     <div class="grid gap-8 md:grid-cols-2 items-center">
         <div class="grid gap-4 row-start-2 md:row-start-1 lg:col-start-1">
             <Heading level="h2" class="text-balance"
@@ -23,7 +36,6 @@
             </Ul>
         </div>
 
-        <!-- TODO: Use slideshow -->
         <div class="
             flex md:justify-center items-center md:mx-auto relative
             row-start-0 md:row-start-1 lg:row-end-3 lg:col-start-2
@@ -32,13 +44,25 @@
             [&_img]:ring-4 md:[&_img]:ring-6 xl:[&_img]:ring-8
             [&_img]:ring-background [&_img]:hover:ring-primary
         ">
-            <a href={staticImages.Img_Search_PC} target="_blank" rel="noopener noreferrer">
-                <img src={staticImages.Img_Search_PC}
+            <a href={imgs.Img_Search_PC}
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+                tabindex="0"
+                onclick={(e) => onItemClick(e, 0)}
+            >
+                <img src={imgs.Img_Search_PC}
                     class="w-[80vw]"
                     alt="Doosearch search page on a PC screen" />
             </a>
-            <a href={staticImages.Img_Search_Mobile} target="_blank" rel="noopener noreferrer" class="absolute right-0 md:-right-8 top-4">
-                <img src={staticImages.Img_Search_Mobile}
+            <a href={imgs.Img_Search_Mobile}
+                target="_blank"
+                role="button"
+                tabindex="0"
+                onclick={(e) => onItemClick(e, 1)}
+                rel="noopener noreferrer" class="absolute right-0 md:-right-8 top-4"
+            >
+                <img src={imgs.Img_Search_Mobile}
                     class="w-[25vw] md:w-30 lg:w-40 xl:w-50"
                     alt="Doosearch search page on a mobile screen" />
             </a>
@@ -51,4 +75,8 @@
             <p class="text-sm">* Un <strong class="text-primary">moteur de recherche</strong> est un outil mis à disposition par un site web pour trouver plus rapidement des informations sur internet. Il présente par la suite les résultats obtenus en fonction des mots clés saisis.</p>
         </div>
     </div>
+
+    <Slideshow {images}
+        bind:open={openSlideshow}
+        bind:index={slideIndex} />
 </div>
