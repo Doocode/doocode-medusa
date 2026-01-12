@@ -26,16 +26,41 @@
 
     let currentImage: GalleryItemContent = $derived(images[index]);
     let slideDirection = $state<'left' | 'right'>('right');
+    let uiVisible = $state(true);
+    let hideTimer: number | undefined;
+
+    const HIDE_DELAY = 5 * 1000;
+
+    function resetHideTimer() {
+        uiVisible = true;
+        if (hideTimer) {
+            clearTimeout(hideTimer);
+        }
+        hideTimer = window.setTimeout(() => {
+            uiVisible = false;
+        }, HIDE_DELAY);
+    }
+
+    function handleUserActivity() {
+        resetHideTimer();
+    }
 
     $effect(() => {
         if (open) {
             document.body.style.overflow = 'hidden';
+            resetHideTimer();
         } else {
             document.body.style.overflow = '';
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+            }
         }
 
         return () => {
             document.body.style.overflow = '';
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+            }
         };
     });
 
@@ -72,6 +97,7 @@
     }
 </script>
 
+<svelte:window onmousemove={handleUserActivity} onkeydown={handleUserActivity} />
 {#if open}
     <button
         transition:fade
@@ -89,12 +115,14 @@
         {handleLast}
     />
 
-    <Header {onClose} />
+    {#if uiVisible}
+        <Header {onClose} />
 
-    <Caption open
-        caption={currentImage.alt}
-        description={currentImage.description}
-    />
+        <Caption open
+            caption={currentImage.alt}
+            description={currentImage.description}
+        />
+    {/if}
 
     <div transition:fade|global={{ duration: 150 }}>
         {#key index}
@@ -116,12 +144,14 @@
         {/key}
     </div>
 
-    <Navigation {index}
-        count={images.length}
-        {handlePrevious} {handleNext}
-        {handleFirst} {handleLast} />
+    {#if uiVisible}
+        <Navigation {index}
+            count={images.length}
+            {handlePrevious} {handleNext}
+            {handleFirst} {handleLast} />
 
-    <Footer {index}
-        total={images.length}
-        url={currentImage.src} />
+        <Footer {index}
+            total={images.length}
+            url={currentImage.src} />
+    {/if}
 {/if}

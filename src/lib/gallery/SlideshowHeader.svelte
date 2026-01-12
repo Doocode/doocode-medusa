@@ -9,7 +9,7 @@
     }
 
     let {
-        onClose
+        onClose,
     }: Props = $props();
 </script>
 
@@ -21,7 +21,7 @@
             size="icon"
             variant="destructive"
             onclick={onClose}
-            class="w-12 h-12 hover:scale-120 active:scale-90 rounded-full pointer-events-auto"
+            class="w-12 h-12 hover:scale-120 active:scale-90 rounded-full backdrop-blur-2xl pointer-events-auto"
             title={ m['slideshow.close']() }
         >
             <X class="w-8! h-8!" strokeWidth={2} />

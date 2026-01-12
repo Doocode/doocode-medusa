@@ -19,7 +19,7 @@
         handlePrevious,
         handleNext,
         handleFirst,
-        handleLast
+        handleLast,
     }: Props = $props();
 
     let hasPrevious = $derived(index > 0);
