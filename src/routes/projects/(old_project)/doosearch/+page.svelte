@@ -18,6 +18,7 @@
     import { mobile_images, pc_images, videos } from './gallery/screen/v1.3';
     import ColorSwitcher from './ColorSwitcher.svelte';
     import { scale } from 'svelte/transition';
+    import { staticImages } from './gallery/landing';
 
     let { data }: PageProps = $props();
 
@@ -27,7 +28,7 @@
 <div class="container mx-auto px-4 py-8 grid gap-18">
     <div class="grid gap-4">
         <div class="grid gap-8 md:grid-cols-2 items-center">
-            <div class="grid gap-4">
+            <div class="grid gap-4 row-start-2 md:row-start-1 lg:col-start-1">
                 <Heading level="h2" class="text-balance"
                     icon={SearchCheck}
                     title="Qu'est-ce que Doosearch ?"
@@ -40,9 +41,21 @@
                 </Ul>
             </div>
 
-            <img src={ currentLogo }
-                class="hidden md:flex w-90 lg:w-120 lg:row-start-1 lg:row-end-3 lg:col-start-2 mx-auto"
-                alt="Current Doosearch logo">
+            <div class="
+                flex md:justify-center items-center md:mx-auto relative
+                row-start-0
+                md:row-start-1 lg:row-end-3 lg:col-start-2
+                [&_img]:rounded-md [&_img]:lg:rounded-b-2xl [&_img]:rotate-x-15 [&_img]:-rotate-y-15
+                [&_img]:ring-4 md:[&_img]:ring-6 xl:[&_img]:ring-8
+                [&_img]:ring-background
+            ">
+                <img src={staticImages.Img_Search_PC}
+                    class="w-[80vw]"
+                    alt="Doosearch search page on a PC screen" />
+                <img src={staticImages.Img_Search_Mobile}
+                    class="w-[25vw] md:w-30 lg:w-40 xl:w-50 absolute right-0 md:-right-8 top-4"
+                    alt="Doosearch search page on a mobile screen" />
+            </div>
 
             <div class="md:col-start-1 md:col-end-3 md:max-w-160 md:mx-auto lg:mx-0 lg:col-end-2 lg:mt-4 bg-primary/20 dark:bg-[#5e3416] p-4 md:p-8 rounded-2xl text-balance 2xl:-ml-8" id="definition_01">
                 <p>Doosearch est une page web vous offrant la possibilité de lancer une recherche vers plus de 100 moteurs de recherche* différents (dont Google, Bing, DuckDuckGo et Qwant).</p>
@@ -51,8 +64,6 @@
                 <p class="text-sm">* Un <strong class="text-primary">moteur de recherche</strong> est un outil mis à disposition par un site web pour trouver plus rapidement des informations sur internet. Il présente par la suite les résultats obtenus en fonction des mots clés saisis.</p>
             </div>
         </div>
-
-        <!-- TODO: gallery image -->
     </div>
 
 
@@ -71,7 +82,7 @@
     <div class="grid gap-8 md:grid-cols-2 items-center">
         <img src={ currentLogo }
             class="hidden md:flex w-90 lg:w-120 mx-auto"
-            alt="Current Doosearch logo">
+            alt="Current Doosearch logo" />
 
         <div class="grid gap-4">
             <Heading level="h2"
@@ -122,7 +133,7 @@
 
         <img src={ currentLogo }
             class="hidden md:flex w-90 lg:w-100 mx-auto"
-            alt="Current Doosearch logo">
+            alt="Current Doosearch logo" />
     </div>
 
 
