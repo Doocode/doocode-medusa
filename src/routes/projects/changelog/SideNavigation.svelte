@@ -72,7 +72,7 @@
                 <Icon size={24} class="shrink-0" />
             {/key}
             <span class="font-medium">{label}</span>
-            <span class="ml-auto text-sm aspect-square font-bold px-2.5 py-1 -my-1 rounded-full {style.badge}">
+            <span class="ml-auto text-sm aspect-square font-bold w-7 h-7 flex items-center justify-center text-center -my-1 rounded-full {style.badge}">
                 {count}
             </span>
         </a>
