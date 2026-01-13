@@ -18,7 +18,7 @@
     }: Props = $props();
 </script>
 
-<InputGroup.Root class={cn(className)}>
+<InputGroup.Root class={cn("py-5.5 rounded-lg", className)}>
     <InputGroup.Input bind:value {placeholder} />
     <InputGroup.Addon>
         <SearchIcon class="w-5! h-5!" />

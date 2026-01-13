@@ -113,9 +113,6 @@
     <Dialog.Content class="sm:max-w-115">
         <Dialog.Header>
             <Dialog.Title>Links</Dialog.Title>
-            <Dialog.Description>
-                Access resources, downloads, and documentation.
-            </Dialog.Description>
         </Dialog.Header>
 
         <div class="pb-2">
