@@ -35,7 +35,7 @@ export interface Project {
 
 export interface MainActionProps {
     variant: "download" | "try" | "demo" | "repository" | "visit" | "help" | "contact";
-    onClick?: () => void;
+    onClick?: (e: Event) => void;
     href?: string;
     text: string;
     withAccent?: boolean;
