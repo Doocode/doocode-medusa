@@ -45,7 +45,7 @@ const website: ProjectLink = {
 };
 const repository: ProjectLink = {
     type: LinkType.Repository,
-    label: 'Repository GitHub',
+    label: 'Code source',
     url: 'https://github.com/Doocode/Doosearch/',
     createdAt: new Date('2016-06-30'),
 };

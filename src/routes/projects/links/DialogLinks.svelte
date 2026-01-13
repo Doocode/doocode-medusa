@@ -138,11 +138,11 @@
                     })}
                 >
                     <div class="flex items-center gap-4 min-w-0 flex-1">
-                        <div class="p-2 rounded-md bg-muted group-hover:bg-background border transition-colors shrink-0">
-                            <Icon class="size-6" />
+                        <div class="p-2 sm:p-3 rounded-md bg-muted group-hover:bg-background border transition-colors shrink-0 text-primary">
+                            <Icon class="size-6 sm:size-8" />
                         </div>
                         <div class="flex flex-col items-start gap-0.5 text-left min-w-0 flex-1">
-                            <span class="font-semibold text-sm truncate w-full pr-2">{link.label || link.type}</span>
+                            <span class="font-semibold text-sm text-primary truncate w-full">{link.label || link.type}</span>
                             <div class="text-xs text-muted-foreground font-normal w-full overflow-hidden whitespace-nowrap opacity-80">
                                 {#if urlInfo.valid}
                                     <span class="text-foreground/90 font-medium">{urlInfo.hostname}</span><span class="hidden sm:inline">{urlInfo.path}</span>
@@ -150,6 +150,13 @@
                                     <span class="truncate block">{link.url}</span>
                                 {/if}
                             </div>
+                            {#if link.updatedAt || link.createdAt}
+                                {@const date = new Date(link.updatedAt || link.createdAt!)}
+                                {@const label = link.updatedAt ? "Updated" : "Added"}
+                                <span class="text-[10px] text-muted-foreground hidden sm:block pt-0.5">
+                                    {label} {getRelativeTime(date)}
+                                </span>
+                            {/if}
                         </div>
                     </div>
                     {#if isDl}
