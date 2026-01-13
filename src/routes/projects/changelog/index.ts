@@ -3,6 +3,7 @@ import ReleaseCard from './ReleaseCard.svelte';
 import ReleaseTypeBadge from './ReleaseTypeBadge.svelte';
 import Summary from './Summary.svelte';
 import SummaryCount from './SummaryCount.svelte';
+import SideNavigation from './SideNavigation.svelte';
 
 export {
     Lister,
@@ -10,4 +11,5 @@ export {
     ReleaseTypeBadge,
     Summary,
     SummaryCount,
+    SideNavigation
 }

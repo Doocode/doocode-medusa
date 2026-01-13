@@ -5,7 +5,7 @@
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
     import type { PageData } from './$types';
-    import { Lister, ReleaseTypeBadge, Summary } from "$routes/projects/changelog";
+    import { Lister, ReleaseTypeBadge, SideNavigation, Summary } from "$routes/projects/changelog";
     import { Heading, Restyle } from "$lib/page";
 
     let { data }: { data: PageData } = $props();
@@ -71,7 +71,7 @@
 </header>
 
 <main class="container mx-auto px-4 pt-8 pb-16 grid gap-16 lg:grid-cols-[300px_1fr] xl:grid-cols-[350px_1fr] items-start">
-    <aside class="hidden lg:grid gap-y-4">
+    <aside class="hidden lg:grid gap-y-4 sticky top-8 self-start">
         <div class="flex mb-4">
             <Button 
                 variant="outline" 
@@ -98,12 +98,14 @@
         </time>
 
         <Summary {release} hideLabel />
+
+        <SideNavigation {release} />
     </aside>
 
     <div class="grid gap-16">
         <!-- Gallery -->
         {#if release.images && release.images.length > 0}
-            <Restyle tag="section" class="grid gap-4 -mb-4"
+            <Restyle tag="section" class="grid gap-4 -mb-4" id="screenshots"
                 tintLight="oklch(54.1% 0.281 293.009)"
                 tintDark="oklch(70.2% 0.183 293.541)"
             >
@@ -127,9 +129,9 @@
 
         <!-- Features -->
         {#if release.features && release.features.length > 0}
-            <Lister
+            <Lister id="features"
                 icon={SquarePlus}
-                heading="New Features"
+                heading="Features"
                 items={release.features}
                 tintLight="oklch(62.7% 0.194 149.214)"
                 tintDark="oklch(79.2% 0.209 151.711)"
@@ -138,7 +140,7 @@
 
         <!-- Improvements -->
         {#if release.improvements && release.improvements.length > 0}
-            <Lister
+            <Lister id="improvements"
                 icon={Sparkles}
                 heading="Improvements"
                 items={release.improvements}
@@ -149,7 +151,7 @@
 
         <!-- Bug Fixes -->
         {#if release.bugfixes && release.bugfixes.length > 0}
-            <Lister
+            <Lister id="bugfixes"
                 icon={Bug}
                 heading="Bug Fixes"
                 items={release.bugfixes}
@@ -160,7 +162,7 @@
 
         <!-- Removed Features -->
         {#if release.removedFeatures && release.removedFeatures.length > 0}
-            <Lister
+            <Lister id="removed"
                 icon={Trash2}
                 heading="Removed Features"
                 items={release.removedFeatures}
