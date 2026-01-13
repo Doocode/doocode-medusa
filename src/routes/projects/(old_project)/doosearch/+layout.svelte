@@ -8,10 +8,11 @@
         NavItem as Page,
         NavContener as Nav
     } from '$routes/projects/header/index';
-    import { Blocks, BugPlay, History, House, ImagePlay, MessageCircleQuestionMark, Newspaper } from '@lucide/svelte';
-    import { mainAction as action } from './data';
+    import { BugPlay, History, House, ImagePlay, MessageCircleQuestionMark, Newspaper } from '@lucide/svelte';
+    import { mainAction as action, links } from './data';
     import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
+    import { DialogLinks } from '$routes/projects/links';
 
     let dialogLinks = $state(false)
     let projectRootUrl = $derived(`/projects/${data.project.codename}`);
@@ -20,7 +21,11 @@
 <Header project={data.project}>
     {#snippet mainAction()}
         <MainAction {...action}
-            onClick={() => dialogLinks = !dialogLinks} />
+            onClick={(e) => {
+                e.preventDefault();
+                dialogLinks = !dialogLinks;
+            }}
+        />
     {/snippet}
 
     <Nav>
@@ -57,3 +62,5 @@
 >
     {@render children()}
 </main>
+
+<DialogLinks bind:open={dialogLinks} {links} />

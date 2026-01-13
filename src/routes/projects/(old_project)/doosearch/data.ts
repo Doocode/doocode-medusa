@@ -1,5 +1,5 @@
 import { m } from "$lib/paraglide/messages";
-import { ProjectStatus, type MainActionProps, type Project } from "$routes/projects/projects.types";
+import { LinkType, ProjectStatus, type MainActionProps, type Project, type ProjectLink } from "$routes/projects/projects.types";
 import { getLatestRelease } from "$routes/projects/projects.helpers";
 import { releases } from "./history/data";
 import { currentLogo } from "./gallery/logo";
@@ -34,3 +34,23 @@ export const doosearch: Project = {
 
     bgAccent: { light: '#ffc14e', dark: '#be5c05' },
 }
+
+// Links
+const website: ProjectLink = {
+    type: LinkType.Website,
+    label: "Site web",
+    url: 'https://search.doocode.xyz',
+    createdAt: new Date('2014-03-19'),
+    updatedAt: new Date('2018-07-20'),
+};
+const repository: ProjectLink = {
+    type: LinkType.Repository,
+    label: 'Repository GitHub',
+    url: 'https://github.com/Doocode/Doosearch/',
+    createdAt: new Date('2016-06-30'),
+};
+
+export const links: ProjectLink[] = [
+    website,
+    repository,
+];
