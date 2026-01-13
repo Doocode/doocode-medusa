@@ -5,6 +5,7 @@
 
     import { Header, MainAction, NavItem, NavContener } from '../../header/index';
     import ImagePlay from '@lucide/svelte/icons/image-play';
+    import { mainAction as action } from './data';
     import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
 
@@ -14,8 +15,6 @@
 
 <Header project={data.project}>
     {#snippet mainAction()}
-        {@const { href, ...action } = data.project.mainAction}
-
         <MainAction {...action}
             onClick={() => dialogLinks = !dialogLinks} />
     {/snippet}

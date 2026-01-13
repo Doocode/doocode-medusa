@@ -31,7 +31,6 @@ export interface Project {
     licenseUrl?: string;
 
     bgAccent?: TwColor;
-    mainAction: MainActionProps;
 }
 
 export interface MainActionProps {

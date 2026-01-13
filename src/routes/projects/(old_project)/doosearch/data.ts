@@ -6,7 +6,7 @@ import { currentLogo } from "./gallery/logo";
 
 const name = "Doosearch";
 
-const mainAction: MainActionProps = {
+export const mainAction: MainActionProps = {
     variant: 'visit',
     href: 'https://search.doocode.xyz',
     text: m['actions.visit']({ name }),
@@ -18,7 +18,8 @@ const updatedAt = releases.length > 1 ? getLatestRelease(releases)?.releaseDate 
 export const doosearch: Project = {
     id: crypto.randomUUID(),
     codename: 'doosearch',
-    name, logo: currentLogo, mainAction,
+    name, logo: currentLogo,
+    
     catchyPhrase: m['projects.doosearch.catchy_phrase'](),
 
     createdAt: new Date('2014-03-19'),

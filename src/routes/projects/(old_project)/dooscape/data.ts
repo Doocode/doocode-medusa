@@ -4,7 +4,7 @@ import { currentLogo } from "./gallery/logo";
 
 const name = "Dooscape";
 
-const mainAction: MainActionProps = {
+export const mainAction: MainActionProps = {
     variant: 'repository',
     href: 'https://github.com/Doocode/Dooscape/',
     text: m['actions.visit']({ name: "GitHub" }),
@@ -14,7 +14,7 @@ const mainAction: MainActionProps = {
 export const dooscape: Project = {
     id: crypto.randomUUID(),
     codename: 'dooscape',
-    name, logo: currentLogo, mainAction,
+    name, logo: currentLogo,
     catchyPhrase: m['projects.dooscape.catchy_phrase'](),
     createdAt: new Date('2013-12-11'),
     updatedAt: new Date('2016-01-20'),

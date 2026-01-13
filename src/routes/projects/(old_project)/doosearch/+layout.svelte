@@ -9,6 +9,7 @@
         NavContener as Nav
     } from '$routes/projects/header/index';
     import { Blocks, BugPlay, History, House, ImagePlay, MessageCircleQuestionMark, Newspaper } from '@lucide/svelte';
+    import { mainAction as action } from './data';
     import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
 
@@ -18,8 +19,6 @@
 
 <Header project={data.project}>
     {#snippet mainAction()}
-        {@const { ...action } = data.project.mainAction}
-
         <MainAction {...action}
             onClick={() => dialogLinks = !dialogLinks} />
     {/snippet}

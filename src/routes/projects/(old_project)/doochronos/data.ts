@@ -4,7 +4,7 @@ import type { MainActionProps, Project } from "$routes/projects/projects.types";
 
 const name = "Doochronos";
 
-const mainAction: MainActionProps = {
+export const mainAction: MainActionProps = {
     variant: 'try',
     href: 'https://chronos.doocode.xyz',
     text: m['actions.test']({ name }),
@@ -14,7 +14,7 @@ const mainAction: MainActionProps = {
 export const doochronos: Project = {
     id: crypto.randomUUID(),
     codename: 'doochronos',
-    name, logo, mainAction,
+    name, logo,
     catchyPhrase: m['projects.doochronos.catchy_phrase'](),
     createdAt: new Date('2016-03-15'),
     updatedAt: new Date('2018-06-15'),
