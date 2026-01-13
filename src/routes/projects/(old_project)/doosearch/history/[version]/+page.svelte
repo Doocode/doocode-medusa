@@ -48,7 +48,7 @@
                 class="gap-2"
             >
                 <ArrowLeft class="w-5! h-5!" />
-                Back to releases
+                Back to history
             </Button>
         </div>
 
@@ -72,21 +72,23 @@
 
 <main class="container mx-auto px-4 pt-8 pb-16 grid gap-16 lg:grid-cols-[300px_1fr] xl:grid-cols-[350px_1fr] items-start">
     <aside class="hidden lg:grid gap-y-4 sticky top-8 self-start">
-        <div class="flex mb-4">
+        <div class="flex mb-8">
             <Button 
                 variant="outline" 
                 href="/projects/doosearch/history"
                 class="gap-2"
             >
                 <ArrowLeft class="w-5! h-5!" />
-                Back to releases
+                Back to history
             </Button>
         </div>
 
         <div class="flex flex-wrap items-end gap-3">
-            <Heading level="h2" icon={Package}
-                title={release.versionString}
-            />
+            <h2 class={{
+                "text-primary": true,
+                "text-6xl": release.versionString.length <= 6,
+                "text-4xl": release.versionString.length > 6
+            }}>{release.versionString}</h2>
             {#if release.type}
                 <div class="pb-2">
                     <ReleaseTypeBadge type={release.type} />
