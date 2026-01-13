@@ -1,8 +1,9 @@
 <script lang="ts">
+    import type { HTMLAttributes } from "svelte/elements";
     import type { Snippet } from 'svelte';
     import { cn } from "$lib/utils.js";
 
-    interface Props {
+    interface Props extends HTMLAttributes<HTMLElement> {
         class?: string;
         tag?: string;
         tintLight?: string;
@@ -10,7 +11,7 @@
         children: Snippet;
     }
 
-    let { class: className, tintLight, tintDark, tag = "div", children }: Props = $props();
+    let { class: className, tintLight, tintDark, tag = "div", children, ...restProps }: Props = $props();
 </script>
 
 <svelte:element
@@ -18,6 +19,7 @@
     class={cn("restyle-wrapper", className)}
     style:--tintLight={tintLight}
     style:--tintDark={tintDark}
+    {...restProps}
 >
     {@render children()}
 </svelte:element>

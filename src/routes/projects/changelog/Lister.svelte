@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { HTMLAttributes } from "svelte/elements";
     import type { Component } from 'svelte';
     import {
         Heading, Restyle,
@@ -6,7 +7,7 @@
         ListItem as Li
     } from "$lib/page";
 
-    interface Props {
+    interface Props extends HTMLAttributes<HTMLElement> {
         icon: Component;
         heading: string;
         items: string[];
@@ -14,12 +15,13 @@
         tintDark?: string;
     }
 
-    let { icon, heading, items, tintLight, tintDark }: Props = $props();
+    let { icon, heading, items, tintLight, tintDark, ...restProps }: Props = $props();
 </script>
 
 <Restyle {tintLight} {tintDark}
     tag="section"
     class="grid gap-6"
+    {...restProps}
 >
     <Heading {icon}
         level="h3"
