@@ -9,6 +9,7 @@
         Archive, Link as LinkIcon, Download, ExternalLink 
     } from "@lucide/svelte";
     import type { Component } from 'svelte';
+    import { SearchBar } from "$lib/page";
 
     interface Props {
         open?: boolean,
@@ -16,6 +17,17 @@
     }
 
     let { open = $bindable(false), links = [] }: Props = $props();
+
+    let searchQuery = $state("");
+
+    const filteredLinks = $derived(links.filter(link => {
+        const term = searchQuery.toLowerCase();
+        return (
+            link.type.toLowerCase().includes(term) ||
+            link.label?.toLowerCase().includes(term) ||
+            link.url.toLowerCase().includes(term)
+        );
+    }));
 
     const icons: Record<string, Component> = {
         [LinkType.Website]: Globe,
@@ -106,8 +118,12 @@
             </Dialog.Description>
         </Dialog.Header>
 
+        <div class="pb-2">
+            <SearchBar bind:value={searchQuery} placeholder="Search links..." />
+        </div>
+
         <div class="grid gap-3 py-4 max-h-[60vh] overflow-y-auto pr-2 -mr-2">
-            {#each links as link}
+            {#each filteredLinks as link}
                 {@const Icon = icons[link.type] || LinkIcon}
                 {@const isDl = isDownload(link.type)}
                 {@const urlInfo = formatUrl(link.url)}
@@ -144,10 +160,10 @@
                 </a>
             {/each}
 
-            {#if links.length === 0}
+            {#if filteredLinks.length === 0}
                 <div class="flex flex-col items-center justify-center py-8 text-muted-foreground border-2 border-dashed rounded-xl bg-muted/30">
                     <LinkIcon class="size-8 opacity-20 mb-2" />
-                    <span class="text-sm">No links available</span>
+                    <span class="text-sm">No links found</span>
                 </div>
             {/if}
         </div>
