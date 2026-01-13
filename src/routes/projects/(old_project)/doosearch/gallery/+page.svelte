@@ -70,9 +70,9 @@
 
     <div class="grid gap-4">
         <Heading level="h2" icon={DraftingCompass} class="px-4"
-            title={ m['projects.bts']() }
+            title={ m['projects.mockups']() }
         />
-        <p class="px-4 -mt-2">Quelques explorations au sujet de l'interface prévue pour la version 1.4 ou une éventuelle application mobile.</p>
+        <p class="px-4 -mt-2">Quelques explorations au sujet de l'interface qui était prévue pour la version 1.4 ou une éventuelle application mobile.</p>
         <Gallery images={ mockups } size="small" />
     </div>
 </main>

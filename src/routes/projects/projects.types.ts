@@ -98,3 +98,27 @@ export interface Release {
      */
     images?: GalleryItemContent[];
 }
+
+export enum LinkType {
+    Website = 'Website',
+    Repository = 'Repository',
+    Documentation = 'Documentation',
+    License = 'License',
+    WindowsExecutable = 'WindowsExecutable',
+    WindowsInstaller = 'WindowsInstaller',
+    MacOS = 'MacOS',
+    Linux = 'Linux',
+    Android = 'Android',
+    iOS = 'iOS',
+    WebExtension = 'WebExtension',
+    Archive = 'Archive',
+    Other = 'Other',
+}
+
+export interface ProjectLink {
+    type: LinkType;
+    label?: string;
+    url: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+}
