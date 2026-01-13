@@ -40,10 +40,6 @@
             text={ m['projects.history.short_title']() }
             href={`${projectRootUrl}/history`}
             selected={page.url.pathname.startsWith(`${projectRootUrl}/history`)} />
-        <Page icon={Blocks}
-            text={ "Plugins" }
-            href={`${projectRootUrl}/plugins`}
-            selected={page.url.pathname.startsWith(`${projectRootUrl}/plugins`)} />
         <Page icon={BugPlay}
             text={ "Code" }
             href={`${projectRootUrl}/development`}

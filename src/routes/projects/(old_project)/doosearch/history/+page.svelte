@@ -46,7 +46,7 @@
     });
 </script>
 
-<main class="container mx-auto pt-8 px-4 pb-16 grid gap-8">
+<main class="container max-w-5xl mx-auto pt-8 px-4 pb-16 grid gap-8">
     <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:mb-8">
         <Heading level="h2" icon={History}
             title={ m['projects.history.long_title']() }
