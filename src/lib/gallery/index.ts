@@ -1,5 +1,5 @@
 enum GalleryItemType {
-    StaticImage,
+    Image,
     Video
 }
 
@@ -13,6 +13,10 @@ interface GalleryItemContent {
 }
 
 import Gallery from "./Gallery.svelte";
+import GalleryHeader from "./GalleryHeader.svelte";
+import GalleryNavigation from "./GalleryNavigation.svelte";
+import GalleryCounter from "./GalleryCounter.svelte";
+import GalleryTile from "./GalleryTile.svelte";
 
 export {
     // Types
@@ -21,4 +25,8 @@ export {
 
     // Components
     Gallery,
+    GalleryHeader,
+    GalleryNavigation,
+    GalleryCounter,
+    GalleryTile,
 }

@@ -1,27 +1,20 @@
 <script lang="ts">
-    import { cn } from "$lib/utils.js";
     import { m } from "$lib/paraglide/messages";
     import { Button } from "$lib/components/ui/button";
-    import { ArrowLeft, ArrowRight, Clapperboard, Image, SquarePlay, SkipBack, SkipForward } from '@lucide/svelte/icons';
+    import { ArrowLeft, ArrowRight, SkipBack, SkipForward } from '@lucide/svelte/icons';
 
     interface Props {
-        class?: string;
         canScrollLeft?: boolean;
         canScrollRight?: boolean;
         onScrollBackward: (event: MouseEvent) => void;
         onScrollForward: (event: MouseEvent) => void;
-        imageCount?: number;
-        videoCount?: number;
     }
 
     let {
-        class: className,
         canScrollLeft = false,
         canScrollRight = true,
         onScrollBackward,
         onScrollForward,
-        imageCount = 0,
-        videoCount = 0
     }: Props = $props();
 
     let shiftPressed = $state(false);
@@ -69,39 +62,17 @@
     </Button>
 {/snippet}
 
-<nav class={cn("flex justify-between items-center px-4", className)}>
-    <div class="flex gap-4">
-        {@render navButton(
-            onScrollBackward, canScrollLeft,
-            ArrowLeft, SkipBack,
-            m['actions.scroll.backward'](),
-            m['actions.scroll.start']()
-        )}
-        {@render navButton(
-            onScrollForward, canScrollRight,
-            ArrowRight, SkipForward,
-            m['actions.scroll.forward'](),
-            m['actions.scroll.end']()
-        )}
-    </div>
-    <div class="flex gap-6">
-        {#if imageCount > 0}
-            <div class="flex items-center gap-1 text-muted-foreground">
-                <span class="text-2xl font-thin">
-                    {imageCount}
-                </span>
-                <span class="sr-only">images</span>
-                <Image size={24} strokeWidth={1.75} />
-            </div>
-        {/if}
-        {#if videoCount > 0}
-            <div class="flex items-center gap-1 text-muted-foreground">
-                <span class="text-2xl font-thin">
-                    {videoCount}
-                </span>
-                <span class="sr-only">videos</span>
-                <SquarePlay size={24} strokeWidth={1.75} />
-            </div>
-        {/if}
-    </div>
-</nav>
+<div class="flex gap-4">
+    {@render navButton(
+        onScrollBackward, canScrollLeft,
+        ArrowLeft, SkipBack,
+        m['actions.scroll.backward'](),
+        m['actions.scroll.start']()
+    )}
+    {@render navButton(
+        onScrollForward, canScrollRight,
+        ArrowRight, SkipForward,
+        m['actions.scroll.forward'](),
+        m['actions.scroll.end']()
+    )}
+</div>

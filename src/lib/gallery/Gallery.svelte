@@ -1,14 +1,12 @@
 <script lang="ts">
     import { cn } from "$lib/utils.js";
-    import { GalleryItemType, type GalleryItemContent } from ".";
+    import { GalleryHeader, GalleryItemType, type GalleryItemContent, GalleryTile } from ".";
     import { Slideshow } from "../slideshow";
-    import GalleryNavigation from "./GalleryNavigation.svelte";
-    import { Play } from '@lucide/svelte/icons';
 
     interface Props {
         images?: GalleryItemContent[];
         class?: string;
-        classNavigation?: string;
+        classHeader?: string;
         size?: 'small' | 'medium' | 'large';
     }
 
@@ -16,11 +14,11 @@
         images = [],
         size = 'medium',
         class: className,
-        classNavigation = "",
+        classHeader = "",
         ...restProps
     }: Props = $props();
 
-    let imageCount = $derived(images.filter(img => img.type !== GalleryItemType.Video).length);
+    let imageCount = $derived(images.filter(img => img.type === GalleryItemType.Image).length);
     let videoCount = $derived(images.filter(img => img.type === GalleryItemType.Video).length);
 
     let openSlideshow = $state(false);
@@ -71,14 +69,12 @@
 
 <main class="grid">
     <div class="grid">
-        <GalleryNavigation
-            class={classNavigation}
-            {canScrollLeft}
-            {canScrollRight}
+        <GalleryHeader
+            class={classHeader}
+            {imageCount} {videoCount}
+            {canScrollLeft} {canScrollRight}
             onScrollBackward={scrollBackward}
             onScrollForward={scrollForward}
-            {imageCount}
-            {videoCount}
         />
 
         <div
@@ -90,54 +86,12 @@
             onscroll={updateScrollButtons}
             {...restProps}
         >
-            {#each images as {type, src, alt, withTransparencyBg}, index}
-                <a class={{
-                    "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-90 relative": true,
-                    "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !withTransparencyBg,
-                    "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": withTransparencyBg,
-                }}
-                    href={src}
-                    role="button"
-                    tabindex="0"
-                    target="_blank"
+            {#each images as item, index}
+                <GalleryTile
+                    {item}
+                    {size}
                     onclick={(e) => onItemClick(e, index)}
-                >
-                    {#if type === GalleryItemType.Video}
-                        <video
-                            {src}
-                            title={alt}
-                            class={{
-                                "duration-200 object-contain": true,
-                                "h-32": size === 'small',
-                                "h-39.75": size === 'medium',
-                                "h-39.75 md:h-64": size === 'large',
-                            }}
-                            class:rounded-lg={!withTransparencyBg}
-                            muted
-                            preload="metadata"
-                        >
-                        </video>
-                    {:else}
-                        <img {src} {alt} title={alt}
-                            class={{
-                                "duration-200 object-contain": true,
-                                "h-32": size === 'small',
-                                "h-39.75": size === 'medium',
-                                "h-39.75 md:h-64": size === 'large',
-                            }}
-                            class:rounded-lg={!withTransparencyBg}
-                            loading="lazy"
-                        />
-                    {/if}
-                    
-                    {#if type === GalleryItemType.Video}
-                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <div class="bg-black/50 backdrop-blur-sm rounded-full p-3 md:p-4">
-                                <Play class="w-6 h-6 md:w-8 md:h-8 text-white fill-white" />
-                            </div>
-                        </div>
-                    {/if}
-                </a>
+                />
             {/each}
         </div>
     </div>
