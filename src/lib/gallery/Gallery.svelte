@@ -20,6 +20,9 @@
         ...restProps
     }: Props = $props();
 
+    let imageCount = $derived(images.filter(img => img.type !== GalleryItemType.Video).length);
+    let videoCount = $derived(images.filter(img => img.type === GalleryItemType.Video).length);
+
     let openSlideshow = $state(false);
     let slideIndex = $state(0);
     let scrollContainer: HTMLDivElement;
@@ -74,7 +77,8 @@
             {canScrollRight}
             onScrollBackward={scrollBackward}
             onScrollForward={scrollForward}
-            count={images.length}
+            {imageCount}
+            {videoCount}
         />
 
         <div
@@ -126,7 +130,7 @@
                         />
                     {/if}
                     
-                    {#if type === GalleryItemType.Video || type === GalleryItemType.AnimatedImage}
+                    {#if type === GalleryItemType.Video}
                         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <div class="bg-black/50 backdrop-blur-sm rounded-full p-3 md:p-4">
                                 <Play class="w-6 h-6 md:w-8 md:h-8 text-white fill-white" />

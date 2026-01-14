@@ -6,7 +6,7 @@ import {
 
 export const v1_3_2: Release = {
     releaseDate: new Date('2018-09-20'),
-    versionNumber: 25,
+    versionNumber: 26,
     versionString: 'v1.3.2',
     type: ReleaseType.Stable,
     description: 'Quelques améliorations de la stabilité et corrections de bugs.',
@@ -29,7 +29,7 @@ export const v1_3_2: Release = {
 
 export const v1_3: Release = {
     releaseDate: new Date('2018-07-20'),
-    versionNumber: 23,
+    versionNumber: 24,
     versionString: 'v1.3.0',
     type: ReleaseType.Stable,
     description: 'La dernière grosse mise à jour de Doosearch',

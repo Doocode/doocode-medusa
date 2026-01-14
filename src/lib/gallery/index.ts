@@ -1,6 +1,5 @@
 enum GalleryItemType {
     StaticImage,
-    AnimatedImage,
     Video
 }
 

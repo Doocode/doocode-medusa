@@ -2,7 +2,7 @@
     import { cn } from "$lib/utils.js";
     import { m } from "$lib/paraglide/messages";
     import { Button } from "$lib/components/ui/button";
-    import { ArrowLeft, ArrowRight, Image, SkipBack, SkipForward } from '@lucide/svelte/icons';
+    import { ArrowLeft, ArrowRight, Clapperboard, Image, SquarePlay, SkipBack, SkipForward } from '@lucide/svelte/icons';
 
     interface Props {
         class?: string;
@@ -10,7 +10,8 @@
         canScrollRight?: boolean;
         onScrollBackward: (event: MouseEvent) => void;
         onScrollForward: (event: MouseEvent) => void;
-        count?: number;
+        imageCount?: number;
+        videoCount?: number;
     }
 
     let {
@@ -19,7 +20,8 @@
         canScrollRight = true,
         onScrollBackward,
         onScrollForward,
-        count = 0
+        imageCount = 0,
+        videoCount = 0
     }: Props = $props();
 
     let shiftPressed = $state(false);
@@ -52,7 +54,7 @@
         class={{
             "rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary": true,
         }}
-        variant={canScroll ? "secondary" : "ghost"}
+        variant={canScroll ? "default" : "secondary"}
         size="icon"
         {onclick}
         disabled={!canScroll}
@@ -82,13 +84,24 @@
             m['actions.scroll.end']()
         )}
     </div>
-    {#if count > 0}
-        <div class="flex items-center gap-1 text-muted-foreground">
-            <span class="text-2xl font-thin">
-                {count}
-            </span>
-            <span class="sr-only">images</span>
-            <Image size={24} strokeWidth={1.75} />
-        </div>
-    {/if}
+    <div class="flex gap-6">
+        {#if imageCount > 0}
+            <div class="flex items-center gap-1 text-muted-foreground">
+                <span class="text-2xl font-thin">
+                    {imageCount}
+                </span>
+                <span class="sr-only">images</span>
+                <Image size={24} strokeWidth={1.75} />
+            </div>
+        {/if}
+        {#if videoCount > 0}
+            <div class="flex items-center gap-1 text-muted-foreground">
+                <span class="text-2xl font-thin">
+                    {videoCount}
+                </span>
+                <span class="sr-only">videos</span>
+                <SquarePlay size={24} strokeWidth={1.75} />
+            </div>
+        {/if}
+    </div>
 </nav>
