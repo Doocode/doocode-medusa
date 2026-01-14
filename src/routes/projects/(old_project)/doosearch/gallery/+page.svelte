@@ -15,7 +15,7 @@
     let displayOldVersion = $state(false);
 </script>
 
-<main class="container mx-auto pt-8 grid gap-8 [&_p]:text-balance">
+<main class="container mx-auto pt-8 grid gap-16 [&_p]:text-balance">
     <div class="grid gap-2">
         <Heading level="h2" icon={Fullscreen} class="px-4"
             title={ m['projects.screenshots']() }
@@ -25,7 +25,7 @@
         <p class="px-4 -mt-1.5 mb-2">Captures d'écran de la <strong class="text-primary">version 1.3</strong></p>
         <Gallery images={ v1_3 } size="large" />
 
-        <div class="grid gap-2 px-4">
+        <div class="grid gap-2 px-4 pt-8">
             <h3 class="text-primary font-bold">Ancienne version</h3>
             <p class="-mt-1.5 mb-2">Captures d'écran de la <strong class="text-primary">version 1.2</strong></p>
 

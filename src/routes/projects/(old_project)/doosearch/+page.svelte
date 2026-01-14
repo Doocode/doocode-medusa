@@ -68,7 +68,7 @@
             icon={ImagePlay}
             title="Doosearch en action"
         />
-        <p class="mb-6">Parce que une image vaut mille mots, voici quelques captures d’écran de Doosearch en action.</p>
+        <p>Parce que une image vaut mille mots, voici quelques captures d’écran de Doosearch en action.</p>
 
         <div class="-mx-4">
             <Gallery images={ [...pc_images, ...mobile_images] } />
