@@ -37,9 +37,9 @@
 
 <svelte:window onkeydown={handleKeyDown} onkeyup={handleKeyUp} />
 
-<nav class={cn("flex justify-end gap-4 px-4", className)}>
+<nav class={cn("flex justify-start gap-4 px-4", className)}>
     <Button
-        class="rounded-full hover:bg-primary hover:text-background active:scale-90"
+        class="rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary"
         variant="secondary"
         size="icon"
         onclick={onScrollBackward}
@@ -54,7 +54,7 @@
         {/if}
     </Button>
     <Button
-        class="rounded-full hover:bg-primary hover:text-background active:scale-90"
+        class="rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary"
         variant="secondary"
         size="icon"
         onclick={onScrollForward}
