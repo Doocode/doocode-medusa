@@ -39,38 +39,48 @@
 
 <svelte:window onkeydown={handleKeyDown} onkeyup={handleKeyUp} />
 
+
+{#snippet navButton(
+    onclick: (event: MouseEvent) => void,
+    canScroll: boolean,
+    Icon: any,
+    ShiftIcon: any,
+    label: string,
+    shiftLabel: string
+)}
+    <Button
+        class={{
+            "rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary": true,
+        }}
+        variant={canScroll ? "secondary" : "ghost"}
+        size="icon"
+        {onclick}
+        disabled={!canScroll}
+    >
+        {#if shiftPressed}
+            <ShiftIcon class="w-5! h-5!" strokeWidth={2.5} />
+            <span class="sr-only">{shiftLabel}</span>
+        {:else}
+            <Icon class="w-6! h-6!" />
+            <span class="sr-only">{label}</span>
+        {/if}
+    </Button>
+{/snippet}
+
 <nav class={cn("flex justify-between items-center px-4", className)}>
     <div class="flex gap-4">
-        <Button
-            class="rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary"
-            variant="secondary"
-            size="icon"
-            onclick={onScrollBackward}
-            disabled={!canScrollLeft}
-        >
-            {#if shiftPressed}
-                <SkipBack class="w-5! h-5!" strokeWidth={2.5} />
-                <span class="sr-only">{ m['actions.scroll.start']() }</span>
-            {:else}
-                <ArrowLeft class="w-6! h-6!" />
-                <span class="sr-only">{ m['actions.scroll.backward']() }</span>
-            {/if}
-        </Button>
-        <Button
-            class="rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary"
-            variant="secondary"
-            size="icon"
-            onclick={onScrollForward}
-            disabled={!canScrollRight}
-        >
-            {#if shiftPressed}
-                <SkipForward class="w-5! h-5!" strokeWidth={2.5} />
-                <span class="sr-only">{ m['actions.scroll.end']() }</span>
-            {:else}
-                <ArrowRight class="w-6! h-6!" />
-                <span class="sr-only">{ m['actions.scroll.forward']() }</span>
-            {/if}
-        </Button>
+        {@render navButton(
+            onScrollBackward, canScrollLeft,
+            ArrowLeft, SkipBack,
+            m['actions.scroll.backward'](),
+            m['actions.scroll.start']()
+        )}
+        {@render navButton(
+            onScrollForward, canScrollRight,
+            ArrowRight, SkipForward,
+            m['actions.scroll.forward'](),
+            m['actions.scroll.end']()
+        )}
     </div>
     {#if count > 0}
         <div class="flex items-center gap-1 text-muted-foreground">
