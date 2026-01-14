@@ -9,7 +9,7 @@
         staticImages as imgs,
         searchImages as images
     } from '../gallery/landing';
-    import { Slideshow } from '$lib/gallery';
+    import { Slideshow } from '$lib/slideshow';
 
     let slideIndex = $state(0);
     let openSlideshow = $state(false);

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { GalleryItemType, type GalleryItemContent } from ".";
+    import { GalleryItemType, type GalleryItemContent } from "../gallery";
     
     interface Props {
         image: GalleryItemContent

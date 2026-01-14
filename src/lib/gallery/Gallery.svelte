@@ -1,7 +1,7 @@
 <script lang="ts">
     import { cn } from "$lib/utils.js";
     import { GalleryItemType, type GalleryItemContent } from ".";
-    import Slideshow from "./Slideshow.svelte";
+    import { Slideshow } from "../slideshow";
     import GalleryNavigation from "./GalleryNavigation.svelte";
     import { Play } from '@lucide/svelte/icons';
 
