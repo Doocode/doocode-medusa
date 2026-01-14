@@ -1,6 +1,7 @@
 <script lang="ts">
+    import { ReleaseTypeBadge } from "../changelog";
     import type { Release } from "../projects.types";
-    import { Image } from "@lucide/svelte/icons";
+    import { ImagePlay } from "@lucide/svelte/icons";
 
     interface Props {
         releases: Release[];
@@ -20,23 +21,24 @@
 
             <button
                 onclick={() => currentVersionNumber = release.versionNumber}
-                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 group text-left
-                {isSelected 
-                    ? 'text-primary bg-primary/30 ring-1 ring-primary' // Selected
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-secondary hover:text-slate-900 dark:hover:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500' // Default text
-                }"
+                class={{
+                    "w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-150 group text-left": true,
+                    "text-primary bg-primary/30 ring-1 ring-primary": isSelected,
+                    "text-slate-600 dark:text-slate-400 hover:bg-secondary hover:text-slate-900 dark:hover:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500": !isSelected
+                }}
             >
-                <Image size={24} class="shrink-0 {isSelected ? 'text-primary' : ''}" />
-                
-                <span class="font-medium">{release.versionString}</span>
-                
-                <span class="ml-auto text-sm aspect-square font-bold min-w-7 px-1 h-7 flex items-center justify-center text-center -my-1 rounded-full 
-                    {isSelected 
-                        ? 'bg-primary text-background'  // Selected
-                        : 'bg-secondary'}"
-                >
-                    {imageCount}
-                </span>
+                <div class="flex gap-2 items-center">
+                    <span class="font-medium">{release.versionString}</span>
+                    <ReleaseTypeBadge type={release.type!} />
+                </div>
+
+                <div class="ml-auto flex gap-1 items-center">
+                    <span class="text-2xl font-thin">
+                        {imageCount}
+                    </span>
+                    <span class="sr-only">images</span>
+                    <ImagePlay size={24} strokeWidth={1.75} />
+                </div>
             </button>
         {/each}
     </div>
