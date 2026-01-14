@@ -1,6 +1,7 @@
 import { ReleaseType, type Release } from "$routes/projects/projects.types";
 import {
-    v1_3 as screens_v1_3,
+    v1_3_2 as screens_v1_3_2,
+    v1_3_0 as screens_v1_3_0,
     v1_2 as screens_v1_2
 } from "../gallery/screen";
 
@@ -24,7 +25,7 @@ export const v1_3_2: Release = {
         "Améliorations de la stabilité et corrections de bugs."
     ],
     removedFeatures: [],
-    images: [...screens_v1_3],
+    images: [...screens_v1_3_2],
 };
 
 export const v1_3: Release = {
@@ -51,7 +52,7 @@ export const v1_3: Release = {
         "Amélioration de la responsivité mobile",
     ],
     removedFeatures: [],
-    images: [...screens_v1_3],
+    images: [...screens_v1_3_0],
 };
 
 export const v1_2: Release = {

@@ -18,7 +18,7 @@
         ...restProps
     }: Props = $props();
 
-    let imageCount = $derived(images.filter(img => img.type === GalleryItemType.Image).length);
+    let imageCount = $derived(images.filter(img => img.type !== GalleryItemType.Video).length);
     let videoCount = $derived(images.filter(img => img.type === GalleryItemType.Video).length);
 
     let openSlideshow = $state(false);

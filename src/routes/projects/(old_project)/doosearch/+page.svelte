@@ -11,7 +11,7 @@
     import { Button } from '$lib/components/ui/button';
     import { CrossPlatform, UIPlaceholder} from './gallery/svg';
     import { Gallery } from '$lib/gallery';
-    import { mobile_images, pc_images, videos } from './gallery/screen/v1.3';
+    import { mobile_images, pc_images, videos } from './gallery/screen/v1.3.2';
     import { ColorSwitcher, WhatIsIt } from './landing';
     import { scale } from 'svelte/transition';
 

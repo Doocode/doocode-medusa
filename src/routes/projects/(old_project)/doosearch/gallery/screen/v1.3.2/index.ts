@@ -1,14 +1,14 @@
 import { GalleryItemType, type GalleryItemContent } from '$lib/gallery';
 
-import Img_PC_01 from './doosearch_1_3_screenshot_search.png';
-import Img_PC_02 from './doosearch_1_3_screenshot_speeddial.png';
-import Img_PC_03 from './doosearch_1_3_screenshot_settings.png';
-import Img_PC_04 from './doosearch_1_3_screenshot_first_run.png';
-import Vid_PC_05 from './doosearch_1_3_screenshot_searchEnginesWindow_pc.mp4';
+import Img_PC_01 from './doosearch_1_3_2_screenshot_search.png';
+import Img_PC_02 from './doosearch_1_3_2_screenshot_speeddial.png';
+import Img_PC_03 from './doosearch_1_3_2_screenshot_settings.png';
+import Img_PC_04 from './doosearch_1_3_2_screenshot_first_run.png';
+import Vid_PC_05 from './doosearch_1_3_2_screenshot_searchEnginesWindow_pc.mp4';
 
-import Img_M_01 from './doosearch_1_3_screenshot_search_mobile.png';
-import Img_M_02 from './doosearch_1_3_screenshot_selectSearch_mobile.png';
-import Img_M_03 from './doosearch_1_3_screenshot_searchEnginesWindow_mobile.png';
+import Img_M_01 from './doosearch_1_3_2_screenshot_search_mobile.png';
+import Img_M_02 from './doosearch_1_3_2_screenshot_selectSearch_mobile.png';
+import Img_M_03 from './doosearch_1_3_2_screenshot_searchEnginesWindow_mobile.png';
 
 // Mobile
 const img_m_01 = {
