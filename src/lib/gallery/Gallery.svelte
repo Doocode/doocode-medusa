@@ -74,6 +74,7 @@
             {canScrollRight}
             onScrollBackward={scrollBackward}
             onScrollForward={scrollForward}
+            count={images.length}
         />
 
         <div
