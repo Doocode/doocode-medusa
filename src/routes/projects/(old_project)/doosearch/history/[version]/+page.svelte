@@ -114,9 +114,14 @@
                 <Heading level="h3" icon={Fullscreen}
                     title={ m['projects.screenshots']() }
                 />
-                <div class="-mx-4">
+                <div class="-mx-4 sm:rounded-4xl pt-4 pb-3 bg-primary/50 overflow-clip">
                     <Gallery images={release.images} size="large" />
                 </div>
+                <style>
+                    div {
+                        --muted-foreground: var(--foreground);
+                    }
+                </style>
             </Restyle>
         {/if}
 
