@@ -14,7 +14,11 @@
         size = 'medium'
     }: Props = $props();
 
-    let sortedReleases = $derived([...releases].sort((a, b) => b.versionNumber - a.versionNumber));
+    let sortedReleases = $derived(
+        [...releases]
+            .filter(r => r.images && r.images.length > 0)
+            .sort((a, b) => b.versionNumber - a.versionNumber)
+    );
     let currentVersionNumber = $state<number | undefined>(sortedReleases.length > 0 ? sortedReleases[0].versionNumber : undefined);
     let selectedRelease = $derived<Release | undefined>(sortedReleases.find(r => r.versionNumber === currentVersionNumber));
 
