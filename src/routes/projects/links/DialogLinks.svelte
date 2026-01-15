@@ -46,7 +46,7 @@
             <SearchBar bind:value={searchQuery} placeholder="Search links..." />
         </div>
 
-        <div class="grid gap-3 py-4 max-h-[60vh] overflow-y-auto pr-2 -mr-2">
+        <div class="grid gap-2 py-4 max-h-[60vh] overflow-y-auto pr-2 -mr-2">
             {#each filteredLinks as link}
                 <LinkButton {link} />
             {/each}

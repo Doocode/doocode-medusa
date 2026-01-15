@@ -69,18 +69,18 @@
     rel="noopener noreferrer"
     class={buttonVariants({ 
         variant: "outline", 
-        class: "w-full justify-between h-auto py-3 px-4 group hover:border-primary/50 hover:bg-muted/50 overflow-hidden" 
+        class: "w-full justify-between h-auto py-3 px-4 group overflow-hidden rounded-2xl" 
     })}
 >
     <div class="flex items-center gap-4 min-w-0 flex-1">
-        <div class="p-2 sm:p-3 rounded-md bg-muted group-hover:bg-background border transition-colors shrink-0 text-primary">
+        <div class="p-2 sm:p-3 rounded-lg bg-primary shrink-0 text-primary-foreground">
             <Icon class="size-6 sm:size-8" />
         </div>
         <div class="flex flex-col items-start gap-0.5 text-left min-w-0 flex-1">
             <span class="font-semibold text-sm text-primary truncate w-full">{link.label || link.type}</span>
-            <div class="text-xs text-muted-foreground font-normal w-full overflow-hidden whitespace-nowrap opacity-80">
+            <div class="text-xs font-normal w-full overflow-hidden whitespace-nowrap opacity-80">
                 {#if urlInfo.valid}
-                    <span class="text-foreground/90 font-medium">{urlInfo.hostname}</span><span class="hidden sm:inline">{urlInfo.path}</span>
+                    <span class="font-medium">{urlInfo.hostname}</span><span class="hidden sm:inline text-muted-foreground">{urlInfo.path}</span>
                 {:else}
                     <span class="truncate block">{link.url}</span>
                 {/if}
