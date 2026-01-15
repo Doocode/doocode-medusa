@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { getLocale } from "$lib/paraglide/runtime";
-	import type { Component } from "svelte";
-	import { SpecBlock } from ".";
+    import { SpecBlock } from ".";
+    import type { Component } from "svelte";
+    import { formatDate } from "../projects.helpers";
 
     interface Props {
         icon: Component;
@@ -17,13 +17,8 @@
         day: 'numeric',
         weekday: 'short',
     };
-
-    let formattedDate = $derived.by(() => {
-        const dateStr = date.toLocaleDateString(getLocale(), dateFormat);
-        return dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
-    });
 </script>
 
 <SpecBlock {icon} {title}>
-    <p class="text-balance">{formattedDate}</p>
+    <p class="text-balance">{formatDate(date, dateFormat)}</p>
 </SpecBlock>

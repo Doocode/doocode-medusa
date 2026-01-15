@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { TwColor } from "./projects";
     import { m } from "$lib/paraglide/messages";
-    import { getLocale } from "$lib/paraglide/runtime";
+    import { formatDate } from "./projects.helpers";
     import BallonIcon from "@lucide/svelte/icons/balloon";
     import ClockFadingIcon from "@lucide/svelte/icons/clock-fading";
 
@@ -16,12 +16,6 @@
     }
 
     let { codename, name, logo, catchyPhrase, createdAt, updatedAt, bgAccent }: Props = $props();
-
-    const dateFormat: Intl.DateTimeFormatOptions = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    };
 </script>
 
 <a
@@ -47,11 +41,11 @@
     
     <div class="flex items-center justify-center gap-1 mt-4 border-t border-black/50 dark:border-white/70 pt-3.5 w-full">
         {#if updatedAt}
-            {@const date = updatedAt.toLocaleDateString(getLocale(), dateFormat)}
+            {@const date = formatDate(updatedAt)}
             <p>{m["status.updated_on"]({ date })}</p>
             <ClockFadingIcon class="h-4! w-4!"/>
         {:else}
-            {@const date = createdAt.toLocaleDateString(getLocale(), dateFormat)}
+            {@const date = formatDate(createdAt)}
             <p>{m["status.created_on"]({ date })}</p>
             <BallonIcon class="h-4! w-4!"/>
         {/if}

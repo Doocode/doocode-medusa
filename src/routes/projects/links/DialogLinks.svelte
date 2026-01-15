@@ -1,10 +1,10 @@
 <script lang="ts">
-    import * as Dialog from "$lib/components/ui/dialog";
-	import type { ProjectLink } from "../projects.types";
-    import { getLocale } from "$lib/paraglide/runtime";
-    import { Link as LinkIcon } from "@lucide/svelte";
     import { SearchBar } from "$lib/page";
     import LinkButton from "./LinkButton.svelte";
+    import { formatDate } from "../projects.helpers";
+    import { Link as LinkIcon } from "@lucide/svelte";
+    import * as Dialog from "$lib/components/ui/dialog";
+    import type { ProjectLink } from "../projects.types";
     import { getRelativeTime } from "../projects.helpers";
 
     interface Props {
@@ -34,14 +34,6 @@
             return !latest || d > latest ? d : latest;
         }, null as Date | null);
     });
-
-    function formatDate(date: Date): string {
-        return new Intl.DateTimeFormat(getLocale(), {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }).format(date);
-    }
 </script>
 
 <Dialog.Root bind:open>

@@ -1,49 +1,14 @@
 <script lang="ts">
-    import { getLocale } from "$lib/paraglide/runtime";
     import { ReleaseTypeBadge, Summary } from ".";
     import { Package, ChevronRight } from '@lucide/svelte/icons';
     import type { Release } from '$routes/projects/projects.types';
+    import { formatDate, getRelativeTime } from "../projects.helpers";
 
     interface Props {
         release: Release;
     }
 
     let { release }: Props = $props();
-
-    function formatDate(date: Date): string {
-        return new Intl.DateTimeFormat(getLocale(), {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }).format(date);
-    }
-
-    function formatFullDate(date: Date): string {
-        return new Intl.DateTimeFormat(getLocale(), {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }).format(date);
-    }
-
-    function getRelativeTime(date: Date): string {
-        const now = new Date();
-        const diffInMs = date.getTime() - now.getTime();
-        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-        const diffInMonths = Math.floor(diffInDays / 30);
-        const diffInYears = Math.floor(diffInDays / 365);
-
-        const rtf = new Intl.RelativeTimeFormat(getLocale(), { numeric: 'auto' });
-
-        if (Math.abs(diffInYears) >= 1) {
-            return rtf.format(diffInYears, 'year');
-        } else if (Math.abs(diffInMonths) >= 1) {
-            return rtf.format(diffInMonths, 'month');
-        } else {
-            return rtf.format(diffInDays, 'day');
-        }
-    }
 </script>
 
 {#snippet header(size: 'small' | 'large')}
@@ -105,7 +70,12 @@
                 {getRelativeTime(release.releaseDate)}
             </div>
             <time class="text-sm font-medium text-foreground block leading-tight">
-                {formatFullDate(release.releaseDate)}
+                {formatDate(release.releaseDate, {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })}
             </time>
         </div>
 

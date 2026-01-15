@@ -1,42 +1,16 @@
 <script lang="ts">
-    import { getLocale } from "$lib/paraglide/runtime";
+    import type { PageData } from './$types';
     import { m } from "$lib/paraglide/messages";
-    import { Package, Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
+    import { Heading, Restyle } from "$lib/page";
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
-    import type { PageData } from './$types';
+    import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
+    import { formatDate, getRelativeTime } from "$routes/projects/projects.helpers";
     import { Lister, ReleaseTypeBadge, SideNavigation, Summary } from "$routes/projects/changelog";
-    import { Heading, Restyle } from "$lib/page";
 
     let { data }: { data: PageData } = $props();
 
     const release = $derived(data.release);
-
-    function formatDate(date: Date): string {
-        return new Intl.DateTimeFormat(getLocale(), {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }).format(date);
-    }
-
-    function getRelativeTime(date: Date): string {
-        const now = new Date();
-        const diffInMs = date.getTime() - now.getTime();
-        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-        const diffInMonths = Math.floor(diffInDays / 30);
-        const diffInYears = Math.floor(diffInDays / 365);
-
-        const rtf = new Intl.RelativeTimeFormat(getLocale(), { numeric: 'auto' });
-
-        if (Math.abs(diffInYears) >= 1) {
-            return rtf.format(diffInYears, 'year');
-        } else if (Math.abs(diffInMonths) >= 1) {
-            return rtf.format(diffInMonths, 'month');
-        } else {
-            return rtf.format(diffInDays, 'day');
-        }
-    }
 </script>
 
 <main class="container mx-auto px-4 pt-8 pb-16 grid gap-16 lg:grid-cols-[300px_1fr] xl:grid-cols-[350px_1fr] items-start">

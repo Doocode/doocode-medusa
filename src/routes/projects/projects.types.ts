@@ -97,6 +97,11 @@ export interface Release {
      * List of images
      */
     images?: GalleryItemContent[];
+
+    /**
+     * List of links
+     */
+    links?: ProjectLink[];
 }
 
 export enum LinkType {
