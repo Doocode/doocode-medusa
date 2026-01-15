@@ -16,7 +16,7 @@
 </script>
 
 <a class={{
-    "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-90 relative": true,
+    "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-110 relative": true,
     "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !item.withTransparencyBg,
     "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": item.withTransparencyBg,
 }}
@@ -25,6 +25,7 @@
     tabindex="0"
     target="_blank"
     {onclick}
+    ondragstart={(e) => e.preventDefault()}
 >
     {#if item.type === GalleryItemType.Video}
         <video
@@ -39,6 +40,7 @@
             class:rounded-lg={!item.withTransparencyBg}
             muted
             preload="metadata"
+            draggable="false"
         >
         </video>
     {:else}
@@ -51,6 +53,7 @@
             }}
             class:rounded-lg={!item.withTransparencyBg}
             loading="lazy"
+            draggable="false"
         />
     {/if}
     

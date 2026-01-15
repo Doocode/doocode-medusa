@@ -27,6 +27,11 @@
     let canScrollLeft = $state(false);
     let canScrollRight = $state(false);
 
+    let isDown = false;
+    let startX = 0;
+    let initialScrollLeft = 0;
+    let isDragging = false;
+
     $effect(() => {
         // We need to access images so that the effect re-runs when the images prop changes
         images;
@@ -41,8 +46,36 @@
         }
     });
 
+    function handleMouseDown(e: MouseEvent) {
+        isDown = true;
+        isDragging = false;
+        startX = e.pageX - scrollContainer.offsetLeft;
+        initialScrollLeft = scrollContainer.scrollLeft;
+    }
+
+    function handleMouseLeave() {
+        isDown = false;
+    }
+
+    function handleMouseUp() {
+        isDown = false;
+    }
+
+    function handleMouseMove(e: MouseEvent) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX);
+        scrollContainer.scrollLeft = initialScrollLeft - walk;
+        if (Math.abs(x - startX) > 5) {
+            isDragging = true;
+        }
+    }
+
     function onItemClick(event: Event, index: number) {
         event.preventDefault();
+        if (isDragging) return;
+
         openSlideshow = true;
         slideIndex = index;
     }
@@ -94,10 +127,14 @@
         <div
             bind:this={scrollContainer}
             class={cn(
-                "flex gap-4 overflow-x-auto overflow-y-hidden pt-4 px-4 pb-1 hide-scrollbar",
+                "flex gap-4 overflow-x-auto overflow-y-hidden pt-4 px-4 pb-1 hide-scrollbar cursor-grab active:cursor-grabbing select-none",
                 className
             )}
             onscroll={updateScrollButtons}
+            onmousedown={handleMouseDown}
+            onmouseleave={handleMouseLeave}
+            onmouseup={handleMouseUp}
+            onmousemove={handleMouseMove}
             {...restProps}
         >
             {#each images as item, index}
