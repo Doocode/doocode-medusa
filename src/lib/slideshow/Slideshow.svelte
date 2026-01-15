@@ -10,6 +10,7 @@
         SlideshowFooter as Footer,
         SlideshowHeader as Header,
         SlideshowCaption as Caption,
+        SlideshowThumbnails as Thumbnails,
         SlideshowSwipeManager,
         SlideshowController
     } from ".";
@@ -115,6 +116,12 @@
         <Caption open
             caption={currentImage.alt}
             description={currentImage.description}
+        />
+        
+        <Thumbnails 
+            images={images}
+            currentIndex={index}
+            onSelect={(i) => { index = i; controller.resetHideTimer(); }}
         />
     {/if}
 

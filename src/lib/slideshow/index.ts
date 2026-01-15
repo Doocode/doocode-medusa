@@ -7,6 +7,7 @@ import SlideshowFooter from "./SlideshowFooter.svelte";
 import SlideshowCaption from "./SlideshowCaption.svelte";
 import { SlideshowSwipeManager } from "./slideshow.swipe.svelte";
 import { SlideshowController } from "./slideshow.controller.svelte";
+import SlideshowThumbnails from "./SlideshowThumbnails.svelte";
 
 export {
     Slideshow,
@@ -17,5 +18,6 @@ export {
     SlideshowHeader,
     SlideshowFooter,
     SlideshowSwipeManager,
-    SlideshowController
+    SlideshowController,
+    SlideshowThumbnails
 }
