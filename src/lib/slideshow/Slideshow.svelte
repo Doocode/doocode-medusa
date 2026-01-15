@@ -119,9 +119,14 @@
         />
         
         <Thumbnails 
-            images={images}
-            currentIndex={index}
-            onSelect={(i) => { index = i; controller.resetHideTimer(); }}
+             images={images}
+             currentIndex={index}
+             onSelect={(i) => {
+                 const direction = i > index ? 'left' : 'right';
+                 controller.setDirection(direction);
+                 index = i;
+                 controller.resetHideTimer();
+             }}
         />
     {/if}
 
