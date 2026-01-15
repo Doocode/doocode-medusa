@@ -1,4 +1,4 @@
-import { releases } from '../data';
+import { releases } from '../../data/releases';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 

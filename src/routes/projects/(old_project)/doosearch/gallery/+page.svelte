@@ -8,7 +8,7 @@
     import { Gallery } from "$lib/gallery";
     import { bts, mockups } from "./bts";
     import { Screenshots } from "$routes/projects/screenshots";
-    import { releases } from "../history/data";
+    import { releases } from "../data/releases";
 </script>
 
 <main class="container mx-auto pt-8 grid gap-16 [&_p]:text-balance">

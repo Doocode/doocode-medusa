@@ -1,4 +1,4 @@
-import { releases } from './data';
+import { releases } from '../data/releases';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = () => {

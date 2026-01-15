@@ -9,7 +9,8 @@
         NavContener as Nav
     } from '$routes/projects/header/index';
     import { BugPlay, History, House, ImagePlay, MessageCircleQuestionMark, Newspaper } from '@lucide/svelte';
-    import { mainAction as action, links } from './data';
+    import { mainAction as action } from './data';
+    import { links } from './data/links';
     import { m } from "$lib/paraglide/messages";
     import { page } from '$app/state';
     import { DialogLinks } from '$routes/projects/links';

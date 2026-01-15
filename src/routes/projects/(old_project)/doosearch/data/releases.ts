@@ -1,4 +1,5 @@
 import { ReleaseType, type Release } from "$routes/projects/projects.types";
+import { links } from "../data/links";
 import {
     v1_3_2 as screens_v1_3_2,
     v1_3_0 as screens_v1_3_0,
@@ -35,6 +36,7 @@ export const v1_3_2: Release = {
         "Suppression de la police \"Roboto\""
     ],
     images: [...screens_v1_3_2],
+    links
 };
 
 export const v1_3_1: Release = {
