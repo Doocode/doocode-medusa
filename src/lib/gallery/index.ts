@@ -17,8 +17,12 @@ import GalleryHeader from "./GalleryHeader.svelte";
 import GalleryNavigation from "./GalleryNavigation.svelte";
 import GalleryCounter from "./GalleryCounter.svelte";
 import GalleryTile from "./GalleryTile.svelte";
+import GalleryScrollManager from "./gallery.scroll.svelte";
 
 export {
+    // Classes
+    GalleryScrollManager,
+
     // Types
     GalleryItemType,
     type GalleryItemContent,

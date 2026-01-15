@@ -1,7 +1,11 @@
 <script lang="ts">
     import { cn } from "$lib/utils.js";
-    import { GalleryHeader, GalleryItemType, type GalleryItemContent, GalleryTile } from ".";
     import { Slideshow } from "../slideshow";
+    import {
+        GalleryHeader, GalleryItemType,
+        type GalleryItemContent,
+        GalleryTile, GalleryScrollManager
+    } from ".";
 
     interface Props {
         images?: GalleryItemContent[];
@@ -23,94 +27,20 @@
 
     let openSlideshow = $state(false);
     let slideIndex = $state(0);
-    let scrollContainer: HTMLDivElement;
-    let canScrollLeft = $state(false);
-    let canScrollRight = $state(false);
-
-    let isDown = false;
-    let startX = 0;
-    let initialScrollLeft = 0;
-    let isDragging = false;
+    
+    const scroller = new GalleryScrollManager();
 
     $effect(() => {
-        // We need to access images so that the effect re-runs when the images prop changes
         images;
-        
-        if (scrollContainer) {
-            updateScrollButtons();
-            
-            const resizeObserver = new ResizeObserver(updateScrollButtons);
-            resizeObserver.observe(scrollContainer);
-            
-            return () => resizeObserver.disconnect();
-        }
+        scroller.updateButtons();
     });
-
-    function handleMouseDown(e: MouseEvent) {
-        isDown = true;
-        isDragging = false;
-        startX = e.pageX - scrollContainer.offsetLeft;
-        initialScrollLeft = scrollContainer.scrollLeft;
-    }
-
-    function handleMouseLeave() {
-        isDown = false;
-    }
-
-    function handleMouseUp() {
-        isDown = false;
-    }
-
-    function handleMouseMove(e: MouseEvent) {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - scrollContainer.offsetLeft;
-        const walk = (x - startX);
-        scrollContainer.scrollLeft = initialScrollLeft - walk;
-        if (Math.abs(x - startX) > 5) {
-            isDragging = true;
-        }
-    }
 
     function onItemClick(event: Event, index: number) {
         event.preventDefault();
-        if (isDragging) return;
+        if (scroller.isDragging) return;
 
         openSlideshow = true;
         slideIndex = index;
-    }
-
-    function updateScrollButtons() {
-        if (!scrollContainer) return;
-        
-        canScrollLeft = scrollContainer.scrollLeft > 0;
-        canScrollRight = scrollContainer.scrollLeft + scrollContainer.clientWidth < scrollContainer.scrollWidth - 1;
-    }
-
-    function scrollBackward(event: MouseEvent) {
-        if (!scrollContainer) return;
-        
-        const scrollAmount = event.shiftKey 
-            ? -scrollContainer.scrollWidth 
-            : -scrollContainer.clientWidth * 0.8;
-        
-        scrollContainer.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    }
-
-    function scrollForward(event: MouseEvent) {
-        if (!scrollContainer) return;
-        
-        const scrollAmount = event.shiftKey 
-            ? scrollContainer.scrollWidth 
-            : scrollContainer.clientWidth * 0.8;
-        
-        scrollContainer.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
     }
 </script>
 
@@ -119,22 +49,23 @@
         <GalleryHeader
             class={classHeader}
             {imageCount} {videoCount}
-            {canScrollLeft} {canScrollRight}
-            onScrollBackward={scrollBackward}
-            onScrollForward={scrollForward}
+            canScrollLeft={scroller.canScrollLeft}
+            canScrollRight={scroller.canScrollRight}
+            onScrollBackward={scroller.scrollBackward}
+            onScrollForward={scroller.scrollForward}
         />
 
         <div
-            bind:this={scrollContainer}
+            bind:this={scroller.node}
             class={cn(
                 "flex gap-4 overflow-x-auto overflow-y-hidden pt-4 px-4 pb-1 hide-scrollbar cursor-grab active:cursor-grabbing select-none",
                 className
             )}
-            onscroll={updateScrollButtons}
-            onmousedown={handleMouseDown}
-            onmouseleave={handleMouseLeave}
-            onmouseup={handleMouseUp}
-            onmousemove={handleMouseMove}
+            onscroll={scroller.updateButtons}
+            onmousedown={scroller.handleMouseDown}
+            onmouseleave={scroller.handleMouseLeave}
+            onmouseup={scroller.handleMouseUp}
+            onmousemove={scroller.handleMouseMove}
             {...restProps}
         >
             {#each images as item, index}
@@ -160,23 +91,5 @@
     
     .hide-scrollbar::-webkit-scrollbar {
         display: none; /* Chrome, Safari, Opera */
-    }
-
-    .bg-checkerboard {
-        --color-1: #dce2e9;
-        --color-2: #b0bbc9;
-
-        background: repeating-conic-gradient(
-            var(--color-1) 0 25%, var(--color-2) 0 50%
-        ) 50% / 2rem 2rem;
-        background-position: center;
-
-        &:hover img {
-            transform: scale(.9);
-        }
-    }
-    :root.dark .bg-checkerboard {
-        --color-1: #5e6876;
-        --color-2: #314158;
     }
 </style>
