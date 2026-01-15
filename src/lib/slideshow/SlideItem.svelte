@@ -11,18 +11,20 @@
 </script>
 
 <main
-    class="w-full h-full flex items-center justify-center relative"
+    class="w-full h-full flex items-center justify-center relative select-none"
 >
     {#if image.type === GalleryItemType.Video}
         <video
             class={{
-                "pointer-events-auto max-w-full max-h-full object-contain": true,
+                "pointer-events-auto max-w-full max-h-full object-contain touch-none": true,
                 "rounded-lg md:rounded-xl": !image.withTransparencyBg,
             }}
             src={image.src}
             title={image.alt}
             controls
             preload="metadata"
+            draggable="false"
+            ondragstart={(e) => e.preventDefault()}
         >
             <track kind="captions" />
         </video>
@@ -36,6 +38,8 @@
             alt={image.alt}
             title={image.alt}
             loading="lazy"
+            draggable="false"
+            ondragstart={(e) => e.preventDefault()}
         />
     {/if}
 </main>

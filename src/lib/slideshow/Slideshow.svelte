@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { GalleryItemContent } from "$lib/gallery";
     import { fade, fly } from "svelte/transition";
     import { m } from "$lib/paraglide/messages";
     import { quintOut } from "svelte/easing";
@@ -9,7 +10,7 @@
         SlideshowFooter as Footer,
         SlideshowHeader as Header,
         SlideshowCaption as Caption,
-        type GalleryItemContent
+        SlideshowSwipeManager
     } from ".";
 
     interface Props {
@@ -30,6 +31,13 @@
     let hideTimer: number | undefined;
 
     const HIDE_DELAY = 5 * 1000;
+    
+    // Swipe logic
+    const swipe = new SlideshowSwipeManager({
+        onSwipeLeft: handleNext,
+        onSwipeRight: handlePrevious,
+        onSwipeDown: onClose
+    });
 
     function resetHideTimer() {
         uiVisible = true;
@@ -97,12 +105,18 @@
     }
 </script>
 
-<svelte:window onmousemove={handleUserActivity} onkeydown={handleUserActivity} />
+<svelte:window 
+    onmousemove={(e) => { handleUserActivity(); swipe.handleMove(e.clientX, e.clientY); }} 
+    onkeydown={handleUserActivity}
+    onmouseup={swipe.handleEnd}
+    ontouchmove={swipe.onTouchMove}
+    ontouchend={swipe.onTouchEnd}
+/>
 {#if open}
     <button
         transition:fade
         onclick={onClose}
-        class="fixed inset-0 bg-black/70 backdrop-blur-xl z-40">
+        class="fixed inset-0 bg-black/70 backdrop-blur-xl z-40 touch-none">
         <span class="sr-only">{ m['slideshow.close']() }</span>
     </button>
 
@@ -139,7 +153,20 @@
                     easing: quintOut 
                 }}
             >
-                <Item image={currentImage} />
+                <div 
+                    class="contents pointer-events-auto touch-none select-none"
+                    role="presentation"
+                    ontouchstart={swipe.onTouchStart}
+                    onmousedown={swipe.onMouseDown}
+                    onclickCapture={(e) => {
+                        if (swipe.hasMoved) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+                    }}
+                >
+                    <Item image={currentImage} />
+                </div>
             </div>
         {/key}
     </div>
@@ -147,6 +174,7 @@
     {#if uiVisible}
         <Navigation {index}
             count={images.length}
+            dragX={swipe.dragX}
             {handlePrevious} {handleNext}
             {handleFirst} {handleLast} />
 

@@ -7,6 +7,7 @@
     interface Props {
         count: number;
         index: number;
+        dragX?: number;
         handlePrevious: () => void;
         handleNext: () => void;
         handleFirst: () => void;
@@ -16,6 +17,7 @@
     let {
         count,
         index,
+        dragX = 0,
         handlePrevious,
         handleNext,
         handleFirst,
@@ -25,6 +27,9 @@
     let hasPrevious = $derived(index > 0);
     let hasNext = $derived(index < count - 1);
     let shiftPressed = $state(false);
+
+    let prevScale = $derived(dragX > 0 ? 1 + Math.min(Math.abs(dragX) / 1000, 0.5) : 1);
+    let nextScale = $derived(dragX < 0 ? 1 + Math.min(Math.abs(dragX) / 1000, 0.5) : 1);
 
     function handleKeyDown(e: KeyboardEvent) {
         if (e.key === 'Shift') {
@@ -60,7 +65,11 @@
 <main class="fixed flex justify-between items-center inset-0 pointer-events-none z-60 md:px-8">
     <div>
         {#if hasPrevious}
-            <div transition:scale|global={{ duration: 300 }}>
+            <div
+                transition:scale|global={{ duration: 300 }}
+                style:transform="scale({prevScale})"
+                class="transition-transform duration-75"
+            >
                 <Button
                     size="icon"
                     onclick={onPreviousClick}
@@ -80,7 +89,11 @@
 
     <div>
         {#if hasNext}
-            <div transition:scale|global={{ duration: 300 }}>
+            <div
+                transition:scale|global={{ duration: 300 }}
+                style:transform="scale({nextScale})"
+                class="transition-transform duration-75"
+            >
                 <Button
                     size="icon"
                     onclick={onNextClick}
