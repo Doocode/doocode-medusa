@@ -119,14 +119,14 @@
         />
         
         <Thumbnails 
-             images={images}
-             currentIndex={index}
-             onSelect={(i) => {
-                 const direction = i > index ? 'left' : 'right';
-                 controller.setDirection(direction);
-                 index = i;
-                 controller.resetHideTimer();
-             }}
+            images={images}
+            currentIndex={index}
+            onSelect={(i) => {
+                const direction = i > index ? 'left' : 'right';
+                controller.setDirection(direction);
+                index = i;
+                controller.resetHideTimer();
+            }}
         />
     {/if}
 
@@ -151,6 +151,12 @@
                     role="presentation"
                     ontouchstart={swipe.onTouchStart}
                     onmousedown={swipe.onMouseDown}
+                    onclick={(e) => {
+                        const target = e.target as HTMLElement;
+                        if (target.tagName !== 'IMG' && target.tagName !== 'VIDEO') {
+                            onClose();
+                        }
+                    }}
                     use:captureClick
                 >
                     <Item image={currentImage} />

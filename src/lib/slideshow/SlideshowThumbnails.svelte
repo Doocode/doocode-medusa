@@ -42,7 +42,7 @@
 >
     <div 
         bind:this={scrollContainer}
-        class="flex gap-1 overflow-x-auto hide-scrollbar pointer-events-auto bg-black/50 backdrop-blur-md p-3 rounded-xl max-w-full"
+        class="flex gap-2 overflow-x-auto hide-scrollbar pointer-events-auto bg-black/50 backdrop-blur-md p-3 rounded-xl max-w-full"
     >
         {#each images as image, i}
             <button
@@ -54,7 +54,7 @@
                 aria-label={`Go to slide ${i + 1}`}
             >
                 {#if image.type === GalleryItemType.Video}
-                     <video
+                    <video
                         src={image.src}
                         class="h-full w-auto max-w-none pointer-events-none"
                         preload="metadata"

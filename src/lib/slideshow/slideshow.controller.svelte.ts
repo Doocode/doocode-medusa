@@ -3,7 +3,7 @@ export class SlideshowController {
     slideDirection = $state<'left' | 'right'>('right');
     
     private hideTimer: number | undefined;
-    private readonly HIDE_DELAY = 5000*20;
+    private readonly HIDE_DELAY = 5000;
 
     constructor(
         private getOpen: () => boolean
