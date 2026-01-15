@@ -25,7 +25,21 @@
     let slideIndex = $state(0);
     let scrollContainer: HTMLDivElement;
     let canScrollLeft = $state(false);
-    let canScrollRight = $state(true);
+    let canScrollRight = $state(false);
+
+    $effect(() => {
+        // We need to access images so that the effect re-runs when the images prop changes
+        images;
+        
+        if (scrollContainer) {
+            updateScrollButtons();
+            
+            const resizeObserver = new ResizeObserver(updateScrollButtons);
+            resizeObserver.observe(scrollContainer);
+            
+            return () => resizeObserver.disconnect();
+        }
+    });
 
     function onItemClick(event: Event, index: number) {
         event.preventDefault();
