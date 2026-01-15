@@ -10,7 +10,8 @@
         SlideshowFooter as Footer,
         SlideshowHeader as Header,
         SlideshowCaption as Caption,
-        SlideshowSwipeManager
+        SlideshowSwipeManager,
+        SlideshowController
     } from ".";
 
     interface Props {
@@ -26,11 +27,8 @@
     }: Props = $props();
 
     let currentImage: GalleryItemContent = $derived(images[index]);
-    let slideDirection = $state<'left' | 'right'>('right');
-    let uiVisible = $state(true);
-    let hideTimer: number | undefined;
-
-    const HIDE_DELAY = 5 * 1000;
+    
+    const controller = new SlideshowController(() => open);
     
     // Swipe logic
     const swipe = new SlideshowSwipeManager({
@@ -39,75 +37,57 @@
         onSwipeDown: onClose
     });
 
-    function resetHideTimer() {
-        uiVisible = true;
-        if (hideTimer) {
-            clearTimeout(hideTimer);
-        }
-        hideTimer = window.setTimeout(() => {
-            uiVisible = false;
-        }, HIDE_DELAY);
-    }
-
-    function handleUserActivity() {
-        resetHideTimer();
-    }
-
-    $effect(() => {
-        if (open) {
-            document.body.style.overflow = 'hidden';
-            resetHideTimer();
-        } else {
-            document.body.style.overflow = '';
-            if (hideTimer) {
-                clearTimeout(hideTimer);
-            }
-        }
-
-        return () => {
-            document.body.style.overflow = '';
-            if (hideTimer) {
-                clearTimeout(hideTimer);
-            }
-        };
-    });
-
     function onClose() {
         open = false;
     }
 
     function handlePrevious() {
         if (index > 0) {
-            slideDirection = 'right';
+            controller.setDirection('right');
             index--;
         }
     }
 
     function handleNext() {
         if (index < images.length - 1) {
-            slideDirection = 'left';
+            controller.setDirection('left');
             index++;
         }
     }
 
     function handleFirst() {
         if (index > 0) {
-            slideDirection = 'right';
+            controller.setDirection('right');
             index = 0;
         }
     }
 
     function handleLast() {
         if (index < images.length - 1) {
-            slideDirection = 'left';
+            controller.setDirection('left');
             index = images.length - 1;
         }
+    }
+
+    function captureClick(node: HTMLElement) {
+        const handler = (e: MouseEvent) => {
+            if (swipe.hasMoved) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        };
+        node.addEventListener('click', handler, true);
+        return {
+            destroy() {
+                node.removeEventListener('click', handler, true);
+            }
+        };
     }
 </script>
 
 <svelte:window 
-    onmousemove={(e) => { handleUserActivity(); swipe.handleMove(e.clientX, e.clientY); }} 
-    onkeydown={handleUserActivity}
+    onmousemove={(e) => { controller.handleUserActivity(); swipe.handleMove(e.clientX, e.clientY); }} 
+    onkeydown={controller.handleUserActivity}
     onmouseup={swipe.handleEnd}
     ontouchmove={swipe.onTouchMove}
     ontouchend={swipe.onTouchEnd}
@@ -129,7 +109,7 @@
         {handleLast}
     />
 
-    {#if uiVisible}
+    {#if controller.uiVisible}
         <Header {onClose} />
 
         <Caption open
@@ -143,12 +123,12 @@
             <div
                 class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
                 in:fly={{ 
-                    x: slideDirection === 'left' ? 200 : -200, 
+                    x: controller.slideDirection === 'left' ? 200 : -200, 
                     duration: 400, 
                     easing: quintOut 
                 }}
                 out:fly={{ 
-                    x: slideDirection === 'left' ? -200 : 200, 
+                    x: controller.slideDirection === 'left' ? -200 : 200, 
                     duration: 400, 
                     easing: quintOut 
                 }}
@@ -159,12 +139,7 @@
                     role="presentation"
                     ontouchstart={swipe.onTouchStart}
                     onmousedown={swipe.onMouseDown}
-                    onclickCapture={(e) => {
-                        if (swipe.hasMoved) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                        }
-                    }}
+                    use:captureClick
                 >
                     <Item image={currentImage} />
                 </div>
@@ -172,7 +147,7 @@
         {/key}
     </div>
 
-    {#if uiVisible}
+    {#if controller.uiVisible}
         <Navigation {index}
             count={images.length}
             dragX={swipe.dragX}
