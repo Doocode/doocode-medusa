@@ -14,21 +14,51 @@ export const v1_3_2: Release = {
     features: [
         "Support de la traduction vers l'anglais",
         "Ajout du thème sombre",
+        "Ajout d'un QR Code pour ouvrir le site sur mobile",
     ],
     improvements: [
         "Passage du site web en HTTPS",
-        "Nouvelle page d'introduction lors du premier lancement: ajout d'une navigation par étapes (pointillés et sections)",
+        "Sites web épinglés : Nouvelle interface de saisie/modification d'un site web épinglé",
+        "Premier lancement : Nouvelle interface avec l'ajout d'une navigation par étapes (pointillés et sections)",
+        "Premier lancement : Ajout d'une page pour expliquer le fonctionnement du LocalStorage",
+        "Moteurs de recherche : Renommage de \"OC\" en \"Open Classrooms\"",
+        "Mise à jour des logos de certains moteurs de recherche",
     ],
     bugfixes: [
+        "Bugfix : Paramètres écrasés lors de la mise à jour depuis une version antérieure",
+        "Moteurs de recherche : lister les moteurs selectionnés en utilisant le mot-cle \"séléctionné\"",
         "Réparation des urls de certains moteurs de recherche",
-        "Mise à jour des logos de certains moteurs de recherche",
         "Améliorations de la stabilité et corrections de bugs."
     ],
-    removedFeatures: [],
+    removedFeatures: [
+        "Suppression de la dépendance Animate.css",
+        "Suppression de la police \"Roboto\""
+    ],
     images: [...screens_v1_3_2],
 };
 
-export const v1_3: Release = {
+export const v1_3_1: Release = {
+    releaseDate: new Date('2018-08-20'),
+    versionNumber: 25,
+    versionString: 'v1.3.1',
+    type: ReleaseType.Stable,
+    description: 'Mise à jour corrective de la version 1.3',
+    features: [
+        "Paramètres : Ajout d'un réglage pour régler la luminosité du fond d'écran",
+    ],
+    improvements: [
+        "Responsivité mobile : Page \"Recherche\" et \"Paramètres\" améliorées",
+        "Page d'accueil : Remplacement de certaines images animés par des vidéos YouTube"
+    ],
+    bugfixes: [
+    ],
+    removedFeatures: [
+        "Suppression de la page \"Découvrir Doosearch\""
+    ],
+    //images: [...screens_v1_3_1],
+};
+
+export const v1_3_0: Release = {
     releaseDate: new Date('2018-07-20'),
     versionNumber: 24,
     versionString: 'v1.3.0',
@@ -74,5 +104,5 @@ export const v1_2: Release = {
 };
 
 export const releases: Release[] = [
-    v1_3_2, v1_3, v1_2
+    v1_3_2, v1_3_1, v1_3_0, v1_2
 ];
