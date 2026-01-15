@@ -154,7 +154,8 @@
                 }}
             >
                 <div 
-                    class="contents pointer-events-auto touch-none select-none"
+                    class="w-full h-full flex items-center justify-center pointer-events-auto touch-none select-none transition-transform duration-75 ease-out"
+                    style:transform="translate({swipe.dragX}px, {swipe.dragY}px)"
                     role="presentation"
                     ontouchstart={swipe.onTouchStart}
                     onmousedown={swipe.onMouseDown}

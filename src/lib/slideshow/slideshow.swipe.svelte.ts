@@ -8,6 +8,7 @@ export class SlideshowSwipeManager {
     private startY = 0;
     private threshold = 100; // px to trigger navigation
     private moveThreshold = 10; // px to consider it a move (and not a click)
+    private axis: 'x' | 'y' | null = null;
 
     onSwipeLeft?: () => void;
     onSwipeRight?: () => void;
@@ -24,6 +25,7 @@ export class SlideshowSwipeManager {
     handleStart = (clientX: number, clientY: number) => {
         this.isDragging = true;
         this.hasMoved = false;
+        this.axis = null;
         this.startX = clientX;
         this.startY = clientY;
         this.dragX = 0;
@@ -32,11 +34,26 @@ export class SlideshowSwipeManager {
 
     handleMove = (clientX: number, clientY: number) => {
         if (!this.isDragging) return;
-        this.dragX = clientX - this.startX;
-        this.dragY = clientY - this.startY;
         
-        if (!this.hasMoved && (Math.abs(this.dragX) > this.moveThreshold || Math.abs(this.dragY) > this.moveThreshold)) {
-            this.hasMoved = true;
+        const diffX = clientX - this.startX;
+        const diffY = clientY - this.startY;
+        
+        if (!this.hasMoved) {
+            if (Math.abs(diffX) > this.moveThreshold || Math.abs(diffY) > this.moveThreshold) {
+                this.hasMoved = true;
+                // Lock axis
+                this.axis = Math.abs(diffX) > Math.abs(diffY) ? 'x' : 'y';
+            }
+        }
+
+        if (this.hasMoved) {
+            if (this.axis === 'x') {
+                this.dragX = diffX;
+                this.dragY = 0;
+            } else {
+                this.dragX = 0;
+                this.dragY = diffY;
+            }
         }
     }
 
