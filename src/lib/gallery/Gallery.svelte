@@ -58,7 +58,7 @@
         <div
             bind:this={scroller.node}
             class={cn(
-                "flex gap-4 overflow-x-auto overflow-y-hidden pt-4 px-4 pb-1 hide-scrollbar cursor-grab active:cursor-grabbing select-none",
+                "flex gap-4 overflow-x-auto overflow-y-hidden py-4 px-4 hide-scrollbar cursor-grab active:cursor-grabbing select-none",
                 className
             )}
             onscroll={scroller.updateButtons}

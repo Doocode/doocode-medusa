@@ -31,7 +31,7 @@
 
 <main class="grid sm:grid-cols-[220px_1fr] md:grid-cols-[300px_1fr] gap-4 items-start">
     <VersionSelect releases={sortedReleases} bind:currentVersionNumber />
-    <section class="bg-primary/30 dark:bg-primary/40 pt-4 pb-3 sm:rounded-4xl sm:overflow-clip">
+    <section class="bg-primary/30 dark:bg-primary/40 pt-4 sm:rounded-4xl sm:overflow-clip">
         {#if selectedRelease && selectedRelease.images}
             {#key currentVersionNumber}
                 <Gallery images={ selectedRelease.images } {size} />

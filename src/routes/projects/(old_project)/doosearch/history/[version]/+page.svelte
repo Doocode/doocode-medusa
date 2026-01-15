@@ -86,7 +86,7 @@
                 <Heading level="h3" icon={Fullscreen}
                     title={ m['projects.screenshots']() }
                 />
-                <div class="-mx-4 sm:rounded-4xl pt-4 pb-3 bg-primary/50 overflow-clip">
+                <div class="-mx-4 sm:rounded-4xl pt-4 bg-primary/50 overflow-clip">
                     <Gallery images={release.images} />
                 </div>
                 <style>
