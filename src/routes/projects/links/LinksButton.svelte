@@ -2,12 +2,20 @@
     import { Button } from '$lib/components/ui/button';
     import { 
         Globe, Github, BookOpen, Scale, AppWindow, Command, Terminal, 
-        Smartphone, Puzzle, Archive, Link as LinkIcon
+        Smartphone, Puzzle, Package, Link as LinkIcon, Download,
     } from '@lucide/svelte/icons';
     import { type ProjectLink, LinkType } from "../projects.types";
     import { cn } from "$lib/utils";
 
     let { links, onclick, class: className }: { links: ProjectLink[], onclick?: () => void, class?: string } = $props();
+
+    function isDownload(type: LinkType) {
+        return [
+            LinkType.WindowsExecutable, LinkType.WindowsInstaller,
+            LinkType.MacOS, LinkType.Linux, LinkType.Android, 
+            LinkType.iOS, LinkType.Archive
+        ].includes(type);
+    }
 
     const linkIcons = {
         [LinkType.Website]: Globe,
@@ -21,7 +29,7 @@
         [LinkType.Android]: Smartphone,
         [LinkType.iOS]: Smartphone,
         [LinkType.WebExtension]: Puzzle,
-        [LinkType.Archive]: Archive,
+        [LinkType.Archive]: Package,
         [LinkType.Other]: LinkIcon
     };
 
@@ -32,6 +40,7 @@
     
     const visibleLinks = $derived(linksDetails.slice(0, 3));
     const remainingCount = $derived(Math.max(0, linksDetails.length - 3));
+    const hasDownload = $derived(links.some(l => isDownload(l.type)));
 </script>
 
 <Button
@@ -45,25 +54,30 @@
         <div class="w-1/2 h-full bg-linear-to-r from-transparent via-primary/30 to-transparent skew-x-[-15deg]"></div>
     </div>
 
-    <div class="flex -space-x-3 isolate z-10">
+    <div class="flex -space-x-2.5 isolate z-10">
         {#each visibleLinks as link, i}
-            <div class="relative bg-primary text-primary-foreground rounded-full p-2 border-2 border-background w-10 h-10 flex items-center justify-center shadow-sm" style="z-index: {10 - i}">
-                <link.icon class="w-5! h-5!" />
+            <div class="relative bg-primary text-primary-foreground rounded-full p-2 border-2 border-background w-12 h-12 flex items-center justify-center shadow-sm" style="z-index: {10 - i}">
+                <link.icon class="w-6! h-6!" />
             </div>
         {/each}
         {#if remainingCount > 0}
-            <div class="relative bg-muted text-muted-foreground rounded-full border-2 border-background w-10 h-10 flex items-center justify-center text-xs font-bold shadow-sm" style="z-index: 0">
+            <div class="relative bg-muted text-muted-foreground rounded-full border-2 border-background w-12 h-12 flex items-center justify-center text-md font-bold shadow-sm" style="z-index: 0">
                 +{remainingCount}
             </div>
         {/if}
     </div>
+
     <div class="z-10">
-        <div class="text-sm font-bold leading-none mb-1 group-hover:text-primary transition-colors">Links</div>
+        <div class="text-lg font-bold leading-none mb-1 group-hover:text-primary transition-colors">Links</div>
         <div class="text-xs text-muted-foreground">{links.length} available</div>
     </div>
 
     <div class="ml-auto z-10">
-        <LinkIcon class="w-5! h-5!" />
+        {#if hasDownload}
+            <Download class="w-7! h-7!" strokeWidth={1.5} />
+        {:else}
+            <LinkIcon class="w-7! h-7!" strokeWidth={1.5} />
+        {/if}
     </div>
 </Button>
 

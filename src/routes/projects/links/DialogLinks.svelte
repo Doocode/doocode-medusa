@@ -4,15 +4,16 @@
     import { formatDate } from "../projects.helpers";
     import { Link as LinkIcon } from "@lucide/svelte";
     import * as Dialog from "$lib/components/ui/dialog";
-    import type { ProjectLink } from "../projects.types";
+    import type { ProjectLink, TwColor } from "../projects.types";
     import { getRelativeTime } from "../projects.helpers";
 
     interface Props {
         open?: boolean,
         links?: ProjectLink[];
+        accent?: TwColor;
     }
 
-    let { open = $bindable(false), links = [] }: Props = $props();
+    let { open = $bindable(false), links = [], accent }: Props = $props();
 
     let searchQuery = $state("");
 
@@ -37,7 +38,10 @@
 </script>
 
 <Dialog.Root bind:open>
-    <Dialog.Content class="sm:max-w-115">
+    <Dialog.Content 
+        class="sm:max-w-115 {accent ? 'project_theme' : ''}"
+        style={accent ? `--accent-light: ${accent.light}; --accent-dark: ${accent.dark};` : undefined}
+    >
         <Dialog.Header>
             <Dialog.Title>Links</Dialog.Title>
         </Dialog.Header>
