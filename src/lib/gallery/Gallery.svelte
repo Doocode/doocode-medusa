@@ -11,6 +11,7 @@
         images?: GalleryItemContent[];
         class?: string;
         classHeader?: string;
+        classGallery?: string;
         size?: 'small' | 'medium' | 'large';
     }
 
@@ -19,6 +20,7 @@
         size = 'medium',
         class: className,
         classHeader = "",
+        classGallery = "",
         ...restProps
     }: Props = $props();
 
@@ -44,7 +46,7 @@
     }
 </script>
 
-<main class="grid">
+<main class={cn(className)}>
     <div class="grid">
         <GalleryHeader
             class={classHeader}
@@ -59,7 +61,7 @@
             bind:this={scroller.node}
             class={cn(
                 "flex gap-4 overflow-x-auto overflow-y-hidden py-4 px-4 hide-scrollbar cursor-grab active:cursor-grabbing select-none",
-                className
+                classGallery
             )}
             onscroll={scroller.updateButtons}
             onmousedown={scroller.handleMouseDown}
