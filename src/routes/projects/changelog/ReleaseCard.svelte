@@ -2,6 +2,7 @@
     import { ReleaseTypeBadge, Summary } from ".";
     import { Package, ChevronRight } from '@lucide/svelte/icons';
     import type { Release } from '$routes/projects/projects.types';
+    import { LinkBubbles } from '$routes/projects/links';
     import { formatDate, getRelativeTime } from "../projects.helpers";
 
     interface Props {
@@ -13,8 +14,14 @@
 
 {#snippet header(size: 'small' | 'large')}
     <header class="flex flex-wrap items-center gap-3 mb-2">
+        {#if release.links && release.links.length > 0}
+            <LinkBubbles links={release.links} size="sm" />
+        {/if}
+
         <h3 class="{size === 'small' ? 'text-xl' : 'text-2xl'} font-bold flex items-center gap-2">
-            <Package class="{size === 'small' ? 'w-5 h-5' : 'w-6 h-6'} text-primary" />
+            {#if !release.links || release.links.length === 0}
+                <Package class="{size === 'small' ? 'w-5 h-5' : 'w-6 h-6'} text-primary" />
+            {/if}
             {release.versionString}
         </h3>
         {#if release.type}
@@ -66,10 +73,10 @@
     <div class="hidden md:flex md:gap-6">
         <!-- Left: Date section (150px fixed) -->
         <div class="w-25 shrink-0 text-right pt-1 text-balance">
-            <div class="text-xs text-accent-foreground mb-2">
+            <div class="text-xs text-primary font-bold mb-2">
                 {getRelativeTime(release.releaseDate)}
             </div>
-            <time class="text-sm font-medium text-foreground block leading-tight">
+            <time class="text-base font-base mt-5 text-foreground block leading-tight">
                 {formatDate(release.releaseDate, {
                     weekday: 'long',
                     year: 'numeric',
