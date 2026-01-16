@@ -17,13 +17,13 @@
         <BlockVersion icon={Flag} title={m['projects.version']()}
             versionName={project.versionName} />
     {/if}
-    {#if project.updatedAt}
-        <BlockDate icon={History} title={m['projects.updatedAt']()}
-            date={project.updatedAt} />
+    {#if project.updatedOn}
+        <BlockDate icon={History} title={m['status.updated_on.title']()}
+            date={project.updatedOn} />
     {/if}
-    {#if project.createdAt}
-        <BlockDate icon={Calendar1} title={m['projects.createdAt']()}
-            date={project.createdAt} />
+    {#if project.createdOn}
+        <BlockDate icon={Calendar1} title={m['status.created_on.title']()}
+            date={project.createdOn} />
     {/if}
     {#if project.licenseName}
         <SpecBlock icon={Scale} title={m['projects.license']()}>

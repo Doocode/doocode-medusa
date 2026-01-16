@@ -89,9 +89,9 @@
                         <span class="truncate block">{link.url}</span>
                     {/if}
                 </div>
-                {#if link.updatedAt || link.createdAt}
-                    {@const date = new Date(link.updatedAt || link.createdAt!)}
-                    {@const label = link.updatedAt ? "Updated" : "Added"}
+                {#if link.updatedOn || link.createdOn}
+                    {@const date = new Date(link.updatedOn || link.createdOn!)}
+                    {@const label = link.updatedOn ? "Updated" : "Added"}
                     <span class="text-[10px] text-muted-foreground hidden sm:block pt-0.5">
                         {label} {getRelativeTime(date)}
                     </span>
@@ -109,17 +109,17 @@
             <Icon class="size-10" />
         </div>
         <div class="flex flex-col items-center gap-1 text-center w-full min-w-0">
-             <span class="font-bold text-md leading-tight truncate w-full px-2">{link.label || link.type}</span>
-             <div class="text-xs text-muted-foreground w-full truncate px-2 opacity-80">
+            <span class="font-bold text-md leading-tight truncate w-full px-2">{link.label || link.type}</span>
+            <div class="text-xs text-muted-foreground w-full truncate px-2 opacity-80">
                 {#if urlInfo.valid}
                     {urlInfo.hostname}
                 {:else}
                     {link.url}
                 {/if}
-             </div>
+            </div>
         </div>
         
-        <div class="absolute top-3 right-3 text-muted-foreground/30 group-hover:text-primary transition-colors">
+        <div class="absolute top-3 right-3 text-muted-foreground group-hover:text-primary transition-colors">
             {#if isDl}
                 <Download class="size-4" />
             {:else}

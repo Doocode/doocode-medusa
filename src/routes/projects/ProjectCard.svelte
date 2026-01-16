@@ -10,12 +10,12 @@
         name: string;
         logo: string;
         catchyPhrase: string;
-        createdAt: Date;
-        updatedAt?: Date;
+        createdOn: Date;
+        updatedOn?: Date;
         bgAccent?: TwColor | undefined;
     }
 
-    let { codename, name, logo, catchyPhrase, createdAt, updatedAt, bgAccent }: Props = $props();
+    let { codename, name, logo, catchyPhrase, createdOn, updatedOn, bgAccent }: Props = $props();
 </script>
 
 <a
@@ -40,13 +40,13 @@
     <p class="text-center text-balance font-medium">{catchyPhrase}</p>
     
     <div class="flex items-center justify-center gap-1 mt-4 border-t border-black/50 dark:border-white/70 pt-3.5 w-full">
-        {#if updatedAt}
-            {@const date = formatDate(updatedAt)}
-            <p>{m["status.updated_on"]({ date })}</p>
+        {#if updatedOn}
+            {@const date = formatDate(updatedOn)}
+            <p>{m["status.updated_on.value"]({ date })}</p>
             <ClockFadingIcon class="h-4! w-4!"/>
         {:else}
-            {@const date = formatDate(createdAt)}
-            <p>{m["status.created_on"]({ date })}</p>
+            {@const date = formatDate(createdOn)}
+            <p>{m["status.created_on.value"]({ date })}</p>
             <BallonIcon class="h-4! w-4!"/>
         {/if}
     </div>

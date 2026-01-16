@@ -16,6 +16,6 @@ export const capture: Project = {
     codename: 'capture',
     name, logo,
     catchyPhrase: m['projects.capture.catchy_phrase'](),
-    createdAt: new Date('2015-03-31'),
+    createdOn: new Date('2015-03-31'),
     bgAccent: { light: '#85ceff', dark: '#0057c8' },
 };

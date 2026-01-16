@@ -15,7 +15,7 @@ export const mainAction: MainActionProps = {
 };
 
 const latestRelease = getLatestRelease(releases);
-const updatedAt = releases.length > 1 ? latestRelease?.releaseDate : undefined;
+const updatedOn = releases.length > 1 ? latestRelease?.releaseDate : undefined;
 
 export const doosearch: Project = {
     id: crypto.randomUUID(),
@@ -24,8 +24,8 @@ export const doosearch: Project = {
     
     catchyPhrase: m['projects.doosearch.catchy_phrase'](),
 
-    createdAt: new Date('2014-03-19'),
-    updatedAt,
+    createdOn: new Date('2014-03-19'),
+    updatedOn,
 
     versionName: latestRelease?.versionString,
     versionCode: latestRelease?.versionNumber,

@@ -8,6 +8,7 @@
     import { getRelativeTime } from "../projects.helpers";
     import { Button } from "$lib/components/ui/button";
     import { ButtonGroup } from "$lib/components/ui/button-group";
+    import { m } from "$lib/paraglide/messages";
     import { cn } from "$lib/utils";
 
     interface Props {
@@ -49,7 +50,7 @@
     const lastUpdated = $derived.by(() => {
         if (!links.length) return null;
         return links.reduce((latest, link) => {
-            const date = link.updatedAt || link.createdAt;
+            const date = link.updatedOn || link.createdOn;
             if (!date) return latest;
             const d = new Date(date);
             return !latest || d > latest ? d : latest;
@@ -66,7 +67,7 @@
         style={accent ? `--accent-light: ${accent.light}; --accent-dark: ${accent.dark};` : undefined}
     >
         <Dialog.Header class="flex flex-row items-center justify-between space-y-0 pr-6 -mt-2">
-            <Dialog.Title>Links</Dialog.Title>
+            <Dialog.Title>{ m['links.title']() }</Dialog.Title>
 
             <div class="flex items-center gap-2">
                 {#if links.length > 3}
@@ -112,7 +113,7 @@
         <Dialog.Footer class="sm:justify-center">
             {#if lastUpdated}
                 <p class="text-xs text-muted-foreground text-center">
-                    Last updated on {formatDate(lastUpdated)} - {getRelativeTime(lastUpdated)}
+                    { m['status.updated_on.value']({ date: formatDate(lastUpdated) }) } - {getRelativeTime(lastUpdated)}
                 </p>
             {/if}
         </Dialog.Footer>

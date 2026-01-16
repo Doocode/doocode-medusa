@@ -15,11 +15,11 @@
     <p class="mb-8">{m['projects.description']()}</p>
 
     <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))] mt-8">
-        {#each projects as { codename, name, logo, catchyPhrase, createdAt, updatedAt, bgAccent } }
+        {#each projects as { codename, name, logo, catchyPhrase, createdOn, updatedOn, bgAccent } }
             <ProjectCard 
                 {name} {logo} {codename}
                 {catchyPhrase} {bgAccent}
-                {createdAt} {updatedAt}
+                {createdOn} {updatedOn}
             />
         {/each}
     </div>

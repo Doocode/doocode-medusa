@@ -20,8 +20,8 @@ export interface Project {
     logo: string;
     catchyPhrase: string;
 
-    createdAt: Date;
-    updatedAt?: Date;
+    createdOn: Date;
+    updatedOn?: Date;
 
     versionName?: string;
     versionCode?: number;
@@ -124,6 +124,6 @@ export interface ProjectLink {
     type: LinkType;
     label?: string;
     url: string;
-    createdAt?: Date;
-    updatedAt?: Date;
+    createdOn?: Date;
+    updatedOn?: Date;
 }

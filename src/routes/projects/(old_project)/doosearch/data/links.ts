@@ -4,29 +4,29 @@ export const website: ProjectLink = {
     type: LinkType.Website,
     label: "Site web",
     url: 'https://search.doocode.xyz',
-    createdAt: new Date('2014-03-19'),
-    updatedAt: new Date('2018-07-20'),
+    createdOn: new Date('2014-03-19'),
+    updatedOn: new Date('2018-07-20'),
 };
 
 export const repository: ProjectLink = {
     type: LinkType.Repository,
     label: 'Code source',
     url: 'https://github.com/Doocode/Doosearch/',
-    createdAt: new Date('2016-06-30'),
+    createdOn: new Date('2016-06-30'),
 };
 
 export const documentation: ProjectLink = {
     type: LinkType.Documentation,
     label: 'Developer Wiki',
     url: 'https://github.com/Doocode/Doosearch/wiki',
-    createdAt: new Date('2018-09-10'),
+    createdOn: new Date('2018-09-10'),
 };
 
 export const license: ProjectLink = {
     type: LinkType.License,
     label: 'Licence GPL-3.0',
     url: 'https://www.gnu.org/licenses/gpl-3.0.txt',
-    createdAt: new Date('2014-03-19'),
+    createdOn: new Date('2014-03-19'),
 };
 
 export const links: ProjectLink[] = [

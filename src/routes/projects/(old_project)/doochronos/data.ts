@@ -16,7 +16,7 @@ export const doochronos: Project = {
     codename: 'doochronos',
     name, logo,
     catchyPhrase: m['projects.doochronos.catchy_phrase'](),
-    createdAt: new Date('2016-03-15'),
-    updatedAt: new Date('2018-06-15'),
+    createdOn: new Date('2016-03-15'),
+    updatedOn: new Date('2018-06-15'),
     bgAccent: { light: '#ffaed7', dark: '#c00476' },
 }
