@@ -33,6 +33,13 @@
             
             // Search in removed features
             if (release.removedFeatures?.some(r => r.toLowerCase().includes(query))) return true;
+
+            // Search in links
+            if (release.links?.some(link => 
+                link.type.toLowerCase().includes(query) ||
+                link.label?.toLowerCase().includes(query) ||
+                link.url.toLowerCase().includes(query)
+            )) return true;
             
             // Search in images (alt, legend, description)
             if (release.images?.some(img => 

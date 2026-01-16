@@ -4,11 +4,10 @@
     import { Heading, Restyle } from "$lib/page";
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
-    import { DialogLinks } from '$routes/projects/links';
+    import { DialogLinks, LinksButton } from '$routes/projects/links';
     import { formatDate, getRelativeTime } from "$routes/projects/projects.helpers";
     import { Lister, ReleaseTypeBadge, SideNavigation, Summary } from "$routes/projects/changelog";
     import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
-    import { LinksButton } from "$routes/projects/links";
 
     let { data }: { data: PageData } = $props();
 
