@@ -10,9 +10,7 @@
     let { icon, title, children }: Props = $props();
 </script>
 
-<main class="spec-block relative flex flex-col justify-between items-start aspect-square flex-none rounded-none p-4 gap-6 md:p-0 md:w-44">
-    <div class="spec-border-r absolute right-0 top-4 bottom-4 w-px bg-border md:hidden"></div>
-    <div class="spec-border-b absolute bottom-0 left-4 right-4 h-px bg-border md:hidden"></div>
+<main class="spec-block relative flex flex-col justify-between items-start aspect-square flex-none lg:aspect-4/3 xl:aspect-video border-r">
     <header class="flex flex-col justify-start items-start gap-1">
         {#key icon}
             {@const Icon = icon }

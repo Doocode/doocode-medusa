@@ -11,8 +11,7 @@
 </script>
 
 <main class={cn("\
-    grid grid-cols-2 min-[420px]:grid-cols-3 min-[560px]:grid-cols-4 gap-0 \
-    md:flex md:overflow-x-auto md:overflow-y-hidden md:gap-8 md:divide-x divide-border \
+    grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] divide-border gap-x-4 gap-y-8\
 ", className)}>
     {@render children?.()}
 </main>

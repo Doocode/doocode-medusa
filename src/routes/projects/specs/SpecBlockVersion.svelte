@@ -17,7 +17,7 @@
 </script>
 
 <SpecBlock {icon} {title}>
-    <p class="text-foreground capitalize [&_span]:font-bold font-mono">
-        <span class="text-chart-1 text-5xl">{major}</span>.<span class="text-chart-2 text-4xl">{minor}</span>.<span class="text-chart-3 text-3xl">{patch}</span>
+    <p class="text-foreground [&_span]:font-bold font-mono">
+        <span class="text-chart-1 text-4xl">{major}</span>.<span class="text-chart-2 text-3xl">{minor}</span>.<span class="text-chart-3 text-2xl">{patch}</span>
     </p>
 </SpecBlock>
