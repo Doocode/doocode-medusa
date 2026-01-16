@@ -41,7 +41,10 @@
             variant="outline"
             onclick={toggleFullscreen}
             class="w-12 h-12 hover:scale-120 active:scale-90 rounded-lg backdrop-blur-2xl pointer-events-auto"
-            title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+            title={ isFullscreen
+                ? m['actions.fullscreen.exit']()
+                : m['actions.fullscreen.enable']()
+            }
         >
             {#if isFullscreen}
                 <Minimize2 class="w-6! h-6!" strokeWidth={2} />

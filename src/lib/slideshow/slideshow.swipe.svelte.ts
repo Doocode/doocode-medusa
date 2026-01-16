@@ -62,7 +62,7 @@ export class SlideshowSwipeManager {
 
         // Check for vertical swipe first (close)
         if (this.dragY > this.threshold && Math.abs(this.dragX) < Math.abs(this.dragY) && this.onSwipeDown) {
-             this.onSwipeDown();
+            this.onSwipeDown();
         } 
         // Then horizontal swipes (navigation)
         else if (Math.abs(this.dragX) > Math.abs(this.dragY)) {

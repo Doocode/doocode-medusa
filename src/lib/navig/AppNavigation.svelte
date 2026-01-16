@@ -4,10 +4,10 @@
 
 </script>
 
-<div class="grid md:hidden">
+<div class="grid sm:hidden">
     <Navbar />
 </div>
 
-<div class="hidden md:grid">
+<div class="hidden sm:grid">
     <Header />
 </div>
