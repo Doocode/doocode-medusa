@@ -1,10 +1,8 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui/button';
-    import { 
-        Globe, Github, BookOpen, Scale, AppWindow, Command, Terminal, 
-        Smartphone, Puzzle, Package, Link as LinkIcon, Download,
-    } from '@lucide/svelte/icons';
+    import {  Link as LinkIcon, Download } from '@lucide/svelte/icons';
     import { type ProjectLink, LinkType } from "../projects.types";
+    import LinkBubbles from "./LinkBubbles.svelte";
     import { cn } from "$lib/utils";
 
     let { links, onclick, class: className }: { links: ProjectLink[], onclick?: () => void, class?: string } = $props();
@@ -16,30 +14,7 @@
             LinkType.iOS, LinkType.Archive
         ].includes(type);
     }
-
-    const linkIcons = {
-        [LinkType.Website]: Globe,
-        [LinkType.Repository]: Github,
-        [LinkType.Documentation]: BookOpen,
-        [LinkType.License]: Scale,
-        [LinkType.WindowsExecutable]: AppWindow,
-        [LinkType.WindowsInstaller]: AppWindow,
-        [LinkType.MacOS]: Command,
-        [LinkType.Linux]: Terminal,
-        [LinkType.Android]: Smartphone,
-        [LinkType.iOS]: Smartphone,
-        [LinkType.WebExtension]: Puzzle,
-        [LinkType.Archive]: Package,
-        [LinkType.Other]: LinkIcon
-    };
-
-    const linksDetails = $derived(links ? links.map(l => ({
-        icon: linkIcons[l.type] || LinkIcon,
-        label: l.label || l.type
-    })) : []);
     
-    const visibleLinks = $derived(linksDetails.slice(0, 3));
-    const remainingCount = $derived(Math.max(0, linksDetails.length - 3));
     const hasDownload = $derived(links.some(l => isDownload(l.type)));
 </script>
 
@@ -54,17 +29,8 @@
         <div class="w-1/2 h-full bg-linear-to-r from-transparent via-primary/30 to-transparent skew-x-[-15deg]"></div>
     </div>
 
-    <div class="flex -space-x-2.5 isolate z-10">
-        {#each visibleLinks as link, i}
-            <div class="relative bg-primary text-primary-foreground rounded-full p-2 border-2 border-background w-12 h-12 flex items-center justify-center shadow-sm" style="z-index: {10 - i}">
-                <link.icon class="w-6! h-6!" />
-            </div>
-        {/each}
-        {#if remainingCount > 0}
-            <div class="relative bg-muted text-muted-foreground rounded-full border-2 border-background w-12 h-12 flex items-center justify-center text-md font-bold shadow-sm" style="z-index: 0">
-                +{remainingCount}
-            </div>
-        {/if}
+    <div class="z-10">
+        <LinkBubbles {links} size="lg" />
     </div>
 
     <div class="z-10">
