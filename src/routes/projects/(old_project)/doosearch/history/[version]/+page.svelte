@@ -4,14 +4,22 @@
     import { Heading, Restyle } from "$lib/page";
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
-    import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
+    import { DialogLinks } from '$routes/projects/links';
     import { formatDate, getRelativeTime } from "$routes/projects/projects.helpers";
     import { Lister, ReleaseTypeBadge, SideNavigation, Summary } from "$routes/projects/changelog";
+    import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
+    import { LinksButton } from "$routes/projects/links";
 
     let { data }: { data: PageData } = $props();
 
     const release = $derived(data.release);
+
+    let dialogLinksOpen = $state(false);
 </script>
+
+{#if release.links && release.links.length > 0}
+    <DialogLinks bind:open={dialogLinksOpen} links={release.links} />
+{/if}
 
 <main class="container mx-auto px-4 pt-8 pb-16 grid gap-16 lg:grid-cols-[300px_1fr] xl:grid-cols-[350px_1fr] items-start">
     <aside class="grid gap-y-4 gap-x-8 sm:grid-cols-2 lg:grid-cols-1 lg:sticky top-8 self-start">
@@ -44,7 +52,6 @@
             </time>
 
             <Summary {release} hideLabel />
-            <!-- TODO: List links -->
         </div>
 
         <SideNavigation {release} />
@@ -69,6 +76,16 @@
                     }
                 </style>
             </Restyle>
+        {/if}
+
+        <!-- Links -->
+        {#if release.links && release.links.length > 0}
+            <div class="flex -mb-6">
+                <LinksButton 
+                    links={release.links} 
+                    onclick={() => dialogLinksOpen = true} 
+                />
+            </div>
         {/if}
 
         <!-- Description -->
