@@ -43,19 +43,19 @@
         sm: {
             container: "-space-x-2",
             bubble: "w-8 h-8 p-1.5",
-            icon: "w-4 h-4",
+            icon: "w-4! h-4!",
             text: "text-xs"
         },
         md: {
             container: "-space-x-2.5",
             bubble: "w-10 h-10 p-2",
-            icon: "w-5 h-5",
+            icon: "w-5! h-5!",
             text: "text-xs"
         },
         lg: {
             container: "-space-x-3",
             bubble: "w-12 h-12 p-2",
-            icon: "w-6 h-6",
+            icon: "w-6! h-6!",
             text: "text-sm"
         }
     };

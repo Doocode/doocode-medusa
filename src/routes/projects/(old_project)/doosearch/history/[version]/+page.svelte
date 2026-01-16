@@ -17,7 +17,9 @@
 </script>
 
 {#if release.links && release.links.length > 0}
-    <DialogLinks bind:open={dialogLinksOpen} links={release.links} accent={data.project.bgAccent} />
+    <DialogLinks bind:open={dialogLinksOpen}
+        links={release.links}
+        accent={data.project.bgAccent} />
 {/if}
 
 <main class="container mx-auto px-4 pt-8 pb-16 grid gap-16 lg:grid-cols-[300px_1fr] xl:grid-cols-[350px_1fr] items-start">

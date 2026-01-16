@@ -11,9 +11,10 @@
 
     interface Props {
         link: ProjectLink;
+        display?: 'list' | 'grid';
     }
 
-    let { link }: Props = $props();
+    let { link, display = 'list' }: Props = $props();
 
     const icons: Record<string, Component> = {
         [LinkType.Website]: Globe,
@@ -69,34 +70,61 @@
     rel="noopener noreferrer"
     class={buttonVariants({ 
         variant: "outline", 
-        class: "w-full justify-between h-auto py-3 px-4 group overflow-hidden rounded-2xl" 
+        class: display === 'list' 
+            ? "w-full justify-between h-auto py-3 px-4 group overflow-hidden rounded-2xl"
+            : "w-full flex-col h-auto py-6 px-4 gap-3 relative rounded-3xl"
     })}
 >
-    <div class="flex items-center gap-4 min-w-0 flex-1">
-        <div class="p-2 sm:p-3 rounded-lg bg-primary shrink-0 text-primary-foreground">
-            <Icon class="size-6 sm:size-8" />
-        </div>
-        <div class="flex flex-col items-start gap-0.5 text-left min-w-0 flex-1">
-            <span class="font-semibold text-sm text-primary truncate w-full">{link.label || link.type}</span>
-            <div class="text-xs font-normal w-full overflow-hidden whitespace-nowrap opacity-80">
-                {#if urlInfo.valid}
-                    <span class="font-medium">{urlInfo.hostname}</span><span class="hidden sm:inline text-muted-foreground">{urlInfo.path}</span>
-                {:else}
-                    <span class="truncate block">{link.url}</span>
+    {#if display === 'list'}
+        <div class="flex items-center gap-4 min-w-0 flex-1">
+            <div class="p-2 sm:p-3 rounded-lg bg-primary shrink-0 text-primary-foreground">
+                <Icon class="size-6 sm:size-8" />
+            </div>
+            <div class="flex flex-col items-start gap-0.5 text-left min-w-0 flex-1">
+                <span class="font-semibold text-sm text-primary truncate w-full">{link.label || link.type}</span>
+                <div class="text-xs font-normal w-full overflow-hidden whitespace-nowrap opacity-80">
+                    {#if urlInfo.valid}
+                        <span class="font-medium">{urlInfo.hostname}</span>
+                    {:else}
+                        <span class="truncate block">{link.url}</span>
+                    {/if}
+                </div>
+                {#if link.updatedAt || link.createdAt}
+                    {@const date = new Date(link.updatedAt || link.createdAt!)}
+                    {@const label = link.updatedAt ? "Updated" : "Added"}
+                    <span class="text-[10px] text-muted-foreground hidden sm:block pt-0.5">
+                        {label} {getRelativeTime(date)}
+                    </span>
                 {/if}
             </div>
-            {#if link.updatedAt || link.createdAt}
-                {@const date = new Date(link.updatedAt || link.createdAt!)}
-                {@const label = link.updatedAt ? "Updated" : "Added"}
-                <span class="text-[10px] text-muted-foreground hidden sm:block pt-0.5">
-                    {label} {getRelativeTime(date)}
-                </span>
+        </div>
+        {#if isDl}
+            <Download class="size-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 ml-2" />
+        {:else}
+            <ExternalLink class="size-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 ml-2" />
+        {/if}
+    {:else}
+        <!-- Grid Variant -->
+        <div class="p-4 rounded-2xl bg-primary text-primary-foreground">
+            <Icon class="size-10" />
+        </div>
+        <div class="flex flex-col items-center gap-1 text-center w-full min-w-0">
+             <span class="font-bold text-md leading-tight truncate w-full px-2">{link.label || link.type}</span>
+             <div class="text-xs text-muted-foreground w-full truncate px-2 opacity-80">
+                {#if urlInfo.valid}
+                    {urlInfo.hostname}
+                {:else}
+                    {link.url}
+                {/if}
+             </div>
+        </div>
+        
+        <div class="absolute top-3 right-3 text-muted-foreground/30 group-hover:text-primary transition-colors">
+            {#if isDl}
+                <Download class="size-4" />
+            {:else}
+                <ExternalLink class="size-4" />
             {/if}
         </div>
-    </div>
-    {#if isDl}
-        <Download class="size-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 ml-2" />
-    {:else}
-        <ExternalLink class="size-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 ml-2" />
     {/if}
 </a>

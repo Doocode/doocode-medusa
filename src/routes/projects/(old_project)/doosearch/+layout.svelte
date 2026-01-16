@@ -64,4 +64,4 @@
     {@render children()}
 </main>
 
-<DialogLinks bind:open={dialogLinks} {links} />
+<DialogLinks bind:open={dialogLinks} {links} accent={data.project.bgAccent} />
