@@ -32,8 +32,9 @@
     }
 </script>
 
-<svelte:window onkeydown={handleKeyDown} onkeyup={handleKeyUp} />
-
+<svelte:window
+    onkeydown={handleKeyDown}
+    onkeyup={handleKeyUp} />
 
 {#snippet navButton(
     onclick: (event: MouseEvent) => void,
@@ -44,9 +45,7 @@
     shiftLabel: string
 )}
     <Button
-        class={{
-            "rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary": true,
-        }}
+        class="rounded-full hover:bg-primary hover:text-background active:scale-90 focus-visible:ring-primary"
         variant={canScroll ? "default" : "secondary"}
         size="icon"
         {onclick}

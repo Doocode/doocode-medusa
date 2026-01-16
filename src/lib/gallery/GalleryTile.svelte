@@ -16,7 +16,7 @@
 </script>
 
 <a class={{
-    "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-110 relative": true,
+    "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-110 relative group": true,
     "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !item.withTransparencyBg,
     "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": item.withTransparencyBg,
 }}
@@ -43,6 +43,12 @@
             draggable="false"
         >
         </video>
+
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="bg-black/50 group-hover:bg-black backdrop-blur-sm rounded-full p-3 md:p-4 duration-150">
+                <Play class="w-6 h-6 md:w-8 md:h-8 text-white fill-white" />
+            </div>
+        </div>
     {:else}
         <img src={item.src} alt={item.alt} title={item.alt}
             class={{
@@ -55,14 +61,6 @@
             loading="lazy"
             draggable="false"
         />
-    {/if}
-    
-    {#if item.type === GalleryItemType.Video}
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div class="bg-black/50 backdrop-blur-sm rounded-full p-3 md:p-4">
-                <Play class="w-6 h-6 md:w-8 md:h-8 text-white fill-white" />
-            </div>
-        </div>
     {/if}
 </a>
 
