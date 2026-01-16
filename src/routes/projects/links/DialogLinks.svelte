@@ -22,6 +22,21 @@
     let showSearch = $state(false);
     let viewMode: 'list' | 'grid' = $state('list');
 
+    $effect(() => {
+        const mql = window.matchMedia("(min-width: 640px)");
+        
+        const onChange = () => {
+            if (!mql.matches && viewMode === 'grid') {
+                viewMode = 'list';
+            }
+        };
+
+        mql.addEventListener("change", onChange);
+        onChange(); // Check immediately
+        
+        return () => mql.removeEventListener("change", onChange);
+    });
+
     const filteredLinks = $derived(links.filter(link => {
         const term = searchQuery.toLowerCase();
         return (
