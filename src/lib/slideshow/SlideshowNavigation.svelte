@@ -62,52 +62,46 @@
 
 <svelte:window onkeydown={handleKeyDown} onkeyup={handleKeyUp} />
 
+{#snippet navButton(show: boolean, scaleVal: number, click: () => void, Icon: any, ShiftIcon: any, label: string, shiftLabel: string)}
+    {#if show}
+        <div
+            transition:scale|global={{ duration: 300 }}
+            style:transform="scale({scaleVal})"
+            class="transition-transform duration-75"
+        >
+            <Button
+                size="icon"
+                onclick={click}
+                class="sm:size-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
+            >
+                {#if shiftPressed}
+                    <ShiftIcon class="sm:size-8!" strokeWidth={3} />
+                    <span class="sr-only">{shiftLabel}</span>
+                {:else}
+                    <Icon class="sm:size-8!" strokeWidth={3} />
+                    <span class="sr-only">{label}</span>
+                {/if}
+            </Button>
+        </div>
+    {/if}
+{/snippet}
+
 <main class="fixed flex justify-between items-center inset-0 pointer-events-none z-60 md:px-8">
     <div>
-        {#if hasPrevious}
-            <div
-                transition:scale|global={{ duration: 300 }}
-                style:transform="scale({prevScale})"
-                class="transition-transform duration-75"
-            >
-                <Button
-                    size="icon"
-                    onclick={onPreviousClick}
-                    class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
-                >
-                    {#if shiftPressed}
-                        <SkipBack class="w-8! h-8!" strokeWidth={3} />
-                        <span class="sr-only">{ m['slideshow.first']() }</span>
-                    {:else}
-                        <ArrowLeft class="w-8! h-8!" strokeWidth={3} />
-                        <span class="sr-only">{ m['slideshow.previous']() }</span>
-                    {/if}
-                </Button>
-            </div>
-        {/if}
+        {@render navButton(
+            hasPrevious, prevScale, onPreviousClick,
+            ArrowLeft, SkipBack,
+            m['slideshow.previous'](),
+            m['slideshow.first']())
+        }
     </div>
 
     <div>
-        {#if hasNext}
-            <div
-                transition:scale|global={{ duration: 300 }}
-                style:transform="scale({nextScale})"
-                class="transition-transform duration-75"
-            >
-                <Button
-                    size="icon"
-                    onclick={onNextClick}
-                    class="w-16 h-16 rounded-full hover:scale-120 active:scale-90 pointer-events-auto"
-                >
-                    {#if shiftPressed}
-                        <SkipForward class="w-8! h-8!" strokeWidth={3} />
-                        <span class="sr-only">{ m['slideshow.last']() }</span>
-                    {:else}
-                        <ArrowRight class="w-8! h-8!" strokeWidth={3} />
-                        <span class="sr-only">{ m['slideshow.next']() }</span>
-                    {/if}
-                </Button>
-            </div>
-        {/if}
+        {@render navButton(
+            hasNext, nextScale, onNextClick,
+            ArrowRight, SkipForward,
+            m['slideshow.next'](),
+            m['slideshow.last']())
+        }
     </div>
 </main>
