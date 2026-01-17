@@ -1,8 +1,9 @@
 import { LinkType, type ProjectLink } from "$routes/projects/projects.types";
+import { m } from "$lib/paraglide/messages";
 
 export const website: ProjectLink = {
     type: LinkType.Website,
-    label: "Site web",
+    get label() { return m['links.website']() },
     url: 'https://search.doocode.xyz',
     createdOn: new Date('2014-03-19'),
     updatedOn: new Date('2018-07-20'),
@@ -10,21 +11,21 @@ export const website: ProjectLink = {
 
 export const repository: ProjectLink = {
     type: LinkType.Repository,
-    label: 'Code source',
+    get label() { return m['links.source_code']() },
     url: 'https://github.com/Doocode/Doosearch/',
     createdOn: new Date('2016-06-30'),
 };
 
 export const documentation: ProjectLink = {
     type: LinkType.Documentation,
-    label: 'Developer Wiki',
+    get label() { return m['links.wiki']() },
     url: 'https://github.com/Doocode/Doosearch/wiki',
     createdOn: new Date('2018-09-10'),
 };
 
 export const license: ProjectLink = {
     type: LinkType.License,
-    label: 'Licence GPL-3.0',
+    get label() { return m['links.license_name']({ name: 'GPL-3.0' }) },
     url: 'https://www.gnu.org/licenses/gpl-3.0.txt',
     createdOn: new Date('2014-03-19'),
 };
