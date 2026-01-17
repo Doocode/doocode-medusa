@@ -105,8 +105,8 @@
         </Dialog.Header>
 
         {#if showSearch}
-            <div class="pb-2">
-                <SearchBar bind:value={searchQuery} placeholder="Search links..." />
+            <div class="pb-2 -mx-2 sm:mx-0">
+                <SearchBar bind:value={searchQuery} placeholder="Search links..." autofocus />
             </div>
         {/if}
 
