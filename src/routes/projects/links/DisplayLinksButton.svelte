@@ -1,11 +1,18 @@
 <script lang="ts">
-    import { Button } from '$lib/components/ui/button';
     import {  Link as LinkIcon, Download } from '@lucide/svelte/icons';
     import { type ProjectLink, LinkType } from "../projects.types";
+    import { Button } from '$lib/components/ui/button';
     import LinksBubbles from "./LinksBubbles.svelte";
+    import { m } from '$lib/paraglide/messages';
     import { cn } from "$lib/utils";
 
-    let { links, onclick, class: className }: { links: ProjectLink[], onclick?: () => void, class?: string } = $props();
+    interface Props {
+        links: ProjectLink[];
+        onclick?: () => void;
+        class?: string;
+    }
+
+    let { links, onclick, class: className }: Props = $props();
 
     function isDownload(type: LinkType) {
         return [
@@ -34,8 +41,8 @@
     </div>
 
     <div class="z-10 sr-only sm:not-sr-only">
-        <div class="sm:text-lg font-bold leading-none mb-1 group-hover:text-primary transition-colors">Links</div>
-        <div class="sm:text-xs text-muted-foreground">{links.length} available</div>
+        <div class="sm:text-lg font-bold leading-none mb-1 group-hover:text-primary transition-colors">{ m['links.title']() }</div>
+        <div class="sm:text-xs text-muted-foreground">{ m['actions.click_to_open']() }</div>
     </div>
 
     <div class="ml-auto z-10">

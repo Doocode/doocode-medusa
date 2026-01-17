@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { m } from "$lib/paraglide/messages";
     import { ReleaseTypeBadge } from "../changelog";
     import type { Release } from "../projects.types";
     import { ImagePlay } from "@lucide/svelte/icons";
@@ -32,11 +33,11 @@
                     <ReleaseTypeBadge type={release.type!} />
                 </div>
 
-                <div class="ml-auto flex gap-1 items-center">
+                <div class="ml-auto flex gap-1 items-center"
+                    title={ m['gallery.count_images']( { count: imageCount } ) }>
                     <span class="text-2xl font-thin">
                         {imageCount}
                     </span>
-                    <span class="sr-only">images</span>
                     <ImagePlay size={24} strokeWidth={1.75} />
                 </div>
             </button>
