@@ -39,7 +39,7 @@
                     class="gap-2"
                 >
                     <ArrowLeft class="w-5! h-5!" />
-                    Back to history
+                    {m['projects.history.back_to_history']()}
                 </Button>
             </div>
 
@@ -56,7 +56,7 @@
                 {/if}
             </div>
             <time class="text-sm md:text-base text-muted-foreground block text-balance">
-                Released on {formatDate(release.releaseDate)} - {getRelativeTime(release.releaseDate)}
+                {m['status.released_on.value']({ date: formatDate(release.releaseDate) })} - {getRelativeTime(release.releaseDate)}
             </time>
 
             <Summary {release} hideLabel />
@@ -122,7 +122,7 @@
         {#if release.features && release.features.length > 0}
             <Lister id="features"
                 icon={SquarePlus}
-                heading="Features"
+                heading={m['changelog.features.title']()}
                 items={release.features}
                 tintLight="oklch(62.7% 0.194 149.214)"
                 tintDark="oklch(79.2% 0.209 151.711)"
@@ -133,7 +133,7 @@
         {#if release.improvements && release.improvements.length > 0}
             <Lister id="improvements"
                 icon={Sparkles}
-                heading="Improvements"
+                heading={m['changelog.improvements.title']()}
                 items={release.improvements}
                 tintLight="oklch(54.6% 0.245 262.881)"
                 tintDark="oklch(70.7% 0.165 254.624)"
@@ -144,7 +144,7 @@
         {#if release.bugfixes && release.bugfixes.length > 0}
             <Lister id="bugfixes"
                 icon={Bug}
-                heading="Bug Fixes"
+                heading={m['changelog.bug_fixes.title']()}
                 items={release.bugfixes}
                 tintLight="oklch(64.6% 0.222 41.116)"
                 tintDark="oklch(75% 0.183 55.934)"
@@ -155,7 +155,7 @@
         {#if release.removals && release.removals.length > 0}
             <Lister id="removed"
                 icon={Trash2}
-                heading="Removed Features"
+                heading={m['changelog.removals.title']()}
                 items={release.removals}
                 tintLight="oklch(62.3% 0.234 25.406)"
                 tintDark="oklch(78.1% 0.174 25.406)"
