@@ -2,10 +2,17 @@
     import type { Release } from '$routes/projects/projects.types';
     import type { Component } from 'svelte';
     import {
-        Bug, ImagePlay, Sparkles, SquarePlus, Trash2
+        Bug, ImagePlay, Sparkles, SquarePlus, Trash2, Link
     } from "@lucide/svelte/icons";
 
     const colors: Record<string, { text: string, hoverBg: string, hoverText: string, ring: string, badge: string }> = {
+        links: {
+            text: "text-amber-600 dark:text-amber-400",
+            hoverBg: "hover:bg-amber-200 dark:hover:bg-amber-900/60",
+            hoverText: "hover:text-amber-700 dark:hover:text-amber-300",
+            ring: "focus:ring-amber-500",
+            badge: "bg-amber-200 text-amber-700 dark:bg-amber-900 dark:text-amber-400"
+        },
         features: {
             text: "text-green-600 dark:text-green-400",
             hoverBg: "hover:bg-green-200 dark:hover:bg-green-900/60",
@@ -51,7 +58,7 @@
 </script>
 
 <nav class="grid -ml-4">
-    <h2 class="text-2xl font-bold mt-16 mb-4 mx-4">Navigation</h2>
+    <h2 class="text-2xl font-bold mt-16 sm:mt-0 lg:mt-16 mb-4 mx-4">Navigation</h2>
 
     {#snippet link(id: string, label: string, icon: Component, count: number)}
         {@const style = colors[id] || {
@@ -80,6 +87,10 @@
 
     {#if release.images?.length}
         {@render link('screenshots', 'Screenshots', ImagePlay, release.images.length)}
+    {/if}
+
+    {#if release.links?.length}
+        {@render link('links', 'Links', Link, release.links.length)}
     {/if}
 
     {#if release.features?.length}

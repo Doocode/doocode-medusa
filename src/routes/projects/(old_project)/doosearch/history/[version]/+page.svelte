@@ -1,13 +1,16 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import { m } from "$lib/paraglide/messages";
-    import { Heading, Restyle } from "$lib/page";
+    import { Heading, Restyle,
+        ListContainer as Ul,
+        ListItem as Li
+    } from "$lib/page";
     import Gallery from '$lib/gallery/Gallery.svelte';
     import { Button } from '$lib/components/ui/button';
     import { DialogLinks, DisplayLinksButton } from '$routes/projects/links';
     import { formatDate, getRelativeTime } from "$routes/projects/projects.helpers";
     import { Lister, ReleaseTypeBadge, SideNavigation, Summary } from "$routes/projects/changelog";
-    import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus } from '@lucide/svelte/icons';
+    import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus, Link } from '@lucide/svelte/icons';
 
     let { data }: { data: PageData } = $props();
 
@@ -79,16 +82,6 @@
             </Restyle>
         {/if}
 
-        <!-- Links -->
-        {#if release.links && release.links.length > 0}
-            <div class="flex -mb-6">
-                <DisplayLinksButton 
-                    links={release.links} 
-                    onclick={() => dialogLinksOpen = true} 
-                />
-            </div>
-        {/if}
-
         <!-- Description -->
         {#if release.description}
             <div class="prose dark:prose-invert max-w-none">
@@ -96,6 +89,29 @@
                     {release.description}
                 </p>
             </div>
+        {/if}
+
+        <!-- Links -->
+        {#if release.links && release.links.length > 0}
+            <Restyle tag="section" class="grid gap-4 -mb-4" id="links"
+                tintLight="oklch(68.1% 0.162 75.834)"
+                tintDark="oklch(85.2% 0.199 91.936)"
+            >
+                <header class="flex flex-col sm:flex-row gap-4 sm:gap-18 sm:items-center">
+                    <Heading level="h3" icon={Link}
+                        title={ m['links.title']() }
+                    />
+                    <DisplayLinksButton 
+                        links={release.links} 
+                        onclick={() => dialogLinksOpen = true} 
+                    />
+                </header>
+                <Ul class="flex flex-wrap gap-y-3 gap-x-13">
+                    {#each release.links as {label}}
+                        <Li>{label}</Li>
+                    {/each}
+                </Ul>
+            </Restyle>
         {/if}
 
         <!-- Features -->

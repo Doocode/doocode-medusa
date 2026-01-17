@@ -21,7 +21,7 @@
 <Button
     variant="outline"
     {onclick}
-    class={cn("group relative overflow-hidden flex items-center justify-start py-4 gap-4 min-w-70 sm:min-w-100 bg-input/50! border-3 border-transparent hover:border-primary hover:bg-primary/30! active:bg-primary/60! rounded-xl h-auto text-start", className)}
+    class={cn("group relative overflow-hidden flex flex-1 items-center justify-start py-4 gap-4 min-w-70 sm:min-w-100 bg-input/50! border-3 border-transparent hover:border-primary hover:bg-primary/30! active:bg-primary/60! rounded-xl h-auto text-start", className)}
     aria-label="View project links"
 >
     <!-- Shine effect -->
@@ -33,9 +33,9 @@
         <LinksBubbles {links} size="lg" />
     </div>
 
-    <div class="z-10">
-        <div class="text-lg font-bold leading-none mb-1 group-hover:text-primary transition-colors">Links</div>
-        <div class="text-xs text-muted-foreground">{links.length} available</div>
+    <div class="z-10 sr-only sm:not-sr-only">
+        <div class="sm:text-lg font-bold leading-none mb-1 group-hover:text-primary transition-colors">Links</div>
+        <div class="sm:text-xs text-muted-foreground">{links.length} available</div>
     </div>
 
     <div class="ml-auto z-10">
