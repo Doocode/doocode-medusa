@@ -3,6 +3,7 @@
     import Heading from '$lib/page/Heading.svelte';
     import { Specs } from '$routes/projects/specs';
     import type { Project } from '$routes/projects/projects.types';
+    import { m } from "$lib/paraglide/messages";
 
     interface Props {
         project: Project;
@@ -14,7 +15,7 @@
 <div class="grid gap-8">
     <Heading level="h2"
         icon={Info}
-        title="Quelques points clés"
+        title={m['projects.doosearch.landing.key_points.title']()}
     />
 
     <Specs {project} />

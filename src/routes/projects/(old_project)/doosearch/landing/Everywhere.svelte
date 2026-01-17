@@ -2,6 +2,7 @@
     import { MonitorSmartphone } from '@lucide/svelte/icons';
     import Heading from '$lib/page/Heading.svelte';
     import { CrossPlatform } from '../gallery/svg';
+    import { m } from "$lib/paraglide/messages";
 </script>
 
 <div class="grid gap-4  lg:gap-8 md:grid-cols-2 items-center">
@@ -14,8 +15,8 @@
     <div class="grid gap-4">
         <Heading level="h2"
             icon={MonitorSmartphone}
-            title="Partout avec vous"
+            title={m['projects.doosearch.landing.everywhere.title']()}
         />
-        <p>Vous êtes du genre clavier/souris ou smartphone/tablette ? Doosearch est parfaitement adapté pour une utilisation sur PC, tablette et smartphone, car il a été pensé pour. Une seule et même adresse URL suffit pour tous vos appareils.</p>
+        <p>{m['projects.doosearch.landing.everywhere.description']()}</p>
     </div>
 </div>

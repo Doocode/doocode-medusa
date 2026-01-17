@@ -14,9 +14,9 @@
         <Heading level="h2"
             class="px-4 sm:px-8"
             icon={ImagePlay}
-            title="Doosearch en action"
+            title={m['projects.doosearch.landing.mini_gallery.title']()}
         />
-        <p class="px-4 sm:px-8">Parce que une image vaut mille mots, voici quelques captures d’écran de Doosearch en action.</p>
+        <p class="px-4 sm:px-8">{m['projects.doosearch.landing.mini_gallery.description']()}</p>
 
         <div class="-mx-4 px-4">
             <Gallery images={ [...pc_images, ...mobile_images] }
@@ -45,7 +45,7 @@
         </div>
         <a href="/projects/doosearch/gallery"
             class="ml-auto flex items-center gap-3 group">
-            <span class="text-primary group-hover:underline text-balance text-end">Accéder à la galerie</span>
+            <span class="text-primary group-hover:underline text-balance text-end">{m['projects.doosearch.landing.mini_gallery.link']()}</span>
             <div class="bg-primary text-primary-foreground size-10 rounded-full flex items-center justify-center shrink-0">
                 <ArrowRight />
             </div>

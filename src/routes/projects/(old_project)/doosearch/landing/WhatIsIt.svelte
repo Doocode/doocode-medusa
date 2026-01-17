@@ -10,6 +10,7 @@
         searchImages as images
     } from '../gallery/landing';
     import { Slideshow } from '$lib/slideshow';
+    import { m } from "$lib/paraglide/messages";
 
     let slideIndex = $state(0);
     let openSlideshow = $state(false);
@@ -26,13 +27,13 @@
         <div class="grid gap-4 row-start-2 md:row-start-1 lg:col-start-1">
             <Heading level="h2" class="text-balance"
                 icon={SearchCheck}
-                title="Qu'est-ce que Doosearch ?"
+                title={m['projects.doosearch.landing.what_is_it.title']()}
             />
             <Ul>
-                <Li>Une sélection de plus de 100 <a href="#definition_01" class="text-primary hover:underline">moteurs de recherche</a>*</Li>
-                <Li>Executer une requête sur plusieurs sites web en simultané</Li>
-                <Li>La personnalisation du fond d'écran et de couleur du thème</Li>
-                <Li>Utilisable depuis votre PC, tablette et smartphone</Li>
+                <Li>{@html m['projects.doosearch.landing.what_is_it.list.search_engines']()}</Li>
+                <Li>{m['projects.doosearch.landing.what_is_it.list.multi_search']()}</Li>
+                <Li>{m['projects.doosearch.landing.what_is_it.list.customization']()}</Li>
+                <Li>{m['projects.doosearch.landing.what_is_it.list.cross_platform']()}</Li>
             </Ul>
         </div>
 
@@ -70,10 +71,10 @@
         </div>
 
         <div class="md:col-start-1 md:col-end-3 md:max-w-160 md:mx-auto lg:mx-0 lg:col-end-2 lg:mt-4 bg-primary/20 dark:bg-[#5e3416] p-4 md:p-8 rounded-2xl text-balance 2xl:-ml-8" id="definition_01">
-            <p>Doosearch est une page web vous offrant la possibilité de lancer une recherche vers plus de 100 moteurs de recherche* différents (dont Google, Bing, DuckDuckGo et Qwant).</p>
+            <p>{m['projects.doosearch.landing.what_is_it.definition.main']()}</p>
 
             <div class="bg-primary h-1.5 w-16 rounded-full mt-10 mb-4"></div>
-            <p class="text-sm">* Un <strong class="text-primary">moteur de recherche</strong> est un outil mis à disposition par un site web pour trouver plus rapidement des informations sur internet. Il présente par la suite les résultats obtenus en fonction des mots clés saisis.</p>
+            <p class="text-sm">{@html m['projects.doosearch.landing.what_is_it.definition.asterisk']()}</p>
         </div>
     </div>
 

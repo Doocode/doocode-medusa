@@ -3,6 +3,7 @@
     import Heading from '$lib/page/Heading.svelte';
     import { Button } from '$lib/components/ui/button';
     import { videos } from '../gallery/screen/v1.3.2';
+    import { m } from "$lib/paraglide/messages";
 </script>
 
 <div class="grid gap-8 md:grid-cols-2 items-center md:pb-12">
@@ -19,9 +20,9 @@
     <div class="grid gap-4">
         <Heading level="h2"
             icon={PackageSearch}
-            title="Rechercher en simultanée"
+            title={m['projects.doosearch.landing.multi_search.title']()}
         />
-        <p>Saviez-vous que vous pouvez lancer une recherche sur plusieurs sites web en simultané facilement. Promis, vous n’auriez pas de copier-coller à réaliser, c’est assez simple en réalité. Vous avez à sélectionner les moteurs de recherche cible juste avant d’exécuter votre requête. Pour en choisir plusieurs, vous devez faire un clic droit sur le logo du moteur pour ensuite cliquer sur « Ajouter ce moteur ».</p>
+        <p>{m['projects.doosearch.landing.multi_search.description']()}</p>
 
         <!-- TODO: img static/gif de demonstation -->
         <!-- TODO: liste des étapes claires -->
@@ -35,7 +36,7 @@
                 class="rounded-full"
             >
                 <ArrowRight class="w-5! h-5!" />
-                Voir la vidéo sur YouTube
+                {m['projects.doosearch.landing.multi_search.watch_video']()}
             </Button>
         </nav>
     </div>
