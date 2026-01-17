@@ -152,11 +152,11 @@
         {/if}
 
         <!-- Removed Features -->
-        {#if release.removedFeatures && release.removedFeatures.length > 0}
+        {#if release.removals && release.removals.length > 0}
             <Lister id="removed"
                 icon={Trash2}
                 heading="Removed Features"
-                items={release.removedFeatures}
+                items={release.removals}
                 tintLight="oklch(62.3% 0.234 25.406)"
                 tintDark="oklch(78.1% 0.174 25.406)"
             />

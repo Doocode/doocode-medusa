@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Release } from '$routes/projects/projects.types';
+    import { m } from '$lib/paraglide/messages';
     import type { Component } from 'svelte';
     import {
         Bug, ImagePlay, Sparkles, SquarePlus, Trash2, Link
@@ -86,26 +87,26 @@
     {/snippet}
 
     {#if release.images?.length}
-        {@render link('screenshots', 'Screenshots', ImagePlay, release.images.length)}
+        {@render link('screenshots', m['projects.screenshots'](), ImagePlay, release.images.length)}
     {/if}
 
     {#if release.links?.length}
-        {@render link('links', 'Links', Link, release.links.length)}
+        {@render link('links', m['links.title'](), Link, release.links.length)}
     {/if}
 
     {#if release.features?.length}
-        {@render link('features', 'Features', SquarePlus, release.features.length)}
+        {@render link('features', m['changelog.features.title'](), SquarePlus, release.features.length)}
     {/if}
 
     {#if release.improvements?.length}
-        {@render link('improvements', 'Improvements', Sparkles, release.improvements.length)}
+        {@render link('improvements', m['changelog.improvements.title'](), Sparkles, release.improvements.length)}
     {/if}
 
     {#if release.bugfixes?.length}
-        {@render link('bugfixes', 'Bugfixes', Bug, release.bugfixes.length)}
+        {@render link('bugfixes', m['changelog.bug_fixes.title'](), Bug, release.bugfixes.length)}
     {/if}
 
-    {#if release.removedFeatures?.length}
-        {@render link('removed', 'Removed Features', Trash2, release.removedFeatures.length)}
+    {#if release.removals?.length}
+        {@render link('removed', m['changelog.removals.title'](), Trash2, release.removals.length)}
     {/if}
 </nav>

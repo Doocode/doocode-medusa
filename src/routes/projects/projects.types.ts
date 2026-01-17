@@ -73,6 +73,8 @@ export interface Release {
      */
     description?: string;
 
+    // TODO: breaking changes?
+
     /**
      * List of bug fixes
      */
@@ -91,7 +93,7 @@ export interface Release {
     /**
      * List of removed features
      */
-    removedFeatures?: string[];
+    removals?: string[];
 
     /**
      * List of images

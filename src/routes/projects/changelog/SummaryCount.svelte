@@ -4,11 +4,12 @@
     interface Props {
         type: SummaryType;
         count: number;
+        title: string;
         label: string;
         hideLabel?: boolean;
     }
 
-    let { type, count, label, hideLabel = false }: Props = $props();
+    let { type, count, title, label, hideLabel = false }: Props = $props();
 
     import { Bug, CircleDashed, ImagePlay, Sparkles, SquarePlus, Trash2 } from "@lucide/svelte/icons";
 </script>
@@ -22,7 +23,7 @@
     "text-red-600 dark:text-red-400": type === 'removed',
     "text-gray-600 dark:text-gray-400": !type
 }}
-    title={count + " " + label}
+    {title}
 >
     <span class={{
         "flex items-center gap-1 px-2.5 py-1 rounded-md": true,
@@ -48,5 +49,5 @@
         {/if}
         <span class="text-lg">{count}</span>
     </span>
-    <span class:sr-only={hideLabel}>{label}</span>
+    <span class="lowercase" class:sr-only={hideLabel}>{label}</span>
 </div>

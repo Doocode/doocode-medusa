@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { m } from '$lib/paraglide/messages';
     import SummaryCount from "./SummaryCount.svelte";
     import type { Release } from '$routes/projects/projects.types';
 
@@ -19,35 +20,40 @@
         <SummaryCount {hideLabel}
             type="features"
             count={release.features.length}
-            label={release.features.length === 1 ? 'feature' : 'features'}
+            label={ m['changelog.features.title']() }
+            title={ m['changelog.features.count_items']({ count: release.features.length }) }
         />
     {/if}
     {#if release.improvements?.length}
         <SummaryCount {hideLabel}
             type="improvements"
             count={release.improvements.length}
-            label={release.improvements.length === 1 ? 'improvement' : 'improvements'}
+            label={ m['changelog.improvements.title']() }
+            title={ m['changelog.improvements.count_items']({ count: release.improvements.length }) }
         />
     {/if}
     {#if release.bugfixes?.length}
         <SummaryCount {hideLabel}
-            type="bugfixes" 
-            count={release.bugfixes.length} 
-            label={release.bugfixes.length === 1 ? 'bugfix' : 'bugfixes'} 
+            type="bugfixes"
+            count={release.bugfixes.length}
+            label={ m['changelog.bug_fixes.title']() }
+            title={ m['changelog.bug_fixes.count_items']({ count: release.bugfixes.length }) }
         />
     {/if}
-    {#if release.removedFeatures?.length}
+    {#if release.removals?.length}
         <SummaryCount {hideLabel}
             type="removed"
-            count={release.removedFeatures.length}
-            label={release.removedFeatures.length === 1 ? 'removed feature' : 'removed features'}
+            count={release.removals.length}
+            label={ m['changelog.removals.title']() }
+            title={ m['changelog.removals.count_items']({ count: release.removals.length }) }
         />
     {/if}
     {#if release.images?.length}
         <SummaryCount {hideLabel}
             type="screenshots"
             count={release.images.length}
-            label={release.images.length === 1 ? 'screenshot' : 'screenshots'}
+            label={ m['changelog.screenshots.title']() }
+            title={ m['changelog.screenshots.count_items']({ count: release.images.length }) }
         />
     {/if}
 </div>

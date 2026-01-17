@@ -32,7 +32,7 @@
             if (release.bugfixes?.some(b => b.toLowerCase().includes(query))) return true;
             
             // Search in removed features
-            if (release.removedFeatures?.some(r => r.toLowerCase().includes(query))) return true;
+            if (release.removals?.some(r => r.toLowerCase().includes(query))) return true;
 
             // Search in links
             if (release.links?.some(link => 

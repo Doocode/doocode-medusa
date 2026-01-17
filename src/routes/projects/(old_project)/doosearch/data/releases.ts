@@ -31,7 +31,7 @@ export const v1_3_2: Release = {
         "Réparation des urls de certains moteurs de recherche",
         "Améliorations de la stabilité et corrections de bugs."
     ],
-    removedFeatures: [
+    removals: [
         "Suppression de la dépendance Animate.css",
         "Suppression de la police \"Roboto\""
     ],
@@ -54,7 +54,7 @@ export const v1_3_1: Release = {
     ],
     bugfixes: [
     ],
-    removedFeatures: [
+    removals: [
         "Suppression de la page \"Découvrir Doosearch\""
     ],
     //images: [...screens_v1_3_1],
@@ -83,7 +83,7 @@ export const v1_3_0: Release = {
         "Mise en surbrillance du moteur de recherche sélectionné dans la liste",
         "Amélioration de la responsivité mobile",
     ],
-    removedFeatures: [],
+    removals: [],
     images: [...screens_v1_3_0],
 };
 
@@ -101,7 +101,7 @@ export const v1_2: Release = {
         "Création d'un menu contextuel sur la liste des moteurs de recherche"
     ],
     improvements: [],
-    removedFeatures: [],
+    removals: [],
     images: [...screens_v1_2],
 };
 
