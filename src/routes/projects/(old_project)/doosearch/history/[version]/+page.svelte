@@ -19,6 +19,10 @@
     let dialogLinksOpen = $state(false);
 </script>
 
+<svelte:head>
+    <title>[{ data.project.name }] { release.versionString } • Doocode.xyz</title>
+</svelte:head>
+
 {#if release.links && release.links.length > 0}
     <DialogLinks bind:open={dialogLinksOpen}
         links={release.links}

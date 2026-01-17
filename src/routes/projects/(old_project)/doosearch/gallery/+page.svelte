@@ -9,15 +9,22 @@
     import { bts, mockups } from "./bts";
     import { Screenshots } from "$routes/projects/screenshots";
     import { releases } from "../data/releases";
+    import type { PageProps } from './$types';
+
+    let { data }: PageProps = $props();
 </script>
 
+<svelte:head>
+    <title>[{ data.project.name }] { m['projects.gallery']() } • Doocode.xyz</title>
+</svelte:head>
+
 <main class="container mx-auto pt-8 grid gap-16 [&_p]:text-balance">
-    <div class="grid gap-2">
+    <div class="grid gap-2" id="screenshots">
         <Heading level="h2" icon={Fullscreen} class="px-4"
             title={ m['projects.screenshots']() }
         />
 
-        <Screenshots {releases} />
+        <Screenshots {releases} size="large" />
     </div>
 
     <div class="grid gap-16 lg:grid-cols-2 xl:grid-cols-5 lg:gap-4 lg:-mt-12">
@@ -32,8 +39,8 @@
                 class="mt-auto" classGallery="lg:px-8" classHeader="lg:px-8" />
         </div>
 
-        <div class="flex flex-col gap-4 lg:bg-chart-2/50 lg:rounded-4xl lg:overflow-clip lg:pt-6 lg:pb-4 xl:col-span-2">
             <div class="grid gap-2 px-4 lg:px-8">
+        <div id="mockups" class="flex flex-col gap-4 lg:bg-chart-2/50 lg:rounded-4xl lg:overflow-clip lg:pt-6 lg:pb-4 xl:col-span-2">
                 <Heading level="h2" icon={DraftingCompass}
                     title={ m['projects.mockups']() }
                 />
@@ -44,7 +51,7 @@
         </div>
     </div>
 
-    <div class="grid gap-4">
+    <div id="logos" class="grid gap-4">
         <Heading level="h2" icon={PencilRuler} class="px-4"
             title={ m['projects.logos']() }
         />
