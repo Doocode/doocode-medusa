@@ -1,7 +1,7 @@
 <script lang="ts">
+    import VersionSelect from "./VersionSelect.svelte";
     import type { Release } from "../projects.types";
     import { Gallery } from "$lib/gallery";
-    import VersionSelect from "./VersionSelect.svelte";
     import { onMount } from "svelte";
 
     interface Props {

@@ -3,16 +3,15 @@
     import {
         ArrowUp01, ArrowRight, BrushCleaning, Info,
         MessageCircleQuestionMark, MonitorSmartphone,
-        PackageSearch, ImagePlay
+        PackageSearch
     } from '@lucide/svelte/icons';
     import Heading from '$lib/page/Heading.svelte';
     import { Specs } from '$routes/projects/specs';
     import { currentLogo } from './gallery/logo';
     import { Button } from '$lib/components/ui/button';
     import { CrossPlatform, UIPlaceholder} from './gallery/svg';
-    import { Gallery } from '$lib/gallery';
-    import { mobile_images, pc_images, videos } from './gallery/screen/v1.3.2';
-    import { ColorSwitcher, WhatIsIt } from './landing';
+    import { videos } from './gallery/screen/v1.3.2';
+    import { ColorSwitcher, MiniGallery, WhatIsIt } from './landing';
     import { scale } from 'svelte/transition';
 
     let { data }: PageProps = $props();
@@ -63,17 +62,7 @@
 
 
 
-    <div class="grid gap-4">
-        <Heading level="h2"
-            icon={ImagePlay}
-            title="Doosearch en action"
-        />
-        <p>Parce que une image vaut mille mots, voici quelques captures d’écran de Doosearch en action.</p>
-
-        <div class="-mx-4">
-            <Gallery images={ [...pc_images, ...mobile_images] } />
-        </div>
-    </div>
+    <MiniGallery />
 
 
 

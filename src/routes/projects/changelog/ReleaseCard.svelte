@@ -45,11 +45,11 @@
 <a 
     href="/projects/doosearch/history/{release.versionString}"
     class="group block p-6 rounded-xl border-3 border-secondary
-           hover:border-primary dark:hover:border-primary
-           hover:shadow-lg transition-all duration-200
-           md:hover:shadow-none
-           bg-background
-           md:p-0 md:border-0 md:rounded-none md:shadow-none md:bg-transparent"
+        hover:border-primary dark:hover:border-primary
+        hover:shadow-lg transition-all duration-200
+        md:hover:shadow-none
+        bg-background
+        md:p-0 md:border-0 md:rounded-none md:shadow-none md:bg-transparent"
 >
     <!-- Mobile layout -->
     <div class="flex items-start justify-between gap-4 md:hidden">
@@ -97,9 +97,9 @@
         <!-- Right: Content -->
         <div class="flex-1 min-w-0 pb-8 group/content">
             <div class="p-6 rounded-xl border-3 border-secondary
-                       group-hover:border-primary dark:group-hover:border-primary
-                       group-hover:shadow-lg transition-all duration-200
-                       bg-background flex gap-4">
+                group-hover:border-primary dark:group-hover:border-primary
+                group-hover:shadow-lg transition-all duration-200
+                bg-background flex gap-4">
                 <div class="flex-1 min-w-0">
                     {@render header('large')}
 
