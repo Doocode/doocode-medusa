@@ -17,8 +17,8 @@
 
 <a class={{
     "p-1.5 md:p-2 rounded-xl md:rounded-2xl shrink-0 active:scale-110 relative group": true,
-    "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !item.withTransparencyBg,
-    "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": item.withTransparencyBg,
+    "bg-slate-300 dark:bg-slate-700 hover:bg-primary dark:hover:bg-primary duration-150": !item.transparentBg,
+    "bg-checkerboard hover:bg-size-[2.5rem_2.5rem]! duration-200": item.transparentBg,
 }}
     href={item.src}
     role="button"
@@ -37,7 +37,7 @@
                 "h-39.75": size === 'medium',
                 "h-39.75 md:h-64": size === 'large',
             }}
-            class:rounded-lg={!item.withTransparencyBg}
+            class:rounded-lg={!item.transparentBg}
             muted
             preload="metadata"
             draggable="false"
@@ -57,7 +57,7 @@
                 "h-39.75": size === 'medium',
                 "h-39.75 md:h-64": size === 'large',
             }}
-            class:rounded-lg={!item.withTransparencyBg}
+            class:rounded-lg={!item.transparentBg}
             loading="lazy"
             draggable="false"
         />

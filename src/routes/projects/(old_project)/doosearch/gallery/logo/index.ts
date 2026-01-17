@@ -9,32 +9,32 @@ import Logo_2014_03 from './doosearch_logo_2014_03.png'
 const logo_2026 = {
     src: Logo_2026,
     alt: "Current logo - 2026",
-    withTransparencyBg: true,
+    transparentBg: true,
     description: "The current logo of Doosearch, introduced in 2026."
 };
 
 const logo_2016_round = {
     src: Logo_2016_round,
     alt: "Old logo (round) - 2016",
-    withTransparencyBg: true,
+    transparentBg: true,
 };
 
 const logo_2016_flat = {
     src: Logo_2016_flat,
     alt: "Old logo (flat) - 2016",
-    withTransparencyBg: false,
+    transparentBg: false,
 };
 
 const logo_2014_04 = {
     src: Logo_2014_04,
     alt: "Old logo - April 2014",
-    withTransparencyBg: true,
+    transparentBg: true,
 };
 
 const logo_2014_03 = {
     src: Logo_2014_03,
     alt: "Old logo - March 2014",
-    withTransparencyBg: true,
+    transparentBg: true,
 };
 
 export const logos: GalleryItemContent[] = [

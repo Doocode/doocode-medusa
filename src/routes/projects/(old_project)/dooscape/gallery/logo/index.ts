@@ -12,18 +12,18 @@ export const logos: GalleryItemContent[] = [
     {
         src: logo_2026,
         alt: "Current logo - 2026",
-        withTransparencyBg: true,
+        transparentBg: true,
         description: "The current logo of Dooscape, introduced in 2026."
     },
     {
         src: logo_2017Round,
         alt: "Old logo (round) - 2017",
-        withTransparencyBg: true,
+        transparentBg: true,
     },
     {
         src: logo_2015Round,
         alt: "Old logo (round) - 2015",
-        withTransparencyBg: true,
+        transparentBg: true,
         description: "The new color scheme introduced in 2015 is a part of refreshing the brand identity to make it more unique regarding Dooscape and Doosearch identity."
     },
     /*{
@@ -34,18 +34,18 @@ export const logos: GalleryItemContent[] = [
     {
         src: logo_2015Neo,
         alt: "Old logo (Neo development) - 2015",
-        withTransparencyBg: true,
+        transparentBg: true,
         description: "The new color scheme introduced in 2015 is a part of refreshing the brand identity to make it more unique regarding Dooscape and Doosearch identity."
     },*/
     {
         src: logo_201410,
         alt: "Old logo - October 2014",
-        withTransparencyBg: true,
+        transparentBg: true,
     },
     {
         src: logo_201403,
         alt: "Old logo - March 2014",
-        withTransparencyBg: true,
+        transparentBg: true,
     },
 ];
 

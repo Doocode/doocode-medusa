@@ -17,7 +17,7 @@
         <video
             class={{
                 "pointer-events-auto max-w-full max-h-full object-contain touch-none": true,
-                "rounded-lg md:rounded-xl": !image.withTransparencyBg,
+                "rounded-lg md:rounded-xl": !image.transparentBg,
             }}
             src={image.src}
             title={image.alt}
@@ -32,7 +32,7 @@
         <img
             class={{
                 "pointer-events-auto max-w-full max-h-full object-contain": true,
-                "rounded-lg md:rounded-xl": !image.withTransparencyBg,
+                "rounded-lg md:rounded-xl": !image.transparentBg,
             }}
             src={image.src}
             alt={image.alt}

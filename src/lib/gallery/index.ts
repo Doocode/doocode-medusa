@@ -9,7 +9,9 @@ interface GalleryItemContent {
     alt: string;
     legend?: string;
     description?: string;
-    withTransparencyBg?: boolean;
+    transparentBg?: boolean;
+    createdOn?: Date;
+    updatedOn?: Date;
 }
 
 import Gallery from "./Gallery.svelte";
