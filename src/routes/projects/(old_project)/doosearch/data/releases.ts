@@ -1,5 +1,6 @@
 import { ReleaseType, type Release } from "$routes/projects/projects.types";
 import { links } from "../data/links";
+import { m } from "$lib/paraglide/messages";
 import {
     v1_3_2 as screens_v1_3_2,
     v1_3_0 as screens_v1_3_0,
@@ -11,30 +12,30 @@ export const v1_3_2: Release = {
     versionNumber: 26,
     versionString: 'v1.3.2',
     type: ReleaseType.Stable,
-    description: 'Quelques améliorations de la stabilité et corrections de bugs.',
-    features: [
-        "Support de la traduction vers l'anglais",
-        "Ajout du thème sombre",
-        "Ajout d'un QR Code pour ouvrir le site sur mobile",
-    ],
-    improvements: [
-        "Passage du site web en HTTPS",
-        "Sites web épinglés : Nouvelle interface de saisie/modification d'un site web épinglé",
-        "Premier lancement : Nouvelle interface avec l'ajout d'une navigation par étapes (pointillés et sections)",
-        "Premier lancement : Ajout d'une page pour expliquer le fonctionnement du LocalStorage",
-        "Moteurs de recherche : Renommage de \"OC\" en \"Open Classrooms\"",
-        "Mise à jour des logos de certains moteurs de recherche",
-    ],
-    bugfixes: [
-        "Bugfix : Paramètres écrasés lors de la mise à jour depuis une version antérieure",
-        "Moteurs de recherche : lister les moteurs selectionnés en utilisant le mot-cle \"séléctionné\"",
-        "Réparation des urls de certains moteurs de recherche",
-        "Améliorations de la stabilité et corrections de bugs."
-    ],
-    removals: [
-        "Suppression de la dépendance Animate.css",
-        "Suppression de la police \"Roboto\""
-    ],
+    get description() { return m['projects.doosearch.releases.v1_3_2.description']() },
+    get features() { return [
+        m['projects.doosearch.releases.v1_3_2.features.0'](),
+        m['projects.doosearch.releases.v1_3_2.features.1'](),
+        m['projects.doosearch.releases.v1_3_2.features.2'](),
+    ]},
+    get improvements() { return [
+        m['projects.doosearch.releases.v1_3_2.improvements.0'](),
+        m['projects.doosearch.releases.v1_3_2.improvements.1'](),
+        m['projects.doosearch.releases.v1_3_2.improvements.2'](),
+        m['projects.doosearch.releases.v1_3_2.improvements.3'](),
+        m['projects.doosearch.releases.v1_3_2.improvements.4'](),
+        m['projects.doosearch.releases.v1_3_2.improvements.5'](),
+    ]},
+    get bugfixes() { return [
+        m['projects.doosearch.releases.v1_3_2.bugfixes.0'](),
+        m['projects.doosearch.releases.v1_3_2.bugfixes.1'](),
+        m['projects.doosearch.releases.v1_3_2.bugfixes.2'](),
+        m['projects.doosearch.releases.v1_3_2.bugfixes.3'](),
+    ]},
+    get removals() { return [
+        m['projects.doosearch.releases.v1_3_2.removals.0'](),
+        m['projects.doosearch.releases.v1_3_2.removals.1'](),
+    ]},
     images: [...screens_v1_3_2],
     links
 };
@@ -44,19 +45,19 @@ export const v1_3_1: Release = {
     versionNumber: 25,
     versionString: 'v1.3.1',
     type: ReleaseType.Stable,
-    description: 'Mise à jour corrective de la version 1.3',
-    features: [
-        "Paramètres : Ajout d'un réglage pour régler la luminosité du fond d'écran",
-    ],
-    improvements: [
-        "Responsivité mobile : Page \"Recherche\" et \"Paramètres\" améliorées",
-        "Page d'accueil : Remplacement de certaines images animés par des vidéos YouTube"
-    ],
+    get description() { return m['projects.doosearch.releases.v1_3_1.description']() },
+    get features() { return [
+        m['projects.doosearch.releases.v1_3_1.features.0'](),
+    ]},
+    get improvements() { return [
+        m['projects.doosearch.releases.v1_3_1.improvements.0'](),
+        m['projects.doosearch.releases.v1_3_1.improvements.1'](),
+    ]},
     bugfixes: [
     ],
-    removals: [
-        "Suppression de la page \"Découvrir Doosearch\""
-    ],
+    get removals() { return [
+        m['projects.doosearch.releases.v1_3_1.removals.0'](),
+    ]},
     //images: [...screens_v1_3_1],
 };
 
@@ -65,24 +66,24 @@ export const v1_3_0: Release = {
     versionNumber: 24,
     versionString: 'v1.3.0',
     type: ReleaseType.Stable,
-    description: 'La dernière grosse mise à jour de Doosearch',
-    features: [
-        "Nouvelle interface graphique avec une barre de recherche opaque",
-        "Permettre de lancer une recherche sur plusieurs sites web en simultanée",
-        "Possibilité d'épingler des moteurs de recherches dans les favoris",
-        "Choix d'une image comme fond d'écran",
-        "Nouveau menu contextuel (clic droit) sur un moteur de recherche",
-        "Ajout de plusieurs moteurs de recherche supplémentaires",
-        "Nouvelle page \"Accès rapide\" pour épingler des sites web",
-        "Création d'une page d'introduction lors du premier lancement",
-        "Ajout d'une barre de recherche pour filtrer un moteur de recherche",
-        "Ajout d'options pour choisir le comportement après la validation de la recherche"
-    ],
-    improvements: [
-        "Plus de choix dans la liste des couleurs de fond d'écran et de thème",
-        "Mise en surbrillance du moteur de recherche sélectionné dans la liste",
-        "Amélioration de la responsivité mobile",
-    ],
+    get description() { return m['projects.doosearch.releases.v1_3_0.description']() },
+    get features() { return [
+        m['projects.doosearch.releases.v1_3_0.features.0'](),
+        m['projects.doosearch.releases.v1_3_0.features.1'](),
+        m['projects.doosearch.releases.v1_3_0.features.2'](),
+        m['projects.doosearch.releases.v1_3_0.features.3'](),
+        m['projects.doosearch.releases.v1_3_0.features.4'](),
+        m['projects.doosearch.releases.v1_3_0.features.5'](),
+        m['projects.doosearch.releases.v1_3_0.features.6'](),
+        m['projects.doosearch.releases.v1_3_0.features.7'](),
+        m['projects.doosearch.releases.v1_3_0.features.8'](),
+        m['projects.doosearch.releases.v1_3_0.features.9'](),
+    ]},
+    get improvements() { return [
+        m['projects.doosearch.releases.v1_3_0.improvements.0'](),
+        m['projects.doosearch.releases.v1_3_0.improvements.1'](),
+        m['projects.doosearch.releases.v1_3_0.improvements.2'](),
+    ]},
     removals: [],
     images: [...screens_v1_3_0],
 };
@@ -92,14 +93,14 @@ export const v1_2: Release = {
     versionNumber: 23,
     versionString: 'v1.2.0',
     type: ReleaseType.Stable,
-    description: 'Ajout de nouvelles fonctionnalités',
+    get description() { return m['projects.doosearch.releases.v1_2.description']() },
     bugfixes: [],
-    features: [
-        "Ajout d'une page de paramètres : choix du moteur de recherche par défaut",
-        "Personnalisation du fond d'écran : choix des couleurs de l'interface",
-        "Nouvelles options d'affichage des moteurs de recherche : en liste ou en grille",
-        "Création d'un menu contextuel sur la liste des moteurs de recherche"
-    ],
+    get features() { return [
+        m['projects.doosearch.releases.v1_2.features.0'](),
+        m['projects.doosearch.releases.v1_2.features.1'](),
+        m['projects.doosearch.releases.v1_2.features.2'](),
+        m['projects.doosearch.releases.v1_2.features.3'](),
+    ]},
     improvements: [],
     removals: [],
     images: [...screens_v1_2],
