@@ -2,7 +2,7 @@
     import { SearchBar } from "$lib/page";
     import LinkButton from "./LinkButton.svelte";
     import { formatDate } from "../projects.helpers";
-    import { Link as LinkIcon, Search, LayoutGrid, List } from "@lucide/svelte";
+    import { Search, LayoutGrid, List, Unlink } from "@lucide/svelte";
     import * as Dialog from "$lib/components/ui/dialog";
     import type { ProjectLink, TwColor } from "../projects.types";
     import { getRelativeTime } from "../projects.helpers";
@@ -56,7 +56,20 @@
             return !latest || d > latest ? d : latest;
         }, null as Date | null);
     });
+
+    function toggleSearch() {
+        showSearch = !showSearch;
+        if (!showSearch) searchQuery = "";
+    }
 </script>
+
+{#snippet toolButton(Icon: any, active: boolean, title: string, click: () => void)}
+    <Button size="icon" class="size-11" {title}
+        variant={active ? 'default' : 'outline'}
+        onclick={click}>
+        <Icon class="size-5!" />
+    </Button>
+{/snippet}
 
 <Dialog.Root bind:open>
     <Dialog.Content 
@@ -73,18 +86,21 @@
                 {#if links.length > 3}
                     <div class="hidden sm:block">
                         <ButtonGroup>
-                            <Button size="icon" class="size-11" variant={viewMode === 'list' ? 'default' : 'outline'} onclick={() => viewMode = 'list'}>
-                                <List class="size-5!" />
-                            </Button>
-                                <Button size="icon" class="size-11" variant={viewMode === 'grid' ? 'default' : 'outline'} onclick={() => viewMode = 'grid'}>
-                                <LayoutGrid class="size-5!" />
-                            </Button>
+                            {@render toolButton(List, viewMode === 'list',
+                                m['links.view_mode.list'](),
+                                () => viewMode = 'list'
+                            )}
+                            {@render toolButton(LayoutGrid, viewMode === 'grid',
+                                m['links.view_mode.grid'](),
+                                () => viewMode = 'grid'
+                            )}
                         </ButtonGroup>
                     </div>
                 {/if}
-                <Button variant={showSearch ? "default" : "outline"} size="icon" class="size-11" onclick={() => { showSearch = !showSearch; if (!showSearch) searchQuery = ""; }}>
-                    <Search class="size-5!" />
-                </Button>
+                {@render toolButton(Search, showSearch,
+                    m['actions.search'](),
+                    toggleSearch
+                )}
             </div>
         </Dialog.Header>
 
@@ -95,7 +111,7 @@
         {/if}
 
         <div class={cn(
-            "py-4 max-h-[60vh] overflow-y-auto pr-2 -mr-4 -ml-2 sm:-mr-2 sm:ml-0", 
+            "py-2 max-h-[60vh] overflow-y-auto pr-2 -mr-4 -ml-2 sm:-mr-2 sm:ml-0", 
             viewMode === 'grid' ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2" : "grid gap-2"
         )}>
             {#each filteredLinks as link}
@@ -104,8 +120,8 @@
 
             {#if filteredLinks.length === 0}
                 <div class="flex flex-col items-center justify-center py-8 text-muted-foreground border-2 border-dashed rounded-xl bg-muted/30 col-span-full">
-                    <LinkIcon class="size-8 opacity-20 mb-2" />
-                    <span class="text-sm">No links found</span>
+                    <Unlink class="size-15 mb-2" />
+                    <span class="text-sm">{ m['links.no_links_found']() }</span>
                 </div>
             {/if}
         </div>
@@ -113,7 +129,8 @@
         <Dialog.Footer class="sm:justify-center">
             {#if lastUpdated}
                 <p class="text-xs text-muted-foreground text-center">
-                    { m['status.updated_on.value']({ date: formatDate(lastUpdated) }) } - {getRelativeTime(lastUpdated)}
+                    { m['status.updated_on.value']({ date: formatDate(lastUpdated) }) }<br>
+                    <span class="text-base font-light">{getRelativeTime(lastUpdated)}</span>
                 </p>
             {/if}
         </Dialog.Footer>
