@@ -99,9 +99,9 @@
             </div>
         </div>
         {#if isDl}
-            <Download class="size-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 ml-2" />
+            <Download class="size-4 group-hover:text-primary transition-colors shrink-0 ml-2" />
         {:else}
-            <ExternalLink class="size-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0 ml-2" />
+            <ExternalLink class="size-4 group-hover:text-primary transition-colors shrink-0 ml-2" />
         {/if}
     {:else}
         <!-- Grid Variant -->
@@ -119,7 +119,7 @@
             </div>
         </div>
         
-        <div class="absolute top-3 right-3 text-muted-foreground group-hover:text-primary transition-colors">
+        <div class="absolute top-3 right-3 group-hover:text-primary transition-colors">
             {#if isDl}
                 <Download class="size-4" />
             {:else}

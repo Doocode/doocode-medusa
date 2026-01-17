@@ -2,7 +2,7 @@
     import { Button } from '$lib/components/ui/button';
     import {  Link as LinkIcon, Download } from '@lucide/svelte/icons';
     import { type ProjectLink, LinkType } from "../projects.types";
-    import LinkBubbles from "./LinkBubbles.svelte";
+    import LinksBubbles from "./LinksBubbles.svelte";
     import { cn } from "$lib/utils";
 
     let { links, onclick, class: className }: { links: ProjectLink[], onclick?: () => void, class?: string } = $props();
@@ -30,7 +30,7 @@
     </div>
 
     <div class="z-10">
-        <LinkBubbles {links} size="lg" />
+        <LinksBubbles {links} size="lg" />
     </div>
 
     <div class="z-10">

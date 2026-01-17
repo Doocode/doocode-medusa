@@ -1,6 +1,6 @@
 <script lang="ts">
     import { SearchBar } from "$lib/page";
-    import LinkButton from "./LinkButton.svelte";
+    import LinkTile from "./LinkTile.svelte";
     import { formatDate } from "../projects.helpers";
     import { Search, LayoutGrid, List, Unlink } from "@lucide/svelte";
     import * as Dialog from "$lib/components/ui/dialog";
@@ -115,7 +115,7 @@
             viewMode === 'grid' ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2" : "grid gap-2"
         )}>
             {#each filteredLinks as link}
-                <LinkButton {link} display={viewMode} />
+                <LinkTile {link} display={viewMode} />
             {/each}
 
             {#if filteredLinks.length === 0}

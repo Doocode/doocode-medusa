@@ -2,7 +2,7 @@
     import { ReleaseTypeBadge, Summary } from ".";
     import { Package, ChevronRight } from '@lucide/svelte/icons';
     import type { Release } from '$routes/projects/projects.types';
-    import { LinkBubbles } from '$routes/projects/links';
+    import { LinksBubbles } from '$routes/projects/links';
     import { formatDate, getRelativeTime } from "../projects.helpers";
 
     interface Props {
@@ -15,7 +15,7 @@
 {#snippet header(size: 'small' | 'large')}
     <header class="flex flex-wrap items-center gap-3 mb-2">
         {#if release.links && release.links.length > 0}
-            <LinkBubbles links={release.links} size="sm" />
+            <LinksBubbles links={release.links} size="sm" />
         {/if}
 
         <h3 class="{size === 'small' ? 'text-xl' : 'text-2xl'} font-bold flex items-center gap-2">

@@ -1,9 +1,9 @@
 import DialogLinks from "./DialogLinks.svelte";
-import LinksButton from "./LinksButton.svelte";
-import LinkBubbles from "./LinkBubbles.svelte";
+import DisplayLinksButton from "./DisplayLinksButton.svelte";
+import LinksBubbles from "./LinksBubbles.svelte";
 
 export {
     DialogLinks,
-    LinksButton,
-    LinkBubbles
+    DisplayLinksButton,
+    LinksBubbles
 }
