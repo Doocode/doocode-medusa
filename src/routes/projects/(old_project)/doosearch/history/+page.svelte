@@ -3,7 +3,8 @@
     import type { PageData } from './$types';
     import { m } from "$lib/paraglide/messages";
     import Heading from '$lib/page/Heading.svelte';
-    import { History } from '@lucide/svelte/icons';
+    import { BrushCleaning, History, SearchX } from '@lucide/svelte/icons';
+    import { Button } from "$lib/components/ui/button";
     import { ReleaseCard } from "$routes/projects/changelog";
     import type { Release } from '$routes/projects/projects.types';
 
@@ -66,9 +67,12 @@
         <nav>
             <SearchBar
                 bind:value={search_value}
-                placeholder={ "Find a release" }
+                placeholder={ m['actions.search']() }
                 class="w-full md:w-96"
-                statusText={ search_value && filtered_releases.length + " " + "releases found" }
+                statusText={ search_value ?
+                    m['status.search.count_results_found']({ count: filtered_releases.length }) :
+                    undefined
+                }
             />
         </nav>
     </header>
@@ -77,9 +81,25 @@
         {#each filtered_releases as release}
             <ReleaseCard {release} />
         {:else}
-            <p class="text-center text-muted-foreground py-12">
-                No releases found matching "{search_value}"
-            </p>
+            <div class="flex flex-col items-center justify-center py-24 text-center border-2 border-dashed rounded-2xl bg-muted/20">
+                <div class="relative mb-6">
+                    <SearchX class="size-20 text-primary relative z-10" />
+                </div>
+                
+                <h3 class="text-2xl font-bold mb-2">{m['status.search.no_results_title']()}</h3>
+                
+                <p class="text-muted-foreground text-sm mb-8 max-w-md text-balance">
+                    {m['status.search.no_results_desc']({ query: search_value })}
+                </p>
+
+                <Button  
+                    size="lg"
+                    onclick={() => search_value = ""}
+                >
+                    <BrushCleaning class="size-5!" />
+                    {m['actions.clear_search']()}
+                </Button>
+            </div>
         {/each}
     </div>
 </main>

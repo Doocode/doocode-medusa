@@ -8,6 +8,7 @@
     } from "@lucide/svelte";
     import type { Component } from 'svelte';
     import { getRelativeTime } from "../projects.helpers";
+    import { m } from "$lib/paraglide/messages";
 
     interface Props {
         link: ProjectLink;
@@ -90,10 +91,12 @@
                     {/if}
                 </div>
                 {#if link.updatedOn || link.createdOn}
-                    {@const date = new Date(link.updatedOn || link.createdOn!)}
-                    {@const label = link.updatedOn ? "Updated" : "Added"}
+                    {@const time = getRelativeTime(new Date(link.updatedOn || link.createdOn!))}
+                    {@const label = link.updatedOn ?
+                        m['status.updated_on.relative_time']({ time }) :
+                        m['status.added_on.relative_time']({ time })}
                     <span class="text-[10px] text-muted-foreground hidden sm:block pt-0.5">
-                        {label} {getRelativeTime(date)}
+                        {label}
                     </span>
                 {/if}
             </div>
