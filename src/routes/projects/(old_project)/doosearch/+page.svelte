@@ -1,163 +1,26 @@
 <script lang="ts">
     import type { PageProps } from './$types';
-    import {
-        ArrowUp01, ArrowRight, BrushCleaning, Info,
-        MessageCircleQuestionMark, MonitorSmartphone,
-        PackageSearch
-    } from '@lucide/svelte/icons';
-    import Heading from '$lib/page/Heading.svelte';
-    import { Specs } from '$routes/projects/specs';
-    import { currentLogo } from './gallery/logo';
-    import { Button } from '$lib/components/ui/button';
-    import { CrossPlatform, UIPlaceholder} from './gallery/svg';
-    import { videos } from './gallery/screen/v1.3.2';
-    import { ColorSwitcher, MiniGallery, WhatIsIt } from './landing';
-    import { scale } from 'svelte/transition';
+    import { 
+        WhatIsIt,
+        KeyPoints,
+        HowItWorks,
+        MiniGallery,
+        SearchEngines,
+        MultiSearch,
+        Customization,
+        Everywhere
+    } from './landing';
 
     let { data }: PageProps = $props();
-
-    let color = $state("#3b82f6")
 </script>
 
 <div class="container mx-auto px-4 py-8 grid gap-18">
     <WhatIsIt />
-
-
-
-    <div class="grid gap-8">
-        <Heading level="h2"
-            icon={Info}
-            title="Quelques points clés"
-        />
-
-        <Specs project={data.project} />
-    </div>
-
-
-
-    <div class="grid gap-8 md:grid-cols-2 items-center">
-        <img src={ currentLogo }
-            class="hidden md:flex w-90 lg:w-120 mx-auto"
-            alt="Current Doosearch logo" />
-
-        <div class="grid gap-4">
-            <Heading level="h2"
-                icon={MessageCircleQuestionMark}
-                title="Comment ça fonctionne ?"
-            />
-            <p>Vous saisissez votre requête et Doosearch se charge de le transmettre à votre site web cible. Vous aurez juste besoin de définir vos moteurs de recherche cible (les site web auxquels vous souhaitez interroger), parmi la centaine proposée, et Doosearch se chargera de les transmettre.</p>
-
-            <p>Information : Nos serveurs ne conservent aucune info concernant vos recherches.</p>
-
-            <!-- TODO: img fonctionnement schema -->
-            <!-- TODO: liens assistance
-                - Permission d’ouvrir plusieurs onglets
-                - Problème avec certains moteurs de recherche
-                    - Url non supportée (GET/POST)
-                    - Url perimée
-                    - Caractère spéciaux non supportés
-            -->
-        </div>
-    </div>
-
-
-
+    <KeyPoints project={data.project} />
+    <HowItWorks />
     <MiniGallery />
-
-
-
-    <div class="grid gap-8 md:grid-cols-2 items-center">
-        <div class="grid gap-4">
-            <Heading level="h2"
-                icon={ArrowUp01}
-                title="Plus de 100 moteurs de recherche"
-            />
-            <p>Vous avez le tournis, pas vrai ? Il y en a pour tous les goûts. Il y a des moteurs spécialisés dans le high-tech, le commerce en ligne et même pour la cuisine. Vous pouvez également tentez de retrouver une personne de votre famille sur les différents réseaux sociaux que vous connaissez.</p>
-
-            <!-- TODO: image de nuage/bulles flottantes et animés de moteurs -->
-        </div>
-
-        <img src={ currentLogo }
-            class="hidden md:flex w-90 lg:w-100 mx-auto"
-            alt="Current Doosearch logo" />
-    </div>
-
-
-
-    <div class="grid gap-8 md:grid-cols-2 items-center md:pb-12">
-        <video
-            class="pointer-events-auto max-w-full max-h-full object-contain rounded-lg md:rounded-xl"
-            src={videos.Vid_PC_05}
-            title={"Selecting several search engines"}
-            controls autoplay loop muted
-            preload="metadata"
-        >
-            <track kind="captions" />
-        </video>
-
-        <div class="grid gap-4">
-            <Heading level="h2"
-                icon={PackageSearch}
-                title="Rechercher en simultanée"
-            />
-            <p>Saviez-vous que vous pouvez lancer une recherche sur plusieurs sites web en simultané facilement. Promis, vous n’auriez pas de copier-coller à réaliser, c’est assez simple en réalité. Vous avez à sélectionner les moteurs de recherche cible juste avant d’exécuter votre requête. Pour en choisir plusieurs, vous devez faire un clic droit sur le logo du moteur pour ensuite cliquer sur « Ajouter ce moteur ».</p>
-
-            <!-- TODO: img static/gif de demonstation -->
-            <!-- TODO: liste des étapes claires -->
-            <!-- TODO: lien youtube (pas embed) -->
-            <nav class="hidden _flex flex-wrap gap-4 md:mt-4">
-                <Button
-                    href="https://www.youtube.com/watch?v=2hxLgtrusjI"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="rounded-full"
-                >
-                    <ArrowRight class="w-5! h-5!" />
-                    Voir la vidéo sur YouTube
-                </Button>
-            </nav>
-        </div>
-    </div>
-
-
-
-    <div class="grid gap-8 md:gap-12 md:grid-cols-2 items-center" style:--bg={color}>
-        <div class="grid gap-4">
-            <Heading level="h2"
-                icon={BrushCleaning}
-                title="Une page à votre image"
-            />
-            <p>Laissez votre personnalité s’exprimer. Adieu le fond monotone et austère de votre navigateur. Place à de la couleur vivantes, pétillantes voir même pastel. Et pourquoi ne pas mettre une image en fond d'écran ? Je parie que vous allez opter pour un fond d’écran original et unique.</p>
-
-            <div class="flex justify-center items-center -mb-4 md:m-0 xl:-mx-8">
-                <ColorSwitcher bind:color />
-            </div>
-        </div>
-
-        <div>
-            {#key color}
-                <div in:scale>
-                    <UIPlaceholder class="w-full aspect-video -mb-8 md:m-0 md:-rotate-3 rounded-md md:rounded-xl" />
-                </div>
-            {/key}
-        </div>
-    </div>
-
-
-
-    <div class="grid gap-4  lg:gap-8 md:grid-cols-2 items-center">
-        <!-- TODO: illustration
-            - svg animation morphose : PC, tablette et smartphone
-            - css animation : rotation 3d prisme (3 faces : PC, tablette, smartphone)
-        -->
-        <CrossPlatform class="w-full lg:h-120 -mb-8" />
-
-        <div class="grid gap-4">
-            <Heading level="h2"
-                icon={MonitorSmartphone}
-                title="Partout avec vous"
-            />
-            <p>Vous êtes du genre clavier/souris ou smartphone/tablette ? Doosearch est parfaitement adapté pour une utilisation sur PC, tablette et smartphone, car il a été pensé pour. Une seule et même adresse URL suffit pour tous vos appareils.</p>
-        </div>
-    </div>
+    <SearchEngines />
+    <MultiSearch />
+    <Customization />
+    <Everywhere />
 </div>
