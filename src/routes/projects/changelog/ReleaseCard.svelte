@@ -14,14 +14,8 @@
 
 {#snippet header(size: 'small' | 'large')}
     <header class="flex flex-wrap items-center gap-3 mb-2">
-        {#if release.links && release.links.length > 0}
-            <LinksBubbles links={release.links} size="sm" />
-        {/if}
-
         <h3 class="{size === 'small' ? 'text-xl' : 'text-2xl'} font-bold flex items-center gap-2">
-            {#if !release.links || release.links.length === 0}
-                <Package class="{size === 'small' ? 'w-5 h-5' : 'w-6 h-6'} text-primary" />
-            {/if}
+            <Package class="{size === 'small' ? 'w-5 h-5' : 'w-6 h-6'} text-primary" />
             {release.versionString}
         </h3>
         {#if release.type}
@@ -31,6 +25,11 @@
 {/snippet}
 
 {#snippet description(size: 'small' | 'large')}
+    {#if release.links && release.links.length > 0}
+        <div class="mt-4 mb-2">
+            <LinksBubbles links={release.links} size="lg" />
+        </div>
+    {/if}
     {#if release.description}
         <p class="{size === 'small' ? 'text-sm' : 'text-base'} text-foreground/70 line-clamp-2 mb-3">
             {release.description}
