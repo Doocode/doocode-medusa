@@ -20,12 +20,13 @@
 <Button
     class={{
         "h-auto flex md:flex-col items-center px-3.5! py-3 justify-center text-center gap-1.75 md:gap-1.5 md:min-w-25 rounded-lg md:rounded-xl md:aspect-square duration-100 \
-        hover:bg-foreground/60! hover:text-background active:scale-90": true,
+        hover:bg-foreground/60! hover:text-background active:scale-90 shrink-0": true,
         "text-background bg-foreground": selected,
         "cursor-pointer": href !== undefined,
     }}
     variant={selected ? 'secondary' : 'ghost'}
     aria-selected={selected}
+    data-selected={selected}
     {href} {onclick}
 >
     {#if icon !== undefined}

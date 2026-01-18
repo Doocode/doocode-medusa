@@ -38,7 +38,7 @@
             </a>
         </div>
 
-        <div class="hidden md:flex items-center justify-center flex-4">
+        <div class="hidden md:flex items-center justify-center flex-4 min-w-0">
             {@render children?.()}
         </div>
 
@@ -50,7 +50,7 @@
 
 <Restyle
     class={{
-        "flex justify-center md:hidden bg-linear-to-b rounded-b-xl border-b p-1 pb-0.5 mb-2": true,
+        "flex justify-center md:hidden bg-linear-to-b rounded-b-xl border-b pb-0.5 mb-2": true,
         "from-primary to-primary/50 border-primary": !!project.bgAccent,
         "from-slate-300 to-slate-200/50 dark:from-slate-700 dark:to-slate-800/50 border-slate-300 dark:border-slate-700": !project.bgAccent
     }}
