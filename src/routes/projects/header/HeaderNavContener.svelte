@@ -10,6 +10,9 @@
     }: Props = $props();
 </script>
 
-<nav class="flex md:flex-wrap items-start md:justify-center gap-1 p-2 md:p-0 overflow-auto md:overflow-visible">
+<nav class={{
+    "flex md:flex-wrap items-start md:justify-center \
+    gap-1 overflow-auto md:overflow-visible": true,
+}}>
     {@render children?.()}
 </nav>

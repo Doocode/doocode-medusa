@@ -1,10 +1,11 @@
 <script lang="ts">
     import type { HTMLAttributes } from "svelte/elements";
+    import { type ClassValue } from "clsx";
     import type { Snippet } from 'svelte';
     import { cn } from "$lib/utils.js";
 
-    interface Props extends HTMLAttributes<HTMLElement> {
-        class?: string;
+    interface Props extends Omit<HTMLAttributes<HTMLElement>, 'class'> {
+        class?: ClassValue;
         tag?: string;
         tintLight?: string;
         tintDark?: string;

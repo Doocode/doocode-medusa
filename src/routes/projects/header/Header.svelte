@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
     import type { Project } from "../projects";
+    import { Restyle } from "$lib/page";
 
     interface Props {
         project: Project,
@@ -47,9 +48,17 @@
     </div>
 </header>
 
-<div class="flex md:hidden">
+<Restyle
+    class={{
+        "flex justify-center md:hidden bg-linear-to-b rounded-b-xl border-b p-1 pb-0.5 mb-2": true,
+        "from-primary to-primary/50 border-primary": !!project.bgAccent,
+        "from-slate-300 to-slate-200/50 dark:from-slate-700 dark:to-slate-800/50 border-slate-300 dark:border-slate-700": !project.bgAccent
+    }}
+    tintLight={project.bgAccent ? project.bgAccent.light : undefined}
+    tintDark={project.bgAccent ? project.bgAccent.dark : undefined}
+>
     {@render children?.()}
-</div>
+</Restyle>
 
 <style>
     header.accent {
