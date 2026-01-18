@@ -133,7 +133,7 @@
     <div transition:fade|global={{ duration: 150 }}>
         {#key index}
             <div
-                class="fixed inset-4 md:inset-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
+                class="fixed inset-0 p-4 md:p-10 z-50 flex items-center justify-center pointer-events-none overflow-hidden"
                 in:fly={{ 
                     x: controller.slideDirection === 'left' ? 200 : -200, 
                     duration: 400, 
