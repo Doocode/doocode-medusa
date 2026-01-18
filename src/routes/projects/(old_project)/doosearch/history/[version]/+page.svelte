@@ -10,7 +10,7 @@
     import { DialogLinks, DisplayLinksButton } from '$routes/projects/links';
     import { formatDate, getRelativeTime } from "$routes/projects/projects.helpers";
     import { Lister, ReleaseTypeBadge, SideNavigation, Summary } from "$routes/projects/changelog";
-    import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus, Link } from '@lucide/svelte/icons';
+    import { Bug, Sparkles, Trash2, ArrowLeft, Fullscreen, SquarePlus, Link, TriangleAlert } from '@lucide/svelte/icons';
 
     let { data }: { data: PageData } = $props();
 
@@ -98,8 +98,8 @@
         <!-- Links -->
         {#if release.links && release.links.length > 0}
             <Restyle tag="section" class="grid gap-4 -mb-4" id="links"
-                tintLight="oklch(68.1% 0.162 75.834)"
-                tintDark="oklch(85.2% 0.199 91.936)"
+                tintLight="oklch(59.2% 0.249 0.584)"
+                tintDark="oklch(71.8% 0.202 349.761)"
             >
                 <header class="flex flex-col sm:flex-row gap-4 sm:gap-18 sm:items-center">
                     <Heading level="h3" icon={Link}
@@ -116,6 +116,17 @@
                     {/each}
                 </Ul>
             </Restyle>
+        {/if}
+
+        <!-- Breaking Changes -->
+        {#if release.breakingChanges && release.breakingChanges.length > 0}
+            <Lister id="breaking_changes"
+                icon={TriangleAlert}
+                heading={m['changelog.breaking_changes.title']()}
+                items={release.breakingChanges}
+                tintLight="oklch(68.1% 0.162 75.834)"
+                tintDark="oklch(85.2% 0.199 91.936)"
+            />
         {/if}
 
         <!-- Features -->

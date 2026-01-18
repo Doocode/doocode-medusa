@@ -73,12 +73,15 @@ export interface Release {
      */
     description?: string;
 
-    // TODO: breaking changes?
-
     /**
      * List of bug fixes
      */
     bugfixes?: string[];
+
+    /**
+     * List of breaking changes
+     */
+    breakingChanges?: string[];
 
     /**
      * List of new features

@@ -18,10 +18,12 @@ export const v1_3_2: Release = {
         m['projects.doosearch.releases.v1_3_2.features.1'](),
         m['projects.doosearch.releases.v1_3_2.features.2'](),
     ]},
-    get improvements() { return [
+    get breakingChanges() { return [
+        m['projects.doosearch.releases.v1_3_2.improvements.2'](),
         m['projects.doosearch.releases.v1_3_2.improvements.0'](),
         m['projects.doosearch.releases.v1_3_2.improvements.1'](),
-        m['projects.doosearch.releases.v1_3_2.improvements.2'](),
+    ]},
+    get improvements() { return [
         m['projects.doosearch.releases.v1_3_2.improvements.3'](),
         m['projects.doosearch.releases.v1_3_2.improvements.4'](),
         m['projects.doosearch.releases.v1_3_2.improvements.5'](),
@@ -67,6 +69,8 @@ export const v1_3_0: Release = {
     versionString: 'v1.3.0',
     type: ReleaseType.Stable,
     get description() { return m['projects.doosearch.releases.v1_3_0.description']() },
+    get breakingChanges() { return [
+    ]},
     get features() { return [
         m['projects.doosearch.releases.v1_3_0.features.0'](),
         m['projects.doosearch.releases.v1_3_0.features.1'](),

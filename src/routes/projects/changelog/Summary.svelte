@@ -16,6 +16,14 @@
     "gap-3": hideLabel,
     "gap-x-6 gap-y-2": !hideLabel
 }}>
+    {#if release.breakingChanges?.length}
+        <SummaryCount {hideLabel}
+            type="breaking_changes"
+            count={release.breakingChanges.length}
+            label={ m['changelog.breaking_changes.title']() }
+            title={ m['changelog.breaking_changes.count_items']({ count: release.breakingChanges.length }) }
+        />
+    {/if}
     {#if release.features?.length}
         <SummaryCount {hideLabel}
             type="features"
@@ -46,6 +54,14 @@
             count={release.removals.length}
             label={ m['changelog.removals.title']() }
             title={ m['changelog.removals.count_items']({ count: release.removals.length }) }
+        />
+    {/if}
+    {#if release.links?.length}
+        <SummaryCount {hideLabel}
+            type="links"
+            count={release.links.length}
+            label={ m['links.title']() }
+            title={ m['links.count_items']({ count: release.links.length }) }
         />
     {/if}
     {#if release.images?.length}

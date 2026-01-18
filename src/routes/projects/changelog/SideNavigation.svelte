@@ -3,11 +3,18 @@
     import { m } from '$lib/paraglide/messages';
     import type { Component } from 'svelte';
     import {
-        Bug, ImagePlay, Sparkles, SquarePlus, Trash2, Link
+        Bug, ImagePlay, Sparkles, SquarePlus, Trash2, Link, TriangleAlert
     } from "@lucide/svelte/icons";
 
     const colors: Record<string, { text: string, hoverBg: string, hoverText: string, ring: string, badge: string }> = {
         links: {
+            text: "text-pink-600 dark:text-pink-400",
+            hoverBg: "hover:bg-pink-200 dark:hover:bg-pink-900/60",
+            hoverText: "hover:text-pink-700 dark:hover:text-pink-300",
+            ring: "focus:ring-pink-500",
+            badge: "bg-pink-200 text-pink-700 dark:bg-pink-900 dark:text-pink-400"
+        },
+        breaking_changes: {
             text: "text-amber-600 dark:text-amber-400",
             hoverBg: "hover:bg-amber-200 dark:hover:bg-amber-900/60",
             hoverText: "hover:text-amber-700 dark:hover:text-amber-300",
@@ -92,6 +99,10 @@
 
     {#if release.links?.length}
         {@render link('links', m['links.title'](), Link, release.links.length)}
+    {/if}
+
+    {#if release.breakingChanges?.length}
+        {@render link('breaking_changes', m['changelog.breaking_changes.title'](), TriangleAlert, release.breakingChanges.length)}
     {/if}
 
     {#if release.features?.length}
