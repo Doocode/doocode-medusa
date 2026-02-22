@@ -8,6 +8,8 @@ This website will live without a database.
 It will be a static website.
 That's why it was named "Medusa".
 
+![Release note for Doosearch from Doocode Medusa](wiki/website.png "Release note for Doosearch from Doocode Medusa")
+
 ## Developing
 
 You can start a development server:
