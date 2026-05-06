@@ -1,65 +1,64 @@
 <script lang="ts">
-    import Button from "$lib/components/ui/button/button.svelte";
-    import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-    import { m } from "$lib/paraglide/messages";
-    import { setLocale, getLocale } from "$lib/paraglide/runtime";
-    import LanguagesIcon from "@lucide/svelte/icons/languages";
+	import Button from '$lib/components/ui/button/button.svelte';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import { m } from '$lib/paraglide/messages';
+	import { setLocale, getLocale } from '$lib/paraglide/runtime';
+	import LanguagesIcon from '@lucide/svelte/icons/languages';
 
-    interface Props {
-        compact?: boolean;
-    }
+	interface Props {
+		compact?: boolean;
+	}
 
-    let { compact = $bindable(false) }: Props = $props();
+	let { compact = $bindable(false) }: Props = $props();
 
-    interface Language {
-        code: string;
-        name: string;
-    }
+	interface Language {
+		code: string;
+		name: string;
+	}
 
-    const languages: Language[] = [
-        { code: 'en', name: 'English' },
-        { code: 'fr', name: 'Français' },
-    ];
+	const languages: Language[] = [
+		{ code: 'en', name: 'English' },
+		{ code: 'fr', name: 'Français' }
+	];
 </script>
 
 <DropdownMenu.Root>
-    <DropdownMenu.Trigger>
-        <Button
-            variant={ compact ? "ghost" : "secondary" }
-            size="icon"
-            class={{
-                "h-11.25 w-11.25": !compact,
-                "h-10! w-10!": compact,
-            }}
-            title={m['language.title']()}
-        >
-            <LanguagesIcon class={{
-                "h-6! w-6!": !compact,
-                "h-5! w-5!": compact,
-            }} />
-            <span class="sr-only">{m['language.title']()}</span>
-        </Button>
-    </DropdownMenu.Trigger>
+	<DropdownMenu.Trigger>
+		<Button
+			variant={compact ? 'ghost' : 'secondary'}
+			size="icon"
+			class={{
+				'h-11.25 w-11.25': !compact,
+				'h-10! w-10!': compact
+			}}
+			title={m['language.title']()}
+		>
+			<LanguagesIcon
+				class={{
+					'h-6! w-6!': !compact,
+					'h-5! w-5!': compact
+				}}
+			/>
+			<span class="sr-only">{m['language.title']()}</span>
+		</Button>
+	</DropdownMenu.Trigger>
 
-    <DropdownMenu.Content align="end" class="w-40">
-        <DropdownMenu.Group>
-            <DropdownMenu.Label class="flex items-center gap-2">
-                <LanguagesIcon class="h-4.5! w-4.5!" />
-                {m['language.title']()}
-            </DropdownMenu.Label>
+	<DropdownMenu.Content align="end" class="w-40">
+		<DropdownMenu.Group>
+			<DropdownMenu.Label class="flex items-center gap-2">
+				<LanguagesIcon class="h-4.5! w-4.5!" />
+				{m['language.title']()}
+			</DropdownMenu.Label>
 
-            <DropdownMenu.Separator />
+			<DropdownMenu.Separator />
 
-            <DropdownMenu.RadioGroup value={getLocale()}>
-                {#each languages as language}
-                    <DropdownMenu.RadioItem
-                        onclick={() => setLocale(language.code)}
-                        value={language.code}
-                    >
-                        {language.name}
-                    </DropdownMenu.RadioItem>
-                {/each}
-            </DropdownMenu.RadioGroup>
-        </DropdownMenu.Group>
-    </DropdownMenu.Content>
+			<DropdownMenu.RadioGroup value={getLocale()}>
+				{#each languages as language}
+					<DropdownMenu.RadioItem onclick={() => setLocale(language.code)} value={language.code}>
+						{language.name}
+					</DropdownMenu.RadioItem>
+				{/each}
+			</DropdownMenu.RadioGroup>
+		</DropdownMenu.Group>
+	</DropdownMenu.Content>
 </DropdownMenu.Root>
