@@ -12,54 +12,62 @@ import Img_M_03 from './doosearch_1_3_2_screenshot_searchEnginesWindow_mobile.pn
 
 // Mobile
 const img_m_01 = {
-    src: Img_M_01,
-    alt: "Search page on mobile",
+	src: Img_M_01,
+	alt: 'Search page on mobile'
 };
 const img_m_02 = {
-    src: Img_M_02,
-    alt: "Selection of a search engine on mobile",
+	src: Img_M_02,
+	alt: 'Selection of a search engine on mobile'
 };
 const img_m_03 = {
-    src: Img_M_03,
-    alt: "List of search engines on mobile",
+	src: Img_M_03,
+	alt: 'List of search engines on mobile'
 };
 
 // PC
 const img_pc_01 = {
-    src: Img_PC_01,
-    alt: "Search page screenshot",
+	src: Img_PC_01,
+	alt: 'Search page screenshot'
 };
 const img_pc_02 = {
-    src: Img_PC_02,
-    alt: "Speed dial",
+	src: Img_PC_02,
+	alt: 'Speed dial'
 };
 const img_pc_03 = {
-    src: Img_PC_03,
-    alt: "Settings page",
+	src: Img_PC_03,
+	alt: 'Settings page'
 };
 const img_pc_04 = {
-    src: Img_PC_04,
-    alt: "First run setup",
+	src: Img_PC_04,
+	alt: 'First run setup'
 };
 const vid_pc_05 = {
-    type: GalleryItemType.Video,
-    src: Vid_PC_05,
-    alt: "Selection of several search engines",
+	type: GalleryItemType.Video,
+	src: Vid_PC_05,
+	alt: 'Selection of several search engines'
 };
 
 export const images: GalleryItemContent[] = [
-    img_m_01, img_pc_01, img_pc_02, img_pc_04, vid_pc_05,
-    img_m_02, img_m_03, img_pc_03
+	img_m_01,
+	img_pc_01,
+	img_pc_02,
+	img_pc_04,
+	vid_pc_05,
+	img_m_02,
+	img_m_03,
+	img_pc_03
 ];
 
-export const mobile_images: GalleryItemContent[] = [
-    img_m_01, img_m_02, img_m_03
-];
+export const mobile_images: GalleryItemContent[] = [img_m_01, img_m_02, img_m_03];
 
 export const pc_images: GalleryItemContent[] = [
-    img_pc_01, img_pc_02, img_pc_04, img_pc_03, vid_pc_05,
+	img_pc_01,
+	img_pc_02,
+	img_pc_04,
+	img_pc_03,
+	vid_pc_05
 ];
 
 export const videos = {
-    Vid_PC_05,
-}
+	Vid_PC_05
+};

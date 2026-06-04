@@ -13,48 +13,48 @@ import settings_ui from './dooscape_settings_ui.png';
 import tabs from './dooscape_tabs.png';
 
 export const screens: GalleryItemContent[] = [
-    {
-        src: browsing,
-        alt: "Browsing",
-    },
-    {
-        src: tabs,
-        alt: "Tabs",
-    },
-    {
-        src: main_menu,
-        alt: "Main menu",
-    },
-    {
-        src: all_actions,
-        alt: "All actions",
-    },
-    {
-        src: about_pane,
-        alt: "About pane",
-    },
-    {
-        src: address_pane,
-        alt: "Address pane",
-    },
-    {
-        src: lock_screen,
-        alt: "Lock screen",
-    },
-    {
-        src: reading_list,
-        alt: "Reading list",
-    },
-    {
-        src: screenshot,
-        alt: "Screenshot",
-    },
-    {
-        src: settings_customize,
-        alt: "Settings - Customize",
-    },
-    {
-        src: settings_ui,
-        alt: "Settings - User Interface",
-    },
+	{
+		src: browsing,
+		alt: 'Browsing'
+	},
+	{
+		src: tabs,
+		alt: 'Tabs'
+	},
+	{
+		src: main_menu,
+		alt: 'Main menu'
+	},
+	{
+		src: all_actions,
+		alt: 'All actions'
+	},
+	{
+		src: about_pane,
+		alt: 'About pane'
+	},
+	{
+		src: address_pane,
+		alt: 'Address pane'
+	},
+	{
+		src: lock_screen,
+		alt: 'Lock screen'
+	},
+	{
+		src: reading_list,
+		alt: 'Reading list'
+	},
+	{
+		src: screenshot,
+		alt: 'Screenshot'
+	},
+	{
+		src: settings_customize,
+		alt: 'Settings - Customize'
+	},
+	{
+		src: settings_ui,
+		alt: 'Settings - User Interface'
+	}
 ];

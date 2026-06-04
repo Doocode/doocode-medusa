@@ -1,27 +1,23 @@
 <script lang="ts">
-    import { cn } from "$lib/utils.js";
-    import { onMount, setContext } from "svelte";
-    import type { Snippet } from "svelte";
+	import { cn } from '$lib/utils.js';
+	import { onMount, setContext } from 'svelte';
+	import type { Snippet } from 'svelte';
 
-    interface Props {
-        class?: string;
-        type?: 'ul' | 'ol';
-        children?: Snippet;
-    }
+	interface Props {
+		class?: string;
+		type?: 'ul' | 'ol';
+		children?: Snippet;
+	}
 
-    let {
-        class: className,
-        type = 'ul',
-        children
-    }: Props = $props();
+	let { class: className, type = 'ul', children }: Props = $props();
 
-    onMount(() => {
-        setContext('listType', type);
-    });
+	onMount(() => {
+		setContext('listType', type);
+	});
 </script>
 
 {#key type}
-    <svelte:element this={type} class={cn("pl-8 grid gap-2.5 text-balance", className)}>
-        {@render children?.()}
-    </svelte:element>
+	<svelte:element this={type} class={cn('grid gap-2.5 pl-8 text-balance', className)}>
+		{@render children?.()}
+	</svelte:element>
 {/key}

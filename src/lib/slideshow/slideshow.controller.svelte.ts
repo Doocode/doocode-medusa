@@ -1,49 +1,47 @@
 export class SlideshowController {
-    uiVisible = $state(true);
-    slideDirection = $state<'left' | 'right'>('right');
-    
-    private hideTimer: number | undefined;
-    private readonly HIDE_DELAY = 5000;
+	uiVisible = $state(true);
+	slideDirection = $state<'left' | 'right'>('right');
 
-    constructor(
-        private getOpen: () => boolean
-    ) {
-        $effect(() => {
-            if (this.getOpen()) {
-                document.body.style.overflow = 'hidden';
-                this.resetHideTimer();
-            } else {
-                document.body.style.overflow = '';
-                this.clearHideTimer();
-            }
+	private hideTimer: number | undefined;
+	private readonly HIDE_DELAY = 5000;
 
-            return () => {
-                document.body.style.overflow = '';
-                this.clearHideTimer();
-            };
-        });
-    }
+	constructor(private getOpen: () => boolean) {
+		$effect(() => {
+			if (this.getOpen()) {
+				document.body.style.overflow = 'hidden';
+				this.resetHideTimer();
+			} else {
+				document.body.style.overflow = '';
+				this.clearHideTimer();
+			}
 
-    private clearHideTimer() {
-        if (this.hideTimer) {
-            clearTimeout(this.hideTimer);
-            this.hideTimer = undefined;
-        }
-    }
+			return () => {
+				document.body.style.overflow = '';
+				this.clearHideTimer();
+			};
+		});
+	}
 
-    resetHideTimer = () => {
-        this.uiVisible = true;
-        this.clearHideTimer();
-        this.hideTimer = window.setTimeout(() => {
-            this.uiVisible = false;
-        }, this.HIDE_DELAY);
-    }
+	private clearHideTimer() {
+		if (this.hideTimer) {
+			clearTimeout(this.hideTimer);
+			this.hideTimer = undefined;
+		}
+	}
 
-    handleUserActivity = () => {
-        this.resetHideTimer();
-    }
+	resetHideTimer = () => {
+		this.uiVisible = true;
+		this.clearHideTimer();
+		this.hideTimer = window.setTimeout(() => {
+			this.uiVisible = false;
+		}, this.HIDE_DELAY);
+	};
 
-    setDirection(direction: 'left' | 'right') {
-        this.slideDirection = direction;
-    }
+	handleUserActivity = () => {
+		this.resetHideTimer();
+	};
+
+	setDirection(direction: 'left' | 'right') {
+		this.slideDirection = direction;
+	}
 }

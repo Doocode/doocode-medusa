@@ -1,22 +1,23 @@
 import logo from './logo.webp';
-import { m } from "$lib/paraglide/messages";
-import type { MainActionProps, Project } from "$routes/projects/core";
+import { m } from '$lib/paraglide/messages';
+import type { MainActionProps, Project } from '$routes/projects/core';
 
-const name = "Doochronos";
+const name = 'Doochronos';
 
 export const mainAction: MainActionProps = {
-    variant: 'try',
-    href: 'https://chronos.doocode.xyz',
-    text: m['actions.test']({ name }),
-    withAccent: true,
+	variant: 'try',
+	href: 'https://chronos.doocode.xyz',
+	text: m['actions.test']({ name }),
+	withAccent: true
 };
 
 export const doochronos: Project = {
-    id: crypto.randomUUID(),
-    codename: 'doochronos',
-    name, logo,
-    catchyPhrase: m['projects.doochronos.catchy_phrase'](),
-    createdOn: new Date('2016-03-15'),
-    updatedOn: new Date('2018-06-15'),
-    bgAccent: { light: '#ffaed7', dark: '#c00476' },
-}
+	id: crypto.randomUUID(),
+	codename: 'doochronos',
+	name,
+	logo,
+	catchyPhrase: m['projects.doochronos.catchy_phrase'](),
+	createdOn: new Date('2016-03-15'),
+	updatedOn: new Date('2018-06-15'),
+	bgAccent: { light: '#ffaed7', dark: '#c00476' }
+};

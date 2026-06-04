@@ -1,38 +1,39 @@
-import { m } from "$lib/paraglide/messages";
-import { ProjectStatus, type MainActionProps, type Project } from "$routes/projects/core";
-import { getLatestRelease } from "$routes/projects/projects.helpers";
-import { releases } from "./data/releases";
-import { currentLogo } from "./gallery/logo";
-import { website } from "./data/links";
+import { m } from '$lib/paraglide/messages';
+import { ProjectStatus, type MainActionProps, type Project } from '$routes/projects/core';
+import { getLatestRelease } from '$routes/projects/projects.helpers';
+import { releases } from './data/releases';
+import { currentLogo } from './gallery/logo';
+import { website } from './data/links';
 
-const name = "Doosearch";
+const name = 'Doosearch';
 
 export const mainAction: MainActionProps = {
-    variant: 'visit',
-    href: website.url,
-    text: m['actions.visit']({ name }),
-    withAccent: true,
+	variant: 'visit',
+	href: website.url,
+	text: m['actions.visit']({ name }),
+	withAccent: true
 };
 
 const latestRelease = getLatestRelease(releases);
 const updatedOn = releases.length > 1 ? latestRelease?.releaseDate : undefined;
 
 export const doosearch: Project = {
-    id: crypto.randomUUID(),
-    codename: 'doosearch',
-    name, logo: currentLogo,
+	id: crypto.randomUUID(),
+	codename: 'doosearch',
+	name,
+	logo: currentLogo,
 
-    catchyPhrase: m['projects.doosearch.catchy_phrase'](),
+	catchyPhrase: m['projects.doosearch.catchy_phrase'](),
 
-    createdOn: new Date('2014-03-19'),
-    updatedOn,
+	createdOn: new Date('2014-03-19'),
+	updatedOn,
 
-    versionName: latestRelease?.versionString,
-    versionCode: latestRelease?.versionNumber,
-    status: ProjectStatus.Archived,
+	versionName: latestRelease?.versionString,
+	versionCode: latestRelease?.versionNumber,
+	status: ProjectStatus.Archived,
 
-    licenseName: 'GPL-3.0',
-    licenseUrl: 'https://www.gnu.org/licenses/gpl-3.0.en.html',
+	licenseName: 'GPL-3.0',
+	licenseUrl: 'https://www.gnu.org/licenses/gpl-3.0.en.html',
 
-    bgAccent: { light: '#ffc14e', dark: '#be5c05' },
-}
+	bgAccent: { light: '#ffc14e', dark: '#be5c05' }
+};

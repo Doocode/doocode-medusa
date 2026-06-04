@@ -3,13 +3,13 @@ import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ params }) => {
-    const release = releases.find(r => r.versionString === params.version);
+	const release = releases.find((r) => r.versionString === params.version);
 
-    if (!release) {
-        throw error(404, 'Release not found');
-    }
+	if (!release) {
+		throw error(404, 'Release not found');
+	}
 
-    return {
-        release
-    };
+	return {
+		release
+	};
 };

@@ -1,4 +1,4 @@
-import CrossPlatform from './CrossPlaform.svelte'
-import UIPlaceholder from './UIPlaceholder.svelte'
+import CrossPlatform from './CrossPlaform.svelte';
+import UIPlaceholder from './UIPlaceholder.svelte';
 
-export { CrossPlatform, UIPlaceholder }
+export { CrossPlatform, UIPlaceholder };

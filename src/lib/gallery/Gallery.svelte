@@ -1,97 +1,94 @@
 <script lang="ts">
-    import { cn } from "$lib/utils.js";
-    import { Slideshow } from "../slideshow";
-    import {
-        GalleryHeader, GalleryItemType,
-        type GalleryItemContent,
-        GalleryTile, GalleryScrollManager
-    } from ".";
+	import { cn } from '$lib/utils.js';
+	import { Slideshow } from '../slideshow';
+	import {
+		GalleryHeader,
+		GalleryItemType,
+		type GalleryItemContent,
+		GalleryTile,
+		GalleryScrollManager
+	} from '.';
 
-    interface Props {
-        images?: GalleryItemContent[];
-        class?: string;
-        classHeader?: string;
-        classGallery?: string;
-        size?: 'small' | 'medium' | 'large';
-    }
+	interface Props {
+		images?: GalleryItemContent[];
+		class?: string;
+		classHeader?: string;
+		classGallery?: string;
+		size?: 'small' | 'medium' | 'large';
+	}
 
-    let {
-        images = [],
-        size = 'medium',
-        class: className,
-        classHeader = "",
-        classGallery = "",
-        ...restProps
-    }: Props = $props();
+	let {
+		images = [],
+		size = 'medium',
+		class: className,
+		classHeader = '',
+		classGallery = '',
+		...restProps
+	}: Props = $props();
 
-    let imageCount = $derived(images.filter(img => img.type !== GalleryItemType.Video).length);
-    let videoCount = $derived(images.filter(img => img.type === GalleryItemType.Video).length);
+	let imageCount = $derived(images.filter((img) => img.type !== GalleryItemType.Video).length);
+	let videoCount = $derived(images.filter((img) => img.type === GalleryItemType.Video).length);
 
-    let openSlideshow = $state(false);
-    let slideIndex = $state(0);
-    
-    const scroller = new GalleryScrollManager();
+	let openSlideshow = $state(false);
+	let slideIndex = $state(0);
 
-    $effect(() => {
-        images;
-        scroller.updateButtons();
-    });
+	const scroller = new GalleryScrollManager();
 
-    function onItemClick(event: Event, index: number) {
-        event.preventDefault();
-        if (scroller.isDragging) return;
+	$effect(() => {
+		images;
+		scroller.updateButtons();
+	});
 
-        openSlideshow = true;
-        slideIndex = index;
-    }
+	function onItemClick(event: Event, index: number) {
+		event.preventDefault();
+		if (scroller.isDragging) return;
+
+		openSlideshow = true;
+		slideIndex = index;
+	}
 </script>
 
 <main class={cn(className)}>
-    <div class="grid">
-        <GalleryHeader
-            class={classHeader}
-            {imageCount} {videoCount}
-            canScrollLeft={scroller.canScrollLeft}
-            canScrollRight={scroller.canScrollRight}
-            onScrollBackward={scroller.scrollBackward}
-            onScrollForward={scroller.scrollForward}
-        />
+	<div class="grid">
+		<GalleryHeader
+			class={classHeader}
+			{imageCount}
+			{videoCount}
+			canScrollLeft={scroller.canScrollLeft}
+			canScrollRight={scroller.canScrollRight}
+			onScrollBackward={scroller.scrollBackward}
+			onScrollForward={scroller.scrollForward}
+		/>
 
-        <div
-            bind:this={scroller.node}
-            class={cn(
-                "flex gap-4 overflow-x-auto overflow-y-hidden py-4 px-4 hide-scrollbar cursor-grab active:cursor-grabbing select-none",
-                classGallery
-            )}
-            onscroll={scroller.updateButtons}
-            onmousedown={scroller.handleMouseDown}
-            onmouseleave={scroller.handleMouseLeave}
-            onmouseup={scroller.handleMouseUp}
-            onmousemove={scroller.handleMouseMove}
-            {...restProps}
-        >
-            {#each images as item, index}
-                <GalleryTile
-                    {item}
-                    {size}
-                    onclick={(e) => onItemClick(e, index)}
-                />
-            {/each}
-        </div>
-    </div>
+		<div
+			bind:this={scroller.node}
+			class={cn(
+				'hide-scrollbar flex cursor-grab gap-4 overflow-x-auto overflow-y-hidden px-4 py-4 select-none active:cursor-grabbing',
+				classGallery
+			)}
+			onscroll={scroller.updateButtons}
+			onmousedown={scroller.handleMouseDown}
+			onmouseleave={scroller.handleMouseLeave}
+			onmouseup={scroller.handleMouseUp}
+			onmousemove={scroller.handleMouseMove}
+			{...restProps}
+		>
+			{#each images as item, index}
+				<GalleryTile {item} {size} onclick={(e) => onItemClick(e, index)} />
+			{/each}
+		</div>
+	</div>
 
-    <Slideshow {images}
-        bind:open={openSlideshow}
-        bind:index={slideIndex} />
+	<Slideshow {images} bind:open={openSlideshow} bind:index={slideIndex} />
 </main>
 
 <style>
-    .hide-scrollbar {
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-    }
-    
-    .hide-scrollbar::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
-    }
+	.hide-scrollbar {
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* IE and Edge */
+	}
+
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Opera */
+	}
 </style>

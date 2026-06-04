@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ReleaseTypeBadge, Summary } from '..';
 	import { Package, ChevronRight } from '@lucide/svelte/icons';
-	import type { Release } from "$routes/projects/core";
+	import type { Release } from '$routes/projects/core';
 	import { LinksBubbles } from '$routes/projects/links';
 	import { formatDate, getRelativeTime } from '../../projects.helpers';
 

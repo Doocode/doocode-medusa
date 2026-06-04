@@ -1,5 +1,3 @@
-import Screenshots from "./Screenshots.svelte";
+import Screenshots from './Screenshots.svelte';
 
-export {
-    Screenshots
-}
+export { Screenshots };

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { buttonVariants } from '$lib/components/ui/button';
-	import { type ProjectLink, LinkType } from "$routes/projects/core";
+	import { type ProjectLink, LinkType } from '$routes/projects/core';
 	import {
 		Github,
 		Globe,

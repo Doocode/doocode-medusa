@@ -1,65 +1,71 @@
 <script lang="ts">
-    import Button from "$lib/components/ui/button/button.svelte";
-    import MenuIcon from "@lucide/svelte/icons/menu";
-    import * as Popover from "$lib/components/ui/popover/index.js";
-    import PackageIcon from "@lucide/svelte/icons/package";
-    import HouseIcon from "@lucide/svelte/icons/house";
-    import BugIcon from "@lucide/svelte/icons/bug";
-    import { m } from "$lib/paraglide/messages";
-    import type { Component } from "svelte";
-    import { page } from '$app/state';
+	import Button from '$lib/components/ui/button/button.svelte';
+	import MenuIcon from '@lucide/svelte/icons/menu';
+	import * as Popover from '$lib/components/ui/popover/index.js';
+	import PackageIcon from '@lucide/svelte/icons/package';
+	import HouseIcon from '@lucide/svelte/icons/house';
+	import BugIcon from '@lucide/svelte/icons/bug';
+	import { m } from '$lib/paraglide/messages';
+	import type { Component } from 'svelte';
+	import { page } from '$app/state';
 
-    let isOpen = $state(false);
+	let isOpen = $state(false);
 
-    interface Item {
-        href: string;
-        icon: Component;
-        label: string;
-    }
+	interface Item {
+		href: string;
+		icon: Component;
+		label: string;
+	}
 
-    function onItemClick() {
-        isOpen = false;
-    }
+	function onItemClick() {
+		isOpen = false;
+	}
 </script>
 
 <Popover.Root bind:open={isOpen}>
-    <Popover.Trigger>
-        <Button variant="ghost" size="icon" class="h-11.25 w-11.25">
-            <MenuIcon class="h-6! w-6!" strokeWidth={2.5} />
-        </Button>
-    </Popover.Trigger>
+	<Popover.Trigger>
+		<Button variant="ghost" size="icon" class="h-11.25 w-11.25">
+			<MenuIcon class="h-6! w-6!" strokeWidth={2.5} />
+		</Button>
+	</Popover.Trigger>
 
-    <Popover.Content class="rounded-3xl">
-        <nav class="flex flex-col gap-1">
-            {#snippet item({
-                href, icon, label
-            }: Item) }
-                {@const Icon = icon }
-                <a {href} onclick={onItemClick} class={{
-                    'flex items-center gap-2 px-4 py-3 rounded-lg duration-100 \
-                    hover:bg-secondary/75 hover:text-secondary-foreground \
-                    active:bg-secondary active:text-secondary-foreground': true,
+	<Popover.Content class="rounded-3xl">
+		<nav class="flex flex-col gap-1">
+			{#snippet item({ href, icon, label }: Item)}
+				{@const Icon = icon}
+				<a
+					{href}
+					onclick={onItemClick}
+					class={{
+                    'flex items-center gap-2 rounded-lg px-4 py-3 duration-100                     hover:bg-secondary/75 hover:text-secondary-foreground                     active:bg-secondary active:text-secondary-foreground': true,
                     'bg-primary text-primary-foreground': page.url.pathname === href
                 }}>
-                    <Icon class="h-5! w-5!"/>
-                    <span>{label}</span>
-                </a>
-            {/snippet}
+ }
+				>
+					<Icon class="h-5! w-5!"></Icon>
+					<span>{l}</s}</span>
+				</a>
+			{/snippet}
 
-            {@render item({
+			{@render ({
                 href: '/', icon: HouseIcon,
                 label: m['home.title']()
             })}
 
-            {@render item({
+ }
+
+			{@render ({
                 href: '/projects', icon: PackageIcon,
                 label: m['projects.title']()
             })}
 
-            {@render item({
+ }
+
+			{@render ({
                 href: '/demo', icon: BugIcon,
                 label: 'Demo'
             })}
-        </nav>
-    </Popover.Content>
+  }
+		</nav>
+	</Popover.Content>
 </Popover.Root>

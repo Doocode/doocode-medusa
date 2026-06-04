@@ -11,15 +11,15 @@ import NoReleaseFound from './landing/NoReleaseFound.svelte';
 import ListVersionsPage from './landing/ListVersionsPage.svelte';
 
 export {
-    Lister,
-    ReleaseCard,
-    ReleaseTypeBadge,
-    Summary,
-    SummaryCount,
-    SideNavigation,
-    SidePanel,
-    ChangelogBody,
-    DetailsChangelogPage,
-    NoReleaseFound,
-    ListVersionsPage,
-}
+	Lister,
+	ReleaseCard,
+	ReleaseTypeBadge,
+	Summary,
+	SummaryCount,
+	SideNavigation,
+	SidePanel,
+	ChangelogBody,
+	DetailsChangelogPage,
+	NoReleaseFound,
+	ListVersionsPage
+};
