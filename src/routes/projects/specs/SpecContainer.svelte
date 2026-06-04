@@ -11,11 +11,12 @@
 </script>
 
 <main
-	class={cn("    grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-x-4 gap-y-8 divide-border", className)}>
- }
+	class={cn(
+		'grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-x-4 gap-y-8 divide-border',
+		className
+	)}
 >
-	{@render dren?.()}
-</}
+	{@render children?.()}
 </main>
 
 <style>

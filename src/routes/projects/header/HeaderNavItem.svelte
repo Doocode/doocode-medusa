@@ -1,38 +1,37 @@
 <script lang="ts">
-	interface Props {
-		icon: Component;
-		text: string;
-		href?: string;
-		onclick?: () => void;
-		selected?: boolean;
-	}
+    interface Props {
+        icon: Component;
+        text: string;
+        href?: string;
+        onclick?: () => void;
+        selected?: boolean;
+    }
 
-	let { icon, text, href, onclick = () => {}, selected = false }: Props = $props();
+    let {
+        icon, text, href,
+        onclick = () => {},
+        selected = false
+    }: Props = $props();
 
-	import Button from '$lib/components/ui/button/button.svelte';
-	import type { Component } from 'svelte';
+    import Button from '$lib/components/ui/button/button.svelte';
+    import type { Component } from 'svelte';
 </script>
 
 <Button
-	class={{
-        "flex h-auto shrink-0 items-center justify-center gap-1.75 rounded-lg px-3.5! py-3 text-center duration-100 hover:bg-foreground/60! hover:text-background active:scale-90 md:aspect-square         md:min-w-25 md:flex-col md:gap-1.5 md:rounded-xl": true,
-        "bg-foreground text-background": selected,
+    class={{
+        "h-auto flex md:flex-col items-center px-3.5! py-3 justify-center text-center gap-1.75 md:gap-1.5 md:min-w-25 rounded-lg md:rounded-xl md:aspect-square duration-100 \
+        hover:bg-foreground/60! hover:text-background active:scale-90 shrink-0": true,
+        "text-background bg-foreground": selected,
         "cursor-pointer": href !== undefined,
     }}
-}
-	variant={lected ? 'secondary' : 'ghost'}
-}
-	aria-selected={lected}
-}
-	data-selected={lected}
-}
-	{href}
-	{onclick}
+    variant={selected ? 'secondary' : 'ghost'}
+    aria-selected={selected}
+    data-selected={selected}
+    {href} {onclick}
 >
-	{#if on !== undefined}
-}{@const on = icon }
-}
-		<Icon class="size-5! md:size-14!"></Icon>
-	{/if}
-	<span class="text-base font-normal md:text-[13px]">{xt}<}</span>
+    {#if icon !== undefined}
+        {@const Icon = icon }
+        <Icon class="size-5! md:size-14!" />
+    {/if}
+    <span class="font-normal text-base md:text-[13px]">{text}</span>
 </Button>

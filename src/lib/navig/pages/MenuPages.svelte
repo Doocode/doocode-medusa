@@ -37,35 +37,32 @@
 					{href}
 					onclick={onItemClick}
 					class={{
-                    'flex items-center gap-2 rounded-lg px-4 py-3 duration-100                     hover:bg-secondary/75 hover:text-secondary-foreground                     active:bg-secondary active:text-secondary-foreground': true,
-                    'bg-primary text-primary-foreground': page.url.pathname === href
-                }}>
- }
+						'flex items-center gap-2 rounded-lg px-4 py-3 duration-100                     hover:bg-secondary/75 hover:text-secondary-foreground                     active:bg-secondary active:text-secondary-foreground': true,
+						'bg-primary text-primary-foreground': page.url.pathname === href
+					}}
 				>
 					<Icon class="h-5! w-5!"></Icon>
-					<span>{l}</s}</span>
+					<span>{label}</span>
 				</a>
 			{/snippet}
 
-			{@render ({
-                href: '/', icon: HouseIcon,
-                label: m['home.title']()
-            })}
+			{@render item({
+				href: '/',
+				icon: HouseIcon,
+				label: m['home.title']()
+			})}
 
- }
+			{@render item({
+				href: '/projects',
+				icon: PackageIcon,
+				label: m['projects.title']()
+			})}
 
-			{@render ({
-                href: '/projects', icon: PackageIcon,
-                label: m['projects.title']()
-            })}
-
- }
-
-			{@render ({
-                href: '/demo', icon: BugIcon,
-                label: 'Demo'
-            })}
-  }
+			{@render item({
+				href: '/demo',
+				icon: BugIcon,
+				label: 'Demo'
+			})}
 		</nav>
 	</Popover.Content>
 </Popover.Root>
