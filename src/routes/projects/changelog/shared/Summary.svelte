@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import SummaryCount from './SummaryCount.svelte';
-	import type { Release } from '$routes/projects/projects.types';
+	import type { Release } from "$routes/projects/core";
 
 	interface Props {
 		release: Release;

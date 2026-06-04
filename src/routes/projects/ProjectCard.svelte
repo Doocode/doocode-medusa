@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { TwColor } from "./projects";
+    import type { LightDarkTailwindColor } from "$routes/projects/core";
     import { m } from "$lib/paraglide/messages";
     import { formatDate } from "./projects.helpers";
     import BallonIcon from "@lucide/svelte/icons/balloon";
@@ -12,7 +12,7 @@
         catchyPhrase: string;
         createdOn: Date;
         updatedOn?: Date;
-        bgAccent?: TwColor | undefined;
+        bgAccent?: LightDarkTailwindColor | undefined;
     }
 
     let { codename, name, logo, catchyPhrase, createdOn, updatedOn, bgAccent }: Props = $props();

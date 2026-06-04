@@ -13,7 +13,7 @@
 	import Gallery from '$lib/gallery/Gallery.svelte';
 	import { DisplayLinksButton } from '$routes/projects/links';
 	import { Lister } from '$routes/projects/changelog';
-	import type { Release } from '$routes/projects/projects.types';
+	import type { Release } from '$routes/projects/core';
 
 	interface Props {
 		release: Release;

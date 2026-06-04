@@ -15,6 +15,8 @@
 	import LinkTile from '$routes/projects/links/LinkTile.svelte';
 
 	let { data }: PageProps = $props();
+
+	let viewMode: 'grid' | 'list' = $state('grid'); // grid | list
 </script>
 
 <svelte:head>

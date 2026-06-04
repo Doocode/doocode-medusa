@@ -4,7 +4,7 @@
     import { formatDate } from "../projects.helpers";
     import { Search, LayoutGrid, List, Unlink } from "@lucide/svelte";
     import * as Dialog from "$lib/components/ui/dialog";
-    import type { ProjectLink, TwColor } from "../projects.types";
+    import type { ProjectLink, LightDarkTailwindColor } from "$routes/projects/core";
     import { getRelativeTime } from "../projects.helpers";
     import { Button } from "$lib/components/ui/button";
     import { ButtonGroup } from "$lib/components/ui/button-group";
@@ -14,7 +14,7 @@
     interface Props {
         open?: boolean,
         links?: ProjectLink[];
-        accent?: TwColor;
+        accent?: LightDarkTailwindColor;
     }
 
     let { open = $bindable(false), links = [], accent }: Props = $props();

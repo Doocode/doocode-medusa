@@ -3,7 +3,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import Heading from '$lib/page/Heading.svelte';
 	import { History } from '@lucide/svelte/icons';
-	import type { Release } from '$routes/projects/projects.types';
+	import type { Release } from '$routes/projects/core';
 	import { ReleaseCard, NoReleaseFound } from '$routes/projects/changelog';
 
 	interface Props {

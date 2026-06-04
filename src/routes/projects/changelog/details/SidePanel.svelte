@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import { Button } from '$lib/components/ui/button';
-	import { type Release } from '$routes/projects/projects.types';
+	import { type Release } from '$routes/projects/core';
 	import { formatDate, getRelativeTime } from '$routes/projects/projects.helpers';
 	import { ReleaseTypeBadge, SideNavigation, Summary } from '$routes/projects/changelog';
 	import { ArrowLeft } from '@lucide/svelte/icons';

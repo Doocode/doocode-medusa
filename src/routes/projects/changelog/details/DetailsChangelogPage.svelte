@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { DialogLinks } from '$routes/projects/links';
 	import { ChangelogBody, SidePanel } from '$routes/projects/changelog';
-	import type { Release, Project } from '$routes/projects/projects.types';
+	import type { Release, Project } from '$routes/projects/core';
 
 	interface Props {
 		project: Project;

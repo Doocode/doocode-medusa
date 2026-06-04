@@ -1,6 +1,6 @@
 <script lang="ts">
     import VersionSelect from "./VersionSelect.svelte";
-    import type { Release } from "../projects.types";
+    import type { Release } from "$routes/projects/core";
     import { Gallery } from "$lib/gallery";
     import { onMount } from "svelte";
 

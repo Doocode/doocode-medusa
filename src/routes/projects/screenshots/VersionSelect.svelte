@@ -1,7 +1,7 @@
 <script lang="ts">
     import { m } from "$lib/paraglide/messages";
     import { ReleaseTypeBadge } from "../changelog";
-    import type { Release } from "../projects.types";
+    import type { Release } from "$routes/projects/core";
     import { ImagePlay } from "@lucide/svelte/icons";
 
     interface Props {

@@ -1,4 +1,4 @@
-import type { Release } from './projects.types';
+import type { Release } from "$routes/projects/core";
 
 import { getLocale } from "$lib/paraglide/runtime";
 

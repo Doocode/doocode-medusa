@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ReleaseType } from '$routes/projects/core/enums';
+	import { ReleaseType } from '$routes/projects/core';
 
 	interface Props {
 		type: ReleaseType;

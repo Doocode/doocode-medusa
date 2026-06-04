@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Release } from '$routes/projects/projects.types';
+	import type { Release } from '$routes/projects/core';
 	import { m } from '$lib/paraglide/messages';
 	import type { Component } from 'svelte';
 	import {

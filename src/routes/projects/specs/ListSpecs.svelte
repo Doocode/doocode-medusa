@@ -1,6 +1,6 @@
 <script lang="ts">
     import { m } from "$lib/paraglide/messages";
-    import { type Project } from "$routes/projects/projects.types";
+    import { type Project } from "$routes/projects/core";
     import { SpecContainer, SpecBlock, BlockDate, BlockVersion, BlockStatus } from '$routes/projects/specs';
     import { SquareActivity, Flag, History, Calendar1, Scale, SquareArrowOutUpRightIcon } from '@lucide/svelte/icons';
 

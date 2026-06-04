@@ -1,6 +1,5 @@
 import { m } from "$lib/paraglide/messages";
-import { ProjectStatus } from "$routes/projects/core";
-import { type MainActionProps, type Project } from "$routes/projects/projects.types";
+import { ProjectStatus, type MainActionProps, type Project } from "$routes/projects/core";
 import { getLatestRelease } from "$routes/projects/projects.helpers";
 import { releases } from "./data/releases";
 import { currentLogo } from "./gallery/logo";
@@ -22,7 +21,7 @@ export const doosearch: Project = {
     id: crypto.randomUUID(),
     codename: 'doosearch',
     name, logo: currentLogo,
-    
+
     catchyPhrase: m['projects.doosearch.catchy_phrase'](),
 
     createdOn: new Date('2014-03-19'),
@@ -30,7 +29,7 @@ export const doosearch: Project = {
 
     versionName: latestRelease?.versionString,
     versionCode: latestRelease?.versionNumber,
-    status:  ProjectStatus.Archived,
+    status: ProjectStatus.Archived,
 
     licenseName: 'GPL-3.0',
     licenseUrl: 'https://www.gnu.org/licenses/gpl-3.0.en.html',
