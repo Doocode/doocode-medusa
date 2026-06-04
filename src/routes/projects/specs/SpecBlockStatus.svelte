@@ -2,7 +2,7 @@
     import { SpecBlock } from ".";
     import type { Component } from "svelte";
     import { m } from "$lib/paraglide/messages";
-    import { ProjectStatus } from "../projects.types";
+    import { ProjectStatus } from "../core";
     import { Construction, CircleCheck, CirclePause, CircleX, FolderArchive } from '@lucide/svelte/icons';
 
     interface Props {

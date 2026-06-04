@@ -1,5 +1,6 @@
 import { m } from "$lib/paraglide/messages";
-import { ProjectStatus, type MainActionProps, type Project, type ProjectLink } from "$routes/projects/projects.types";
+import { ProjectStatus } from "$routes/projects/core";
+import { type MainActionProps, type Project } from "$routes/projects/projects.types";
 import { getLatestRelease } from "$routes/projects/projects.helpers";
 import { releases } from "./data/releases";
 import { currentLogo } from "./gallery/logo";

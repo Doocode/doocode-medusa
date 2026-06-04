@@ -83,7 +83,7 @@
                 - Version type : stable, beta, alpha, etc.
                 - Date range
                 - Version number range : above/below a certain version
-                - Links included : include/excluse links types (github, website, etc.)
+                - Links included : include/exclude links types (github, website, etc.)
             -->
 		</nav>
 	</header>

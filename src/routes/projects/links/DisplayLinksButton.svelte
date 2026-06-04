@@ -1,7 +1,8 @@
 <script lang="ts">
     import {  Link as LinkIcon, Download } from '@lucide/svelte/icons';
-    import { type ProjectLink, LinkType } from "../projects.types";
+    import { type ProjectLink } from "../projects.types";
     import { Button } from '$lib/components/ui/button';
+    import { LinkType } from "$routes/projects/core";
     import LinksBubbles from "./LinksBubbles.svelte";
     import { m } from '$lib/paraglide/messages';
     import { cn } from "$lib/utils";

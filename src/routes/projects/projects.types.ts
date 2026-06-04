@@ -1,16 +1,9 @@
 import type { GalleryItemContent } from "$lib/gallery";
+import { LinkType, ProjectStatus, ReleaseType } from "./core/enums";
 
 export interface TwColor {
     light: string;
     dark: string;
-}
-
-export enum ProjectStatus {
-    InDevelopment = 'InDev',
-    Completed = 'Completed',
-    OnHold = 'OnHold',
-    Abandoned = 'Abandoned',
-    Archived = 'Archived',
 }
 
 export interface Project {
@@ -39,12 +32,6 @@ export interface MainActionProps {
     href?: string;
     text: string;
     withAccent?: boolean;
-}
-
-export enum ReleaseType {
-    Alpha = 'Alpha',
-    Beta = 'Beta',
-    Stable = 'Stable',
 }
 
 export interface Release {
@@ -107,22 +94,6 @@ export interface Release {
      * List of links
      */
     links?: ProjectLink[];
-}
-
-export enum LinkType {
-    Website = 'Website',
-    Repository = 'Repository',
-    Documentation = 'Documentation',
-    License = 'License',
-    WindowsExecutable = 'WindowsExecutable',
-    WindowsInstaller = 'WindowsInstaller',
-    MacOS = 'MacOS',
-    Linux = 'Linux',
-    Android = 'Android',
-    iOS = 'iOS',
-    WebExtension = 'WebExtension',
-    Archive = 'Archive',
-    Other = 'Other',
 }
 
 export interface ProjectLink {

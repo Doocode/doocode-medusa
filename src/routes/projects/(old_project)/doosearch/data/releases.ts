@@ -1,4 +1,5 @@
-import { ReleaseType, type Release } from "$routes/projects/projects.types";
+import { type Release } from "$routes/projects/projects.types";
+import { ReleaseType } from "$routes/projects/core";
 import { links } from "../data/links";
 import { m } from "$lib/paraglide/messages";
 import {

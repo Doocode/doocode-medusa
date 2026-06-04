@@ -1,0 +1,15 @@
+export enum LinkType {
+    Website = 'Website',
+    Repository = 'Repository',
+    Documentation = 'Documentation',
+    License = 'License',
+    WindowsExecutable = 'WindowsExecutable',
+    WindowsInstaller = 'WindowsInstaller',
+    MacOS = 'MacOS',
+    Linux = 'Linux',
+    Android = 'Android',
+    iOS = 'iOS',
+    WebExtension = 'WebExtension',
+    Archive = 'Archive',
+    Other = 'Other',
+}

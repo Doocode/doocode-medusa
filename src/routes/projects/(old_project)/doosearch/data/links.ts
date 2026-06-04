@@ -1,4 +1,5 @@
-import { LinkType, type ProjectLink } from "$routes/projects/projects.types";
+import { type ProjectLink } from "$routes/projects/projects.types";
+import { LinkType } from "$routes/projects/core";
 import { m } from "$lib/paraglide/messages";
 
 export const website: ProjectLink = {

@@ -3,8 +3,9 @@
         Globe, Github, BookOpen, Scale, AppWindow, Command, Terminal, 
         Smartphone, Puzzle, Package, Link as LinkIcon 
     } from '@lucide/svelte/icons';
-    import { type ProjectLink, LinkType } from "../projects.types";
+    import { type ProjectLink } from "../projects.types";
     import { cn } from "$lib/utils";
+    import { LinkType } from "$routes/projects/core";
 
     interface Props {
         links: ProjectLink[];
